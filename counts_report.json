@@ -1,0 +1,20 @@
+{
+  "products_total": 19813,
+  "india_barcode_890": 5905,
+  "countries_tags_india": 2,
+  "india_combined_true_count": 5905,
+  "missing_product_name": 0,
+  "missing_barcode": 0,
+  "missing_ingredients_text": 0,
+  "missing_brands": 718,
+  "missing_nutrition_data": 3419,
+  "products_with_front_image": 7545,
+  "products_with_ingredients_image": 5280,
+  "products_with_nutrition_image": 4840,
+  "product_ingredients_estimate": 205319,
+  "product_additives_estimate": 53040,
+  "additive_rulebook_total": 121,
+  "priority_food_colors_covered": 15,
+  "approved_human_reviews": 3,
+  "generated_at": "2026-07-29"
+}

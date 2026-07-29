@@ -1,0 +1,31 @@
+additive_code,canonical_name,CODEX,EU,IN,JP,UK,US,coverage_status
+E102,Tartrazine,1,1,1,0,1,1,full
+E110,Sunset Yellow FCF,1,1,1,0,1,1,full
+E127,Erythrosine,0,1,1,0,0,1,partial
+E150D,Sulphite Ammonia Caramel,0,0,1,0,0,1,partial
+E171,Titanium Dioxide,0,1,1,0,1,1,full
+E202,Potassium Sorbate,0,0,1,0,0,0,partial
+E211,Sodium Benzoate,0,1,1,0,0,0,partial
+E300,Ascorbic Acid (Vitamin C),0,0,1,0,0,0,partial
+E319,TBHQ (Tertiary Butylhydroquinone),0,0,1,1,0,0,partial
+E322,Lecithins,0,0,1,0,0,0,partial
+E330,Citric Acid,0,0,1,0,0,0,partial
+E331,Sodium Citrates,0,0,1,0,0,0,partial
+E407,Carrageenan,0,0,1,0,0,0,partial
+E412,Guar Gum,0,0,1,0,0,0,partial
+E415,Xanthan Gum,0,0,1,0,0,0,partial
+E422,Glycerol,0,0,1,0,0,0,partial
+E440,Pectins,0,0,1,0,0,0,partial
+E450,Diphosphates,0,0,1,0,0,0,partial
+E466,Sodium Carboxymethyl Cellulose,0,0,1,0,0,0,partial
+E471,Mono- and Diglycerides of Fatty Acids,0,0,1,0,0,0,partial
+E476,PGPR,0,0,1,0,0,0,partial
+E500,Sodium Carbonates,0,0,1,0,0,0,partial
+E500II,Sodium Bicarbonate,0,0,1,0,0,0,partial
+E503,Ammonium Carbonates,0,0,1,0,0,0,partial
+E551,Silicon Dioxide,0,0,1,0,0,0,partial
+E621,Monosodium Glutamate (MSG),0,0,1,0,0,0,partial
+E627,Disodium Guanylate,0,0,1,0,0,0,partial
+E631,Disodium Inosinate,0,0,1,0,0,0,partial
+E924A,Potassium Bromate,0,0,1,0,0,0,partial
+E951,Aspartame,0,1,1,0,0,1,partial

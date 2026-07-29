@@ -1,0 +1,112 @@
+[
+  {
+    "id": "ing_e102",
+    "canonicalName": "Tartrazine",
+    "scientificName": "Trisodium 1-(4-sulfonatophenyl)-4-(4-sulfonatophenylazo)-5-pyrazolone-3-carboxylate",
+    "synonyms": ["FD&C Yellow No. 5", "Yellow 5", "INS 102", "E102", "CI 19140"],
+    "insNumber": "102",
+    "eNumber": "E102",
+    "category": "ARTIFICIAL_COLOR",
+    "riskLevel": "HIGH",
+    "baseRiskWeight": -15,
+    "description": "Synthetic lemon yellow azo dye. Southampton study associated with hyperactivity in children.",
+    "processingLevel": "NOVA_4_ULTRA_PROCESSED",
+    "regulatoryRecords": [
+      { "countryCode": "IN", "countryName": "India (FSSAI)", "flagEmoji": "🇮🇳", "status": "RESTRICTED", "restrictionDetails": "Permitted up to 100 mg/kg under FSSAR 2011", "regulationRef": "FSSAI 2.4.5" },
+      { "countryCode": "EU", "countryName": "European Union (EFSA)", "flagEmoji": "🇪🇺", "status": "RESTRICTED", "restrictionDetails": "Requires mandatory warning label: May have adverse effect on activity and attention in children", "regulationRef": "EU 1333/2008 Annex V" },
+      { "countryCode": "US", "countryName": "United States (FDA)", "flagEmoji": "🇺🇸", "status": "RESTRICTED", "restrictionDetails": "Mandatory label disclosure due to asthma trigger risks", "regulationRef": "21 CFR 74.705" },
+      { "countryCode": "JP", "countryName": "Japan (MHLW)", "flagEmoji": "🇯🇵", "status": "RESTRICTED", "restrictionDetails": "Strict upper limits in confectionery", "regulationRef": "Japan Food Sanitation Act" }
+    ]
+  },
+  {
+    "id": "ing_e150d",
+    "canonicalName": "Sulfite Ammonia Caramel",
+    "scientificName": "Class IV Caramel Color",
+    "synonyms": ["Caramel IV", "INS 150d", "E150d", "Caramel Color Class IV"],
+    "insNumber": "150d",
+    "eNumber": "E150d",
+    "category": "ARTIFICIAL_COLOR",
+    "riskLevel": "HIGH",
+    "baseRiskWeight": -15,
+    "description": "Dark brown color produced by heating carbohydrates with ammonium and sulfite compounds. Contains 4-MEI carcinogen impurity.",
+    "processingLevel": "NOVA_4_ULTRA_PROCESSED",
+    "regulatoryRecords": [
+      { "countryCode": "IN", "countryName": "India (FSSAI)", "flagEmoji": "🇮🇳", "status": "RESTRICTED", "regulationRef": "FSSAI Additives Schedule 2" },
+      { "countryCode": "EU", "countryName": "European Union (EFSA)", "flagEmoji": "🇪🇺", "status": "RESTRICTED", "regulationRef": "EFSA Journal 2011" },
+      { "countryCode": "US", "countryName": "United States (FDA)", "flagEmoji": "🇺🇸", "status": "RESTRICTED", "restrictionDetails": "California Prop 65 warning for >29 mcg/day 4-MEI", "regulationRef": "Cal. Code Regs. tit. 27" },
+      { "countryCode": "JP", "countryName": "Japan (MHLW)", "flagEmoji": "🇯🇵", "status": "APPROVED", "regulationRef": "Japan Food Additive Standard" }
+    ]
+  },
+  {
+    "id": "ing_e621",
+    "canonicalName": "Monosodium Glutamate",
+    "synonyms": ["MSG", "INS 621", "E621", "Ajinomoto"],
+    "insNumber": "621",
+    "eNumber": "E621",
+    "category": "FLAVOR_ENHANCER",
+    "riskLevel": "MEDIUM",
+    "baseRiskWeight": -8,
+    "description": "Sodium salt of glutamic acid used for umami flavor.",
+    "processingLevel": "NOVA_4_ULTRA_PROCESSED",
+    "regulatoryRecords": [
+      { "countryCode": "IN", "countryName": "India (FSSAI)", "flagEmoji": "🇮🇳", "status": "RESTRICTED", "restrictionDetails": "Prohibited for infants under 12 months with mandatory label declaration", "regulationRef": "FSSAI Labelling 2.4.5" },
+      { "countryCode": "EU", "countryName": "European Union (EFSA)", "flagEmoji": "🇪🇺", "status": "RESTRICTED", "regulationRef": "EFSA Journal 2017" },
+      { "countryCode": "US", "countryName": "United States (FDA)", "flagEmoji": "🇺🇸", "status": "APPROVED", "regulationRef": "21 CFR 182.1" },
+      { "countryCode": "JP", "countryName": "Japan (MHLW)", "flagEmoji": "🇯🇵", "status": "APPROVED", "regulationRef": "MHLW Approved List" }
+    ]
+  },
+  {
+    "id": "ing_e951",
+    "canonicalName": "Aspartame",
+    "synonyms": ["NutraSweet", "Equal", "INS 951", "E951"],
+    "insNumber": "951",
+    "eNumber": "E951",
+    "category": "SWEETENER",
+    "riskLevel": "HIGH",
+    "baseRiskWeight": -15,
+    "description": "Artificial non-nutritive sweetener. Classified as Group 2B Possibly Carcinogenic by WHO IARC in 2023.",
+    "processingLevel": "NOVA_4_ULTRA_PROCESSED",
+    "regulatoryRecords": [
+      { "countryCode": "IN", "countryName": "India (FSSAI)", "flagEmoji": "🇮🇳", "status": "RESTRICTED", "restrictionDetails": "Mandatory warning: NOT RECOMMENDED FOR CHILDREN. CONTAINS PHENYLALANINE", "regulationRef": "FSSAI 2020" },
+      { "countryCode": "EU", "countryName": "European Union (EFSA)", "flagEmoji": "🇪🇺", "status": "RESTRICTED", "regulationRef": "EFSA ANS Panel 2013" },
+      { "countryCode": "US", "countryName": "United States (FDA)", "flagEmoji": "🇺🇸", "status": "RESTRICTED", "regulationRef": "21 CFR 172.804" },
+      { "countryCode": "JP", "countryName": "Japan (MHLW)", "flagEmoji": "🇯🇵", "status": "APPROVED", "regulationRef": "MHLW Approved List" }
+    ]
+  },
+  {
+    "id": "ing_e319",
+    "canonicalName": "TBHQ (Tertiary Butylhydroquinone)",
+    "synonyms": ["TBHQ", "INS 319", "E319"],
+    "insNumber": "319",
+    "eNumber": "E319",
+    "category": "PRESERVATIVE",
+    "riskLevel": "HIGH",
+    "baseRiskWeight": -15,
+    "description": "Synthetic aromatic phenol antioxidant. BANNED in Japan.",
+    "processingLevel": "NOVA_4_ULTRA_PROCESSED",
+    "regulatoryRecords": [
+      { "countryCode": "IN", "countryName": "India (FSSAI)", "flagEmoji": "🇮🇳", "status": "RESTRICTED", "regulationRef": "FSSAI Schedule 2" },
+      { "countryCode": "EU", "countryName": "European Union (EFSA)", "flagEmoji": "🇪🇺", "status": "RESTRICTED", "regulationRef": "EFSA 2004" },
+      { "countryCode": "US", "countryName": "United States (FDA)", "flagEmoji": "🇺🇸", "status": "RESTRICTED", "regulationRef": "21 CFR 172.185" },
+      { "countryCode": "JP", "countryName": "Japan (MHLW)", "flagEmoji": "🇯🇵", "status": "BANNED", "restrictionDetails": "Not permitted in food products in Japan", "regulationRef": "Japan Food Sanitation Law" }
+    ]
+  },
+  {
+    "id": "ing_e171",
+    "canonicalName": "Titanium Dioxide",
+    "synonyms": ["INS 171", "E171", "Titanium White"],
+    "insNumber": "171",
+    "eNumber": "E171",
+    "category": "ARTIFICIAL_COLOR",
+    "riskLevel": "HIGH",
+    "baseRiskWeight": -15,
+    "description": "Inorganic white pigment. BANNED across all 27 EU member states in 2022 due to genotoxicity concerns.",
+    "processingLevel": "NOVA_4_ULTRA_PROCESSED",
+    "regulatoryRecords": [
+      { "countryCode": "IN", "countryName": "India (FSSAI)", "flagEmoji": "🇮🇳", "status": "RESTRICTED", "regulationRef": "FSSAI Schedule 2011" },
+      { "countryCode": "EU", "countryName": "European Union (EFSA)", "flagEmoji": "🇪🇺", "status": "BANNED", "restrictionDetails": "BANNED across EU since August 2022 due to genotoxicity risk", "regulationRef": "EU Regulation 2022/63" },
+      { "countryCode": "US", "countryName": "United States (FDA)", "flagEmoji": "🇺🇸", "status": "RESTRICTED", "regulationRef": "21 CFR 73.575" },
+      { "countryCode": "JP", "countryName": "Japan (MHLW)", "flagEmoji": "🇯🇵", "status": "RESTRICTED", "regulationRef": "MHLW Standard" }
+    ]
+  }
+]

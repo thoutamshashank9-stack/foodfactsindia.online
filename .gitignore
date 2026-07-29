@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.env
+.env.local
+*.parquet
+*.log
+batch_products_*.sql
+combined_bundle_*.sql

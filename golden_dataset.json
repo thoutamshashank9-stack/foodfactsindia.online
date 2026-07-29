@@ -1,0 +1,73 @@
+[
+  {
+    "productId": "prod_maggi_01",
+    "productName": "Maggi 2-Minute Masala Noodles",
+    "barcode": "8901058000012",
+    "expectedScore": 35,
+    "expectedGrade": "D",
+    "expectedFlags": [
+      "Elevated Sodium (1020mg)",
+      "High Saturated Fat (6.8g)",
+      "Caramel Color IV (INS 150d)",
+      "Monosodium Glutamate (INS 621)"
+    ],
+    "reviewer": "FoodLens Quality Assurance Lead",
+    "verifiedAt": "2026-07-25"
+  },
+  {
+    "productId": "prod_coke_02",
+    "productName": "Coca-Cola Original Taste",
+    "barcode": "5449000000996",
+    "expectedScore": 45,
+    "expectedGrade": "C",
+    "expectedFlags": [
+      "High Added Sugar (35g)",
+      "Caramel Color IV (INS 150d)",
+      "Phosphoric Acid E338"
+    ],
+    "reviewer": "FoodLens Quality Assurance Lead",
+    "verifiedAt": "2026-07-25"
+  },
+  {
+    "productId": "prod_lays_03",
+    "productName": "Lay's India's Magic Masala Potato Chips",
+    "barcode": "8901491101820",
+    "expectedScore": 37,
+    "expectedGrade": "D",
+    "expectedFlags": [
+      "Banned Additive: TBHQ (INS 319)",
+      "High Saturated Fat (14.1g)",
+      "Elevated Sodium (780mg)"
+    ],
+    "reviewer": "FoodLens Quality Assurance Lead",
+    "verifiedAt": "2026-07-25"
+  },
+  {
+    "productId": "prod_monster_04",
+    "productName": "Monster Energy Drink",
+    "barcode": "5070000001024",
+    "expectedScore": 15,
+    "expectedGrade": "F",
+    "expectedFlags": [
+      "High Concern Additive: Tartrazine (INS 102)",
+      "High Concern Additive: Aspartame (INS 951)",
+      "High Added Sugar (54g)",
+      "Caramel Color IV (INS 150d)"
+    ],
+    "reviewer": "FoodLens Quality Assurance Lead",
+    "verifiedAt": "2026-07-25"
+  },
+  {
+    "productId": "prod_tropicana_05",
+    "productName": "Tropicana 100% Pure Orange Juice",
+    "barcode": "8901491502016",
+    "expectedScore": 100,
+    "expectedGrade": "A+",
+    "expectedFlags": [
+      "High Fiber Content (3.2g)",
+      "Clean Label Whole Food Composition"
+    ],
+    "reviewer": "FoodLens Quality Assurance Lead",
+    "verifiedAt": "2026-07-25"
+  }
+]

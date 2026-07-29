@@ -1,0 +1,26 @@
+{
+  "dataset_name": "FoodLens AI Indian & Imported Products Baseline",
+  "total_records": 19813,
+  "completeness_metrics": {
+    "barcode_completeness_pct": 100.0,
+    "product_name_completeness_pct": 100.0,
+    "ingredients_text_completeness_pct": 100.0,
+    "brand_completeness_pct": 96.4,
+    "nutrition_data_completeness_pct": 82.8,
+    "front_image_completeness_pct": 38.0
+  },
+  "true_india_products": {
+    "gs1_prefix_890_count": 5905,
+    "false_positive_exclusions": [
+      "Indiana",
+      "Indian Ocean",
+      "Indian Spice Mix"
+    ]
+  },
+  "who_flag_logic": {
+    "sugar_calculation": "Energy-Adjusted Free Sugar % = (Sugar(g) * 4 / Energy(kcal)) * 100",
+    "zero_calorie_guard": "calories <= 0 or missing -> Fall back to per-100g heuristic (>10g/100g)",
+    "scientific_labeling": "Estimated High Free Sugars (based on total sugars declaration)"
+  },
+  "audit_timestamp": "2026-07-29"
+}
