@@ -5,7 +5,7 @@
   "rewrites": [
     {
       "source": "/api/img/:barcode",
-      "destination": "/api/img/[barcode]"
+      "destination": "/api/img?barcode=:barcode"
     },
     {
       "source": "/(.*)",
