@@ -313,10 +313,20 @@ export async function searchLiveProducts(query: string): Promise<TransparencyRep
 
   if (isNumericBarcode) {
     const unpadded = q.replace(/^0+/, '');
+    const candidates = Array.from(new Set([
+      q,
+      unpadded,
+      unpadded.padStart(8, '0'),
+      unpadded.padStart(12, '0'),
+      unpadded.padStart(13, '0'),
+      unpadded.padStart(14, '0')
+    ]));
+    const matchQuery = candidates.map(c => `barcode.eq.${c}`).join(',');
+
     const { data } = await supabase
       .from('products')
       .select('*')
-      .or(`barcode.eq.${q},barcode.eq.${unpadded},barcode.eq.0${unpadded},barcode.eq.00${unpadded},barcode.eq.000${unpadded}`)
+      .or(matchQuery)
       .limit(10);
     products = data || [];
   } else {

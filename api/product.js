@@ -7,7 +7,8 @@ function validateBarcode(barcode) {
 }
 
 export default async function handler(req, res) {
-  const CACHE_HEADERS = 'public, max-age=86400, s-maxage=86400, stale-while-revalidate=172800';
+  // 1-Hour Edge Cache TTL for safety and freshness
+  const CACHE_HEADERS = 'public, max-age=3600, s-maxage=3600, stale-while-revalidate=7200';
 
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
@@ -29,7 +30,7 @@ export default async function handler(req, res) {
   if (!validateBarcode(barcode)) {
     res.statusCode = 400;
     res.setHeader('Content-Type', 'application/json');
-    res.end(JSON.stringify({ error: 'Invalid barcode format. Expected numeric GTIN/EAN string (8-14 digits).' }));
+    res.end(JSON.stringify({ status: 0, error: 'Invalid barcode format. Expected numeric GTIN/EAN string (8-14 digits).' }));
     return;
   }
 
@@ -63,7 +64,7 @@ export default async function handler(req, res) {
           } catch (e) {
             res.statusCode = 500;
             res.setHeader('Content-Type', 'application/json');
-            res.end(JSON.stringify({ error: 'Failed to parse Open Food Facts response' }));
+            res.end(JSON.stringify({ status: 0, error: 'Failed to parse Open Food Facts response' }));
             resolve();
           }
         });
@@ -73,7 +74,7 @@ export default async function handler(req, res) {
     apiReq.on('error', (err) => {
       res.statusCode = 500;
       res.setHeader('Content-Type', 'application/json');
-      res.end(JSON.stringify({ error: 'Upstream Open Food Facts network error', details: err.message }));
+      res.end(JSON.stringify({ status: 0, error: 'Upstream Open Food Facts network error', details: err.message }));
       resolve();
     });
 
@@ -81,7 +82,7 @@ export default async function handler(req, res) {
       apiReq.destroy();
       res.statusCode = 504;
       res.setHeader('Content-Type', 'application/json');
-      res.end(JSON.stringify({ error: 'Open Food Facts API gateway timeout' }));
+      res.end(JSON.stringify({ status: 0, error: 'Open Food Facts API gateway timeout' }));
       resolve();
     });
   });
