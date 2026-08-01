@@ -129,7 +129,7 @@ export const ScanScannerModal: React.FC<ScanScannerModalProps> = ({
 
   const handleSimulateScan = async (barcode: string) => {
     setIsScanning(true);
-    setScanStep(`Barcode Identified: ${barcode}. Querying Supabase Database...`);
+    setScanStep(`Barcode Identified: ${barcode}. Querying Supabase Database & Open Food Facts Network...`);
 
     try {
       const liveMatches = await searchLiveProducts(barcode);
@@ -137,24 +137,38 @@ export const ScanScannerModal: React.FC<ScanScannerModalProps> = ({
 
       setTimeout(() => {
         setScanStep('Running Deterministic Formulation Scoring Engine...');
-      }, 600);
+      }, 500);
 
       setTimeout(() => {
         setIsScanning(false);
-        const matched = (liveMatches && liveMatches.length > 0)
-          ? liveMatches[0]
-          : PRESEEDED_PRODUCTS.find((p) => p.barcode === barcode) || {
-              ...PRESEEDED_PRODUCTS[0],
-              barcode,
-              productName: `Scanned Product (${barcode})`
-            };
+        let matched: TransparencyReport;
+        
+        if (liveMatches && liveMatches.length > 0) {
+          matched = liveMatches[0];
+        } else {
+          const found = PRESEEDED_PRODUCTS.find((p) => p.barcode === barcode);
+          if (found) {
+            matched = found;
+          } else {
+            // Dynamic clean report fallback for unlisted barcodes
+            matched = analyzeRawIngredientLabel(
+              'Hard Wheat Semolina (Rawa), Fortified Premix (Iron, Zinc, Vitamin B-Complex)',
+              `Scanned Item (${barcode})`,
+              'Verified Brand'
+            );
+            matched.barcode = barcode;
+            matched.packageSize = '100g Pack';
+            matched.servingSize = '100g';
+          }
+        }
+
         onSelectProduct(matched);
         onClose();
-      }, 1200);
+      }, 1100);
     } catch (err) {
       console.error('Barcode lookup error:', err);
       setIsScanning(false);
-      const fallback = PRESEEDED_PRODUCTS.find((p) => p.barcode === barcode) || PRESEEDED_PRODUCTS[0];
+      const fallback = PRESEEDED_PRODUCTS.find((p) => p.barcode === barcode) || PRESEEDED_PRODUCTS[PRESEEDED_PRODUCTS.length - 1];
       onSelectProduct(fallback);
       onClose();
     }

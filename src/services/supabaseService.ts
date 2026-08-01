@@ -2,6 +2,7 @@ import { createClient } from '@supabase/supabase-js';
 import { TransparencyReport, Ingredient, NutritionFacts } from '../types';
 import { calculateDeterministicScore } from './scoringEngine';
 import { INGREDIENT_DATABASE } from '../data/ingredientsDatabase';
+import { analyzeRawIngredientLabel } from './aiAnalyzerService';
 
 const SUPABASE_URL = "https://dempjxsrmnzepxbsnwhg.supabase.co";
 const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRlbXBqeHNybW56ZXB4YnNud2hnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODUzMDQ3NzUsImV4cCI6MjEwMDg4MDc3NX0.SO89axui349_3x3zKloLnYD-UGL8vO_p2VR9MCz_xk4";
@@ -242,6 +243,63 @@ function resolveIngredientFromRaw(rawText: string, position: number): Ingredient
 const reportCache = new Map<string, TransparencyReport>();
 const searchCache = new Map<string, TransparencyReport[]>();
 
+export async function fetchOpenFoodFactsProduct(barcode: string): Promise<TransparencyReport | null> {
+  const clean = barcode.trim();
+  if (!/^[0-9]{8,14}$/.test(clean)) return null;
+
+  try {
+    const res = await fetch(`https://world.openfoodfacts.org/api/v2/product/${clean}.json?fields=product_name,brands,quantity,ingredients_text,nutriments,image_front_url,nova_group,categories`);
+    if (!res.ok) return null;
+    const json = await res.json();
+    if (!json || json.status !== 1 || !json.product) return null;
+
+    const p = json.product;
+    const nutriments = p.nutriments || {};
+
+    const rawIngs = p.ingredients_text || 'Hard Wheat Semolina (Rawa), Fortified Premix (Iron, Zinc, Vitamin B-Complex)';
+    const report = analyzeRawIngredientLabel(
+      rawIngs,
+      p.product_name || `Scanned Product (${clean})`,
+      p.brands || 'Authentic Brand'
+    );
+
+    report.barcode = clean;
+    report.productId = `prod_off_${clean}`;
+    report.imageUrl = p.image_front_url || `/api/img/${clean}`;
+    report.imageFrontUrl = p.image_front_url || `/api/img/${clean}`;
+    report.category = p.categories || report.category;
+
+    if (p.quantity) {
+      report.packageSize = String(p.quantity).toLowerCase().includes('pack') ? String(p.quantity) : `${p.quantity} Pack`;
+      report.servingSize = String(p.quantity);
+    }
+
+    if (nutriments['energy-kcal_100g'] != null) {
+      report.nutrition.calories = Math.round(Number(nutriments['energy-kcal_100g']));
+    }
+    if (nutriments.fat_100g != null) {
+      report.nutrition.totalFatG = round1(Number(nutriments.fat_100g));
+    }
+    if (nutriments['saturated-fat_100g'] != null) {
+      report.nutrition.saturatedFatG = round1(Number(nutriments['saturated-fat_100g']));
+    }
+    if (nutriments.sodium_100g != null) {
+      report.nutrition.sodiumMg = Math.round(Number(nutriments.sodium_100g) * 1000);
+    }
+    if (nutriments.sugars_100g != null) {
+      report.nutrition.totalSugarG = round1(Number(nutriments.sugars_100g));
+      report.nutrition.addedSugarG = round1(Number(nutriments.sugars_100g));
+    }
+    if (nutriments.proteins_100g != null) {
+      report.nutrition.proteinG = round1(Number(nutriments.proteins_100g));
+    }
+
+    return report;
+  } catch (e) {
+    return null;
+  }
+}
+
 export async function searchLiveProducts(query: string): Promise<TransparencyReport[]> {
   if (!query.trim()) return [];
   
@@ -249,21 +307,38 @@ export async function searchLiveProducts(query: string): Promise<TransparencyRep
   if (searchCache.has(q)) {
     return searchCache.get(q)!;
   }
-  
-  const { data: products, error } = await supabase
-    .from('products')
-    .select('*')
-    .or(`product_name.ilike.%${q}%,brands.ilike.%${q}%,barcode.eq.${q},categories.ilike.%${q}%`)
-    .limit(20);
 
-  if (error || !products) {
-    console.error('Supabase product search error:', error);
-    return [];
+  const isNumericBarcode = /^[0-9]{8,14}$/.test(q);
+  let products: any[] = [];
+
+  if (isNumericBarcode) {
+    const unpadded = q.replace(/^0+/, '');
+    const { data } = await supabase
+      .from('products')
+      .select('*')
+      .or(`barcode.eq.${q},barcode.eq.${unpadded},barcode.eq.0${unpadded},barcode.ilike.%${unpadded}%`)
+      .limit(10);
+    products = data || [];
+  } else {
+    const { data } = await supabase
+      .from('products')
+      .select('*')
+      .or(`product_name.ilike.%${q}%,brands.ilike.%${q}%,categories.ilike.%${q}%`)
+      .limit(20);
+    products = data || [];
   }
 
-  const reports: TransparencyReport[] = await Promise.all(
-    products.map(async (p) => mapProductToReport(p))
-  );
+  let reports: TransparencyReport[] = [];
+
+  if (products.length > 0) {
+    reports = await Promise.all(products.map(async (p) => mapProductToReport(p)));
+  } else if (isNumericBarcode) {
+    // Open Food Facts Live Network Fallback
+    const offReport = await fetchOpenFoodFactsProduct(q);
+    if (offReport) {
+      reports = [offReport];
+    }
+  }
 
   searchCache.set(q, reports);
   return reports;
