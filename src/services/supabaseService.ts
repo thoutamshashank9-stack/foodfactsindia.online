@@ -248,7 +248,7 @@ export async function fetchOpenFoodFactsProduct(barcode: string): Promise<Transp
   if (!/^[0-9]{8,14}$/.test(clean)) return null;
 
   try {
-    const res = await fetch(`https://world.openfoodfacts.org/api/v2/product/${clean}.json?fields=product_name,brands,quantity,ingredients_text,nutriments,image_front_url,nova_group,categories`);
+    const res = await fetch(`/api/product?barcode=${clean}`);
     if (!res.ok) return null;
     const json = await res.json();
     if (!json || json.status !== 1 || !json.product) return null;
@@ -316,7 +316,7 @@ export async function searchLiveProducts(query: string): Promise<TransparencyRep
     const { data } = await supabase
       .from('products')
       .select('*')
-      .or(`barcode.eq.${q},barcode.eq.${unpadded},barcode.eq.0${unpadded},barcode.ilike.%${unpadded}%`)
+      .or(`barcode.eq.${q},barcode.eq.${unpadded},barcode.eq.0${unpadded},barcode.eq.00${unpadded},barcode.eq.000${unpadded}`)
       .limit(10);
     products = data || [];
   } else {
