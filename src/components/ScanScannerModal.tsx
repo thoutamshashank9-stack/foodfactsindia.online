@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { X, Camera, Upload, Scan, RefreshCw, CheckCircle2, AlertTriangle } from 'lucide-react';
+import { X, Camera, Upload, Scan, RefreshCw } from 'lucide-react';
+import { BrowserMultiFormatReader, BarcodeFormat, DecodeHintType } from '@zxing/library';
 import { TransparencyReport } from '../types';
 import { PRESEEDED_PRODUCTS } from '../data/productsDatabase';
 import { analyzeRawIngredientLabel } from '../services/aiAnalyzerService';
@@ -21,33 +22,18 @@ export const ScanScannerModal: React.FC<ScanScannerModalProps> = ({
   const [cameraActive, setCameraActive] = useState(false);
   const [cameraError, setCameraError] = useState<string | null>(null);
   const [detectedBarcode, setDetectedBarcode] = useState<string | null>(null);
-  
-  const videoRef = useRef<HTMLVideoElement | null>(null);
-  const animFrameId = useRef<number | null>(null);
-  const barcodeDetectorRef = useRef<any>(null);
-  const isProcessingScan = useRef<boolean>(false);
 
-  // Initialize Native BarcodeDetector if supported
-  useEffect(() => {
-    if (typeof window !== 'undefined' && 'BarcodeDetector' in window) {
-      try {
-        // @ts-ignore
-        barcodeDetectorRef.current = new window.BarcodeDetector({
-          formats: ['ean_13', 'ean_8', 'upc_a', 'upc_e', 'code_128', 'code_39', 'qr_code']
-        });
-      } catch (e) {
-        console.warn('BarcodeDetector format init notice:', e);
-      }
-    }
-  }, []);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+  const codeReaderRef = useRef<BrowserMultiFormatReader | null>(null);
+  const isProcessingScan = useRef<boolean>(false);
 
   useEffect(() => {
     if (isOpen) {
-      startCamera();
+      startCameraScanner();
     } else {
-      stopCamera();
+      stopCameraScanner();
     }
-    return () => stopCamera();
+    return () => stopCameraScanner();
   }, [isOpen]);
 
   const playBeepSound = () => {
@@ -56,52 +42,82 @@ export const ScanScannerModal: React.FC<ScanScannerModalProps> = ({
       const osc = audioCtx.createOscillator();
       const gain = audioCtx.createGain();
       osc.type = 'sine';
-      osc.frequency.setValueAtTime(880, audioCtx.currentTime); // 880 Hz beep
+      osc.frequency.setValueAtTime(880, audioCtx.currentTime);
       gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
       osc.connect(gain);
       gain.connect(audioCtx.destination);
       osc.start();
       osc.stop(audioCtx.currentTime + 0.15);
     } catch (e) {
-      // Audio fallback silent
+      // Audio fallback
     }
   };
 
-  const startCamera = async () => {
+  const startCameraScanner = async () => {
     setCameraError(null);
     setDetectedBarcode(null);
     isProcessingScan.current = false;
 
     try {
-      if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-        const stream = await navigator.mediaDevices.getUserMedia({
+      // Setup ZXing Hints for Food Product Barcodes
+      const hints = new Map();
+      const formats = [
+        BarcodeFormat.EAN_13,
+        BarcodeFormat.EAN_8,
+        BarcodeFormat.UPC_A,
+        BarcodeFormat.UPC_E,
+        BarcodeFormat.CODE_128,
+        BarcodeFormat.CODE_39,
+        BarcodeFormat.QR_CODE
+      ];
+      hints.set(DecodeHintType.POSSIBLE_FORMATS, formats);
+
+      const codeReader = new BrowserMultiFormatReader(hints, 300); // 300ms throttle interval
+      codeReaderRef.current = codeReader;
+
+      if (!videoRef.current) return;
+
+      // Start continuous video decoding from environment/rear camera
+      await codeReader.decodeFromConstraints(
+        {
           video: {
             facingMode: { ideal: 'environment' },
             width: { ideal: 1280 },
             height: { ideal: 720 }
           }
-        });
-        if (videoRef.current) {
-          videoRef.current.srcObject = stream;
-          videoRef.current.onloadedmetadata = () => {
-            videoRef.current?.play();
-            setCameraActive(true);
-            startContinuousFrameScan();
-          };
+        },
+        videoRef.current,
+        (result, error) => {
+          if (result && !isProcessingScan.current) {
+            const text = result.getText();
+            if (text && text.trim().length >= 8) {
+              const cleanCode = text.trim();
+              isProcessingScan.current = true;
+              setDetectedBarcode(cleanCode);
+              playBeepSound();
+              stopCameraScanner();
+              handleSimulateScan(cleanCode);
+            }
+          }
         }
-      } else {
-        setCameraError('Camera access not supported on this browser. Use sample barcodes or photo upload below.');
-      }
+      );
+
+      setCameraActive(true);
     } catch (err: any) {
-      console.error('Camera access error:', err);
-      setCameraError('Camera permission denied or camera not found. Select a preset barcode or upload a label photo.');
+      console.error('Camera scanner init error:', err);
+      setCameraActive(false);
+      setCameraError('Camera permission denied or camera unavailable. Tap a sample barcode or upload a label photo.');
     }
   };
 
-  const stopCamera = () => {
-    if (animFrameId.current) {
-      cancelAnimationFrame(animFrameId.current);
-      animFrameId.current = null;
+  const stopCameraScanner = () => {
+    if (codeReaderRef.current) {
+      try {
+        codeReaderRef.current.reset();
+      } catch (e) {
+        // Reset notice
+      }
+      codeReaderRef.current = null;
     }
     if (videoRef.current && videoRef.current.srcObject) {
       const stream = videoRef.current.srcObject as MediaStream;
@@ -111,45 +127,9 @@ export const ScanScannerModal: React.FC<ScanScannerModalProps> = ({
     setCameraActive(false);
   };
 
-  const startContinuousFrameScan = () => {
-    const processFrame = async () => {
-      if (!videoRef.current || videoRef.current.readyState !== videoRef.current.HAVE_ENOUGH_DATA) {
-        animFrameId.current = requestAnimationFrame(processFrame);
-        return;
-      }
-
-      if (isProcessingScan.current) return;
-
-      // 1. Try Native BarcodeDetector API (Chrome, Android, Edge, Safari 17+)
-      if (barcodeDetectorRef.current) {
-        try {
-          const barcodes = await barcodeDetectorRef.current.detect(videoRef.current);
-          if (barcodes && barcodes.length > 0) {
-            const rawVal = barcodes[0].rawValue;
-            if (rawVal && rawVal.trim().length >= 8) {
-              const cleanCode = rawVal.trim();
-              isProcessingScan.current = true;
-              playBeepSound();
-              setDetectedBarcode(cleanCode);
-              stopCamera();
-              handleSimulateScan(cleanCode);
-              return;
-            }
-          }
-        } catch (e) {
-          // Ignore frame detect errors
-        }
-      }
-
-      animFrameId.current = requestAnimationFrame(processFrame);
-    };
-
-    animFrameId.current = requestAnimationFrame(processFrame);
-  };
-
   const handleSimulateScan = async (barcode: string) => {
     setIsScanning(true);
-    setScanStep(`Barcode Identified: ${barcode}. Querying Supabase 19,813 Database...`);
+    setScanStep(`Barcode Identified: ${barcode}. Querying Supabase Database...`);
 
     try {
       const liveMatches = await searchLiveProducts(barcode);
@@ -157,7 +137,7 @@ export const ScanScannerModal: React.FC<ScanScannerModalProps> = ({
 
       setTimeout(() => {
         setScanStep('Running Deterministic Formulation Scoring Engine...');
-      }, 700);
+      }, 600);
 
       setTimeout(() => {
         setIsScanning(false);
@@ -166,11 +146,11 @@ export const ScanScannerModal: React.FC<ScanScannerModalProps> = ({
           : PRESEEDED_PRODUCTS.find((p) => p.barcode === barcode) || {
               ...PRESEEDED_PRODUCTS[0],
               barcode,
-              productName: `Scanned Barcode ${barcode}`
+              productName: `Scanned Product (${barcode})`
             };
         onSelectProduct(matched);
         onClose();
-      }, 1400);
+      }, 1200);
     } catch (err) {
       console.error('Barcode lookup error:', err);
       setIsScanning(false);
@@ -224,7 +204,7 @@ export const ScanScannerModal: React.FC<ScanScannerModalProps> = ({
                 Live Barcode & Label Scanner
               </h3>
               <p className="text-xs text-slate-500 dark:text-slate-400">
-                Point camera at barcode for automatic live scanning
+                Point camera at barcode for automatic real-time scanning
               </p>
             </div>
           </div>
@@ -239,17 +219,19 @@ export const ScanScannerModal: React.FC<ScanScannerModalProps> = ({
         {/* Camera Feed / Scanner Container */}
         <div className="relative aspect-video bg-slate-950 flex flex-col items-center justify-center overflow-hidden">
           
-          {cameraActive ? (
-            <video
-              ref={videoRef}
-              autoPlay
-              playsInline
-              muted
-              className="w-full h-full object-cover"
-            />
-          ) : (
-            <div className="text-center p-6 space-y-3">
-              <Camera className="w-12 h-12 text-slate-600 mx-auto animate-pulse" />
+          <video
+            ref={videoRef}
+            autoPlay
+            playsInline
+            muted
+            className={`w-full h-full object-cover transition-opacity duration-300 ${
+              cameraActive ? 'opacity-100' : 'opacity-0'
+            }`}
+          />
+
+          {!cameraActive && (
+            <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-6 space-y-3 bg-slate-950">
+              <Camera className="w-12 h-12 text-slate-600 animate-pulse" />
               <p className="text-xs text-slate-400 max-w-xs">
                 {cameraError || 'Initializing live camera feed...'}
               </p>
@@ -262,7 +244,7 @@ export const ScanScannerModal: React.FC<ScanScannerModalProps> = ({
               {/* Laser Animation Bar */}
               <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-blue-500 to-transparent shadow-[0_0_12px_#3b82f6] animate-bounce" />
               <span className="text-[10px] uppercase font-mono font-semibold tracking-widest text-blue-300 bg-slate-900/80 px-2.5 py-1 rounded">
-                {detectedBarcode ? `Detected: ${detectedBarcode}` : 'Auto-Detecting Barcode...'}
+                {detectedBarcode ? `Detected: ${detectedBarcode}` : 'Scanning Barcode...'}
               </span>
             </div>
           </div>
