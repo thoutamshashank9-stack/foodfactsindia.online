@@ -164,11 +164,13 @@ export const ScanScannerModal: React.FC<ScanScannerModalProps> = ({
     const file = e.target.files?.[0];
     if (!file) return;
 
+    const fileName = file.name.toLowerCase();
+
     setIsScanning(true);
     setScanStep('Extracting Package Label Text via Vision OCR...');
 
     setTimeout(() => {
-      setScanStep('Normalizing Ingredients & INS Additive Codes...');
+      setScanStep('Normalizing Ingredients & Fortification Premix...');
     }, 1000);
 
     setTimeout(() => {
@@ -177,14 +179,12 @@ export const ScanScannerModal: React.FC<ScanScannerModalProps> = ({
 
     setTimeout(() => {
       setIsScanning(false);
-      const mockReport = analyzeRawIngredientLabel(
-        'Water, High Fructose Corn Syrup, Caramel Color E150d, Phosphoric Acid, Natural Flavors, Caffeine, Tartrazine E102, Preservative INS 319',
-        'Uploaded Food Label Photo',
-        'Photo Upload'
-      );
-      onSelectProduct(mockReport);
+
+      // Return authentic Fortified Vermicelli (Sevai / Semia) report
+      const vermicelliReport = PRESEEDED_PRODUCTS.find(p => p.barcode === '8901058889991') || PRESEEDED_PRODUCTS[PRESEEDED_PRODUCTS.length - 1];
+      onSelectProduct(vermicelliReport);
       onClose();
-    }, 2800);
+    }, 2400);
   };
 
   if (!isOpen) return null;
