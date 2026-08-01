@@ -362,13 +362,13 @@ export const PRESEEDED_PRODUCTS: TransparencyReport[] = [
 
     return {
       productId: 'prod_vermicelli_06',
-      productName: 'Fortified Plain Vermicelli (Sevai / Semia)',
-      brand: 'Bambino / MTR',
+      productName: 'Bambino Roasted Vermicelli (Sevai / Semia)',
+      brand: 'Bambino',
       manufacturer: 'Bambino Agro Industries Ltd.',
       category: 'Pasta, Noodles & Staples',
       barcode: '8901058889991',
       imageUrl: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=600&auto=format&fit=crop&q=80',
-      packageSize: '400g Pack',
+      packageSize: '100g Pack',
       servingSize: '100g',
       deterministicScore: Math.max(92, calc.finalScore),
       scoreBreakdown: calc.scoreBreakdown,

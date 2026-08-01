@@ -610,8 +610,8 @@ export async function mapProductToReport(p: any): Promise<TransparencyReport> {
     imageFrontUrl: p.image_front_url || getBrandImage(p.brands, p.product_name, p.categories) || `/api/img/${barcode}`,
     imageIngredientsUrl: p.image_ingredients_url || undefined,
     imageNutritionUrl: p.image_nutrition_url || undefined,
-    packageSize: '100g Pack',
-    servingSize: '100g',
+    packageSize: p.quantity ? (String(p.quantity).toLowerCase().includes('pack') ? String(p.quantity) : `${p.quantity} Pack`) : '100g Pack',
+    servingSize: p.serving_size || p.quantity || '100g',
     deterministicScore: scoreResult.finalScore,
     scoreBreakdown: scoreResult.scoreBreakdown,
     executiveSummary: {
