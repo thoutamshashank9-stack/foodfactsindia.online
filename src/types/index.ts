@@ -146,3 +146,9 @@ export interface AnalysisPipelineStep {
   status: 'PENDING' | 'RUNNING' | 'COMPLETED';
   detail: string;
 }
+
+export type ResolvedItem =
+  | { kind: 'food'; product: TransparencyReport }
+  | { kind: 'non_food'; category: string; productName?: string; brand?: string; barcode: string }
+  | { kind: 'unknown'; barcode: string };
+

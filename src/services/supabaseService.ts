@@ -1,8 +1,9 @@
 import { createClient } from '@supabase/supabase-js';
-import { TransparencyReport, Ingredient, NutritionFacts } from '../types';
+import { TransparencyReport, Ingredient, NutritionFacts, ResolvedItem } from '../types';
 import { calculateDeterministicScore } from './scoringEngine';
 import { INGREDIENT_DATABASE } from '../data/ingredientsDatabase';
 import { analyzeRawIngredientLabel } from './aiAnalyzerService';
+import { PRESEEDED_PRODUCTS } from '../data/productsDatabase';
 
 const SUPABASE_URL = "https://dempjxsrmnzepxbsnwhg.supabase.co";
 const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRlbXBqeHNybW56ZXB4YnNud2hnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODUzMDQ3NzUsImV4cCI6MjEwMDg4MDc3NX0.SO89axui349_3x3zKloLnYD-UGL8vO_p2VR9MCz_xk4";
@@ -242,11 +243,12 @@ function resolveIngredientFromRaw(rawText: string, position: number): Ingredient
 // Client-Side In-Memory Cache & Request Deduplication
 const reportCache = new Map<string, TransparencyReport>();
 const searchCache = new Map<string, TransparencyReport[]>();
+const resolvedItemCache = new Map<string, ResolvedItem>();
 
 export function isNonFoodProduct(p: any): boolean {
   if (!p) return false;
   
-  const cat = String(p.categories || p.category || '').toLowerCase();
+  const cat = String(p.categories || p.category || p.sub_category || p.product_type || '').toLowerCase();
   const name = String(p.product_name || p.productName || '').toLowerCase();
   const brand = String(p.brands || p.brand || '').toLowerCase();
   const ings = String(p.ingredients_text || p.rawIngredients || '').toLowerCase();
@@ -263,7 +265,10 @@ export function isNonFoodProduct(p: any): boolean {
     'dove', "l'oreal", 'loreal', 'lakme', 'garnier', 'biotique', 'mamaearth', 'himalaya',
     'lotus herbals', 'cetaphil', 'neutrogena', 'derma', 'vaseline', 'tresemme',
     'head & shoulders', 'pantene', 'sunsilk', 'clinic plus', 'lifebuoy', 'lux',
-    'cinthol', 'pears', 'dettol', 'fiama', 'vivel', 'yardley', 'old spice', 'axe'
+    'cinthol', 'pears', 'dettol', 'fiama', 'vivel', 'yardley', 'old spice', 'axe',
+    'medicine', 'medicines', 'pharma', 'pharmaceutical', 'tablet', 'tablets',
+    'capsule', 'capsules', 'syrup', 'ointment', 'gel', 'drug', 'drugs', 'paracetamol',
+    'ibuprofen', 'aspirin', 'antibiotic', 'medical', 'prescription'
   ];
 
   const cosmeticIngredients = [
@@ -279,6 +284,117 @@ export function isNonFoodProduct(p: any): boolean {
   const hasCosmeticIng = cosmeticIngredients.some(ci => ings.includes(ci));
 
   return hasKeyword || hasCosmeticIng;
+}
+
+export async function resolveBarcode(barcode: string): Promise<ResolvedItem> {
+  const clean = barcode.trim();
+  if (!/^[0-9]{8,14}$/.test(clean)) {
+    return { kind: 'unknown', barcode: clean };
+  }
+
+  const cacheKey = `resolved_v2_${clean}`;
+  if (resolvedItemCache.has(cacheKey)) {
+    return resolvedItemCache.get(cacheKey)!;
+  }
+
+  // 1. Check local preseeded products database
+  const preseededMatch = PRESEEDED_PRODUCTS.find(p => p.barcode === clean);
+  if (preseededMatch) {
+    let result: ResolvedItem;
+    if (isNonFoodProduct(preseededMatch)) {
+      result = {
+        kind: 'non_food',
+        category: preseededMatch.category || 'Non-Food Item',
+        productName: preseededMatch.productName,
+        brand: preseededMatch.brand,
+        barcode: clean
+      };
+    } else {
+      result = { kind: 'food', product: preseededMatch };
+    }
+    resolvedItemCache.set(cacheKey, result);
+    return result;
+  }
+
+  // 2. Query Supabase Database
+  try {
+    const unpadded = clean.replace(/^0+/, '');
+    const candidates = Array.from(new Set([
+      clean,
+      unpadded,
+      unpadded.padStart(8, '0'),
+      unpadded.padStart(12, '0'),
+      unpadded.padStart(13, '0'),
+      unpadded.padStart(14, '0')
+    ]));
+    const matchQuery = candidates.map(c => `barcode.eq.${c}`).join(',');
+
+    const { data: dbProducts } = await supabase
+      .from('products')
+      .select('*')
+      .or(matchQuery)
+      .limit(1);
+
+    if (dbProducts && dbProducts.length > 0) {
+      const p = dbProducts[0];
+      let result: ResolvedItem;
+      if (isNonFoodProduct(p)) {
+        result = {
+          kind: 'non_food',
+          category: p.categories || p.product_type || 'Cosmetics / Medicine',
+          productName: p.product_name,
+          brand: p.brands,
+          barcode: clean
+        };
+      } else {
+        const report = await mapProductToReport(p);
+        result = { kind: 'food', product: report };
+      }
+      resolvedItemCache.set(cacheKey, result);
+      return result;
+    }
+  } catch (err) {
+    console.error('Supabase barcode lookup error:', err);
+  }
+
+  // 3. Query Open Food Facts API
+  try {
+    const res = await fetch(`/api/product?barcode=${clean}`);
+    if (res.ok) {
+      const json = await res.json();
+      if (json && json.status === 1 && json.product) {
+        const p = json.product;
+        let result: ResolvedItem;
+        if (isNonFoodProduct(p)) {
+          result = {
+            kind: 'non_food',
+            category: p.categories || 'Beauty / Medicine / Cosmetic',
+            productName: p.product_name,
+            brand: p.brands,
+            barcode: clean
+          };
+        } else if (!p.ingredients_text || !p.ingredients_text.trim()) {
+          result = { kind: 'unknown', barcode: clean };
+        } else {
+          const offReport = await fetchOpenFoodFactsProduct(clean);
+          if (offReport) {
+            result = { kind: 'food', product: offReport };
+          } else {
+            result = { kind: 'unknown', barcode: clean };
+          }
+        }
+        resolvedItemCache.set(cacheKey, result);
+        return result;
+      }
+    }
+  } catch (e) {
+    console.error('OpenFoodFacts API error:', e);
+  }
+
+  // 4. Fallback: Unknown / Not Found in database
+  const unknownResult: ResolvedItem = { kind: 'unknown', barcode: clean };
+  resolvedItemCache.set(cacheKey, unknownResult);
+  return unknownResult;
 }
 
 export async function fetchOpenFoodFactsProduct(barcode: string): Promise<TransparencyReport | null> {

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Search, Scan, Sparkles, ShieldCheck, ArrowRight, ShieldAlert, CheckCircle2, AlertCircle, Loader2 } from 'lucide-react';
 import { TransparencyReport } from '../types';
-import { searchLiveProducts } from '../services/supabaseService';
+import { searchLiveProducts, isNonFoodProduct } from '../services/supabaseService';
 
 interface HeroSectionProps {
   products: TransparencyReport[];
@@ -30,13 +30,15 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
     const timer = setTimeout(async () => {
       setIsSearching(true);
       try {
-        // First search local preseeded products
-        const localMatches = products.filter(
-          (p) =>
-            p.productName.toLowerCase().includes(searchQuery.toLowerCase()) ||
-            p.brand.toLowerCase().includes(searchQuery.toLowerCase()) ||
-            p.category.toLowerCase().includes(searchQuery.toLowerCase())
-        );
+        // First search local preseeded products & filter non-food items
+        const localMatches = products
+          .filter(p => !isNonFoodProduct(p))
+          .filter(
+            (p) =>
+              p.productName.toLowerCase().includes(searchQuery.toLowerCase()) ||
+              p.brand.toLowerCase().includes(searchQuery.toLowerCase()) ||
+              p.category.toLowerCase().includes(searchQuery.toLowerCase())
+          );
 
         // Fetch live matches from Supabase 19,813 products database
         const liveMatches = await searchLiveProducts(searchQuery);
