@@ -282,13 +282,13 @@ export const ScanScannerModal: React.FC<ScanScannerModalProps> = ({
               </div>
               <div className="space-y-1.5 max-w-sm">
                 <h4 className="font-bold text-white text-base">
-                  Product Data Not Found
+                  Scanned Product Details Not Available
                 </h4>
                 <p className="text-xs font-mono text-amber-300 bg-amber-950/80 px-2.5 py-1 rounded-md border border-amber-800/60 inline-block">
                   Barcode: {notFoundBarcode}
                 </p>
                 <p className="text-xs text-slate-300 leading-relaxed pt-1">
-                  This product is not added to our database. We currently only maintain data for verified food products. Beauty, cosmetic, and non-food items are not in our database.
+                  Scanned product details are not available in our database currently. We only maintain data for verified food products. Beauty, cosmetic, and non-food items are not in our database.
                 </p>
               </div>
               <div className="flex flex-col sm:flex-row items-center gap-2 pt-1 w-full max-w-xs">

@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { Sparkles, FileText, ArrowRight, ShieldCheck, RefreshCw, CheckCircle2 } from 'lucide-react';
+import { Sparkles, FileText, ArrowRight, ShieldCheck, RefreshCw, CheckCircle2, AlertTriangle } from 'lucide-react';
 import { TransparencyReport } from '../types';
 import { analyzeRawIngredientLabel } from '../services/aiAnalyzerService';
+import { isNonFoodProduct } from '../services/supabaseService';
 
 interface CustomLabelAnalyzerProps {
   onReportGenerated: (report: TransparencyReport) => void;
@@ -14,6 +15,7 @@ export const CustomLabelAnalyzer: React.FC<CustomLabelAnalyzerProps> = ({ onRepo
   const [addedSugarInput, setAddedSugarInput] = useState<string>('');
   const [sodiumInput, setSodiumInput] = useState<string>('');
   const [isAnalyzing, setIsAnalyzing] = useState(false);
+  const [nonFoodError, setNonFoodError] = useState<string | null>(null);
 
   const samplePresets = [
     {
@@ -36,6 +38,20 @@ export const CustomLabelAnalyzer: React.FC<CustomLabelAnalyzerProps> = ({ onRepo
   const handleAnalyze = (e: React.FormEvent) => {
     e.preventDefault();
     if (!ingredientText.trim()) return;
+
+    setNonFoodError(null);
+
+    // Check if entered data represents a non-food or beauty product
+    const checkPayload = {
+      productName: productName.trim(),
+      brand: brandName.trim(),
+      ingredients_text: ingredientText.trim()
+    };
+
+    if (isNonFoodProduct(checkPayload)) {
+      setNonFoodError('Scanned product details are not available currently. This system is strictly designed for packaged food products. Beauty, cosmetic, and non-food items are not in our database.');
+      return;
+    }
 
     setIsAnalyzing(true);
     setTimeout(() => {
@@ -76,6 +92,13 @@ export const CustomLabelAnalyzer: React.FC<CustomLabelAnalyzerProps> = ({ onRepo
           </div>
         </div>
       </div>
+
+      {nonFoodError && (
+        <div className="p-4 rounded-2xl bg-amber-50 dark:bg-amber-950/60 border border-amber-200 dark:border-amber-800 text-amber-900 dark:text-amber-200 text-xs sm:text-sm font-medium flex items-center gap-3">
+          <AlertTriangle className="w-5 h-5 text-amber-600 dark:text-amber-400 shrink-0" />
+          <span>{nonFoodError}</span>
+        </div>
+      )}
 
       {/* Preset Quick Fill */}
       <div className="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-3">

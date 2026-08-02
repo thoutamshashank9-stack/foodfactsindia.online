@@ -243,6 +243,44 @@ function resolveIngredientFromRaw(rawText: string, position: number): Ingredient
 const reportCache = new Map<string, TransparencyReport>();
 const searchCache = new Map<string, TransparencyReport[]>();
 
+export function isNonFoodProduct(p: any): boolean {
+  if (!p) return false;
+  
+  const cat = String(p.categories || p.category || '').toLowerCase();
+  const name = String(p.product_name || p.productName || '').toLowerCase();
+  const brand = String(p.brands || p.brand || '').toLowerCase();
+  const ings = String(p.ingredients_text || p.rawIngredients || '').toLowerCase();
+
+  const nonFoodKeywords = [
+    'beauty', 'cosmetic', 'cosmetics', 'skin', 'skincare', 'hair', 'shampoo',
+    'conditioner', 'soap', 'soaps', 'body wash', 'face wash', 'facewash',
+    'lotion', 'cream', 'creams', 'moisturizer', 'moisturiser', 'perfume', 'fragrance',
+    'deodorant', 'makeup', 'make-up', 'lipstick', 'lip balm', 'mascara', 'sunscreen',
+    'serum', 'toothpaste', 'toothbrush', 'detergent', 'sanitizer', 'cleanser',
+    'hygiene', 'personal care', 'essential oil', 'nail polish', 'foundation', 'toner',
+    'eau de', 'toilette', 'parfum', 'anti-perspirant', 'antiperspirant', 'shaving',
+    'razor', 'shower gel', 'bath gel', 'hair oil', 'hair color', 'hair dye', 'nivea',
+    'dove', "l'oreal", 'loreal', 'lakme', 'garnier', 'biotique', 'mamaearth', 'himalaya',
+    'lotus herbals', 'cetaphil', 'neutrogena', 'derma', 'vaseline', 'tresemme',
+    'head & shoulders', 'pantene', 'sunsilk', 'clinic plus', 'lifebuoy', 'lux',
+    'cinthol', 'pears', 'dettol', 'fiama', 'vivel', 'yardley', 'old spice', 'axe'
+  ];
+
+  const cosmeticIngredients = [
+    'sodium laureth sulfate', 'sodium lauryl sulfate', 'dimethicone',
+    'phenoxyethanol', 'ci 77891', 'ci 19140', 'ci 42090', 'triethanolamine',
+    'carbomer', 'disodium edta', 'ethylhexylglycerin', 'cetearyl alcohol'
+  ];
+
+  const hasKeyword = nonFoodKeywords.some(kw => 
+    cat.includes(kw) || name.includes(kw) || brand.includes(kw)
+  );
+
+  const hasCosmeticIng = cosmeticIngredients.some(ci => ings.includes(ci));
+
+  return hasKeyword || hasCosmeticIng;
+}
+
 export async function fetchOpenFoodFactsProduct(barcode: string): Promise<TransparencyReport | null> {
   const clean = barcode.trim();
   if (!/^[0-9]{8,14}$/.test(clean)) return null;
@@ -254,6 +292,8 @@ export async function fetchOpenFoodFactsProduct(barcode: string): Promise<Transp
     if (!json || json.status !== 1 || !json.product) return null;
 
     const p = json.product;
+    if (isNonFoodProduct(p)) return null;
+
     const nutriments = p.nutriments || {};
 
     if (!p.ingredients_text || !p.ingredients_text.trim()) return null;
@@ -342,11 +382,12 @@ export async function searchLiveProducts(query: string): Promise<TransparencyRep
   let reports: TransparencyReport[] = [];
 
   if (products.length > 0) {
-    reports = await Promise.all(products.map(async (p) => mapProductToReport(p)));
+    const validFoodProducts = products.filter(p => !isNonFoodProduct(p));
+    reports = await Promise.all(validFoodProducts.map(async (p) => mapProductToReport(p)));
   } else if (isNumericBarcode) {
     // Open Food Facts Live Network Fallback
     const offReport = await fetchOpenFoodFactsProduct(q);
-    if (offReport) {
+    if (offReport && !isNonFoodProduct(offReport)) {
       reports = [offReport];
     }
   }
