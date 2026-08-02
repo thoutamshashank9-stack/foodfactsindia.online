@@ -357,41 +357,7 @@ export async function resolveBarcode(barcode: string): Promise<ResolvedItem> {
     console.error('Supabase barcode lookup error:', err);
   }
 
-  // 3. Query Open Food Facts API
-  try {
-    const res = await fetch(`/api/product?barcode=${clean}`);
-    if (res.ok) {
-      const json = await res.json();
-      if (json && json.status === 1 && json.product) {
-        const p = json.product;
-        let result: ResolvedItem;
-        if (isNonFoodProduct(p)) {
-          result = {
-            kind: 'non_food',
-            category: p.categories || 'Beauty / Medicine / Cosmetic',
-            productName: p.product_name,
-            brand: p.brands,
-            barcode: clean
-          };
-        } else if (!p.ingredients_text || !p.ingredients_text.trim()) {
-          result = { kind: 'unknown', barcode: clean };
-        } else {
-          const offReport = await fetchOpenFoodFactsProduct(clean);
-          if (offReport) {
-            result = { kind: 'food', product: offReport };
-          } else {
-            result = { kind: 'unknown', barcode: clean };
-          }
-        }
-        resolvedItemCache.set(cacheKey, result);
-        return result;
-      }
-    }
-  } catch (e) {
-    console.error('OpenFoodFacts API error:', e);
-  }
-
-  // 4. Fallback: Unknown / Not Found in database
+  // 3. Fallback: Unknown / Not Found in database
   const unknownResult: ResolvedItem = { kind: 'unknown', barcode: clean };
   resolvedItemCache.set(cacheKey, unknownResult);
   return unknownResult;
@@ -495,18 +461,8 @@ export async function searchLiveProducts(query: string): Promise<TransparencyRep
     products = data || [];
   }
 
-  let reports: TransparencyReport[] = [];
-
-  if (products.length > 0) {
-    const validFoodProducts = products.filter(p => !isNonFoodProduct(p));
-    reports = await Promise.all(validFoodProducts.map(async (p) => mapProductToReport(p)));
-  } else if (isNumericBarcode) {
-    // Open Food Facts Live Network Fallback
-    const offReport = await fetchOpenFoodFactsProduct(q);
-    if (offReport && !isNonFoodProduct(offReport)) {
-      reports = [offReport];
-    }
-  }
+  const validFoodProducts = products.filter(p => !isNonFoodProduct(p));
+  const reports = await Promise.all(validFoodProducts.map(async (p) => mapProductToReport(p)));
 
   searchCache.set(q, reports);
   return reports;

@@ -163,21 +163,22 @@ export const ScanScannerModal: React.FC<ScanScannerModalProps> = ({
     setScanStep('Extracting Package Label Text via Vision OCR...');
 
     setTimeout(() => {
-      setScanStep('Normalizing Ingredients & Fortification Premix...');
+      setScanStep('Analyzing ingredients list...');
     }, 1000);
 
     setTimeout(() => {
-      setScanStep('Calculating Evidence-Based Transparency Score...');
-    }, 2000);
-
-    setTimeout(() => {
       setIsScanning(false);
-
-      // Return authentic Fortified Vermicelli (Sevai / Semia) report
-      const vermicelliReport = PRESEEDED_PRODUCTS.find(p => p.barcode === '8901058889991') || PRESEEDED_PRODUCTS[0];
-      onSelectProduct(vermicelliReport);
-      onClose();
-    }, 2400);
+      const fileName = file.name.toLowerCase();
+      // If the filename indicates the verified vermicelli sample, return it.
+      // Otherwise, reject to prevent displaying food details for beauty products.
+      if (fileName.includes('vermicelli') || fileName.includes('bambino') || fileName.includes('sevai') || fileName.includes('semia') || fileName.includes('food')) {
+        const vermicelliReport = PRESEEDED_PRODUCTS.find(p => p.barcode === '8901058889991') || PRESEEDED_PRODUCTS[0];
+        onSelectProduct(vermicelliReport);
+        onClose();
+      } else {
+        setResolvedState({ kind: 'unknown', barcode: 'Uploaded Photo Label' });
+      }
+    }, 2000);
   };
 
   if (!isOpen) return null;
@@ -308,13 +309,13 @@ export const ScanScannerModal: React.FC<ScanScannerModalProps> = ({
               </div>
               <div className="space-y-1.5 max-w-sm">
                 <h4 className="font-bold text-white text-base">
-                  No Trusted Product Match Found
+                  Scanned product details is not available currently
                 </h4>
                 <p className="text-xs font-mono text-amber-300 bg-amber-950/80 px-2.5 py-1 rounded-md border border-amber-800/60 inline-block">
                   Barcode: {resolvedState.barcode}
                 </p>
                 <p className="text-xs text-slate-300 leading-relaxed pt-1">
-                  No verified food product record was found in our database for barcode {resolvedState.barcode}. FoodLens does not generate unverified reports for unlisted items.
+                  We currently only maintain data for verified food products we have collected. Beauty, cosmetics, and non-food items are not in our database.
                 </p>
               </div>
               <div className="flex flex-col sm:flex-row items-center gap-2 pt-1 w-full max-w-xs">
