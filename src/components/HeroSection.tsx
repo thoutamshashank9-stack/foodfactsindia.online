@@ -157,7 +157,11 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               ) : (
                 <div className="p-4 text-center text-xs text-slate-500 dark:text-slate-400 flex flex-col items-center gap-2">
                   <AlertCircle className="w-5 h-5 text-amber-500" />
-                  <span>No matching products found in live database for "{searchQuery}". Try "Red Bull", "Bambino", "Maggi", or "Lay's".</span>
+                  {/^[0-9]{8,14}$/.test(searchQuery.trim()) ? (
+                    <span>Barcode ({searchQuery.trim()}) is not added in our database. We currently only maintain data for verified food products; beauty and non-food items are not in our database.</span>
+                  ) : (
+                    <span>No matching products found in live database for "{searchQuery}". Try "Red Bull", "Bambino", "Maggi", or "Lay's".</span>
+                  )}
                 </div>
               )}
             </div>

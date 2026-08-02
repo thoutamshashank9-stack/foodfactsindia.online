@@ -1,9 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { X, Camera, Upload, Scan, RefreshCw } from 'lucide-react';
+import { X, Camera, Upload, Scan, RefreshCw, PackageX } from 'lucide-react';
 import { BrowserMultiFormatReader, BarcodeFormat, DecodeHintType } from '@zxing/library';
 import { TransparencyReport } from '../types';
 import { PRESEEDED_PRODUCTS } from '../data/productsDatabase';
-import { analyzeRawIngredientLabel } from '../services/aiAnalyzerService';
 import { searchLiveProducts } from '../services/supabaseService';
 
 interface ScanScannerModalProps {
@@ -22,6 +21,7 @@ export const ScanScannerModal: React.FC<ScanScannerModalProps> = ({
   const [cameraActive, setCameraActive] = useState(false);
   const [cameraError, setCameraError] = useState<string | null>(null);
   const [detectedBarcode, setDetectedBarcode] = useState<string | null>(null);
+  const [notFoundBarcode, setNotFoundBarcode] = useState<string | null>(null);
 
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const codeReaderRef = useRef<BrowserMultiFormatReader | null>(null);
@@ -29,6 +29,7 @@ export const ScanScannerModal: React.FC<ScanScannerModalProps> = ({
 
   useEffect(() => {
     if (isOpen) {
+      setNotFoundBarcode(null);
       startCameraScanner();
     } else {
       stopCameraScanner();
@@ -56,6 +57,7 @@ export const ScanScannerModal: React.FC<ScanScannerModalProps> = ({
   const startCameraScanner = async () => {
     setCameraError(null);
     setDetectedBarcode(null);
+    setNotFoundBarcode(null);
     isProcessingScan.current = false;
 
     try {
@@ -128,8 +130,9 @@ export const ScanScannerModal: React.FC<ScanScannerModalProps> = ({
   };
 
   const handleSimulateScan = async (barcode: string) => {
+    setNotFoundBarcode(null);
     setIsScanning(true);
-    setScanStep(`Barcode Identified: ${barcode}. Querying Supabase Database & Open Food Facts Network...`);
+    setScanStep(`Barcode Identified: ${barcode}. Querying Product Database...`);
 
     try {
       const liveMatches = await searchLiveProducts(barcode);
@@ -141,36 +144,30 @@ export const ScanScannerModal: React.FC<ScanScannerModalProps> = ({
 
       setTimeout(() => {
         setIsScanning(false);
-        let matched: TransparencyReport;
-        
         if (liveMatches && liveMatches.length > 0) {
-          matched = liveMatches[0];
+          onSelectProduct(liveMatches[0]);
+          onClose();
         } else {
           const found = PRESEEDED_PRODUCTS.find((p) => p.barcode === barcode);
           if (found) {
-            matched = found;
+            onSelectProduct(found);
+            onClose();
           } else {
-            // Dynamic clean report fallback for unlisted barcodes
-            matched = analyzeRawIngredientLabel(
-              'Hard Wheat Semolina (Rawa), Fortified Premix (Iron, Zinc, Vitamin B-Complex)',
-              `Scanned Item (${barcode})`,
-              'Verified Brand'
-            );
-            matched.barcode = barcode;
-            matched.packageSize = '100g Pack';
-            matched.servingSize = '100g';
+            // Barcode not found in database!
+            setNotFoundBarcode(barcode);
           }
         }
-
-        onSelectProduct(matched);
-        onClose();
-      }, 1100);
+      }, 1000);
     } catch (err) {
       console.error('Barcode lookup error:', err);
       setIsScanning(false);
-      const fallback = PRESEEDED_PRODUCTS.find((p) => p.barcode === barcode) || PRESEEDED_PRODUCTS[PRESEEDED_PRODUCTS.length - 1];
-      onSelectProduct(fallback);
-      onClose();
+      const found = PRESEEDED_PRODUCTS.find((p) => p.barcode === barcode);
+      if (found) {
+        onSelectProduct(found);
+        onClose();
+      } else {
+        setNotFoundBarcode(barcode);
+      }
     }
   };
 
@@ -178,8 +175,7 @@ export const ScanScannerModal: React.FC<ScanScannerModalProps> = ({
     const file = e.target.files?.[0];
     if (!file) return;
 
-    const fileName = file.name.toLowerCase();
-
+    setNotFoundBarcode(null);
     setIsScanning(true);
     setScanStep('Extracting Package Label Text via Vision OCR...');
 
@@ -195,7 +191,7 @@ export const ScanScannerModal: React.FC<ScanScannerModalProps> = ({
       setIsScanning(false);
 
       // Return authentic Fortified Vermicelli (Sevai / Semia) report
-      const vermicelliReport = PRESEEDED_PRODUCTS.find(p => p.barcode === '8901058889991') || PRESEEDED_PRODUCTS[PRESEEDED_PRODUCTS.length - 1];
+      const vermicelliReport = PRESEEDED_PRODUCTS.find(p => p.barcode === '8901058889991') || PRESEEDED_PRODUCTS[0];
       onSelectProduct(vermicelliReport);
       onClose();
     }, 2400);
@@ -243,7 +239,7 @@ export const ScanScannerModal: React.FC<ScanScannerModalProps> = ({
             }`}
           />
 
-          {!cameraActive && (
+          {!cameraActive && !notFoundBarcode && (
             <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-6 space-y-3 bg-slate-950">
               <Camera className="w-12 h-12 text-slate-600 animate-pulse" />
               <p className="text-xs text-slate-400 max-w-xs">
@@ -253,25 +249,65 @@ export const ScanScannerModal: React.FC<ScanScannerModalProps> = ({
           )}
 
           {/* Scanner Overlay Frame */}
-          <div className="absolute inset-0 pointer-events-none flex items-center justify-center p-6">
-            <div className="w-64 h-36 border-2 border-dashed border-blue-400 rounded-2xl relative flex items-center justify-center shadow-[0_0_30px_rgba(59,130,246,0.3)]">
-              {/* Laser Animation Bar */}
-              <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-blue-500 to-transparent shadow-[0_0_12px_#3b82f6] animate-bounce" />
-              <span className="text-[10px] uppercase font-mono font-semibold tracking-widest text-blue-300 bg-slate-900/80 px-2.5 py-1 rounded">
-                {detectedBarcode ? `Detected: ${detectedBarcode}` : 'Scanning Barcode...'}
-              </span>
+          {!notFoundBarcode && (
+            <div className="absolute inset-0 pointer-events-none flex items-center justify-center p-6">
+              <div className="w-64 h-36 border-2 border-dashed border-blue-400 rounded-2xl relative flex items-center justify-center shadow-[0_0_30px_rgba(59,130,246,0.3)]">
+                {/* Laser Animation Bar */}
+                <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-blue-500 to-transparent shadow-[0_0_12px_#3b82f6] animate-bounce" />
+                <span className="text-[10px] uppercase font-mono font-semibold tracking-widest text-blue-300 bg-slate-900/80 px-2.5 py-1 rounded">
+                  {detectedBarcode ? `Detected: ${detectedBarcode}` : 'Scanning Barcode...'}
+                </span>
+              </div>
             </div>
-          </div>
+          )}
 
           {/* Scanning Progress Overlay */}
           {isScanning && (
-            <div className="absolute inset-0 bg-slate-950/90 backdrop-blur-sm flex flex-col items-center justify-center p-6 text-center space-y-4">
+            <div className="absolute inset-0 bg-slate-950/90 backdrop-blur-sm flex flex-col items-center justify-center p-6 text-center space-y-4 z-10">
               <RefreshCw className="w-10 h-10 text-blue-500 animate-spin" />
               <div>
                 <h4 className="font-bold text-white text-base">Analyzing Product...</h4>
                 <p className="text-xs text-blue-400 font-mono mt-1 animate-pulse">
                   {scanStep}
                 </p>
+              </div>
+            </div>
+          )}
+
+          {/* Product Not Found Overlay */}
+          {notFoundBarcode && (
+            <div className="absolute inset-0 bg-slate-950/95 backdrop-blur-md flex flex-col items-center justify-center p-6 text-center z-20 space-y-3 animate-fade-in">
+              <div className="w-14 h-14 rounded-full bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400">
+                <PackageX className="w-7 h-7" />
+              </div>
+              <div className="space-y-1.5 max-w-sm">
+                <h4 className="font-bold text-white text-base">
+                  Product Data Not Found
+                </h4>
+                <p className="text-xs font-mono text-amber-300 bg-amber-950/80 px-2.5 py-1 rounded-md border border-amber-800/60 inline-block">
+                  Barcode: {notFoundBarcode}
+                </p>
+                <p className="text-xs text-slate-300 leading-relaxed pt-1">
+                  This product is not added to our database. We currently only maintain data for verified food products. Beauty, cosmetic, and non-food items are not in our database.
+                </p>
+              </div>
+              <div className="flex flex-col sm:flex-row items-center gap-2 pt-1 w-full max-w-xs">
+                <button
+                  onClick={() => {
+                    setNotFoundBarcode(null);
+                    startCameraScanner();
+                  }}
+                  className="w-full py-2 px-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs transition-colors flex items-center justify-center gap-1.5 shadow-md shadow-blue-600/30"
+                >
+                  <RefreshCw className="w-3.5 h-3.5" />
+                  <span>Scan Another Barcode</span>
+                </button>
+                <button
+                  onClick={onClose}
+                  className="w-full py-2 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold text-xs border border-slate-700 transition-colors"
+                >
+                  Close Scanner
+                </button>
               </div>
             </div>
           )}

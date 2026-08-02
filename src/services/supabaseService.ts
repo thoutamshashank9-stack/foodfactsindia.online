@@ -256,7 +256,8 @@ export async function fetchOpenFoodFactsProduct(barcode: string): Promise<Transp
     const p = json.product;
     const nutriments = p.nutriments || {};
 
-    const rawIngs = p.ingredients_text || 'Hard Wheat Semolina (Rawa), Fortified Premix (Iron, Zinc, Vitamin B-Complex)';
+    if (!p.ingredients_text || !p.ingredients_text.trim()) return null;
+    const rawIngs = p.ingredients_text.trim();
     const report = analyzeRawIngredientLabel(
       rawIngs,
       p.product_name || `Scanned Product (${clean})`,
