@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import {
   ShieldCheck,
-  ShieldAlert,
   CheckCircle2,
   AlertTriangle,
   FileText,
@@ -9,13 +8,14 @@ import {
   ExternalLink,
   ChevronDown,
   ChevronUp,
-  Info,
   Share2,
   Calculator,
-  Bookmark,
   Award,
   Sparkles,
-  BookOpen
+  BookOpen,
+  ArrowLeft,
+  ChevronRight,
+  ShieldAlert
 } from 'lucide-react';
 import { TransparencyReport, Ingredient } from '../types';
 import { ScoreGauge } from './ScoreGauge';
@@ -28,10 +28,12 @@ interface TransparencyReportViewProps {
   onBackToSearch?: () => void;
 }
 
-export const TransparencyReportView: React.FC<TransparencyReportViewProps> = ({ report }) => {
+export const TransparencyReportView: React.FC<TransparencyReportViewProps> = ({ report, onBackToSearch }) => {
   const [activeTab, setActiveTab] = useState<'ingredients' | 'nutrition' | 'regulatory' | 'science'>('ingredients');
   const [expandedIngId, setExpandedIngId] = useState<string | null>(null);
   const [isMethodologyOpen, setIsMethodologyOpen] = useState(false);
+  const [showAllFindings, setShowAllFindings] = useState(false);
+  const [isDisclaimerOpen, setIsDisclaimerOpen] = useState(false);
   const [copied, setCopied] = useState(false);
 
   // Evidence Drawer Modal State
@@ -51,38 +53,84 @@ export const TransparencyReportView: React.FC<TransparencyReportViewProps> = ({ 
   const controversialIngredients = report.ingredientsList.filter((i) => i.isControversial);
   const issues = report.scoreBreakdown.filter((b) => b.type === 'DEDUCTION');
 
-  return (
-    <div className="max-w-5xl mx-auto space-y-8 animate-fade-in pb-16">
-      
-      {/* 1. Executive Product Hero */}
-      <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 sm:p-8 shadow-xl relative overflow-hidden">
-        
-        {/* Top Badges & Actions */}
-        <div className="flex flex-wrap items-center justify-between gap-3 mb-6 border-b border-slate-100 dark:border-slate-800 pb-4">
-          <div className="flex items-center gap-2">
-            <span className="px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-950 text-blue-800 dark:text-blue-300 font-semibold text-xs">
-              {report.category}
-            </span>
-            <span className="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-mono text-xs">
-              Barcode: {report.barcode}
-            </span>
-          </div>
+  // Build unified list of plain-language findings (top concerns)
+  const unifiedFindings: { id: string; title: string; subtitle: string; severity: 'CRITICAL' | 'WARNING' | 'INFO' }[] = [];
 
-          <div className="flex items-center gap-2">
+  // Add Label Warnings
+  report.labelWarnings?.forEach((w) => {
+    unifiedFindings.push({
+      id: w.id,
+      title: w.title,
+      subtitle: w.warningText,
+      severity: 'CRITICAL'
+    });
+  });
+
+  // Add WHO Flags
+  report.whoNutritionFlags?.forEach((flag, idx) => {
+    unifiedFindings.push({
+      id: `who_${idx}`,
+      title: flag.label,
+      subtitle: `Declared ${flag.valueDeclared} (${flag.whoBenchmark})`,
+      severity: flag.severity === 'CRITICAL' ? 'CRITICAL' : 'WARNING'
+    });
+  });
+
+  // Add Deductions
+  issues.forEach((iss, idx) => {
+    // Avoid duplication if already in label warnings or WHO flags
+    if (!unifiedFindings.some(f => f.title.toLowerCase().includes(iss.factor.toLowerCase()))) {
+      unifiedFindings.push({
+        id: `deduction_${idx}`,
+        title: iss.factor,
+        subtitle: iss.rationale,
+        severity: 'WARNING'
+      });
+    }
+  });
+
+  const visibleFindings = showAllFindings ? unifiedFindings : unifiedFindings.slice(0, 3);
+
+  return (
+    <div className="max-w-5xl mx-auto space-y-6 animate-fade-in pb-16">
+      
+      {/* 1. Breadcrumb Navigation & Top Toolbar */}
+      <div className="flex flex-wrap items-center justify-between gap-3 text-xs">
+        <div className="flex items-center gap-2 text-slate-600 dark:text-slate-400 font-medium">
+          {onBackToSearch && (
             <button
-              onClick={handleShare}
-              className="p-2 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 text-xs font-semibold flex items-center gap-1.5 transition-colors"
+              onClick={onBackToSearch}
+              className="min-h-[44px] min-w-[44px] flex items-center gap-1.5 px-3 py-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors font-bold shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
-              <Share2 className="w-3.5 h-3.5" />
-              <span>{copied ? 'Copied Link!' : 'Share'}</span>
+              <ArrowLeft className="w-4 h-4 text-blue-600 dark:text-blue-400" />
+              <span>Back</span>
             </button>
+          )}
+
+          {/* Breadcrumb Trail */}
+          <div className="hidden sm:flex items-center gap-1.5 font-semibold text-slate-500 dark:text-slate-400">
+            <span>Home</span>
+            <ChevronRight className="w-3.5 h-3.5 opacity-50" />
+            <span>{report.category}</span>
+            <ChevronRight className="w-3.5 h-3.5 opacity-50" />
+            <span className="text-slate-900 dark:text-white font-bold truncate max-w-[200px]">{report.productName}</span>
           </div>
         </div>
 
-        {/* Hero Main Flex */}
+        <button
+          onClick={handleShare}
+          className="min-h-[44px] px-4 py-2.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold flex items-center gap-2 transition-colors shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+        >
+          <Share2 className="w-4 h-4 text-blue-500" />
+          <span>{copied ? 'Link Copied!' : 'Share'}</span>
+        </button>
+      </div>
+
+      {/* 2. Executive Product Hero */}
+      <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 sm:p-8 shadow-xl relative overflow-hidden">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
           
-          {/* Left Product Image & Title */}
+          {/* Left Product Info & Title */}
           <div className="md:col-span-7 flex flex-col sm:flex-row items-center sm:items-start gap-6 text-center sm:text-left">
             <ProductImage
               barcode={report.barcode}
@@ -90,17 +138,24 @@ export const TransparencyReportView: React.FC<TransparencyReportViewProps> = ({ 
               className="w-32 h-32 sm:w-40 sm:h-40 rounded-2xl object-cover border-2 border-slate-200 dark:border-slate-700 shadow-xl shrink-0"
             />
             <div className="space-y-2">
-              <div className="text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400">
-                {report.brand}
+              <div className="flex items-center justify-center sm:justify-start gap-2">
+                <span className="text-xs font-extrabold uppercase tracking-wider text-blue-600 dark:text-blue-400">
+                  {report.brand}
+                </span>
+                <span className="text-[11px] text-slate-400 dark:text-slate-500 font-mono">
+                  • GTIN: {report.barcode}
+                </span>
               </div>
+
               <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight">
                 {report.productName}
               </h1>
+
               <p className="text-xs text-slate-500 dark:text-slate-400 font-medium">
                 {report.manufacturer} • Pack Size: {report.packageSize}
               </p>
 
-              {/* Glanceable Verdict Pill */}
+              {/* 1-Line Verdict Pill */}
               <div className="pt-2">
                 <div className="inline-flex items-start gap-2 p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/70 border border-slate-200/80 dark:border-slate-700/80 text-xs text-slate-700 dark:text-slate-200 text-left">
                   <Sparkles className="w-4 h-4 text-amber-500 shrink-0 mt-0.5" />
@@ -110,215 +165,89 @@ export const TransparencyReportView: React.FC<TransparencyReportViewProps> = ({ 
             </div>
           </div>
 
-          {/* Right Product Issues Summary Gauge */}
+          {/* Right Standardized Score Gauge & Grade */}
           <div className="md:col-span-5 flex flex-col items-center justify-center p-6 rounded-2xl bg-slate-50/80 dark:bg-slate-850/60 border border-slate-200/60 dark:border-slate-800/80 text-center space-y-3">
             <div className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
-              Product Issues & Findings
+              Transparency Score & Grade
             </div>
             
             <ScoreGauge
               score={report.deterministicScore}
               grade={report.executiveSummary.grade}
               size="lg"
-              issuesCount={issues.length}
+              issuesCount={unifiedFindings.length}
             />
 
             <button
               onClick={() => setIsMethodologyOpen(true)}
-              className="mt-2 px-3.5 py-1.5 rounded-xl bg-blue-100 dark:bg-blue-950/80 text-blue-700 dark:text-blue-300 font-semibold text-xs flex items-center gap-1.5 hover:bg-blue-200 dark:hover:bg-blue-900 transition-colors"
+              className="min-h-[44px] px-4 py-2 rounded-xl bg-blue-100 dark:bg-blue-950/80 text-blue-700 dark:text-blue-300 font-bold text-xs flex items-center gap-2 hover:bg-blue-200 dark:hover:bg-blue-900 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
-              <Calculator className="w-3.5 h-3.5" />
-              <span>View Full Issues Methodology</span>
+              <Calculator className="w-4 h-4" />
+              <span>View Scoring Rules</span>
             </button>
           </div>
 
         </div>
 
-        {/* WHO Nutrition Flags & Mandatory Label Warnings Section */}
-        {((report.whoNutritionFlags && report.whoNutritionFlags.length > 0) || (report.labelWarnings && report.labelWarnings.length > 0)) && (
-          <div className="mt-8 pt-6 border-t border-slate-100 dark:border-slate-800 space-y-4">
+        {/* 3. Unified Key Findings & Concerns (Top 3 + Progressive Disclosure Accordion) */}
+        <div className="mt-8 pt-6 border-t border-slate-100 dark:border-slate-800">
+          <div className="flex items-center justify-between mb-3">
             <h3 className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
               <ShieldAlert className="w-4 h-4 text-amber-500" />
-              WHO Benchmarks & Mandatory Regulatory Warnings
+              Key Concerns & Findings ({unifiedFindings.length})
             </h3>
+            {unifiedFindings.length > 3 && (
+              <button
+                onClick={() => setShowAllFindings(!showAllFindings)}
+                className="text-xs font-bold text-blue-600 dark:text-blue-400 hover:underline flex items-center gap-1 min-h-[44px] px-2"
+              >
+                <span>{showAllFindings ? 'Show Top 3 Only' : `See all ${unifiedFindings.length} findings`}</span>
+                <ChevronDown className={`w-3.5 h-3.5 transition-transform ${showAllFindings ? 'rotate-180' : ''}`} />
+              </button>
+            )}
+          </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              {report.labelWarnings?.map((warn) => (
+          {unifiedFindings.length > 0 ? (
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              {visibleFindings.map((finding) => (
                 <div
-                  key={warn.id}
-                  onClick={() => {
-                    setSelectedDrawerIngredient({
-                      id: warn.id,
-                      canonicalName: warn.title,
-                      synonyms: warn.appliedAdditives,
-                      category: 'ARTIFICIAL_COLOR',
-                      riskLevel: 'HIGH',
-                      baseRiskWeight: -15,
-                      description: warn.warningText,
-                      processingLevel: 'NOVA_4_ULTRA_PROCESSED',
-                      regulatoryRecords: [
-                        {
-                          countryCode: warn.jurisdiction.includes('EU') ? 'EU' : (warn.jurisdiction.includes('US') ? 'US' : 'IN'),
-                          countryName: warn.jurisdiction,
-                          flagEmoji: warn.jurisdiction.includes('EU') ? '🇪🇺' : (warn.jurisdiction.includes('US') ? '🇺🇸' : '🇮🇳'),
-                          status: 'RESTRICTED',
-                          regulationRef: warn.authorityRef
-                        }
-                      ],
-                      citations: [
-                        {
-                          id: `cit_${warn.id}`,
-                          title: warn.title,
-                          journal: warn.authorityRef,
-                          year: 2024,
-                          doi: 'https://www.food.gov.uk/safety-hygiene/food-additives',
-                          summary: warn.warningText,
-                          evidenceStrength: 'STRONG'
-                        }
-                      ]
-                    });
-                    setDrawerRawName(warn.title);
-                  }}
-                  className="p-4 rounded-2xl bg-amber-500/10 border border-amber-500/30 text-xs text-amber-950 dark:text-amber-200 space-y-1.5 cursor-pointer hover:scale-[1.01] transition-all shadow-sm"
-                >
-                  <div className="flex items-center justify-between font-bold">
-                    <span className="flex items-center gap-1.5 text-amber-900 dark:text-amber-100">
-                      <AlertTriangle className="w-4 h-4 text-amber-600 dark:text-amber-400 shrink-0" />
-                      {warn.title}
-                    </span>
-                    <span className="px-2 py-0.5 rounded bg-amber-200/80 dark:bg-amber-950 text-amber-900 dark:text-amber-200 font-mono text-[10px]">
-                      {warn.jurisdiction}
-                    </span>
-                  </div>
-                  <p className="text-slate-800 dark:text-slate-200 font-semibold leading-relaxed">
-                    "{warn.warningText}"
-                  </p>
-                  <div className="flex items-center justify-between text-[10px] text-slate-500 dark:text-slate-400 font-mono pt-1">
-                    <span>Ref: {warn.authorityRef}</span>
-                    <span className="text-blue-600 dark:text-blue-400 font-bold flex items-center gap-1">
-                      <span>Proof & Evidence</span>
-                      <ExternalLink className="w-3 h-3" />
-                    </span>
-                  </div>
-                </div>
-              ))}
-
-              {report.whoNutritionFlags?.map((flag, idx) => (
-                <div
-                  key={idx}
-                  onClick={() => {
-                    setSelectedDrawerIngredient({
-                      id: `who_flag_${idx}`,
-                      canonicalName: flag.label,
-                      synonyms: [flag.nutrient],
-                      category: 'WHOLE_FOOD',
-                      riskLevel: flag.severity === 'CRITICAL' ? 'HIGH' : 'MEDIUM',
-                      baseRiskWeight: -10,
-                      description: `WHO Health Benchmark Flag: Declared ${flag.valueDeclared}. ${flag.whoBenchmark}. ${flag.citation}`,
-                      processingLevel: 'NOVA_3_PROCESSED_FOOD',
-                      regulatoryRecords: [
-                        {
-                          countryCode: 'CODEX',
-                          countryName: 'World Health Organization (WHO)',
-                          flagEmoji: '🇺🇳',
-                          status: 'RESTRICTED',
-                          regulationRef: flag.citation
-                        }
-                      ],
-                      citations: [
-                        {
-                          id: `cit_who_${idx}`,
-                          title: flag.citation,
-                          journal: 'World Health Organization Guidelines',
-                          year: 2023,
-                          doi: 'https://www.who.int/publications/i/item/9789241549028',
-                          summary: flag.whoBenchmark,
-                          evidenceStrength: 'STRONG'
-                        }
-                      ]
-                    });
-                    setDrawerRawName(flag.label);
-                  }}
-                  className={`p-3.5 rounded-xl border text-xs font-medium space-y-1 cursor-pointer hover:scale-[1.01] transition-all shadow-sm ${
-                    flag.severity === 'CRITICAL'
+                  key={finding.id}
+                  className={`p-3.5 rounded-2xl border text-xs font-medium space-y-1 transition-all shadow-sm ${
+                    finding.severity === 'CRITICAL'
                       ? 'bg-rose-50/70 dark:bg-rose-950/30 border-rose-200 dark:border-rose-900/60 text-rose-900 dark:text-rose-200'
-                      : flag.severity === 'WARNING'
-                      ? 'bg-amber-50/70 dark:bg-amber-950/30 border-amber-200 dark:border-amber-900/60 text-amber-900 dark:text-amber-200'
-                      : 'bg-blue-50/70 dark:bg-blue-950/30 border-blue-200 dark:border-blue-900/60 text-blue-900 dark:text-blue-200'
+                      : 'bg-amber-50/70 dark:bg-amber-950/30 border-amber-200 dark:border-amber-900/60 text-amber-900 dark:text-amber-200'
                   }`}
                 >
-                  <div className="flex items-center justify-between font-bold">
-                    <span className="flex items-center gap-1.5">
-                      <Award className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
-                      {flag.label}
-                    </span>
-                    <span className="text-[10px] font-mono opacity-80">{flag.valueDeclared}</span>
+                  <div className="flex items-center gap-1.5 font-extrabold text-slate-900 dark:text-white">
+                    <AlertTriangle className={`w-4 h-4 shrink-0 ${finding.severity === 'CRITICAL' ? 'text-rose-600 dark:text-rose-400' : 'text-amber-600 dark:text-amber-400'}`} />
+                    <span className="truncate">{finding.title}</span>
                   </div>
-                  <p className="text-[11px] opacity-90 leading-normal">
-                    WHO Benchmark: <span className="font-semibold">{flag.whoBenchmark}</span>
+                  <p className="text-[11px] opacity-90 leading-relaxed font-semibold">
+                    {finding.subtitle}
                   </p>
-                  <div className="flex items-center justify-between text-[10px] text-slate-500 dark:text-slate-400 font-mono pt-0.5">
-                    <span>Citation: {flag.citation}</span>
-                    <span className="text-blue-600 dark:text-blue-400 font-bold flex items-center gap-1">
-                      <span>Proof & Evidence</span>
-                      <ExternalLink className="w-3 h-3" />
-                    </span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* Highlighted Identified Issues Section */}
-        <div className="mt-8 pt-6 border-t border-slate-100 dark:border-slate-800">
-          <h3 className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-3 flex items-center gap-1.5">
-            <ShieldAlert className="w-4 h-4 text-rose-500" />
-            Key Identified Formulation Factors ({issues.length})
-          </h3>
-
-          {issues.length > 0 ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              {issues.map((issue, idx) => (
-                <div
-                  key={idx}
-                  className="p-3.5 rounded-xl bg-rose-50/60 dark:bg-rose-950/30 border border-rose-200/80 dark:border-rose-900/60 text-xs text-rose-900 dark:text-rose-200 font-medium flex items-start gap-3"
-                >
-                  <AlertTriangle className="w-4 h-4 text-rose-600 dark:text-rose-400 shrink-0 mt-0.5" />
-                  <div>
-                    <span className="font-bold block text-rose-950 dark:text-rose-100">
-                      {issue.factor}
-                    </span>
-                    <span className="text-[11px] text-rose-800/90 dark:text-rose-300/90 leading-relaxed block mt-0.5">
-                      {issue.rationale}
-                    </span>
-                    <span className="text-[10px] text-slate-500 dark:text-slate-400 block mt-1 font-semibold">
-                      Source: {issue.authoritySource}
-                    </span>
-                  </div>
                 </div>
               ))}
             </div>
           ) : (
             <div className="p-4 rounded-xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-900/50 text-xs text-emerald-800 dark:text-emerald-300 font-semibold flex items-center gap-2">
               <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
-              <span>Zero critical additives or high sugar/sodium issues detected. Clean formulation!</span>
+              <span>Zero critical additives or high sugar/sodium concerns detected. Clean formulation!</span>
             </div>
           )}
         </div>
 
       </div>
 
-      {/* 2. Tabbed Deep Dive Section */}
+      {/* 4. Tabbed Deep Dive Section with STICKY Tab Navigation */}
       <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-xl overflow-hidden">
         
-        {/* Tab Navigation */}
-        <div className="flex border-b border-slate-200 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-850/60 overflow-x-auto">
+        {/* Sticky Tab Navigation (WCAG 44x44 Target Size) */}
+        <div className="sticky top-16 z-30 flex border-b border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md overflow-x-auto">
           <button
             onClick={() => setActiveTab('ingredients')}
-            className={`flex items-center gap-2 px-6 py-4 font-bold text-xs sm:text-sm border-b-2 whitespace-nowrap transition-all ${
+            className={`min-h-[44px] flex items-center gap-2 px-6 py-3 font-bold text-xs sm:text-sm border-b-2 whitespace-nowrap transition-all focus:outline-none focus:ring-2 focus:ring-blue-500 ${
               activeTab === 'ingredients'
-                ? 'border-blue-600 text-blue-600 dark:text-blue-400 bg-white dark:bg-slate-900'
+                ? 'border-blue-600 text-blue-600 dark:text-blue-400 bg-blue-50/40 dark:bg-blue-950/20'
                 : 'border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
             }`}
           >
@@ -328,9 +257,9 @@ export const TransparencyReportView: React.FC<TransparencyReportViewProps> = ({ 
 
           <button
             onClick={() => setActiveTab('nutrition')}
-            className={`flex items-center gap-2 px-6 py-4 font-bold text-xs sm:text-sm border-b-2 whitespace-nowrap transition-all ${
+            className={`min-h-[44px] flex items-center gap-2 px-6 py-3 font-bold text-xs sm:text-sm border-b-2 whitespace-nowrap transition-all focus:outline-none focus:ring-2 focus:ring-blue-500 ${
               activeTab === 'nutrition'
-                ? 'border-blue-600 text-blue-600 dark:text-blue-400 bg-white dark:bg-slate-900'
+                ? 'border-blue-600 text-blue-600 dark:text-blue-400 bg-blue-50/40 dark:bg-blue-950/20'
                 : 'border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
             }`}
           >
@@ -340,9 +269,9 @@ export const TransparencyReportView: React.FC<TransparencyReportViewProps> = ({ 
 
           <button
             onClick={() => setActiveTab('regulatory')}
-            className={`flex items-center gap-2 px-6 py-4 font-bold text-xs sm:text-sm border-b-2 whitespace-nowrap transition-all ${
+            className={`min-h-[44px] flex items-center gap-2 px-6 py-3 font-bold text-xs sm:text-sm border-b-2 whitespace-nowrap transition-all focus:outline-none focus:ring-2 focus:ring-blue-500 ${
               activeTab === 'regulatory'
-                ? 'border-blue-600 text-blue-600 dark:text-blue-400 bg-white dark:bg-slate-900'
+                ? 'border-blue-600 text-blue-600 dark:text-blue-400 bg-blue-50/40 dark:bg-blue-950/20'
                 : 'border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
             }`}
           >
@@ -352,9 +281,9 @@ export const TransparencyReportView: React.FC<TransparencyReportViewProps> = ({ 
 
           <button
             onClick={() => setActiveTab('science')}
-            className={`flex items-center gap-2 px-6 py-4 font-bold text-xs sm:text-sm border-b-2 whitespace-nowrap transition-all ${
+            className={`min-h-[44px] flex items-center gap-2 px-6 py-3 font-bold text-xs sm:text-sm border-b-2 whitespace-nowrap transition-all focus:outline-none focus:ring-2 focus:ring-blue-500 ${
               activeTab === 'science'
-                ? 'border-blue-600 text-blue-600 dark:text-blue-400 bg-white dark:bg-slate-900'
+                ? 'border-blue-600 text-blue-600 dark:text-blue-400 bg-blue-50/40 dark:bg-blue-950/20'
                 : 'border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
             }`}
           >
@@ -389,7 +318,7 @@ export const TransparencyReportView: React.FC<TransparencyReportViewProps> = ({ 
                     {/* Accordion Header */}
                     <div
                       onClick={() => toggleIngExpand(ingredient.id)}
-                      className="p-4 flex items-center justify-between cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors"
+                      className="p-4 flex items-center justify-between cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors min-h-[44px]"
                     >
                       <div className="flex items-center gap-3">
                         <span className="w-6 h-6 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center font-mono text-xs font-bold text-slate-500 shrink-0">
@@ -508,7 +437,7 @@ export const TransparencyReportView: React.FC<TransparencyReportViewProps> = ({ 
                               setSelectedDrawerIngredient(ingredient);
                               setDrawerRawName(rawName);
                             }}
-                            className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs shadow-md transition-all hover:scale-105"
+                            className="min-h-[44px] inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs shadow-md transition-all hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500"
                           >
                             <BookOpen className="w-4 h-4" />
                             <span>🔬 Open Evidence & Proof Drawer</span>
@@ -700,17 +629,28 @@ export const TransparencyReportView: React.FC<TransparencyReportViewProps> = ({ 
         )}
       </div>
 
-      {/* Legal & Trust Safety Disclaimer Banner */}
-      <div className="p-4 sm:p-5 rounded-2xl bg-slate-100 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 text-xs text-slate-600 dark:text-slate-300 space-y-1.5 shadow-sm">
-        <div className="flex items-center gap-2 font-bold text-slate-900 dark:text-white">
-          <ShieldCheck className="w-4 h-4 text-blue-600 dark:text-blue-400" />
-          <span>FoodLens AI Product Promise & Legal Disclaimer</span>
-        </div>
-        <p className="leading-relaxed text-[11px]">
-          FoodLens AI provides verified food information and cross-country regulatory comparisons for consumer awareness. 
-          It is not medical advice or legal advice for manufacturers. Regulatory statuses and formulations may change over time. 
-          Always verify against the physical product package label and official regulatory authorities (FSSAI, EFSA, FDA, WHO).
-        </p>
+      {/* 5. Footer Collapsible Legal & Methodology Accordion */}
+      <div className="rounded-2xl bg-slate-100 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 overflow-hidden shadow-sm">
+        <button
+          onClick={() => setIsDisclaimerOpen(!isDisclaimerOpen)}
+          className="w-full p-4 flex items-center justify-between text-xs font-bold text-slate-700 dark:text-slate-300 hover:bg-slate-200/50 dark:hover:bg-slate-700/50 transition-colors min-h-[44px] focus:outline-none focus:ring-2 focus:ring-blue-500"
+        >
+          <div className="flex items-center gap-2">
+            <ShieldCheck className="w-4 h-4 text-blue-600 dark:text-blue-400" />
+            <span>FoodLens AI Methodology & Legal Disclaimer</span>
+          </div>
+          <ChevronDown className={`w-4 h-4 text-slate-400 transition-transform ${isDisclaimerOpen ? 'rotate-180' : ''}`} />
+        </button>
+
+        {isDisclaimerOpen && (
+          <div className="p-4 pt-0 text-xs text-slate-600 dark:text-slate-300 space-y-2 border-t border-slate-200/60 dark:border-slate-700/60">
+            <p className="leading-relaxed text-[11px] pt-2">
+              FoodLens AI provides verified food information and cross-country regulatory comparisons for consumer awareness. 
+              It is not medical advice or legal advice for manufacturers. Regulatory statuses and formulations may change over time. 
+              Always verify against the physical product package label and official regulatory authorities (FSSAI, EFSA, FDA, WHO).
+            </p>
+          </div>
+        )}
       </div>
 
       {/* Score Breakdown Modal */}
@@ -733,3 +673,4 @@ export const TransparencyReportView: React.FC<TransparencyReportViewProps> = ({ 
     </div>
   );
 };
+
