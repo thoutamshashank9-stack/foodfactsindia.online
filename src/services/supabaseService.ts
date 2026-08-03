@@ -357,7 +357,92 @@ export async function resolveBarcode(barcode: string): Promise<ResolvedItem> {
     console.error('Supabase barcode lookup error:', err);
   }
 
-  // 3. Fallback: Unknown / Not Found in database
+  // 3. Fallback: Query Open Food Facts Live Network
+  try {
+    const unpadded = clean.replace(/^0+/, '');
+    const report = await fetchOpenFoodFactsProduct(unpadded);
+    if (report) {
+      // Map to Supabase structure
+      const dbProduct = {
+        barcode: clean,
+        product_name: report.productName,
+        brands: report.brand,
+        categories: report.category,
+        ingredients_text: report.ingredientsList.map(i => i.rawName).join(', '),
+        nova_group: report.executiveSummary.processingNovaClass,
+        energy_100g: report.nutrition.calories,
+        sugars_100g: report.nutrition.totalSugarG,
+        fat_100g: report.nutrition.totalFatG,
+        saturated_fat_100g: report.nutrition.saturatedFatG,
+        trans_fat_100g: report.nutrition.transFatG,
+        fibre_100g: report.nutrition.fiberG,
+        protein_100g: report.nutrition.proteinG,
+        sodium_100g: report.nutrition.sodiumMg ? report.nutrition.sodiumMg / 1000 : null,
+        salt_100g: report.nutrition.sodiumMg ? (report.nutrition.sodiumMg * 2.5) / 1000 : null
+      };
+
+      // Persist to Supabase asynchronously to avoid blocking the UI
+      (async () => {
+        try {
+          const { error } = await supabase.from('products').upsert(dbProduct, { onConflict: 'barcode' });
+          if (!error) {
+            // Persist ingredients
+            const ingredientsToInsert = report.ingredientsList.map(ing => ({
+              barcode: clean,
+              ingredient_raw: ing.rawName,
+              position: ing.position
+            }));
+            if (ingredientsToInsert.length > 0) {
+              await supabase.from('product_ingredients').delete().eq('barcode', clean);
+              await supabase.from('product_ingredients').insert(ingredientsToInsert);
+            }
+
+            // Persist additives
+            const additiveCodesSet = new Set<string>();
+            if (report.labelWarnings) {
+              for (const warning of report.labelWarnings) {
+                if (warning.appliedAdditives) {
+                  for (const add of warning.appliedAdditives) {
+                    additiveCodesSet.add(add.toUpperCase());
+                  }
+                }
+              }
+            }
+            if (report.ingredientsList) {
+              for (const ing of report.ingredientsList) {
+                if (ing.ingredient.eNumber) {
+                  additiveCodesSet.add(ing.ingredient.eNumber.toUpperCase());
+                }
+                if (ing.ingredient.insNumber) {
+                  additiveCodesSet.add(ing.ingredient.insNumber.toUpperCase());
+                }
+              }
+            }
+            const additivesToInsert = Array.from(additiveCodesSet).map(code => ({
+              barcode: clean,
+              additive_code: code
+            }));
+            if (additivesToInsert.length > 0) {
+              await supabase.from('product_additives').delete().eq('barcode', clean);
+              await supabase.from('product_additives').insert(additivesToInsert);
+            }
+          } else {
+            console.error('Supabase write failure for OFF live fallback:', error);
+          }
+        } catch (dbErr) {
+          console.error('Supabase write error for OFF live fallback:', dbErr);
+        }
+      })();
+
+      const result: ResolvedItem = { kind: 'food', product: report };
+      resolvedItemCache.set(cacheKey, result);
+      return result;
+    }
+  } catch (err) {
+    console.error('Open Food Facts live lookup or persistence error:', err);
+  }
+
+  // 4. Fallback: Unknown / Not Found in database
   const unknownResult: ResolvedItem = { kind: 'unknown', barcode: clean };
   resolvedItemCache.set(cacheKey, unknownResult);
   return unknownResult;
