@@ -184,7 +184,7 @@ export const EvidenceDrawerModal: React.FC<EvidenceDrawerModalProps> = ({
 
         {/* Modal Footer Action */}
         <div className="pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs">
-          <span className="text-slate-400 font-mono">FoodLens Audit ID: {ingredient.id}</span>
+          <span className="text-slate-400 font-mono">FoodFactsIndia Audit ID: {ingredient.id}</span>
           <button
             onClick={onClose}
             className="px-5 py-2 rounded-xl bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-bold text-xs hover:opacity-90 transition-opacity"

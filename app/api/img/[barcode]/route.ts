@@ -22,7 +22,7 @@ function generateSvgFallback(barcode: string): string {
   </g>
   <text x="200" y="240" text-anchor="middle" fill="#334155" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="700">No Package Photo</text>
   <text x="200" y="270" text-anchor="middle" fill="#64748B" font-family="ui-monospace, SFMono-Regular, monospace" font-size="14" font-weight="600">GTIN: ${barcode}</text>
-  <text x="200" y="310" text-anchor="middle" fill="#94A3B8" font-family="system-ui, -apple-system, sans-serif" font-size="12">FoodLens AI Edge Proxy</text>
+  <text x="200" y="310" text-anchor="middle" fill="#94A3B8" font-family="system-ui, -apple-system, sans-serif" font-size="12">FoodFactsIndia AI Edge Proxy</text>
 </svg>`;
 }
 
@@ -47,7 +47,7 @@ export async function GET(
       `https://world.openfoodfacts.org/api/v2/product/${barcode}.json?fields=image_front_url,selected_images,code`,
       {
         headers: {
-          'User-Agent': 'FoodLensAI/2.0 (contact@foodlens.ai)'
+          'User-Agent': 'FoodFactsIndiaAI/2.0 (contact@foodfactsindia.online)'
         },
         next: { revalidate: 86400 }
       }

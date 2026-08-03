@@ -5,7 +5,7 @@ import { calculateDeterministicScore } from '../services/scoringEngine';
 let passed = 0;
 const total = goldenDataset.length;
 
-console.log(`Starting FoodLens AI Golden Dataset Regression Suite (${total} SKUs)...`);
+console.log(`Starting FoodFactsIndia AI Golden Dataset Regression Suite (${total} SKUs)...`);
 
 goldenDataset.forEach((item) => {
   const prod = PRESEEDED_PRODUCTS.find((p) => p.productId === item.productId || p.barcode === item.barcode);

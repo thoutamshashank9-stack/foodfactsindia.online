@@ -322,7 +322,7 @@ export const ScanScannerModal: React.FC<ScanScannerModalProps> = ({
                   </p>
                 )}
                 <p className="text-xs text-slate-300 leading-relaxed pt-1">
-                  This barcode appears to be a <strong>{resolvedState.category || 'medicine / cosmetic'}</strong> item, not a food product. FoodLens currently analyzes packaged food products only.
+                  This barcode appears to be a <strong>{resolvedState.category || 'medicine / cosmetic'}</strong> item, not a food product. FoodFactsIndia currently analyzes packaged food products only.
                 </p>
               </div>
               <div className="flex flex-col sm:flex-row items-center gap-2 pt-1 w-full max-w-xs">

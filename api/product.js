@@ -41,7 +41,7 @@ export default async function handler(req, res) {
       offUrl,
       {
         headers: {
-          'User-Agent': 'FoodLensAI/2.0 (contact@foodlens.ai)'
+          'User-Agent': 'FoodFactsIndiaAI/2.0 (contact@foodfactsindia.online)'
         },
         timeout: 5000
       },

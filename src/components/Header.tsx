@@ -44,15 +44,15 @@ export const Header: React.FC<HeaderProps> = ({
           role="button"
           tabIndex={0}
           onKeyDown={(e) => e.key === 'Enter' && setCurrentTab('home')}
-          aria-label="FoodLens AI Home"
+          aria-label="FoodFactsIndia AI Home"
         >
           <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-emerald-500 flex items-center justify-center shadow-lg shadow-blue-500/20 group-hover:scale-105 transition-transform">
             <ShieldCheck className="w-6 h-6 text-white" />
           </div>
           <div>
             <div className="flex items-center gap-1.5">
-              <span className="font-extrabold text-xl tracking-tight bg-gradient-to-r from-blue-600 via-emerald-600 to-blue-700 bg-clip-text text-transparent">
-                FoodLens
+              <span className="font-extrabold font-mono text-lg tracking-tight bg-gradient-to-r from-blue-600 via-emerald-600 to-blue-700 bg-clip-text text-transparent">
+                FoodFactsIndia
               </span>
               <span className="px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wider bg-blue-100 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 rounded">
                 AI

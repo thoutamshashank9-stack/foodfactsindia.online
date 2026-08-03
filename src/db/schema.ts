@@ -1,5 +1,5 @@
 /**
-  FoodLens AI — Relational PostgreSQL Schema Definition
+  FoodFactsIndia AI — Relational PostgreSQL Schema Definition
   Supports Neon / Supabase / Prisma / Drizzle ORM
 */
 

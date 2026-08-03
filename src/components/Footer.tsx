@@ -23,7 +23,7 @@ export const Footer: React.FC = () => {
             <div>
               <h4 className="font-bold text-slate-900 dark:text-white text-sm">Strict Neutrality</h4>
               <p className="mt-1 text-slate-500 dark:text-slate-400 leading-relaxed">
-                FoodLens AI does not attack food brands. We objectively decode ingredient lists and regulatory statuses using transparent math.
+                FoodFactsIndia AI does not attack food brands. We objectively decode ingredient lists and regulatory statuses using transparent math.
               </p>
             </div>
           </div>
@@ -33,7 +33,7 @@ export const Footer: React.FC = () => {
             <div>
               <h4 className="font-bold text-slate-900 dark:text-white text-sm">Medical Disclaimer</h4>
               <p className="mt-1 text-slate-500 dark:text-slate-400 leading-relaxed">
-                FoodLens AI is an educational transparency platform and does not provide medical diagnosis, treatment, or clinical advice.
+                FoodFactsIndia AI is an educational transparency platform and does not provide medical diagnosis, treatment, or clinical advice.
               </p>
             </div>
           </div>
@@ -42,8 +42,8 @@ export const Footer: React.FC = () => {
         {/* Footer Bottom */}
         <div className="flex flex-col sm:flex-row items-center justify-between text-xs gap-4 text-slate-500 dark:text-slate-400">
           <div className="flex items-center gap-2">
-            <span className="font-bold text-slate-900 dark:text-white">FoodLens AI</span>
-            <span>© {new Date().getFullYear()} FoodLens Intelligence Platform. All rights reserved.</span>
+            <span className="font-bold text-slate-900 dark:text-white">FoodFactsIndia AI</span>
+            <span>© {new Date().getFullYear()} FoodFactsIndia Intelligence Platform. All rights reserved.</span>
           </div>
           <div className="flex items-center gap-4">
             <span className="hover:text-slate-900 dark:hover:text-white cursor-pointer">Regulatory Sources</span>

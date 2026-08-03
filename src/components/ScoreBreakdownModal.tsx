@@ -56,7 +56,7 @@ export const ScoreBreakdownModal: React.FC<ScoreBreakdownModalProps> = ({
           <div className="p-4 rounded-xl bg-blue-50 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-800/50 text-blue-900 dark:text-blue-200 flex gap-3">
             <Info className="w-5 h-5 text-blue-600 dark:text-blue-400 shrink-0 mt-0.5" />
             <div className="text-xs leading-relaxed">
-              <span className="font-semibold">Evidence First & Neutrality Guarantee:</span> The FoodLens score is computed via reproducible mathematical code based on official WHO, FSSAI, EFSA, and US FDA dietary thresholds. LLMs are never asked to guess ratings.
+              <span className="font-semibold">Evidence First & Neutrality Guarantee:</span> The FoodFactsIndia score is computed via reproducible mathematical code based on official WHO, FSSAI, EFSA, and US FDA dietary thresholds. LLMs are never asked to guess ratings.
             </div>
           </div>
 

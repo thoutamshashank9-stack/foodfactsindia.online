@@ -36,8 +36,8 @@ export function calculateDeterministicScore(
       category: 'NUTRITION',
       factor: `Elevated Added Sugar (${nutrition.addedSugarG}g)`,
       points: -pts,
-      rationale: `Exceeds FoodLens single-serving heuristic threshold of 5g by ${excessSugar}g (-2 pts/g). WHO Context: Reduce free sugars to < 10% daily total energy intake.`,
-      authoritySource: 'FoodLens Heuristic (WHO Sugars Guideline 2015 Context)'
+      rationale: `Exceeds FoodFactsIndia single-serving heuristic threshold of 5g by ${excessSugar}g (-2 pts/g). WHO Context: Reduce free sugars to < 10% daily total energy intake.`,
+      authoritySource: 'FoodFactsIndia Heuristic (WHO Sugars Guideline 2015 Context)'
     });
   }
 
@@ -52,8 +52,8 @@ export function calculateDeterministicScore(
         category: 'NUTRITION',
         factor: `Elevated Sodium (${nutrition.sodiumMg}mg)`,
         points: -pts,
-        rationale: `Exceeds FoodLens single-serving sodium heuristic threshold of 300mg by ${nutrition.sodiumMg - 300}mg (-1 pt / 50mg). WHO Context: Adult daily target < 2,000 mg/day.`,
-        authoritySource: 'FoodLens Heuristic (WHO Sodium Guideline 2012 Context)'
+        rationale: `Exceeds FoodFactsIndia single-serving sodium heuristic threshold of 300mg by ${nutrition.sodiumMg - 300}mg (-1 pt / 50mg). WHO Context: Adult daily target < 2,000 mg/day.`,
+        authoritySource: 'FoodFactsIndia Heuristic (WHO Sodium Guideline 2012 Context)'
       });
     }
   }
@@ -69,8 +69,8 @@ export function calculateDeterministicScore(
         category: 'NUTRITION',
         factor: `High Saturated Fat (${nutrition.saturatedFatG}g)`,
         points: -pts,
-        rationale: `Exceeds FoodLens single-serving saturated fat heuristic threshold of 3g by ${excessSatFat}g (-1 pt/g). WHO Context: Limit to < 10% daily total energy intake.`,
-        authoritySource: 'FoodLens Heuristic (WHO Saturated Fat Guideline 2023 Context)'
+        rationale: `Exceeds FoodFactsIndia single-serving saturated fat heuristic threshold of 3g by ${excessSatFat}g (-1 pt/g). WHO Context: Limit to < 10% daily total energy intake.`,
+        authoritySource: 'FoodFactsIndia Heuristic (WHO Saturated Fat Guideline 2023 Context)'
       });
     }
   }

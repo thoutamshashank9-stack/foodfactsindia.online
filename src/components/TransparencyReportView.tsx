@@ -637,7 +637,7 @@ export const TransparencyReportView: React.FC<TransparencyReportViewProps> = ({ 
         >
           <div className="flex items-center gap-2">
             <ShieldCheck className="w-4 h-4 text-blue-600 dark:text-blue-400" />
-            <span>FoodLens AI Methodology & Legal Disclaimer</span>
+            <span>FoodFactsIndia AI Methodology & Legal Disclaimer</span>
           </div>
           <ChevronDown className={`w-4 h-4 text-slate-400 transition-transform ${isDisclaimerOpen ? 'rotate-180' : ''}`} />
         </button>
@@ -645,7 +645,7 @@ export const TransparencyReportView: React.FC<TransparencyReportViewProps> = ({ 
         {isDisclaimerOpen && (
           <div className="p-4 pt-0 text-xs text-slate-600 dark:text-slate-300 space-y-2 border-t border-slate-200/60 dark:border-slate-700/60">
             <p className="leading-relaxed text-[11px] pt-2">
-              FoodLens AI provides verified food information and cross-country regulatory comparisons for consumer awareness. 
+              FoodFactsIndia AI provides verified food information and cross-country regulatory comparisons for consumer awareness. 
               It is not medical advice or legal advice for manufacturers. Regulatory statuses and formulations may change over time. 
               Always verify against the physical product package label and official regulatory authorities (FSSAI, EFSA, FDA, WHO).
             </p>

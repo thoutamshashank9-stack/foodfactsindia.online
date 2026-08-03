@@ -718,7 +718,7 @@ export async function mapProductToReport(p: any): Promise<TransparencyReport> {
       flagType: 'HIGH_SODIUM',
       label: 'High Sodium per 100g',
       valueDeclared: `${nutrition.sodiumMg} mg / 100g`,
-      whoBenchmark: 'FoodLens Heuristic (> 600 mg/100g); WHO Adult Daily Target: < 2,000 mg/day',
+      whoBenchmark: 'FoodFactsIndia Heuristic (> 600 mg/100g); WHO Adult Daily Target: < 2,000 mg/day',
       severity: 'CRITICAL',
       citation: 'WHO Guideline: Sodium Intake for Adults and Children (2012)'
     });
@@ -737,7 +737,7 @@ export async function mapProductToReport(p: any): Promise<TransparencyReport> {
       flagType: 'HIGH_SATURATED_FAT',
       label: 'High Saturated Fat per 100g',
       valueDeclared: `${nutrition.saturatedFatG} g / 100g`,
-      whoBenchmark: 'FoodLens Heuristic (> 4g/100g); WHO Context: < 10% total daily energy intake',
+      whoBenchmark: 'FoodFactsIndia Heuristic (> 4g/100g); WHO Context: < 10% total daily energy intake',
       severity: 'WARNING',
       citation: 'WHO Saturated Fatty Acid Intake Guidelines (2023)'
     });
@@ -941,9 +941,9 @@ export function calculateWHOSugarFlag(nutrition: { totalSugarG?: number | null; 
     return {
       nutrient: 'Free Sugars',
       flagType: 'HIGH_FREE_SUGAR',
-      label: 'Estimated High Free Sugars (FoodLens Heuristic: >10g/100g)',
+      label: 'Estimated High Free Sugars (FoodFactsIndia Heuristic: >10g/100g)',
       valueDeclared: `${totalSugarG} g / 100g`,
-      whoBenchmark: 'FoodLens Heuristic (>10g/100g); WHO Context: < 10% daily energy intake (Energy data unavailable)',
+      whoBenchmark: 'FoodFactsIndia Heuristic (>10g/100g); WHO Context: < 10% daily energy intake (Energy data unavailable)',
       severity: 'CRITICAL',
       citation: 'WHO Guideline: Sugars Intake for Adults and Children (2015)'
     };

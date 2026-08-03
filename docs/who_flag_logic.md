@@ -1,8 +1,8 @@
-# FoodLens AI — Scientific Documentation: WHO Nutrition Flag Logic
+# FoodFactsIndia AI — Scientific Documentation: WHO Nutrition Flag Logic
 
 ## Overview
 
-This document specifies the scientific rationale, mathematical formulas, zero-calorie guard clauses, fallback heuristics, and disclaimer language used by **FoodLens AI** to generate nutrition benchmark flags.
+This document specifies the scientific rationale, mathematical formulas, zero-calorie guard clauses, fallback heuristics, and disclaimer language used by **FoodFactsIndia AI** to generate nutrition benchmark flags.
 
 ---
 
@@ -12,7 +12,7 @@ This document specifies the scientific rationale, mathematical formulas, zero-ca
    World Health Organization (WHO) guidelines define nutrient limits primarily as daily adult intake limits (e.g. $<2,000\text{ mg}$ sodium/day) or percentages of total daily energy intake (e.g. $<10\%$ total energy from free sugars).
    
 2. **Total Sugars vs. Free Sugars Declaration**:
-   Open Food Facts and packaged food labels declare **Total Sugars** (`sugars_100g`), which include both naturally occurring sugars (e.g. lactose in milk, fructose in 100% fruit) and added free sugars. FoodLens AI labels all sugar flags as **"Estimated High Free Sugars (based on total sugars declaration)"** to maintain scientific accuracy.
+   Open Food Facts and packaged food labels declare **Total Sugars** (`sugars_100g`), which include both naturally occurring sugars (e.g. lactose in milk, fructose in 100% fruit) and added free sugars. FoodFactsIndia AI labels all sugar flags as **"Estimated High Free Sugars (based on total sugars declaration)"** to maintain scientific accuracy.
 
 3. **Zero-Calorie Guard Clause**:
    For zero-calorie or low-calorie products (e.g., diet sodas, seasonings, tea leaves), calculating $\frac{\text{sugar calories}}{\text{total calories}}$ yields `Infinity` or `NaN`. A strict guard clause prevents runtime calculation errors and defaults to a per-100g heuristic.
@@ -34,8 +34,8 @@ This document specifies the scientific rationale, mathematical formulas, zero-ca
 
 - **Zero-Calorie / Missing Calorie Heuristic Fallback** (when `calories` $\le 0$ or missing):
   - **Threshold**: Triggered if $\text{totalSugarG} > 10\text{g} / 100\text{g}$.
-  - **Label**: `Estimated High Free Sugars (FoodLens Heuristic: >10g/100g)`
-  - **Benchmark Text**: `FoodLens Heuristic (>10g/100g); WHO Context: < 10% daily energy intake (Energy data unavailable)`
+  - **Label**: `Estimated High Free Sugars (FoodFactsIndia Heuristic: >10g/100g)`
+  - **Benchmark Text**: `FoodFactsIndia Heuristic (>10g/100g); WHO Context: < 10% daily energy intake (Energy data unavailable)`
 
 ---
 
@@ -44,7 +44,7 @@ This document specifies the scientific rationale, mathematical formulas, zero-ca
 - **WHO Target**: $< 2,000\text{ mg}$ sodium per day for adults ($< 5\text{ g}$ salt/day) (WHO Guideline: Sodium Intake for Adults and Children, 2012).
 - **Heuristic Threshold**: Triggered if $\text{sodiumMg} > 600\text{ mg} / 100\text{g}$.
 - **Label**: `High Sodium per 100g`
-- **Benchmark Text**: `FoodLens Heuristic (> 600 mg/100g); WHO Adult Daily Target: < 2,000 mg/day`
+- **Benchmark Text**: `FoodFactsIndia Heuristic (> 600 mg/100g); WHO Adult Daily Target: < 2,000 mg/day`
 
 ---
 
@@ -53,7 +53,7 @@ This document specifies the scientific rationale, mathematical formulas, zero-ca
 - **WHO Target**: $< 10\%$ of total daily energy intake (WHO Saturated Fatty Acid Intake Guidelines, 2023).
 - **Heuristic Threshold**: Triggered if $\text{saturatedFatG} > 4\text{g} / 100\text{g}$.
 - **Label**: `High Saturated Fat per 100g`
-- **Benchmark Text**: `FoodLens Heuristic (> 4g/100g); WHO Context: < 10% total daily energy intake`
+- **Benchmark Text**: `FoodFactsIndia Heuristic (> 4g/100g); WHO Context: < 10% total daily energy intake`
 
 ---
 
@@ -69,7 +69,7 @@ This document specifies the scientific rationale, mathematical formulas, zero-ca
 ## 3. Mandatory Legal & Health Disclaimer
 
 ```text
-FoodLens AI provides verified food information and cross-country regulatory comparisons for consumer awareness.
+FoodFactsIndia AI provides verified food information and cross-country regulatory comparisons for consumer awareness.
 It is not medical advice or legal advice for manufacturers. Regulatory statuses and formulations may change over time.
 Always verify against the physical product package label and official regulatory authorities (FSSAI, EFSA, FDA, WHO).
 ```
