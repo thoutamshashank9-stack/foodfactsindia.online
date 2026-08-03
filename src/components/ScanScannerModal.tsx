@@ -25,6 +25,7 @@ export const ScanScannerModal: React.FC<ScanScannerModalProps> = ({
 
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const codeReaderRef = useRef<BrowserMultiFormatReader | null>(null);
+  const activeStreamRef = useRef<MediaStream | null>(null);
   const isProcessingScan = useRef<boolean>(false);
 
   useEffect(() => {
@@ -79,31 +80,56 @@ export const ScanScannerModal: React.FC<ScanScannerModalProps> = ({
 
       if (!videoRef.current) return;
 
-      // Start continuous video decoding from environment/rear camera
-      await codeReader.decodeFromConstraints(
-        {
-          video: {
-            facingMode: { ideal: 'environment' },
-            width: { ideal: 1280 },
-            height: { ideal: 720 }
-          }
-        },
-        videoRef.current,
-        (result, error) => {
-          if (result && !isProcessingScan.current) {
-            const text = result.getText();
-            if (text && text.trim().length >= 8) {
-              const cleanCode = text.trim();
-              isProcessingScan.current = true;
-              setDetectedBarcode(cleanCode);
-              playBeepSound();
-              stopCameraScanner();
-              handleSimulateScan(cleanCode);
+      try {
+        // Start continuous video decoding from environment/rear camera
+        await codeReader.decodeFromConstraints(
+          {
+            video: {
+              facingMode: { ideal: 'environment' },
+              width: { ideal: 1280 },
+              height: { ideal: 720 }
+            }
+          },
+          videoRef.current,
+          (result, error) => {
+            if (result && !isProcessingScan.current) {
+              const text = result.getText();
+              if (text && text.trim().length >= 8) {
+                const cleanCode = text.trim();
+                isProcessingScan.current = true;
+                setDetectedBarcode(cleanCode);
+                playBeepSound();
+                stopCameraScanner();
+                handleSimulateScan(cleanCode);
+              }
             }
           }
-        }
-      );
+        );
+      } catch (firstErr) {
+        console.warn('High-res environment camera constraints failed, attempting fallback...', firstErr);
+        // Fallback to simpler constraints for front/default cameras
+        await codeReader.decodeFromConstraints(
+          { video: true },
+          videoRef.current,
+          (result, error) => {
+            if (result && !isProcessingScan.current) {
+              const text = result.getText();
+              if (text && text.trim().length >= 8) {
+                const cleanCode = text.trim();
+                isProcessingScan.current = true;
+                setDetectedBarcode(cleanCode);
+                playBeepSound();
+                stopCameraScanner();
+                handleSimulateScan(cleanCode);
+              }
+            }
+          }
+        );
+      }
 
+      if (videoRef.current && videoRef.current.srcObject) {
+        activeStreamRef.current = videoRef.current.srcObject as MediaStream;
+      }
       setCameraActive(true);
     } catch (err: any) {
       console.error('Camera scanner init error:', err);
@@ -121,9 +147,28 @@ export const ScanScannerModal: React.FC<ScanScannerModalProps> = ({
       }
       codeReaderRef.current = null;
     }
+    
+    // Stop all tracks using the stream ref (which persists even if videoRef.current is unmounted/null)
+    if (activeStreamRef.current) {
+      activeStreamRef.current.getTracks().forEach((track) => {
+        try {
+          track.stop();
+        } catch (e) {
+          // Ignore track stop errors
+        }
+      });
+      activeStreamRef.current = null;
+    }
+
     if (videoRef.current && videoRef.current.srcObject) {
       const stream = videoRef.current.srcObject as MediaStream;
-      stream.getTracks().forEach((track) => track.stop());
+      stream.getTracks().forEach((track) => {
+        try {
+          track.stop();
+        } catch (e) {
+          // Ignore
+        }
+      });
       videoRef.current.srcObject = null;
     }
     setCameraActive(false);
