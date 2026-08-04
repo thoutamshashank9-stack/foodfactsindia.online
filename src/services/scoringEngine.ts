@@ -10,6 +10,55 @@ export interface ScoringEngineResult {
   novaClass: number; // 1 to 4
 }
 
+export interface RatingGateResult {
+  isEligibleForRatings: boolean;
+  blockReason?: string;
+}
+
+/**
+ * 🛡️ 5-Layer Multi-Point Production Rating Gate
+ * Gating checks:
+ * 1. AI Confidence Threshold (>= 0.70)
+ * 2. Source Quality (Ungrounded AI estimates prohibited from ratings)
+ * 3. Label Field Completeness (Calories and serving size required)
+ * 4. Nutrient Sanity Checks (e.g. Saturated Fat cannot exceed Total Fat)
+ * 5. Category Eligibility (Energy Drinks & Supplements excluded from standard food models)
+ */
+export function evaluateRatingGate(
+  confidenceScore: number,
+  nutrition: NutritionFacts,
+  sourceType: string,
+  category: string = 'Staples'
+): RatingGateResult {
+  // Gate 1: Confidence Threshold
+  if (confidenceScore < 0.70) {
+    return { isEligibleForRatings: false, blockReason: `AI Confidence (${(confidenceScore * 100).toFixed(0)}%) is below minimum production threshold (70%)` };
+  }
+
+  // Gate 2: Source Quality Gate
+  if (sourceType === 'UNGROUNDED_AI') {
+    return { isEligibleForRatings: false, blockReason: 'Ungrounded AI estimation cannot issue public health rating scores' };
+  }
+
+  // Gate 3: Field Completeness
+  if (!nutrition.servingSize || nutrition.calories === 0) {
+    return { isEligibleForRatings: false, blockReason: 'Incomplete nutrition label data (calories or serving size missing)' };
+  }
+
+  // Gate 4: Nutrient Sanity Check
+  if (nutrition.saturatedFatG > nutrition.totalFatG && nutrition.totalFatG > 0) {
+    return { isEligibleForRatings: false, blockReason: 'Nutrient sanity check failed: Saturated fat exceeds total fat' };
+  }
+
+  // Gate 5: Category Eligibility (Exclude Energy drinks & Supplements from standard food scoring)
+  const EXCLUDED_CATEGORIES = ['Energy Drinks', 'Dietary Supplements', 'Therapeutic Formulas', 'Supplements'];
+  if (EXCLUDED_CATEGORIES.some(cat => category.toLowerCase().includes(cat.toLowerCase()))) {
+    return { isEligibleForRatings: false, blockReason: `Category '${category}' is excluded from standard food scoring algorithms` };
+  }
+
+  return { isEligibleForRatings: true };
+}
+
 /**
  * Pure deterministic mathematical calculation engine for food product safety rating.
  * Computes reproducible, audited scores (0-100) and explicit authority-attributed score breakdowns.
