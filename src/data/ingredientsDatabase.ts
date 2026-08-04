@@ -462,5 +462,95 @@ export const INGREDIENT_DATABASE: Ingredient[] = [
         evidenceStrength: 'STRONG'
       }
     ]
+  },
+  {
+    id: 'ing_cereal_extract',
+    canonicalName: 'Cereal Extract (Malt Barley & Wheat)',
+    scientificName: 'Hordeum vulgare / Triticum extractum',
+    synonyms: ['Malt Extract', 'Barley Malt', 'Cereal Extract'],
+    category: 'WHOLE_FOOD',
+    riskLevel: 'LOW',
+    baseRiskWeight: 0,
+    description: 'Grain extract produced by malting barley and wheat. Provides natural carbohydrates, maltose, and distinctive flavor.',
+    processingLevel: 'NOVA_2_PROCESSED_INGREDIENT',
+    regulatoryRecords: [
+      { countryCode: 'IN', countryName: 'India (FSSAI)', flagEmoji: '🇮🇳', status: 'APPROVED', regulationRef: 'FSSAI Standards 2.4' },
+      { countryCode: 'EU', countryName: 'European Union (EFSA)', flagEmoji: '🇪🇺', status: 'APPROVED', regulationRef: 'EFSA Food Reg' }
+    ],
+    citations: []
+  },
+  {
+    id: 'ing_sugar',
+    canonicalName: 'Added Refined Sugar (Sucrose)',
+    scientificName: 'Sucrose',
+    synonyms: ['Sugar', 'Refined Sugar', 'Sucrose', 'White Sugar'],
+    category: 'SWEETENER',
+    riskLevel: 'MEDIUM',
+    baseRiskWeight: -5,
+    description: 'Refined disaccharide derived from sugarcane or sugar beet. High intake drives dental caries, metabolic dysfunction, obesity, and cardiovascular risk.',
+    processingLevel: 'NOVA_2_PROCESSED_INGREDIENT',
+    regulatoryRecords: [
+      { countryCode: 'IN', countryName: 'India (FSSAI)', flagEmoji: '🇮🇳', status: 'RESTRICTED', restrictionDetails: 'FSSAI guidelines advise reducing added sugar consumption.', regulationRef: 'FSSAI Eat Right India' }
+    ],
+    citations: []
+  },
+  {
+    id: 'ing_cocoa_solids',
+    canonicalName: 'Cocoa Solids',
+    scientificName: 'Theobroma cacao powder',
+    synonyms: ['Cocoa Powder', 'Cocoa Solids'],
+    category: 'WHOLE_FOOD',
+    riskLevel: 'LOW',
+    baseRiskWeight: 0,
+    description: 'Non-fat cocoa solids containing natural polyphenols, flavonoids, and minerals.',
+    processingLevel: 'NOVA_2_PROCESSED_INGREDIENT',
+    regulatoryRecords: [],
+    citations: []
+  },
+  {
+    id: 'ing_milk_solids',
+    canonicalName: 'Milk Solids',
+    scientificName: 'Bovine milk solids',
+    synonyms: ['Skimmed Milk Powder', 'Dairy Solids'],
+    category: 'WHOLE_FOOD',
+    riskLevel: 'LOW',
+    baseRiskWeight: 0,
+    description: 'Dehydrated milk component containing dairy proteins (casein, whey) and lactose.',
+    processingLevel: 'NOVA_2_PROCESSED_INGREDIENT',
+    regulatoryRecords: [],
+    citations: []
+  },
+  {
+    id: 'ing_e150c',
+    canonicalName: 'Ammonia Caramel (INS 150c)',
+    scientificName: 'Caramel Class III - Ammonia Process',
+    synonyms: ['Caramel III', 'INS 150c', 'E150c', 'Ammonia Caramel'],
+    insNumber: '150c',
+    eNumber: 'E150c',
+    category: 'ARTIFICIAL_COLOR',
+    riskLevel: 'MEDIUM',
+    baseRiskWeight: -8,
+    description: 'Synthetic brown color produced by heating carbohydrates in the presence of ammonium compounds. May contain trace 4-MEI residues.',
+    processingLevel: 'NOVA_4_ULTRA_PROCESSED',
+    regulatoryRecords: [
+      { countryCode: 'IN', countryName: 'India (FSSAI)', flagEmoji: '🇮🇳', status: 'RESTRICTED', restrictionDetails: 'Permitted in specified foods with strict ADI limits.', regulationRef: 'FSSAI Standards 2.4.5' },
+      { countryCode: 'EU', countryName: 'European Union (EFSA)', flagEmoji: '🇪🇺', status: 'RESTRICTED', restrictionDetails: 'ADI established at 300 mg/kg bw/day.', regulationRef: 'EFSA Opinion 2011' }
+    ],
+    citations: []
+  },
+  {
+    id: 'ing_e471',
+    canonicalName: 'Mono- and Diglycerides of Fatty Acids (INS 471)',
+    scientificName: 'Mono- and Diglycerides of Fatty Acids',
+    synonyms: ['INS 471', 'E471', 'Emulsifier 471'],
+    insNumber: '471',
+    eNumber: 'E471',
+    category: 'EMULSIFIER',
+    riskLevel: 'LOW',
+    baseRiskWeight: 0,
+    description: 'Synthetic emulsifier derived from vegetable or animal fats used to blend fat and water components.',
+    processingLevel: 'NOVA_4_ULTRA_PROCESSED',
+    regulatoryRecords: [],
+    citations: []
   }
 ];

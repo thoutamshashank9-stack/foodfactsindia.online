@@ -175,12 +175,27 @@ export const TransparencyReportView: React.FC<TransparencyReportViewProps> = ({ 
               Transparency Score & Grade
             </div>
             
-            <ScoreGauge
-              score={report.deterministicScore}
-              grade={report.executiveSummary.grade}
-              size="lg"
-              issuesCount={unifiedFindings.length}
-            />
+            {report.isScoreWithheld ? (
+              <div className="p-4 rounded-2xl bg-amber-50 dark:bg-amber-950/50 border border-amber-300 dark:border-amber-800 text-amber-900 dark:text-amber-200 space-y-2 text-center">
+                <div className="flex items-center justify-center gap-1.5 text-xs font-extrabold text-amber-700 dark:text-amber-300 uppercase tracking-wider">
+                  <ShieldAlert className="w-4 h-4 text-amber-600 dark:text-amber-400" />
+                  <span>Score Withheld</span>
+                </div>
+                <div className="text-2xl font-black text-amber-800 dark:text-amber-200">
+                  N/A
+                </div>
+                <p className="text-[11px] leading-snug font-medium text-amber-800/90 dark:text-amber-300/90">
+                  {report.scoreWithheldReason || 'Insufficient label data: Ingredients or nutrition facts are pending manufacturer verification.'}
+                </p>
+              </div>
+            ) : (
+              <ScoreGauge
+                score={report.deterministicScore}
+                grade={report.executiveSummary.grade}
+                size="lg"
+                issuesCount={unifiedFindings.length}
+              />
+            )}
 
             <button
               onClick={() => setIsMethodologyOpen(true)}

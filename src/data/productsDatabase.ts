@@ -404,5 +404,79 @@ export const PRESEEDED_PRODUCTS: TransparencyReport[] = [
         lastUpdated: 'August 2026'
       }
     };
+  })(),
+
+  (() => {
+    const rawIngs = [
+      { ingredient: findIng('ing_cereal_extract'), rawName: 'Cereal Extract (Malt Barley & Wheat) (44%)', position: 1, isControversial: false },
+      { ingredient: findIng('ing_sugar'), rawName: 'Refined Sugar (32g Added Sugar per 100g)', position: 2, isControversial: true },
+      { ingredient: findIng('ing_cocoa_solids'), rawName: 'Cocoa Solids (10%)', position: 3, isControversial: false },
+      { ingredient: findIng('ing_milk_solids'), rawName: 'Milk Solids', position: 4, isControversial: false },
+      { ingredient: findIng('ing_e150c'), rawName: 'Ammonia Caramel (INS 150c)', position: 5, isControversial: true },
+      { ingredient: findIng('ing_e471'), rawName: 'Emulsifiers (INS 322, INS 471)', position: 6, isControversial: false },
+      { ingredient: findIng('ing_e330'), rawName: 'Raising Agent (INS 500(ii)) & Salt', position: 7, isControversial: false }
+    ];
+
+    const nutrition = {
+      calories: 393,
+      servingSize: '100g',
+      totalFatG: 1.8,
+      saturatedFatG: 0.9,
+      transFatG: 0.0,
+      sodiumMg: 136,
+      totalCarbsG: 85.2,
+      fiberG: 1.5,
+      totalSugarG: 37.0,
+      addedSugarG: 32.0,
+      proteinG: 7.0,
+      micronutrients: [
+        { name: 'Calcium', amount: '350mg', dvPercentage: 35 },
+        { name: 'Iron', amount: '27mg', dvPercentage: 100 },
+        { name: 'Vitamin C', amount: '40mg', dvPercentage: 50 },
+        { name: 'Vitamin D', amount: '5mcg', dvPercentage: 50 }
+      ]
+    };
+
+    const calc = calculateDeterministicScore(rawIngs.map(r => r.ingredient), nutrition);
+
+    return {
+      productId: 'prod_bournvita_07',
+      productName: 'Cadbury Bournvita Chocolate Health Drink (500g PET)',
+      brand: 'Cadbury',
+      manufacturer: 'Mondelez India Foods Pvt Ltd',
+      category: 'Malted Health Drinks & Beverages',
+      barcode: '7622202026423',
+      imageUrl: 'https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=600&auto=format&fit=crop&q=80',
+      packageSize: '500g PET Jar',
+      servingSize: '100g',
+      deterministicScore: calc.finalScore,
+      scoreBreakdown: calc.scoreBreakdown,
+      internationalRatings: calculateInternationalRatings(nutrition, 'Malted Health Drinks', rawIngs.map(i => i.ingredient), '100g'),
+      executiveSummary: {
+        grade: calc.grade,
+        verdictTitle: 'High Added Sugar Load (32g/100g) & Ammonia Caramel Color (INS 150c)',
+        keyTakeaways: [
+          'Contains 32g Added Sugar per 100g (exceeds single-serving heuristic limits by 27g).',
+          'Triggers EXCESO AZÚCARES (High Sugar) warning under Mexican NOM-051 rules (37.6% of calories from sugar).',
+          'Contains Ammonia Caramel Color (INS 150c) and Emulsifiers INS 322 / INS 471.'
+        ],
+        riskSummaryText: 'Receives significant score deductions due to high sugar density (32g added sugar per 100g) and Class III caramel color additive.',
+        processingNovaClass: 4
+      },
+      ingredientsList: rawIngs,
+      nutrition,
+      globalRegulatoryOverview: [
+        { countryCode: 'IN', countryName: 'India (FSSAI)', flagEmoji: '🇮🇳', bannedCount: 0, restrictedCount: 2, approvedCount: 5 },
+        { countryCode: 'EU', countryName: 'European Union (EFSA)', flagEmoji: '🇪🇺', bannedCount: 0, restrictedCount: 2, approvedCount: 5 },
+        { countryCode: 'US', countryName: 'United States (FDA)', flagEmoji: '🇺🇸', bannedCount: 0, restrictedCount: 2, approvedCount: 5 },
+        { countryCode: 'JP', countryName: 'Japan (MHLW)', flagEmoji: '🇯🇵', bannedCount: 0, restrictedCount: 2, approvedCount: 5 }
+      ],
+      evidenceConfidence: {
+        confidenceScore: 98,
+        peerReviewedStudiesCount: 16,
+        regulatoryBodiesCount: 4,
+        lastUpdated: 'August 2026'
+      }
+    };
   })()
 ];

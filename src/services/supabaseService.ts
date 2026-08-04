@@ -706,6 +706,15 @@ export async function mapProductToReport(p: any): Promise<TransparencyReport> {
     return true;
   });
 
+  // Data Completeness Gating Check
+  const hasPlaceholderIngredients = ingredientsList.some(i => 
+    i.rawName.toLowerCase().includes('declared ingredients list') || 
+    i.ingredient.canonicalName.toLowerCase().includes('standard ingredients')
+  );
+  const isNutritionEmpty = nutrition.calories === 0 && nutrition.totalCarbsG === 0 && nutrition.totalSugarG === 0 && nutrition.totalFatG === 0;
+
+  const isDataIncomplete = hasPlaceholderIngredients || isNutritionEmpty;
+
   // Calculate score using standard scoring engine
   const scoreResult = calculateDeterministicScore(ingredientsList.map(i => i.ingredient), nutrition);
 
@@ -897,8 +906,12 @@ export async function mapProductToReport(p: any): Promise<TransparencyReport> {
     imageNutritionUrl: p.image_nutrition_url || undefined,
     packageSize: p.quantity ? (String(p.quantity).toLowerCase().includes('pack') ? String(p.quantity) : `${p.quantity} Pack`) : '100g Pack',
     servingSize: p.serving_size || p.quantity || '100g',
-    deterministicScore: scoreResult.finalScore,
+    deterministicScore: isDataIncomplete ? 0 : scoreResult.finalScore,
     scoreBreakdown: scoreResult.scoreBreakdown,
+    isScoreWithheld: isDataIncomplete,
+    scoreWithheldReason: isDataIncomplete 
+      ? 'Insufficient source data: Ingredients or nutrition facts are unparsed or pending manufacturer verification.'
+      : undefined,
     internationalRatings: calculateInternationalRatings(
       nutrition, 
       p.categories || '', 

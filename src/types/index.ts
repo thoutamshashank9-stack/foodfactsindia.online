@@ -149,6 +149,8 @@ export interface TransparencyReport {
   
   deterministicScore: number;
   scoreBreakdown: ScoreBreakdownItem[];
+  isScoreWithheld?: boolean;
+  scoreWithheldReason?: string;
 
   internationalRatings?: InternationalRatings;
   
