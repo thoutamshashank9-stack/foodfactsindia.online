@@ -22,6 +22,9 @@ import { ScoreGauge } from './ScoreGauge';
 import { ScoreBreakdownModal } from './ScoreBreakdownModal';
 import { EvidenceDrawerModal } from './EvidenceDrawerModal';
 import { ProductImage } from './ProductImage';
+import { GlobalRatingsStrip } from './GlobalRatingsStrip';
+import { LatAmOctagonBadge } from './LatAmOctagonBadge';
+import { InternationalMethodologyModal } from './InternationalMethodologyModal';
 
 interface TransparencyReportViewProps {
   report: TransparencyReport;
@@ -32,6 +35,7 @@ export const TransparencyReportView: React.FC<TransparencyReportViewProps> = ({ 
   const [activeTab, setActiveTab] = useState<'ingredients' | 'nutrition' | 'regulatory' | 'science'>('ingredients');
   const [expandedIngId, setExpandedIngId] = useState<string | null>(null);
   const [isMethodologyOpen, setIsMethodologyOpen] = useState(false);
+  const [isIntlModalOpen, setIsIntlModalOpen] = useState(false);
   const [showAllFindings, setShowAllFindings] = useState(false);
   const [isDisclaimerOpen, setIsDisclaimerOpen] = useState(false);
   const [copied, setCopied] = useState(false);
@@ -189,8 +193,23 @@ export const TransparencyReportView: React.FC<TransparencyReportViewProps> = ({ 
 
         </div>
 
+        {/* Global Ratings Strip */}
+        <div className="mt-8">
+          <GlobalRatingsStrip
+            ratings={report.internationalRatings}
+            foodfactsScore={report.deterministicScore}
+            onOpenMethodology={() => setIsIntlModalOpen(true)}
+          />
+        </div>
+
         {/* 3. Unified Key Findings & Concerns (Top 3 + Progressive Disclosure Accordion) */}
-        <div className="mt-8 pt-6 border-t border-slate-100 dark:border-slate-800">
+        <div className="mt-8 pt-6 border-t border-slate-100 dark:border-slate-800 space-y-4">
+          
+          {/* LatAm Black Octagons */}
+          {report.internationalRatings?.warningOctagons && report.internationalRatings.warningOctagons.length > 0 && (
+            <LatAmOctagonBadge warnings={report.internationalRatings.warningOctagons} />
+          )}
+
           <div className="flex items-center justify-between mb-3">
             <h3 className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
               <ShieldAlert className="w-4 h-4 text-amber-500" />
@@ -668,6 +687,13 @@ export const TransparencyReportView: React.FC<TransparencyReportViewProps> = ({ 
         onClose={() => setSelectedDrawerIngredient(null)}
         ingredient={selectedDrawerIngredient}
         rawName={drawerRawName}
+      />
+
+      {/* International Ratings Methodology Modal */}
+      <InternationalMethodologyModal
+        isOpen={isIntlModalOpen}
+        onClose={() => setIsIntlModalOpen(false)}
+        ratings={report.internationalRatings}
       />
 
     </div>

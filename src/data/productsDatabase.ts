@@ -1,6 +1,7 @@
 import { TransparencyReport } from '../types';
 import { INGREDIENT_DATABASE } from './ingredientsDatabase';
 import { calculateDeterministicScore } from '../services/scoringEngine';
+import { calculateInternationalRatings } from '../services/internationalRatingsEngine';
 
 const findIng = (id: string) => {
   const item = INGREDIENT_DATABASE.find((i) => i.id === id);
@@ -50,6 +51,7 @@ export const PRESEEDED_PRODUCTS: TransparencyReport[] = [
       servingSize: '70g',
       deterministicScore: calc.finalScore,
       scoreBreakdown: calc.scoreBreakdown,
+      internationalRatings: calculateInternationalRatings(nutrition, 'Instant Foods & Noodles', rawIngs.map(i => i.ingredient), '70g'),
       executiveSummary: {
         grade: calc.grade,
         verdictTitle: 'Ultra-Processed Snack with High Sodium & Caramel IV Color',
@@ -112,6 +114,7 @@ export const PRESEEDED_PRODUCTS: TransparencyReport[] = [
       servingSize: '330ml',
       deterministicScore: calc.finalScore,
       scoreBreakdown: calc.scoreBreakdown,
+      internationalRatings: calculateInternationalRatings(nutrition, 'Soft Drinks', rawIngs.map(i => i.ingredient), '330ml'),
       executiveSummary: {
         grade: calc.grade,
         verdictTitle: 'Severe Added Sugar Load & Synthetic Caramel IV Color',
@@ -175,6 +178,7 @@ export const PRESEEDED_PRODUCTS: TransparencyReport[] = [
       servingSize: '100g',
       deterministicScore: calc.finalScore,
       scoreBreakdown: calc.scoreBreakdown,
+      internationalRatings: calculateInternationalRatings(nutrition, 'Snacks & Chips', rawIngs.map(i => i.ingredient), '100g'),
       executiveSummary: {
         grade: calc.grade,
         verdictTitle: 'Contains TBHQ (Banned in Japan) & High Saturated Fat Density',
@@ -304,6 +308,7 @@ export const PRESEEDED_PRODUCTS: TransparencyReport[] = [
       servingSize: '240ml',
       deterministicScore: calc.finalScore,
       scoreBreakdown: calc.scoreBreakdown,
+      internationalRatings: calculateInternationalRatings(nutrition, 'Juices & Beverages', rawIngs.map(i => i.ingredient), '240ml'),
       executiveSummary: {
         grade: calc.grade,
         verdictTitle: 'Clean Label Juice: Zero Added Sugars & High Vitamin C',
@@ -372,6 +377,7 @@ export const PRESEEDED_PRODUCTS: TransparencyReport[] = [
       servingSize: '100g',
       deterministicScore: Math.max(92, calc.finalScore),
       scoreBreakdown: calc.scoreBreakdown,
+      internationalRatings: calculateInternationalRatings(nutrition, 'Pasta, Noodles & Staples', rawIngs.map(i => i.ingredient), '100g'),
       executiveSummary: {
         grade: 'A',
         verdictTitle: 'Clean Staple: 100% Hard Wheat Semolina Fortified with Essential Minerals',

@@ -118,6 +118,20 @@ export const ProductComparison: React.FC<ProductComparisonProps> = ({ products =
             <div className="space-y-3 text-xs divide-y divide-slate-100 dark:divide-slate-800">
               
               <div className="pt-2 flex justify-between items-center">
+                <span className="text-slate-500 dark:text-slate-400 font-medium">EU Nutri-Score (2024)</span>
+                <span className="font-mono font-extrabold px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white">
+                  Grade {product.internationalRatings?.nutriScore.grade || 'N/A'}
+                </span>
+              </div>
+
+              <div className="pt-2 flex justify-between items-center">
+                <span className="text-slate-500 dark:text-slate-400 font-medium">LatAm Warning Octagons</span>
+                <span className="font-mono font-bold text-slate-900 dark:text-white">
+                  {product.internationalRatings?.warningOctagons.length || 0} octagons
+                </span>
+              </div>
+
+              <div className="pt-2 flex justify-between items-center">
                 <span className="text-slate-500 dark:text-slate-400 font-medium">Added Sugar</span>
                 <span className={`font-mono font-bold ${
                   product.nutrition.addedSugarG > 5 ? 'text-rose-600 dark:text-rose-400' : 'text-emerald-600 dark:text-emerald-400'

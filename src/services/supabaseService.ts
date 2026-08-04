@@ -1,6 +1,7 @@
 import { createClient } from '@supabase/supabase-js';
 import { TransparencyReport, Ingredient, NutritionFacts, ResolvedItem } from '../types';
 import { calculateDeterministicScore } from './scoringEngine';
+import { calculateInternationalRatings } from './internationalRatingsEngine';
 import { INGREDIENT_DATABASE } from '../data/ingredientsDatabase';
 import { analyzeRawIngredientLabel } from './aiAnalyzerService';
 import { PRESEEDED_PRODUCTS } from '../data/productsDatabase';
@@ -898,6 +899,12 @@ export async function mapProductToReport(p: any): Promise<TransparencyReport> {
     servingSize: p.serving_size || p.quantity || '100g',
     deterministicScore: scoreResult.finalScore,
     scoreBreakdown: scoreResult.scoreBreakdown,
+    internationalRatings: calculateInternationalRatings(
+      nutrition, 
+      p.categories || '', 
+      ingredientsList.map(i => i.ingredient), 
+      p.serving_size || p.quantity || '100g'
+    ),
     executiveSummary: {
       grade: scoreResult.grade,
       verdictTitle: `${p.product_name} - ${scoreResult.grade} Quality Rating`,

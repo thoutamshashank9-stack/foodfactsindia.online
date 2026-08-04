@@ -82,6 +82,54 @@ export interface ScoreBreakdownItem {
   authoritySource: string;
 }
 
+export type NutriScoreGrade = 'A' | 'B' | 'C' | 'D' | 'E';
+export type FdaSeverityLevel = 'LOW' | 'MED' | 'HIGH';
+
+export interface NutriScoreResult {
+  grade: NutriScoreGrade;
+  score: number; // Raw points (-15 to +40)
+  negativePoints: number;
+  positivePoints: number;
+  isBeverage: boolean;
+  breakdown: {
+    energyPoints: number;
+    sugarsPoints: number;
+    satFatPoints: number;
+    sodiumPoints: number;
+    fiberPoints: number;
+    proteinPoints: number;
+    fvlnPoints: number; // Fruits, Veggies, Legumes, Nuts %
+  };
+}
+
+export interface FdaFrontOfPackageResult {
+  saturatedFat: { level: FdaSeverityLevel; dvPercentage: number; gramsPerServing: number };
+  sodium: { level: FdaSeverityLevel; dvPercentage: number; mgPerServing: number };
+  addedSugar: { level: FdaSeverityLevel; dvPercentage: number; gramsPerServing: number };
+}
+
+export type LatAmWarningId = 
+  | 'HIGH_SUGAR' 
+  | 'HIGH_SODIUM' 
+  | 'HIGH_SAT_FAT' 
+  | 'HIGH_CALORIES' 
+  | 'HIGH_TRANS_FAT' 
+  | 'CONTAINS_SWEETENERS'
+  | 'CONTAINS_CAFFEINE';
+
+export interface LatAmOctagonWarning {
+  id: LatAmWarningId;
+  label: string;
+  subtitle: string;
+  thresholdDeclared: string;
+}
+
+export interface InternationalRatings {
+  nutriScore: NutriScoreResult;
+  fdaLabel: FdaFrontOfPackageResult;
+  warningOctagons: LatAmOctagonWarning[];
+}
+
 export interface TransparencyReport {
   productId: string;
   productName: string;
@@ -100,6 +148,8 @@ export interface TransparencyReport {
   
   deterministicScore: number;
   scoreBreakdown: ScoreBreakdownItem[];
+
+  internationalRatings?: InternationalRatings;
   
   executiveSummary: {
     grade: 'A+' | 'A' | 'B' | 'C' | 'D' | 'F';
