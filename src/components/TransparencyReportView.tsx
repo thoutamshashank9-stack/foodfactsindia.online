@@ -25,6 +25,7 @@ import { ProductImage } from './ProductImage';
 import { GlobalRatingsStrip } from './GlobalRatingsStrip';
 import { LatAmOctagonBadge } from './LatAmOctagonBadge';
 import { InternationalMethodologyModal } from './InternationalMethodologyModal';
+import { UnverifiedProductStubView } from './UnverifiedProductStubView';
 
 interface TransparencyReportViewProps {
   report: TransparencyReport;
@@ -32,6 +33,11 @@ interface TransparencyReportViewProps {
 }
 
 export const TransparencyReportView: React.FC<TransparencyReportViewProps> = ({ report, onBackToSearch }) => {
+  // Hard Render Contract: If pageState is not verified_published, render Stub View ONLY
+  if (report.pageState && report.pageState !== 'verified_published' || report.isScoreWithheld) {
+    return <UnverifiedProductStubView report={report} onBack={onBackToSearch} />;
+  }
+
   const [activeTab, setActiveTab] = useState<'ingredients' | 'nutrition' | 'regulatory' | 'science'>('ingredients');
   const [expandedIngId, setExpandedIngId] = useState<string | null>(null);
   const [isMethodologyOpen, setIsMethodologyOpen] = useState(false);

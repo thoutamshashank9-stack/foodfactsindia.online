@@ -906,33 +906,35 @@ export async function mapProductToReport(p: any): Promise<TransparencyReport> {
     imageNutritionUrl: p.image_nutrition_url || undefined,
     packageSize: p.quantity ? (String(p.quantity).toLowerCase().includes('pack') ? String(p.quantity) : `${p.quantity} Pack`) : '100g Pack',
     servingSize: p.serving_size || p.quantity || '100g',
+    pageState: isDataIncomplete ? 'insufficient_data' : 'verified_published',
+    stateMessage: isDataIncomplete ? 'We do not have enough verified package data to analyze this product yet.' : 'Verified package label report.',
     deterministicScore: isDataIncomplete ? 0 : scoreResult.finalScore,
-    scoreBreakdown: scoreResult.scoreBreakdown,
+    scoreBreakdown: isDataIncomplete ? [] : scoreResult.scoreBreakdown,
     isScoreWithheld: isDataIncomplete,
     scoreWithheldReason: isDataIncomplete 
       ? 'Insufficient source data: Ingredients or nutrition facts are unparsed or pending manufacturer verification.'
       : undefined,
-    internationalRatings: calculateInternationalRatings(
+    internationalRatings: isDataIncomplete ? undefined : calculateInternationalRatings(
       nutrition, 
       p.categories || '', 
       ingredientsList.map(i => i.ingredient), 
       p.serving_size || p.quantity || '100g'
     ),
     executiveSummary: {
-      grade: scoreResult.grade,
-      verdictTitle: `${p.product_name} - ${scoreResult.grade} Quality Rating`,
-      keyTakeaways: [
+      grade: isDataIncomplete ? 'F' : scoreResult.grade,
+      verdictTitle: isDataIncomplete ? 'Verification Pending' : `${p.product_name} - ${scoreResult.grade} Quality Rating`,
+      keyTakeaways: isDataIncomplete ? [] : [
         `Contains ${additiveCodes.length} declared additive E-numbers (${additiveCodes.join(', ') || 'None'}).`,
         `Nutrient Profile: ${nutrition.totalSugarG}g Sugar, ${nutrition.sodiumMg}mg Sodium per 100g.`,
         `NOVA Classification: Group ${p.nova_group || 4} Ultra-processed food item.`
       ],
-      riskSummaryText: `Live verified dataset analysis from Supabase database for ${p.product_name}.`,
-      processingNovaClass: p.nova_group || 4
+      riskSummaryText: isDataIncomplete ? 'Package evidence pending verification.' : `Live verified dataset analysis from Supabase database for ${p.product_name}.`,
+      processingNovaClass: isDataIncomplete ? 0 : (p.nova_group || 4)
     },
-    ingredientsList,
+    ingredientsList: isDataIncomplete ? [] : ingredientsList,
     nutrition,
-    whoNutritionFlags,
-    labelWarnings,
+    whoNutritionFlags: isDataIncomplete ? undefined : whoNutritionFlags,
+    labelWarnings: isDataIncomplete ? undefined : labelWarnings,
     globalRegulatoryOverview,
     evidenceConfidence: {
       confidenceScore: 98,

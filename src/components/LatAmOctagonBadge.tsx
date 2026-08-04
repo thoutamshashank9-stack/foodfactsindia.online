@@ -11,6 +11,8 @@ export const LatAmOctagonBadge: React.FC<LatAmOctagonBadgeProps> = ({
   warnings,
   onOpenMethodology,
 }) => {
+  if (!warnings) return null;
+
   const [selectedCountry, setSelectedCountry] = useState<'MX' | 'CL'>('MX');
 
   const countryInfo = selectedCountry === 'MX'

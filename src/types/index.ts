@@ -131,6 +131,14 @@ export interface InternationalRatings {
   warningOctagons: LatAmOctagonWarning[];
 }
 
+export type PageState = 
+  | 'awaiting_images'
+  | 'processing'
+  | 'insufficient_data'
+  | 'needs_review'
+  | 'verified_published'
+  | 'superseded';
+
 export interface TransparencyReport {
   productId: string;
   productName: string;
@@ -147,6 +155,10 @@ export interface TransparencyReport {
   packageSize: string;
   servingSize: string;
   
+  pageState?: PageState;
+  stateMessage?: string;
+  failureCode?: string;
+
   deterministicScore: number;
   scoreBreakdown: ScoreBreakdownItem[];
   isScoreWithheld?: boolean;

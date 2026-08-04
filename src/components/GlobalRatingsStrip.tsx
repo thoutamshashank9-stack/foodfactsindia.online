@@ -27,7 +27,7 @@ export const GlobalRatingsStrip: React.FC<GlobalRatingsStripProps> = ({
   foodfactsScore,
   onOpenMethodology,
 }) => {
-  if (!ratings) return null;
+  if (!ratings || !ratings.nutriScore || !ratings.fdaLabel) return null;
 
   const { nutriScore, fdaLabel } = ratings;
   const grade = nutriScore.grade;
