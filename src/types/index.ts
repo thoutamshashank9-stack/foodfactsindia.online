@@ -119,9 +119,10 @@ export type LatAmWarningId =
 
 export interface LatAmOctagonWarning {
   id: LatAmWarningId;
-  label: string;
-  subtitle: string;
-  thresholdDeclared: string;
+  mexicoLabel: string; // e.g. "EXCESO SODIO"
+  chileLabel: string;  // e.g. "ALTO EN SODIO"
+  englishSubtitle: string; // e.g. "High in Sodium"
+  thresholdDeclared: string; // e.g. "≥ 1mg/kcal or ≥ 300mg/100g"
 }
 
 export interface InternationalRatings {

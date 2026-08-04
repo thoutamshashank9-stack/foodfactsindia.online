@@ -29,11 +29,14 @@ const sodaNutri = calculateNutriScore(sodaNutrition, 'Soft Drinks', sodaIngs);
 const sodaOctagons = calculateLatAmOctagons(sodaNutrition, sodaIngs);
 const sodaFda = calculateFdaFrontOfPackage(sodaNutrition, '330ml');
 
+const sugarOctagon = sodaOctagons.find(o => o.id === 'HIGH_SUGAR');
 console.assert(sodaNutri.grade === 'E', `Expected Soda Nutri-Score E, got ${sodaNutri.grade}`);
-console.assert(sodaOctagons.some(o => o.id === 'HIGH_SUGAR'), 'Expected Soda to trigger HIGH_SUGAR octagon');
+console.assert(sugarOctagon !== undefined, 'Expected Soda to trigger HIGH_SUGAR octagon');
+console.assert(sugarOctagon?.mexicoLabel === 'EXCESO AZÚCARES', `Expected Mexico label EXCESO AZÚCARES, got ${sugarOctagon?.mexicoLabel}`);
+console.assert(sugarOctagon?.chileLabel === 'ALTO EN AZÚCARES', `Expected Chile label ALTO EN AZÚCARES, got ${sugarOctagon?.chileLabel}`);
 console.assert(sodaFda.addedSugar.level === 'HIGH', `Expected Soda FDA Added Sugar HIGH, got ${sodaFda.addedSugar.level}`);
 
-console.log('✅ TEST 1 PASSED: Sugary Soda correctly rated Nutri-Score E, LatAm High Sugar, FDA High Sugar');
+console.log('✅ TEST 1 PASSED: Sugary Soda correctly rated Nutri-Score E, LatAm High Sugar (Mexico & Chile labels), FDA High Sugar');
 
 // TEST 2: Diet Soda with Sucralose
 const dietSodaNutrition: NutritionFacts = {

@@ -109,7 +109,7 @@ export const InternationalMethodologyModal: React.FC<InternationalMethodologyMod
                 {warningOctagons.map((w) => (
                   <div key={w.id} className="p-2.5 rounded-lg bg-slate-100 dark:bg-slate-800 flex justify-between items-center text-[11px]">
                     <div>
-                      <span className="font-bold text-slate-900 dark:text-white">{w.label} ({w.subtitle})</span>
+                      <span className="font-bold text-slate-900 dark:text-white">{w.mexicoLabel} / {w.chileLabel} ({w.englishSubtitle})</span>
                     </div>
                     <span className="font-mono text-slate-500 dark:text-slate-400">{w.thresholdDeclared}</span>
                   </div>

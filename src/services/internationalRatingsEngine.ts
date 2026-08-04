@@ -258,8 +258,9 @@ export function calculateLatAmOctagons(
   if (calories >= 275) {
     warnings.push({
       id: 'HIGH_CALORIES',
-      label: 'EXCESO CALORÍAS',
-      subtitle: 'High in Calories',
+      mexicoLabel: 'EXCESO CALORÍAS',
+      chileLabel: 'ALTO EN CALORÍAS',
+      englishSubtitle: 'High in Calories',
       thresholdDeclared: '≥ 275 kcal / 100g'
     });
   }
@@ -268,8 +269,9 @@ export function calculateLatAmOctagons(
   if (totalSugars >= 10 || (calories > 0 && (sugarCalories / calories) >= 0.10)) {
     warnings.push({
       id: 'HIGH_SUGAR',
-      label: 'EXCESO AZÚCARES',
-      subtitle: 'High in Sugars',
+      mexicoLabel: 'EXCESO AZÚCARES',
+      chileLabel: 'ALTO EN AZÚCARES',
+      englishSubtitle: 'High in Sugars',
       thresholdDeclared: '≥ 10% of total energy or ≥ 10g/100g'
     });
   }
@@ -278,8 +280,9 @@ export function calculateLatAmOctagons(
   if (satFat >= 4 || (calories > 0 && (satFatCalories / calories) >= 0.10)) {
     warnings.push({
       id: 'HIGH_SAT_FAT',
-      label: 'EXCESO GRASAS SATURADAS',
-      subtitle: 'High in Saturated Fat',
+      mexicoLabel: 'EXCESO GRASAS SATURADAS',
+      chileLabel: 'ALTO EN GRASAS SATURADAS',
+      englishSubtitle: 'High in Saturated Fat',
       thresholdDeclared: '≥ 10% of total energy or ≥ 4g/100g'
     });
   }
@@ -288,8 +291,9 @@ export function calculateLatAmOctagons(
   if (sodium >= 300 || (calories > 0 && sodium / calories >= 1.0)) {
     warnings.push({
       id: 'HIGH_SODIUM',
-      label: 'EXCESO SODIO',
-      subtitle: 'High in Sodium',
+      mexicoLabel: 'EXCESO SODIO',
+      chileLabel: 'ALTO EN SODIO',
+      englishSubtitle: 'High in Sodium',
       thresholdDeclared: '≥ 1mg/kcal or ≥ 300mg/100g'
     });
   }
@@ -298,8 +302,9 @@ export function calculateLatAmOctagons(
   if (transFat > 0 && (calories > 0 && (transFatCalories / calories) >= 0.01)) {
     warnings.push({
       id: 'HIGH_TRANS_FAT',
-      label: 'EXCESO GRASAS TRANS',
-      subtitle: 'High in Trans Fat',
+      mexicoLabel: 'EXCESO GRASAS TRANS',
+      chileLabel: 'ALTO EN GRASAS TRANS',
+      englishSubtitle: 'High in Trans Fat',
       thresholdDeclared: '≥ 1% of total energy'
     });
   }
@@ -308,8 +313,9 @@ export function calculateLatAmOctagons(
   if (hasSweeteners) {
     warnings.push({
       id: 'CONTAINS_SWEETENERS',
-      label: 'CONTIENE EDULCORANTES',
-      subtitle: 'Contains Sweeteners - Avoid in Children',
+      mexicoLabel: 'CONTIENE EDULCORANTES',
+      chileLabel: 'CONTIENE EDULCORANTES',
+      englishSubtitle: 'Contains Sweeteners - Avoid in Children',
       thresholdDeclared: 'Presence of non-nutritive artificial sweeteners'
     });
   }
@@ -318,8 +324,9 @@ export function calculateLatAmOctagons(
   if (hasCaffeine) {
     warnings.push({
       id: 'CONTAINS_CAFFEINE',
-      label: 'CONTIENE CAFEÍNA',
-      subtitle: 'Contains Caffeine - Avoid in Children',
+      mexicoLabel: 'CONTIENE CAFEÍNA',
+      chileLabel: 'CONTIENE CAFEÍNA',
+      englishSubtitle: 'Contains Caffeine - Avoid in Children',
       thresholdDeclared: 'Presence of caffeine'
     });
   }
