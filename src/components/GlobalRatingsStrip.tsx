@@ -152,6 +152,14 @@ export const GlobalRatingsStrip: React.FC<GlobalRatingsStripProps> = ({
 
       </div>
 
+      {/* Cross-System Disambiguation Note */}
+      <div className="p-3.5 rounded-2xl bg-blue-50/60 dark:bg-blue-950/30 border border-blue-200 dark:border-blue-900/50 text-[11px] text-blue-900 dark:text-blue-200 leading-relaxed flex items-start gap-2 font-medium">
+        <Info className="w-4 h-4 text-blue-600 dark:text-blue-400 shrink-0 mt-0.5" />
+        <span>
+          <strong>Methodology Note:</strong> EU Nutri-Score, FoodFactsIndia, and US FDA ratings use independent scientific algorithms (EU energy density ratios vs FSSAI single-serve heuristics vs US FDA %DVs) and evaluate food components separately.
+        </span>
+      </div>
+
     </div>
   );
 };

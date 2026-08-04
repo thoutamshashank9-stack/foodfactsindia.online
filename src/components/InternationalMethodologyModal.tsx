@@ -79,9 +79,9 @@ export const InternationalMethodologyModal: React.FC<InternationalMethodologyMod
                   Positive Points (P = {nutriScore.positivePoints})
                 </div>
                 <ul className="space-y-0.5 text-[11px] font-mono">
-                  <li>• Fiber: -{nutriScore.breakdown.fiberPoints} pts</li>
-                  <li>• Protein: -{nutriScore.breakdown.proteinPoints} pts</li>
-                  <li>• Fruits/Veg/Nuts: -{nutriScore.breakdown.fvlnPoints} pts</li>
+                  <li>• Fiber: +{nutriScore.breakdown.fiberPoints} pts</li>
+                  <li>• Protein: +{nutriScore.breakdown.proteinPoints} pts</li>
+                  <li>• Fruits/Veg/Nuts: +{nutriScore.breakdown.fvlnPoints} pts</li>
                 </ul>
               </div>
             </div>

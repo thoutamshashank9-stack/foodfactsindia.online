@@ -262,9 +262,9 @@ export const TransparencyReportView: React.FC<TransparencyReportViewProps> = ({ 
                       : 'bg-amber-50/70 dark:bg-amber-950/30 border-amber-200 dark:border-amber-900/60 text-amber-900 dark:text-amber-200'
                   }`}
                 >
-                  <div className="flex items-center gap-1.5 font-extrabold text-slate-900 dark:text-white">
-                    <AlertTriangle className={`w-4 h-4 shrink-0 ${finding.severity === 'CRITICAL' ? 'text-rose-600 dark:text-rose-400' : 'text-amber-600 dark:text-amber-400'}`} />
-                    <span className="truncate">{finding.title}</span>
+                  <div className="flex items-start gap-1.5 font-extrabold text-slate-900 dark:text-white">
+                    <AlertTriangle className={`w-4 h-4 shrink-0 mt-0.5 ${finding.severity === 'CRITICAL' ? 'text-rose-600 dark:text-rose-400' : 'text-amber-600 dark:text-amber-400'}`} />
+                    <span className="leading-snug">{finding.title}</span>
                   </div>
                   <p className="text-[11px] opacity-90 leading-relaxed font-semibold">
                     {finding.subtitle}

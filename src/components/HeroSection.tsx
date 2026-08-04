@@ -116,46 +116,61 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                   <span>Searching 19,813 live products in Supabase...</span>
                 </div>
               ) : searchResults.length > 0 ? (
-                searchResults.map((product) => {
-                  const issues = getIssuesCount(product);
-                  return (
-                    <div
-                      key={product.productId}
-                      onClick={() => {
-                        onSelectProduct(product);
-                        setSearchQuery('');
-                      }}
-                      className="p-3.5 hover:bg-blue-50/60 dark:hover:bg-slate-800/80 cursor-pointer flex items-center justify-between transition-colors"
-                    >
-                      <div className="flex items-center gap-3">
-                        <img
-                          src={product.imageUrl}
-                          alt={product.productName}
-                          className="w-12 h-12 rounded-xl object-cover border border-slate-200 dark:border-slate-700"
-                        />
-                        <div>
-                          <h4 className="font-bold text-sm text-slate-900 dark:text-white">
-                            {product.productName}
-                          </h4>
-                          <p className="text-xs text-slate-500 dark:text-slate-400">
-                            {product.brand} • {product.category} (Barcode: {product.barcode})
-                          </p>
+                [...searchResults]
+                  .sort((a, b) => {
+                    const aVerified = a.pageState === 'verified_published' && !a.isScoreWithheld;
+                    const bVerified = b.pageState === 'verified_published' && !b.isScoreWithheld;
+                    if (aVerified && !bVerified) return -1;
+                    if (!aVerified && bVerified) return 1;
+                    return 0;
+                  })
+                  .map((product) => {
+                    const isUnverified = (product.pageState && product.pageState !== 'verified_published') || product.isScoreWithheld;
+                    const issues = getIssuesCount(product);
+                    return (
+                      <div
+                        key={product.productId}
+                        onClick={() => {
+                          onSelectProduct(product);
+                          setSearchQuery('');
+                        }}
+                        className="p-3.5 hover:bg-blue-50/60 dark:hover:bg-slate-800/80 cursor-pointer flex items-center justify-between transition-colors"
+                      >
+                        <div className="flex items-center gap-3">
+                          <img
+                            src={product.imageUrl}
+                            alt={product.productName}
+                            className="w-12 h-12 rounded-xl object-cover border border-slate-200 dark:border-slate-700"
+                          />
+                          <div>
+                            <h4 className="font-bold text-sm text-slate-900 dark:text-white">
+                              {product.productName}
+                            </h4>
+                            <p className="text-xs text-slate-500 dark:text-slate-400">
+                              {product.brand} • {product.category} (Barcode: {product.barcode})
+                            </p>
+                          </div>
+                        </div>
+
+                        <div className="flex items-center gap-2">
+                          {isUnverified ? (
+                            <span className="px-2 py-0.5 rounded text-xs font-bold bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
+                              Incomplete Label
+                            </span>
+                          ) : (
+                            <span className={`px-2 py-0.5 rounded text-xs font-bold ${
+                              issues > 0
+                                ? 'bg-rose-100 text-rose-800 dark:bg-rose-950 dark:text-rose-300'
+                                : 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300'
+                            }`}>
+                              {issues > 0 ? `${issues} Issues Flagged` : 'Clean Label'}
+                            </span>
+                          )}
+                          <ArrowRight className="w-4 h-4 text-slate-400" />
                         </div>
                       </div>
-
-                      <div className="flex items-center gap-2">
-                        <span className={`px-2 py-0.5 rounded text-xs font-bold ${
-                          issues > 0
-                            ? 'bg-rose-100 text-rose-800 dark:bg-rose-950 dark:text-rose-300'
-                            : 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300'
-                        }`}>
-                          {issues > 0 ? `${issues} Issues Flagged` : 'Clean Label'}
-                        </span>
-                        <ArrowRight className="w-4 h-4 text-slate-400" />
-                      </div>
-                    </div>
-                  );
-                })
+                    );
+                  })
               ) : (
                 <div className="p-4 text-center text-xs text-slate-500 dark:text-slate-400 flex flex-col items-center gap-2">
                   <AlertCircle className="w-5 h-5 text-amber-500" />

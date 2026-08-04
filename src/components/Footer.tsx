@@ -1,7 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ShieldCheck, HeartHandshake, Info } from 'lucide-react';
+import { InternationalMethodologyModal } from './InternationalMethodologyModal';
+import { PrivacyTermsModal } from './PrivacyTermsModal';
 
 export const Footer: React.FC = () => {
+  const [isIntlModalOpen, setIsIntlModalOpen] = useState(false);
+  const [isPrivacyModalOpen, setIsPrivacyModalOpen] = useState(false);
+  const [privacyTab, setPrivacyTab] = useState<'privacy' | 'terms' | 'retention'>('privacy');
+
+  const openPrivacyModal = (tab: 'privacy' | 'terms' | 'retention') => {
+    setPrivacyTab(tab);
+    setIsPrivacyModalOpen(true);
+  };
+
   return (
     <footer className="mt-20 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-400 py-12 transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
@@ -46,13 +57,40 @@ export const Footer: React.FC = () => {
             <span>© {new Date().getFullYear()} FoodFactsIndia Intelligence Platform. All rights reserved.</span>
           </div>
           <div className="flex items-center gap-4">
-            <span className="hover:text-slate-900 dark:hover:text-white cursor-pointer">Regulatory Sources</span>
-            <span className="hover:text-slate-900 dark:hover:text-white cursor-pointer">Scoring Methodology</span>
-            <span className="hover:text-slate-900 dark:hover:text-white cursor-pointer">Privacy & Terms</span>
+            <button
+              onClick={() => setIsIntlModalOpen(true)}
+              className="hover:text-slate-900 dark:hover:text-white transition-colors focus:outline-none focus:underline"
+            >
+              Regulatory Sources & Methodology
+            </button>
+            <button
+              onClick={() => openPrivacyModal('privacy')}
+              className="hover:text-slate-900 dark:hover:text-white transition-colors focus:outline-none focus:underline"
+            >
+              Privacy Policy
+            </button>
+            <button
+              onClick={() => openPrivacyModal('terms')}
+              className="hover:text-slate-900 dark:hover:text-white transition-colors focus:outline-none focus:underline"
+            >
+              Terms of Service
+            </button>
           </div>
         </div>
 
       </div>
+
+      {/* Modals */}
+      <InternationalMethodologyModal
+        isOpen={isIntlModalOpen}
+        onClose={() => setIsIntlModalOpen(false)}
+      />
+
+      <PrivacyTermsModal
+        isOpen={isPrivacyModalOpen}
+        onClose={() => setIsPrivacyModalOpen(false)}
+        initialTab={privacyTab}
+      />
     </footer>
   );
 };
