@@ -1028,3 +1028,83 @@ function getBrandImage(brand?: string, name?: string, category?: string): string
   // Fallback high quality food package
   return 'https://images.unsplash.com/photo-1584473457406-6df376d1b80c?w=600&auto=format&fit=crop&q=80';
 }
+
+/**
+ * V2 Discriminated Variant Supplier
+ * Returns exact ProductPageResponse discriminated union preventing data leakages.
+ */
+export async function getProductPage(barcode: string): Promise<import('../types/productPageResponse').ProductPageResponse> {
+  const clean = barcode.trim();
+  const preseeded = PRESEEDED_PRODUCTS.find(p => p.barcode === clean);
+  const report = preseeded || await fetchOpenFoodFactsProduct(clean);
+
+  if (!report) {
+    const dummyIdentity: import('../types/productPageResponse').ProductIdentity = {
+      productId: `prod_stub_${clean}`,
+      barcode: clean,
+      productName: 'Unverified Product',
+      brand: 'Unverified Brand',
+      category: 'Packaged Food',
+      packageSize: 'Unknown',
+      servingSize: '100g'
+    };
+    return {
+      pageState: 'insufficient_data',
+      product: dummyIdentity,
+      stub: { message: 'No package data available for this GTIN.' }
+    };
+  }
+
+  const productIdentity: import('../types/productPageResponse').ProductIdentity = {
+    productId: report.productId,
+    barcode: report.barcode,
+    productName: report.productName,
+    brand: report.brand,
+    manufacturer: report.manufacturer,
+    category: report.category,
+    packageSize: report.packageSize,
+    servingSize: report.servingSize,
+    imageUrl: report.imageUrl
+  };
+
+  if (!report.pageState || report.pageState === 'verified_published' && !report.isScoreWithheld) {
+    return {
+      pageState: 'verified_published',
+      product: productIdentity,
+      verifiedReport: report
+    };
+  }
+
+  if (report.pageState === 'processing') {
+    return {
+      pageState: 'processing',
+      product: productIdentity,
+      progress: { percent: 45, step: 'OCR & Ingredient Token Extraction' }
+    };
+  }
+
+  if (report.pageState === 'needs_review') {
+    return {
+      pageState: 'needs_review',
+      product: productIdentity,
+      stub: { message: report.scoreWithheldReason || 'Data extracted but awaiting quality review.' },
+      reviewReasons: [report.scoreWithheldReason || 'Data validation flag triggered']
+    };
+  }
+
+  if (report.pageState === 'awaiting_images') {
+    return {
+      pageState: 'awaiting_images',
+      product: productIdentity,
+      stub: { message: 'No verified package evidence available yet.' }
+    };
+  }
+
+  return {
+    pageState: 'insufficient_data',
+    product: productIdentity,
+    stub: { message: report.scoreWithheldReason || 'We need more complete package data before analysis.' },
+    reviewReasons: report.scoreWithheldReason ? [report.scoreWithheldReason] : undefined
+  };
+}
+
