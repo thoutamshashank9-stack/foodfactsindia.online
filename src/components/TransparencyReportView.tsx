@@ -193,7 +193,16 @@ export const TransparencyReportView: React.FC<TransparencyReportViewProps> = ({ 
 
         </div>
 
-        {/* 2. Mandatory Health Warning Octagons (Moved directly after Score card) */}
+        {/* 2. Global Ratings Strip (Nutri-Score, FoodFactsIndia, FDA) */}
+        <div className="mt-8">
+          <GlobalRatingsStrip
+            ratings={report.internationalRatings}
+            foodfactsScore={report.deterministicScore}
+            onOpenMethodology={() => setIsIntlModalOpen(true)}
+          />
+        </div>
+
+        {/* 3. Mandatory Health Warning Octagons */}
         {report.internationalRatings?.warningOctagons && (
           <div className="mt-8">
             <LatAmOctagonBadge
@@ -202,15 +211,6 @@ export const TransparencyReportView: React.FC<TransparencyReportViewProps> = ({ 
             />
           </div>
         )}
-
-        {/* 3. Global Ratings Strip (Nutri-Score, FoodFactsIndia, FDA) */}
-        <div className="mt-8">
-          <GlobalRatingsStrip
-            ratings={report.internationalRatings}
-            foodfactsScore={report.deterministicScore}
-            onOpenMethodology={() => setIsIntlModalOpen(true)}
-          />
-        </div>
 
         {/* 4. Unified Key Findings & Concerns (Top 3 + Progressive Disclosure Accordion) */}
         <div className="mt-8 pt-6 border-t border-slate-100 dark:border-slate-800 space-y-4">
