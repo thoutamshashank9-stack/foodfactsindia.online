@@ -141,7 +141,29 @@ export async function getAdditiveFact(
   return null;
 }
 
+/**
+ * Sanitizes any string to display only clean English ASCII text.
+ * Strips non-ASCII characters, multilingual prefixes (en:, fr:, de:, etc.),
+ * and returns the English portion only.
+ */
+function toEnglishOnly(text: string): string {
+  if (!text) return '';
+  // Remove language-prefixed tokens like "fr:biscuits,en:biscuits" -> keep en: part or first value
+  const enMatch = text.match(/\ben:([^,\n;]+)/i);
+  if (enMatch) return enMatch[1].trim().replace(/-/g, ' ');
+  // Remove all language prefixes (fr:, de:, es:, it:, nl:, pt:, ru:, zh:, ja:, ar:, etc.)
+  let clean = text.replace(/\b[a-z]{2}:[^\s,;]+/gi, ' ').trim();
+  // Strip remaining non-printable or non-ASCII characters
+  clean = clean.replace(/[^\x20-\x7E,.()\[\]\/\-%+&'°]/g, ' ');
+  // Collapse extra whitespace
+  clean = clean.replace(/\s{2,}/g, ' ').trim();
+  // Strip leading/trailing commas
+  clean = clean.replace(/^[,;\s]+|[,;\s]+$/g, '').trim();
+  return clean || text.replace(/[^\x20-\x7E]/g, '').trim() || 'Unspecified';
+}
+
 function cleanRawIngredientText(raw: string): string {
+
   if (!raw) return '';
   return raw
     .replace(/<[^>]*>/g, '') // Strip HTML tags like <span class="allergen">
@@ -485,19 +507,20 @@ export async function fetchOpenFoodFactsProduct(barcode: string): Promise<Transp
     const rawIngs = p.ingredients_text.trim();
     const report = analyzeRawIngredientLabel(
       rawIngs,
-      p.product_name || `Scanned Product (${clean})`,
-      p.brands || 'Authentic Brand'
+      toEnglishOnly(p.product_name || `Scanned Product (${clean})`),
+      toEnglishOnly(p.brands || 'Authentic Brand')
     );
 
     report.barcode = clean;
     report.productId = `prod_off_${clean}`;
     report.imageUrl = p.image_front_url || `/api/img/${clean}`;
     report.imageFrontUrl = p.image_front_url || `/api/img/${clean}`;
-    report.category = p.categories || report.category;
+    report.category = toEnglishOnly(p.categories || report.category);
 
     if (p.quantity) {
-      report.packageSize = String(p.quantity).toLowerCase().includes('pack') ? String(p.quantity) : `${p.quantity} Pack`;
-      report.servingSize = String(p.quantity);
+      const qty = toEnglishOnly(String(p.quantity));
+      report.packageSize = qty.toLowerCase().includes('pack') ? qty : `${qty}`;
+      report.servingSize = qty;
     }
 
     if (nutriments['energy-kcal_100g'] != null) {
@@ -997,16 +1020,16 @@ export async function mapProductToReport(p: any): Promise<TransparencyReport> {
 
   const report: TransparencyReport = {
     productId: `prod_live_${barcode}`,
-    productName: p.product_name || 'Unverified Product',
-    brand: p.brands || 'Unspecified Brand',
-    manufacturer: p.manufacturer || p.brands || 'Unspecified Manufacturer',
-    category: p.categories || 'Packaged Food & Beverages',
+    productName: toEnglishOnly(p.product_name || 'Unverified Product'),
+    brand: toEnglishOnly(p.brands || 'Unspecified Brand'),
+    manufacturer: toEnglishOnly(p.manufacturer || p.brands || 'Unspecified Manufacturer'),
+    category: toEnglishOnly(p.categories || 'Packaged Food & Beverages'),
     barcode,
     imageUrl: p.image_front_url || getBrandImage(p.brands, p.product_name, p.categories),
     imageFrontUrl: p.image_front_url || getBrandImage(p.brands, p.product_name, p.categories),
     imageIngredientsUrl: p.image_ingredients_url || undefined,
     imageNutritionUrl: p.image_nutrition_url || undefined,
-    packageSize: p.quantity ? String(p.quantity) : 'Unspecified Size',
+    packageSize: p.quantity ? toEnglishOnly(String(p.quantity)) : 'Unspecified Size',
     servingSize: p.serving_size || p.quantity || '100g',
     pageState: isDataIncomplete ? 'insufficient_data' : 'verified_published',
     stateMessage: isDataIncomplete ? 'We do not have enough verified package data to analyze this product yet.' : 'Verified package label report.',
