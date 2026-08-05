@@ -1,6 +1,7 @@
 import { Ingredient, RegulatoryRecord, ResearchCitation } from '../types';
 import { INGREDIENT_DATABASE } from '../data/ingredientsDatabase';
 import globalAdditivesMaster from '../data/global_additives_master.json';
+import rawIngredientsTaxonomy from '../data/raw_ingredients_taxonomy.json';
 
 export interface CanonicalAdditive {
   id: string;
@@ -166,6 +167,36 @@ function initializeDecoupledIndex() {
 
     syns.forEach(syn => {
       if (syn && syn.length > 0 && !synonymLookupMap.has(syn)) {
+        synonymLookupMap.set(syn, canonical);
+      }
+    });
+  });
+
+  // 3. Index 5,540 Open Food Facts Raw & Whole Food Entities
+  const rawData = rawIngredientsTaxonomy as Record<string, any>;
+  Object.values(rawData).forEach(item => {
+    if (!item || !item.canonical_name) return;
+
+    const canonical: CanonicalAdditive = {
+      id: item.id || `ing_raw_${item.canonical_name.toLowerCase().replace(/\s+/g, '_')}`,
+      primaryName: item.canonical_name,
+      category: 'WHOLE_FOOD',
+      riskLevel: 'LOW',
+      baseRiskWeight: 0,
+      cspiRating: 'SAFE',
+      description: `Natural food ingredient: ${item.canonical_name}.`,
+      processingLevel: 'NOVA_1_UNPROCESSED',
+      regulatoryBans: [],
+      citations: []
+    };
+
+    const syns = new Set<string>([
+      item.canonical_name.toLowerCase(),
+      ...(item.synonyms || []).map((s: string) => s.toLowerCase())
+    ]);
+
+    syns.forEach(syn => {
+      if (syn && syn.length > 2 && !synonymLookupMap.has(syn)) {
         synonymLookupMap.set(syn, canonical);
       }
     });

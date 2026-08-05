@@ -22987,5 +22987,245 @@
       "e472c - estery mono- a diglyceridov mastných kyselín s kyselinou citrónovou",
       "e472c - mono- i diglicerydy kwasów tłuszczowych estryfikowane kwasem cytrynowym"
     ]
+  },
+  "e924a": {
+    "id": "ing_924a",
+    "ins_code": "924a",
+    "e_number": "E924A",
+    "cas_number": "7758-01-2",
+    "primary_name": "Potassium Bromate",
+    "category": "FLOUR_TREATMENT_AGENT",
+    "risk_level": "HIGH",
+    "base_risk_weight": -20,
+    "cspi_rating": "AVOID",
+    "regulatory_bans": [
+      {
+        "jurisdiction_code": "EU",
+        "status": "BANNED",
+        "regulation_ref": "EU Reg 1333/2008",
+        "restriction_details": "Prohibited food additive due to carcinogenicity concerns."
+      },
+      {
+        "jurisdiction_code": "IN",
+        "status": "BANNED",
+        "regulation_ref": "FSSAI Ban 2016",
+        "restriction_details": "Banned in all bakery products by FSSAI in 2016."
+      },
+      {
+        "jurisdiction_code": "US",
+        "status": "RESTRICTED",
+        "regulation_ref": "FDA 21 CFR 172.730",
+        "restriction_details": "Allowed up to 50mg/kg in dough, but voluntary reduction requested."
+      }
+    ],
+    "synonyms": [
+      "potassium bromate",
+      "ins 924a",
+      "e924a"
+    ]
+  },
+  "e443": {
+    "id": "ing_443",
+    "ins_code": "443",
+    "e_number": "E443",
+    "cas_number": "8016-94-2",
+    "primary_name": "Brominated Vegetable Oil (BVO)",
+    "category": "EMULSIFIER",
+    "risk_level": "HIGH",
+    "base_risk_weight": -20,
+    "cspi_rating": "AVOID",
+    "regulatory_bans": [
+      {
+        "jurisdiction_code": "US",
+        "status": "BANNED",
+        "regulation_ref": "FDA Revocation 2024 (21 CFR 184)",
+        "restriction_details": "FDA revoked authorization for use in food due to thyroid toxicity."
+      },
+      {
+        "jurisdiction_code": "EU",
+        "status": "BANNED",
+        "regulation_ref": "EU Reg 1333/2008",
+        "restriction_details": "Not authorized for food use in the European Union."
+      },
+      {
+        "jurisdiction_code": "IN",
+        "status": "BANNED",
+        "regulation_ref": "FSSAI Prohibition Regulations",
+        "restriction_details": "Prohibited in all beverage products."
+      }
+    ],
+    "synonyms": [
+      "brominated vegetable oil (bvo)",
+      "ins 443",
+      "e443"
+    ]
+  },
+  "e320": {
+    "id": "ing_320",
+    "ins_code": "320",
+    "e_number": "E320",
+    "cas_number": "25013-16-5",
+    "primary_name": "Butylated Hydroxyanisole (BHA)",
+    "category": "ANTIOXIDANT",
+    "risk_level": "HIGH",
+    "base_risk_weight": -10,
+    "cspi_rating": "CAUTION",
+    "regulatory_bans": [
+      {
+        "jurisdiction_code": "EU",
+        "status": "RESTRICTED",
+        "regulation_ref": "EU Reg 1333/2008",
+        "restriction_details": "Restricted max limits; under review for endocrine disruption."
+      },
+      {
+        "jurisdiction_code": "JP",
+        "status": "RESTRICTED",
+        "regulation_ref": "Japan Food Sanitation Act",
+        "restriction_details": "Strictly limited to specified fats and oils."
+      }
+    ],
+    "synonyms": [
+      "butylated hydroxyanisole (bha)",
+      "ins 320",
+      "e320"
+    ]
+  },
+  "e321": {
+    "id": "ing_321",
+    "ins_code": "321",
+    "e_number": "E321",
+    "cas_number": "128-37-0",
+    "primary_name": "Butylated Hydroxytoluene (BHT)",
+    "category": "ANTIOXIDANT",
+    "risk_level": "MEDIUM",
+    "base_risk_weight": -8,
+    "cspi_rating": "CAUTION",
+    "regulatory_bans": [
+      {
+        "jurisdiction_code": "EU",
+        "status": "RESTRICTED",
+        "regulation_ref": "EU Reg 1333/2008",
+        "restriction_details": "Restricted concentration limits in fats."
+      },
+      {
+        "jurisdiction_code": "US",
+        "status": "RESTRICTED",
+        "regulation_ref": "FDA 21 CFR 172.115",
+        "restriction_details": "Max 0.02% of fat content."
+      }
+    ],
+    "synonyms": [
+      "butylated hydroxytoluene (bht)",
+      "ins 321",
+      "e321"
+    ]
+  },
+  "e952": {
+    "id": "ing_952",
+    "ins_code": "952",
+    "e_number": "E952",
+    "cas_number": "100-88-9",
+    "primary_name": "Cyclamic Acid & Cyclamates",
+    "category": "ARTIFICIAL_SWEETENER",
+    "risk_level": "HIGH",
+    "base_risk_weight": -15,
+    "cspi_rating": "AVOID",
+    "regulatory_bans": [
+      {
+        "jurisdiction_code": "US",
+        "status": "BANNED",
+        "regulation_ref": "FDA 21 CFR 189.135",
+        "restriction_details": "Banned by US FDA since 1969 due to bladder tumor concerns in animal studies."
+      }
+    ],
+    "synonyms": [
+      "cyclamic acid & cyclamates",
+      "ins 952",
+      "e952"
+    ]
+  },
+  "e927a": {
+    "id": "ing_927a",
+    "ins_code": "927a",
+    "e_number": "E927A",
+    "cas_number": "123-77-3",
+    "primary_name": "Azodicarbonamide (ADA)",
+    "category": "FLOUR_TREATMENT_AGENT",
+    "risk_level": "HIGH",
+    "base_risk_weight": -18,
+    "cspi_rating": "AVOID",
+    "regulatory_bans": [
+      {
+        "jurisdiction_code": "EU",
+        "status": "BANNED",
+        "regulation_ref": "EU Directive 2004/1/EC",
+        "restriction_details": "Banned as food additive due to respiratory asthma concerns."
+      },
+      {
+        "jurisdiction_code": "UK",
+        "status": "BANNED",
+        "regulation_ref": "UK Food Additive Regs",
+        "restriction_details": "Prohibited in dough treatment."
+      },
+      {
+        "jurisdiction_code": "US",
+        "status": "RESTRICTED",
+        "regulation_ref": "FDA 21 CFR 172.806",
+        "restriction_details": "Permitted up to 45 ppm."
+      }
+    ],
+    "synonyms": [
+      "azodicarbonamide (ada)",
+      "ins 927a",
+      "e927a"
+    ]
+  },
+  "e216": {
+    "id": "ing_216",
+    "ins_code": "216",
+    "e_number": "E216",
+    "cas_number": "94-13-3",
+    "primary_name": "Propylparaben (Propyl p-hydroxybenzoate)",
+    "category": "PRESERVATIVE",
+    "risk_level": "HIGH",
+    "base_risk_weight": -15,
+    "cspi_rating": "AVOID",
+    "regulatory_bans": [
+      {
+        "jurisdiction_code": "EU",
+        "status": "BANNED",
+        "regulation_ref": "Directive 2006/52/EC",
+        "restriction_details": "Banned in EU foods due to endocrine disrupting effects on sperm counts and testosterone."
+      }
+    ],
+    "synonyms": [
+      "propylparaben (propyl p-hydroxybenzoate)",
+      "ins 216",
+      "e216"
+    ]
+  },
+  "e951": {
+    "id": "ing_951",
+    "ins_code": "951",
+    "e_number": "E951",
+    "cas_number": "22839-47-0",
+    "primary_name": "Aspartame",
+    "category": "ARTIFICIAL_SWEETENER",
+    "risk_level": "HIGH",
+    "base_risk_weight": -12,
+    "cspi_rating": "CAUTION",
+    "regulatory_bans": [
+      {
+        "jurisdiction_code": "CODEX",
+        "status": "RESTRICTED",
+        "regulation_ref": "WHO IARC Group 2B 2023",
+        "restriction_details": "Classified as Possibly Carcinogenic to Humans (Group 2B) by WHO IARC in 2023."
+      }
+    ],
+    "synonyms": [
+      "aspartame",
+      "ins 951",
+      "e951"
+    ]
   }
 }
