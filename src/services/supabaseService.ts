@@ -5,6 +5,7 @@ import { calculateInternationalRatings } from './internationalRatingsEngine';
 import { INGREDIENT_DATABASE } from '../data/ingredientsDatabase';
 import { analyzeRawIngredientLabel } from './aiAnalyzerService';
 import { PRESEEDED_PRODUCTS } from '../data/productsDatabase';
+import { matchDecoupledAdditives, tokenizeRawLabelText } from './decoupledAdditiveService';
 
 const SUPABASE_URL = "https://dempjxsrmnzepxbsnwhg.supabase.co";
 const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRlbXBqeHNybW56ZXB4YnNud2hnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODUzMDQ3NzUsImV4cCI6MjEwMDg4MDc3NX0.SO89axui349_3x3zKloLnYD-UGL8vO_p2VR9MCz_xk4";
@@ -174,49 +175,43 @@ function resolveIngredientFromRaw(rawText: string, position: number): Ingredient
   );
   if (directMatch) return directMatch;
 
-  // 2. Extract potential INS or E numbers (e.g., 503, 500, 322, 471, 472e, e102, e150d)
-  const insRegex = /(?:ins|e)?\s*([0-9]{3,4}[a-z]*)/gi;
-  let match: RegExpExecArray | null;
-  const detectedCodes: string[] = [];
+  // 2. Decoupled Set-Based Token Matching (O(1) complexity with cluster pre-tokenizer)
+  const decoupledMatches = matchDecoupledAdditives(cleaned);
+  if (decoupledMatches.length > 0) {
+    const primary = decoupledMatches[0];
+    const ingredientMatch = INGREDIENT_DATABASE.find(i => i.id === primary.id);
+    if (ingredientMatch) return ingredientMatch;
 
-  while ((match = insRegex.exec(cleaned)) !== null) {
-    if (match[1]) {
-      const code = match[1].toUpperCase();
-      // Filter out pure year digits or percentages like 2021, 100%
-      if (!['100', '200', '500g', '100g'].includes(code)) {
-        detectedCodes.push(code);
-      }
-    }
-  }
-
-  // Check if any detected code matches known database ingredients (prioritizing HIGH risk matches)
-  const matchedIngredients: Ingredient[] = [];
-  for (const code of detectedCodes) {
-    const knownCodeMatch = INGREDIENT_DATABASE.find(
-      k => (k.insNumber && k.insNumber.toUpperCase() === code) ||
-           (k.eNumber && k.eNumber.toUpperCase() === `E${code}`) ||
-           (k.eNumber && k.eNumber.toUpperCase() === code) ||
-           k.synonyms.some(s => s.toUpperCase() === code || s.toUpperCase() === `INS ${code}`)
-    );
-    if (knownCodeMatch && !matchedIngredients.some(m => m.id === knownCodeMatch.id)) {
-      matchedIngredients.push(knownCodeMatch);
-    }
-  }
-
-  if (matchedIngredients.length > 0) {
-    // Sort so HIGH risk additives (e.g. INS 122 Azorubine, INS 102 Tartrazine) take priority over LOW risk (e.g. INS 330 Citric Acid)
-    matchedIngredients.sort((a, b) => {
-      const rank = (r: string) => (r === 'HIGH' ? 3 : r === 'MEDIUM' ? 2 : 1);
-      return rank(b.riskLevel) - rank(a.riskLevel);
-    });
-    return matchedIngredients[0];
+    return {
+      id: primary.id,
+      canonicalName: primary.primaryName,
+      scientificName: primary.chemicalName,
+      synonyms: [primary.primaryName, primary.insCode || '', primary.eNumber || ''].filter(Boolean),
+      insNumber: primary.insCode,
+      eNumber: primary.eNumber,
+      category: primary.category,
+      riskLevel: primary.riskLevel,
+      baseRiskWeight: primary.baseRiskWeight,
+      description: primary.description,
+      processingLevel: primary.processingLevel,
+      regulatoryRecords: primary.regulatoryBans.map(r => ({
+        countryCode: r.jurisdictionCode,
+        countryName: r.jurisdictionCode === 'US' ? 'United States (FDA)' : (r.jurisdictionCode === 'JP' ? 'Japan (MHLW)' : (r.jurisdictionCode === 'EU' ? 'European Union (EFSA)' : 'India (FSSAI)')),
+        flagEmoji: r.jurisdictionCode === 'US' ? '🇺🇸' : (r.jurisdictionCode === 'JP' ? '🇯🇵' : (r.jurisdictionCode === 'EU' ? '🇪🇺' : '🇮🇳')),
+        status: r.status,
+        restrictionDetails: r.restrictionDetails,
+        regulationRef: r.regulationRef
+      })),
+      citations: primary.citations || []
+    };
   }
 
   // 3. Fallback: Check if raw text indicates an additive category
   const isAdditiveText = /raising agent|emulsifier|preservative|antioxidant|flavour enhancer|color|colour|stabiliser|acidity regulator/i.test(cleaned);
 
-  if (isAdditiveText || detectedCodes.length > 0) {
-    const primaryCode = detectedCodes[0] || 'INS Additive';
+  const rawTokens = tokenizeRawLabelText(cleaned);
+  if (isAdditiveText || rawTokens.length > 0) {
+    const primaryCode = rawTokens[0] || 'INS Additive';
     return {
       id: `ing_detected_${position}_${primaryCode}`,
       canonicalName: cleaned,
