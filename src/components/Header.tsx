@@ -34,7 +34,7 @@ export const Header: React.FC<HeaderProps> = ({
   const isMoreTabActive = currentTab === 'analyzer' || currentTab === 'regulatory';
 
   return (
-    <header className="sticky top-0 z-40 w-full glass-card border-b transition-colors bg-white/80 dark:bg-slate-900/80 backdrop-blur-md">
+    <header className="sticky top-0 z-40 w-full glass-card border-b transition-colors bg-white/80 dark:bg-slate-900/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         
         {/* Brand Logo */}

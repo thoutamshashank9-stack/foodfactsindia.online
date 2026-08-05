@@ -26,6 +26,8 @@ import { GlobalRatingsStrip } from './GlobalRatingsStrip';
 import { LatAmOctagonBadge } from './LatAmOctagonBadge';
 import { InternationalMethodologyModal } from './InternationalMethodologyModal';
 import { UnverifiedProductStubView } from './UnverifiedProductStubView';
+import { LabelUploadCard } from './LabelUploadCard';
+
 
 interface TransparencyReportViewProps {
   report: TransparencyReport;
@@ -370,10 +372,18 @@ export const TransparencyReportView: React.FC<TransparencyReportViewProps> = ({ 
                         </span>
 
                         <div>
-                          <div className="flex items-center gap-2">
+                          <div className="flex items-center gap-2 flex-wrap">
                             <span className="font-bold text-sm text-slate-900 dark:text-white">
                               {ingredient.canonicalName}
                             </span>
+                            {/* BANNED pill — optional chaining guards against missing regulatoryRecords */}
+                            {ingredient.regulatoryRecords?.some(
+                              (r) => r.status?.toUpperCase() === 'BANNED'
+                            ) && (
+                              <span className="px-2 py-0.5 rounded-full text-[10px] font-extrabold bg-rose-600 text-white tracking-wide">
+                                BANNED
+                              </span>
+                            )}
                             {ingredient.eNumber && (
                               <span className="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 font-mono text-[10px] font-bold text-slate-600 dark:text-slate-300">
                                 {ingredient.eNumber}
@@ -455,7 +465,7 @@ export const TransparencyReportView: React.FC<TransparencyReportViewProps> = ({ 
                                   <div className="font-semibold text-blue-600 dark:text-blue-400 flex items-center justify-between">
                                     <span>{c.title} ({c.year})</span>
                                     <a
-                                      href={`https://doi.org/${c.doi}`}
+                                      href={c.doi?.startsWith('http') ? c.doi : `https://doi.org/${c.doi}`}
                                       target="_blank"
                                       rel="noreferrer"
                                       className="hover:underline flex items-center gap-1 text-[10px]"
@@ -508,7 +518,10 @@ export const TransparencyReportView: React.FC<TransparencyReportViewProps> = ({ 
               <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-center">
                 <span className="text-xs text-slate-500 font-medium block">Energy</span>
                 <span className="text-2xl font-extrabold text-slate-900 dark:text-white font-mono mt-1 block">
-                  {report.nutrition.calories} <span className="text-xs font-normal">kcal</span>
+                  {report.nutrition.calories != null
+                    ? <>{report.nutrition.calories} <span className="text-xs font-normal">kcal</span></>
+                    : <span className="text-slate-400 text-base">—</span>
+                  }
                 </span>
               </div>
 
@@ -652,12 +665,12 @@ export const TransparencyReportView: React.FC<TransparencyReportViewProps> = ({ 
                       <span>Journal: {citation.journal} ({citation.year})</span>
                       <span>•</span>
                       <a
-                        href={`https://doi.org/${citation.doi}`}
+                        href={citation.doi?.startsWith('http') ? citation.doi : `https://doi.org/${citation.doi}`}
                         target="_blank"
                         rel="noreferrer"
                         className="text-blue-600 dark:text-blue-400 hover:underline flex items-center gap-1 font-mono"
                       >
-                        <span>DOI: {citation.doi}</span>
+                         <span className="truncate max-w-[250px]">{citation.doi?.startsWith('http') ? 'View Source Link' : `DOI: ${citation.doi}`}</span>
                         <ExternalLink className="w-3 h-3" />
                       </a>
                     </div>
@@ -697,7 +710,30 @@ export const TransparencyReportView: React.FC<TransparencyReportViewProps> = ({ 
         )}
       </div>
 
-      {/* Score Breakdown Modal */}
+      {/* ── Secondary data-contribution block for verified products ─────── */}
+      <div className="rounded-3xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/60 overflow-hidden">
+        <details className="group">
+          <summary className="w-full flex items-center justify-between px-5 py-4 text-xs font-bold text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800/60 transition-colors cursor-pointer list-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-inset min-h-[44px]">
+            <div className="flex items-center gap-2">
+              <span aria-hidden="true">📸</span>
+              <span>Found missing or outdated package data? Upload better photos.</span>
+            </div>
+            <ChevronDown className="w-4 h-4 text-slate-400 group-open:rotate-180 transition-transform" />
+          </summary>
+          <div className="px-5 pb-5 pt-1">
+            <p className="text-xs text-slate-500 dark:text-slate-400 mb-4">
+              Help improve this report by uploading clearer or more recent label photos.
+              Your submission will be queued for re-verification.
+            </p>
+            <LabelUploadCard
+              barcode={report.barcode}
+              productId={report.productId}
+            />
+          </div>
+        </details>
+      </div>
+
+
       <ScoreBreakdownModal
         isOpen={isMethodologyOpen}
         onClose={() => setIsMethodologyOpen(false)}

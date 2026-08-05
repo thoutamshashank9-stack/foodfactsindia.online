@@ -41,7 +41,7 @@ export function evaluateRatingGate(
   }
 
   // Gate 3: Field Completeness
-  if (!nutrition.servingSize || nutrition.calories === 0) {
+  if (!nutrition.servingSize || nutrition.calories == null) {
     return { isEligibleForRatings: false, blockReason: 'Incomplete nutrition label data (calories or serving size missing)' };
   }
 

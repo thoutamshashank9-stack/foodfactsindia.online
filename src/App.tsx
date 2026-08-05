@@ -1,16 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo, useCallback, Suspense, lazy } from 'react';
 import { Header } from './components/Header';
 import { HeroSection } from './components/HeroSection';
 import { TransparencyReportView } from './components/TransparencyReportView';
-import { ScanScannerModal } from './components/ScanScannerModal';
-import { CustomLabelAnalyzer } from './components/CustomLabelAnalyzer';
-import { GlobalRegulatoryMatrix } from './components/GlobalRegulatoryMatrix';
-import { ProductComparison } from './components/ProductComparison';
 import { Footer } from './components/Footer';
 import { PRESEEDED_PRODUCTS } from './data/productsDatabase';
 import { TransparencyReport } from './types';
 import { ArrowLeft, Sparkles, Filter, Grid, ShieldAlert, CheckCircle2, Database } from 'lucide-react';
 import { fetchLiveCatalog } from './services/supabaseService';
+
+// Lazy-loaded components for route code-splitting
+const ScanScannerModal = lazy(() => import('./components/ScanScannerModal').then(m => ({ default: m.ScanScannerModal })));
+const CustomLabelAnalyzer = lazy(() => import('./components/CustomLabelAnalyzer').then(m => ({ default: m.CustomLabelAnalyzer })));
+const GlobalRegulatoryMatrix = lazy(() => import('./components/GlobalRegulatoryMatrix').then(m => ({ default: m.GlobalRegulatoryMatrix })));
+const ProductComparison = lazy(() => import('./components/ProductComparison').then(m => ({ default: m.ProductComparison })));
 
 export function App() {
   const [currentTab, setCurrentTab] = useState<'home' | 'analyzer' | 'regulatory' | 'compare'>('home');
@@ -55,28 +57,30 @@ export function App() {
     loadCatalog();
   }, []);
 
-  const handleSelectProduct = (product: TransparencyReport) => {
+  const handleSelectProduct = useCallback((product: TransparencyReport) => {
     setSelectedProduct(product);
     window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+  }, []);
 
-  const handleBackToCatalog = () => {
+  const handleBackToCatalog = useCallback(() => {
     setSelectedProduct(null);
-  };
+  }, []);
 
-  const handleReportGenerated = (report: TransparencyReport) => {
+  const handleReportGenerated = useCallback((report: TransparencyReport) => {
     setSelectedProduct(report);
     setCurrentTab('home');
     window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+  }, []);
 
-  const filteredCatalog = catalogProducts.filter((p) => {
-    if (filterCategory === 'ALL') return true;
-    if (filterCategory === 'NOODLES') return p.category.toLowerCase().includes('noodle');
-    if (filterCategory === 'BEVERAGES') return p.category.toLowerCase().includes('drink') || p.category.toLowerCase().includes('beverage') || p.category.toLowerCase().includes('soft') || p.category.toLowerCase().includes('cola');
-    if (filterCategory === 'SNACKS') return p.category.toLowerCase().includes('snack') || p.category.toLowerCase().includes('chip');
-    return true;
-  });
+  const filteredCatalog = useMemo(() => {
+    return catalogProducts.filter((p) => {
+      if (filterCategory === 'ALL') return true;
+      if (filterCategory === 'NOODLES') return p.category.toLowerCase().includes('noodle');
+      if (filterCategory === 'BEVERAGES') return p.category.toLowerCase().includes('drink') || p.category.toLowerCase().includes('beverage') || p.category.toLowerCase().includes('soft') || p.category.toLowerCase().includes('cola');
+      if (filterCategory === 'SNACKS') return p.category.toLowerCase().includes('snack') || p.category.toLowerCase().includes('chip');
+      return true;
+    });
+  }, [catalogProducts, filterCategory]);
 
   return (
     <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors duration-200">
@@ -218,17 +222,23 @@ export function App() {
 
             {/* TAB 2: CUSTOM OCR ANALYZER */}
             {currentTab === 'analyzer' && (
-              <CustomLabelAnalyzer onReportGenerated={handleReportGenerated} />
+              <Suspense fallback={<div className="p-12 text-center text-slate-500 font-semibold">Loading Analyzer...</div>}>
+                <CustomLabelAnalyzer onReportGenerated={handleReportGenerated} />
+              </Suspense>
             )}
 
             {/* TAB 3: REGULATORY MATRIX */}
             {currentTab === 'regulatory' && (
-              <GlobalRegulatoryMatrix />
+              <Suspense fallback={<div className="p-12 text-center text-slate-500 font-semibold">Loading Matrix...</div>}>
+                <GlobalRegulatoryMatrix />
+              </Suspense>
             )}
 
             {/* TAB 4: PRODUCT COMPARISON */}
             {currentTab === 'compare' && (
-              <ProductComparison products={catalogProducts} onSelectProduct={handleSelectProduct} />
+              <Suspense fallback={<div className="p-12 text-center text-slate-500 font-semibold">Loading Comparison...</div>}>
+                <ProductComparison products={catalogProducts} onSelectProduct={handleSelectProduct} />
+              </Suspense>
             )}
           </>
         )}
@@ -236,11 +246,13 @@ export function App() {
 
       {/* Barcode Scanner Modal */}
       {isScanOpen && (
-        <ScanScannerModal
-          isOpen={isScanOpen}
-          onClose={() => setIsScanOpen(false)}
-          onSelectProduct={handleSelectProduct}
-        />
+        <Suspense fallback={null}>
+          <ScanScannerModal
+            isOpen={isScanOpen}
+            onClose={() => setIsScanOpen(false)}
+            onSelectProduct={handleSelectProduct}
+          />
+        </Suspense>
       )}
 
       {/* Footer */}

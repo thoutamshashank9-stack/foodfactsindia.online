@@ -238,7 +238,9 @@ export function calculateNutriScore(
  */
 export function calculateLatAmOctagons(
   nutrition: NutritionFacts,
-  ingredients: (Ingredient | string)[] = []
+  ingredients: (Ingredient | string)[] = [],
+  category: string = '',
+  servingSize: string = ''
 ): LatAmOctagonWarning[] {
   const warnings: LatAmOctagonWarning[] = [];
   const { hasSweeteners, hasCaffeine } = detectAdditives(ingredients);
@@ -254,14 +256,20 @@ export function calculateLatAmOctagons(
   const satFatCalories = satFat * 9;
   const transFatCalories = transFat * 9;
 
-  // 1. High Calories (Solid foods >= 275 kcal / 100g)
-  if (calories >= 275) {
+  // Liquid beverage detection (Mexican NOM-051 / Chilean Law 20.606)
+  const effServingSize = servingSize || nutrition.servingSize || '';
+  const isLiquid = /beverage|drink|juice|soda|water|tea|coffee|milkshake|syrup|fluid|liquid/i.test(category) ||
+                   /ml|l\b|fl\s*oz/i.test(effServingSize);
+  const calorieThreshold = isLiquid ? 70 : 275;
+
+  // 1. High Calories (Solid foods >= 275 kcal / 100g, Liquid beverages >= 70 kcal / 100ml)
+  if (calories >= calorieThreshold) {
     warnings.push({
       id: 'HIGH_CALORIES',
       mexicoLabel: 'EXCESO CALORÍAS',
       chileLabel: 'ALTO EN CALORÍAS',
       englishSubtitle: 'High in Calories',
-      thresholdDeclared: '≥ 275 kcal / 100g'
+      thresholdDeclared: isLiquid ? '≥ 70 kcal / 100ml' : '≥ 275 kcal / 100g'
     });
   }
 
@@ -388,6 +396,6 @@ export function calculateInternationalRatings(
   return {
     nutriScore: calculateNutriScore(nutrition, category, ingredients),
     fdaLabel: calculateFdaFrontOfPackage(nutrition, servingSize),
-    warningOctagons: calculateLatAmOctagons(nutrition, ingredients),
+    warningOctagons: calculateLatAmOctagons(nutrition, ingredients, category, servingSize),
   };
 }

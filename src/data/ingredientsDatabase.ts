@@ -552,5 +552,127 @@ export const INGREDIENT_DATABASE: Ingredient[] = [
     processingLevel: 'NOVA_4_ULTRA_PROCESSED',
     regulatoryRecords: [],
     citations: []
+  },
+  {
+    id: 'ing_e322',
+    canonicalName: 'Soy Lecithin (INS 322)',
+    scientificName: 'Phosphatidylcholine from Glycine max',
+    synonyms: ['Lecithin', 'INS 322', 'E322', 'Soya Lecithin', 'Sunflower Lecithin'],
+    insNumber: '322',
+    eNumber: 'E322',
+    category: 'EMULSIFIER',
+    riskLevel: 'LOW',
+    baseRiskWeight: 0,
+    description: 'Natural phospholipid emulsifier derived from soybeans or sunflowers. Generally recognized as safe (GRAS). Minor allergen concern for severe soy allergy sufferers.',
+    processingLevel: 'NOVA_3_PROCESSED_FOOD',
+    regulatoryRecords: [
+      {
+        countryCode: 'IN',
+        countryName: 'India (FSSAI)',
+        flagEmoji: '🇮🇳',
+        status: 'APPROVED',
+        restrictionDetails: 'Permitted emulsifier in most food categories under FSSAI.',
+        regulationRef: 'FSSAI Food Additives Regulations 2011'
+      },
+      {
+        countryCode: 'EU',
+        countryName: 'European Union (EFSA)',
+        flagEmoji: '🇪🇺',
+        status: 'APPROVED',
+        restrictionDetails: 'Quantum satis in most food categories. No ADI specified (safe at normal use levels).',
+        regulationRef: 'EU Regulation No 1333/2008'
+      },
+      {
+        countryCode: 'US',
+        countryName: 'United States (FDA)',
+        flagEmoji: '🇺🇸',
+        status: 'APPROVED',
+        restrictionDetails: 'GRAS status. Soy must be declared as an allergen on label.',
+        regulationRef: '21 CFR 184.1400'
+      },
+      {
+        countryCode: 'JP',
+        countryName: 'Japan (MHLW)',
+        flagEmoji: '🇯🇵',
+        status: 'APPROVED',
+        restrictionDetails: 'Widely approved emulsifier with standard use levels.',
+        regulationRef: 'Japan Food Additive Guidelines'
+      }
+    ],
+    citations: []
+  },
+  {
+    id: 'ing_e500ii',
+    canonicalName: 'Sodium Hydrogen Carbonate (INS 500(ii))',
+    scientificName: 'Sodium Bicarbonate (NaHCO₃)',
+    synonyms: ['Baking Soda', 'INS 500(ii)', 'E500(ii)', 'Sodium Bicarbonate', 'Raising Agent 500'],
+    insNumber: '500(ii)',
+    eNumber: 'E500(ii)',
+    category: 'RAISING_AGENT',
+    riskLevel: 'LOW',
+    baseRiskWeight: 0,
+    description: 'Sodium bicarbonate used as a leavening and raising agent. Releases carbon dioxide when heated or in contact with acids, producing a light texture. Generally recognized as safe (GRAS).',
+    processingLevel: 'NOVA_3_PROCESSED_FOOD',
+    regulatoryRecords: [
+      {
+        countryCode: 'IN',
+        countryName: 'India (FSSAI)',
+        flagEmoji: '🇮🇳',
+        status: 'APPROVED',
+        restrictionDetails: 'Permitted raising agent in bakery and malt-based products. Quantum satis.',
+        regulationRef: 'FSSAI Food Additives Regulations 2011'
+      },
+      {
+        countryCode: 'EU',
+        countryName: 'European Union (EFSA)',
+        flagEmoji: '🇪🇺',
+        status: 'APPROVED',
+        restrictionDetails: 'Quantum satis in most food categories. No ADI required.',
+        regulationRef: 'EU Regulation No 1333/2008'
+      },
+      {
+        countryCode: 'US',
+        countryName: 'United States (FDA)',
+        flagEmoji: '🇺🇸',
+        status: 'APPROVED',
+        restrictionDetails: 'GRAS status. Widely used in baked goods and beverage mixes.',
+        regulationRef: '21 CFR 184.1736'
+      },
+      {
+        countryCode: 'JP',
+        countryName: 'Japan (MHLW)',
+        flagEmoji: '🇯🇵',
+        status: 'APPROVED',
+        restrictionDetails: 'Approved leavening agent with no quantity restrictions for standard food use.',
+        regulationRef: 'Japan Food Additive Guidelines'
+      }
+    ],
+    citations: []
+  },
+  {
+    id: 'ing_orange_juice',
+    canonicalName: 'Whole Squeezed Orange Juice',
+    scientificName: 'Citrus sinensis juice',
+    synonyms: ['Orange Juice', 'Squeezed Orange Juice', 'Whole Squeezed Orange Juice'],
+    category: 'WHOLE_FOOD',
+    riskLevel: 'LOW',
+    baseRiskWeight: 0,
+    description: '100% natural squeezed orange juice rich in Vitamin C, potassium, and antioxidants.',
+    processingLevel: 'NOVA_1_UNPROCESSED',
+    regulatoryRecords: [],
+    citations: []
+  },
+  {
+    id: 'ing_vitamin_min_premix',
+    canonicalName: 'Fortified Vitamin & Mineral Premix',
+    scientificName: 'Micronutrient Fortification Blend',
+    synonyms: ['Vitamin & Mineral Premix', 'Fortified Premix', 'Micronutrient Premix'],
+    category: 'WHOLE_FOOD',
+    riskLevel: 'LOW',
+    baseRiskWeight: 0,
+    description: 'Essential micronutrient fortification blend containing Iron, Zinc, and B-Vitamins (Folic Acid, Thiamine).',
+    processingLevel: 'NOVA_1_UNPROCESSED',
+    regulatoryRecords: [],
+    citations: []
   }
 ];

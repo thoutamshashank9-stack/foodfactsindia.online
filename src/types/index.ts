@@ -49,7 +49,7 @@ export interface Ingredient {
   synonyms: string[];
   insNumber?: string;
   eNumber?: string;
-  category: 'PRESERVATIVE' | 'ARTIFICIAL_COLOR' | 'SWEETENER' | 'EMULSIFIER' | 'FLAVOR_ENHANCER' | 'THICKENER' | 'WHOLE_FOOD' | 'PROCESSING_AID' | 'OTHER';
+  category: 'PRESERVATIVE' | 'ARTIFICIAL_COLOR' | 'SWEETENER' | 'EMULSIFIER' | 'FLAVOR_ENHANCER' | 'THICKENER' | 'WHOLE_FOOD' | 'PROCESSING_AID' | 'RAISING_AGENT' | 'OTHER';
   riskLevel: RiskLevel;
   baseRiskWeight: number; // -15 to +5
   description: string;
@@ -59,19 +59,20 @@ export interface Ingredient {
 }
 
 export interface NutritionFacts {
-  calories: number; // kcal
-  servingSize: string; // e.g. "100g"
+  calories: number | null; // kcal — null means label not parsed; 0 is valid (e.g. plain water)
+  servingSize: string;     // e.g. "100g"
   totalFatG: number;
   saturatedFatG: number;
   transFatG: number;
   sodiumMg: number;
-  totalCarbsG: number;
+  totalCarbsG: number | null; // null means label not parsed; 0 is valid (e.g. table salt)
   fiberG: number;
   totalSugarG: number;
   addedSugarG: number;
   proteinG: number;
   micronutrients?: { name: string; amount: string; dvPercentage: number }[];
 }
+
 
 export interface ScoreBreakdownItem {
   type: 'DEDUCTION' | 'ADDITION';
@@ -200,7 +201,7 @@ export interface TransparencyReport {
     peerReviewedStudiesCount: number;
     regulatoryBodiesCount: number;
     lastUpdated: string;
-    verificationStatus?: 'verified_official' | 'extracted_needs_review';
+    verificationStatus?: 'verified_official' | 'extracted_needs_review' | 'database_indexed' | 'pending_verification';
   };
 }
 
