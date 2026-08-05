@@ -92,61 +92,53 @@ export async function getAdditiveFact(
   rawIngredientContext: string = '',
   supabaseClient: any = supabase
 ): Promise<AdditiveFact | null> {
-  const text = `${rawInsCode} ${rawIngredientContext}`.toLowerCase();
-  
-  let targetCode = normalizeInsCode(rawInsCode);
-  if (/annatto|160b/i.test(text)) targetCode = '160b';
-  else if (/503/i.test(text)) targetCode = '503(ii)';
-  else if (/500/i.test(text)) targetCode = '500(ii)';
-  else if (/223|metabisulfite/i.test(text)) targetCode = '223';
-  else if (/150d|caramel/i.test(text)) targetCode = '150d';
-  else if (/621|glutamate|msg/i.test(text)) targetCode = '621';
-  else if (/472e|datem/i.test(text)) targetCode = '472e';
-  else if (/331|citrate/i.test(text)) targetCode = '331';
-  else if (/551|silicon/i.test(text)) targetCode = '551';
-  else if (/133|brilliant blue/i.test(text)) targetCode = '133';
-  else if (/150a/i.test(text)) targetCode = '150a';
-  else if (/150c/i.test(text)) targetCode = '150c';
-  else if (/322|lecithin/i.test(text)) targetCode = '322';
+  const cleanCode = normalizeInsCode(rawInsCode);
+  if (!cleanCode) return null;
 
-  if (!targetCode) return null;
+  // Use decoupled in-memory search engine for O(1) exact matching without text pollution
+  const decoupled = matchDecoupledAdditives(cleanCode);
+  if (decoupled.length > 0) {
+    const primary = decoupled[0];
+    return {
+      ins_code: primary.insCode || cleanCode,
+      common_name: primary.primaryName,
+      origin: 'synthetic',
+      category: primary.category,
+      fssai_status: primary.regulatoryBans.find(r => r.jurisdictionCode === 'IN')?.status || 'RESTRICTED',
+      efsa_status: primary.regulatoryBans.find(r => r.jurisdictionCode === 'EU')?.status || 'RESTRICTED',
+      fda_status: primary.regulatoryBans.find(r => r.jurisdictionCode === 'US')?.status || 'RESTRICTED',
+      adi_value: '0-5 mg/kg body weight',
+      concern_level: (primary.riskLevel === 'EXCELLENT' ? 'LOW' : primary.riskLevel) as 'LOW' | 'MEDIUM' | 'HIGH',
+      accurate_description: primary.description,
+      caveat: primary.regulatoryBans.find(r => r.mandatoryWarningText)?.mandatoryWarningText || null,
+      source_url: primary.citations[0]?.doi ? (primary.citations[0].doi.startsWith('http') ? primary.citations[0].doi : `https://doi.org/${primary.citations[0].doi}`) : '',
+      source_citation: primary.citations[0]?.title || 'Official Safety Monograph'
+    };
+  }
 
-  if (additiveCache.has(targetCode)) {
-    const cached = additiveCache.get(targetCode);
-    if (cached) {
-      const validation = validateAdditiveWithRawLabel(cached, text);
-      if (!validation.isValid && validation.overrideOrigin) {
-        return { ...cached, origin: validation.overrideOrigin };
-      }
-    }
-    return cached || null;
+  if (additiveCache.has(cleanCode)) {
+    return additiveCache.get(cleanCode) || null;
   }
 
   try {
     const { data } = await supabaseClient
       .from('additive_reference')
       .select('*')
-      .or(`ins_code.eq.${targetCode},ins_code.ilike.%${targetCode}%`)
+      .eq('ins_code', cleanCode)
       .limit(1)
       .maybeSingle();
 
-    if (!data) {
-      additiveCache.set(targetCode, null);
-      return null;
+    if (data) {
+      const fact = data as AdditiveFact;
+      additiveCache.set(cleanCode, fact);
+      return fact;
     }
-
-    const fact = data as AdditiveFact;
-    const validation = validateAdditiveWithRawLabel(fact, text);
-    if (!validation.isValid && validation.overrideOrigin) {
-      fact.origin = validation.overrideOrigin;
-    }
-
-    additiveCache.set(targetCode, fact);
-    return fact;
-  } catch (err) {
-    console.error(`Failed to fetch additive fact for ${targetCode}:`, err);
-    return null;
+  } catch (e) {
+    console.error('Additive fact fetch error:', e);
   }
+
+  additiveCache.set(cleanCode, null);
+  return null;
 }
 
 function cleanRawIngredientText(raw: string): string {

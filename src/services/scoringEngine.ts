@@ -124,16 +124,21 @@ export function calculateDeterministicScore(
     }
   }
 
-  // D. Trans Fat Penalty (> 0g -> -35 pts flat conservative heuristic deduction)
-  if (nutrition.transFatG > 0) {
+  // D. Trans Fat Penalty (> 0g or presence of hydrogenated vegetable oil)
+  const hasHydrogenatedFat = ingredients.some(ing => 
+    /hydrogenated/i.test(ing.canonicalName) ||
+    (ing.synonyms && ing.synonyms.some(s => /hydrogenated/i.test(s)))
+  );
+
+  if (nutrition.transFatG > 0 || hasHydrogenatedFat) {
     const pts = 35;
     nutritionalDeductions += pts;
     scoreBreakdown.push({
       type: 'DEDUCTION',
       category: 'NUTRITION',
-      factor: `Contains Industrially Produced Trans Fat (${nutrition.transFatG}g)`,
+      factor: 'Contains Industrially Produced Trans Fat (Hydrogenated Fat)',
       points: -pts,
-      rationale: `Presence of industrially produced trans fatty acids carries severe cardiovascular risk. WHO Target: Global elimination (< 1% total energy intake).`,
+      rationale: 'Presence of hydrogenated vegetable oil (industrial trans fat hazard) carries severe cardiovascular risk. WHO Target: Global elimination.',
       authoritySource: 'WHO REPLACE Trans Fat Action Package (2018)'
     });
   }
