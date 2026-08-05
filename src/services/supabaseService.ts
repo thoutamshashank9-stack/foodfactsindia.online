@@ -189,7 +189,8 @@ function resolveIngredientFromRaw(rawText: string, position: number): Ingredient
     }
   }
 
-  // Check if any detected code matches known database ingredients
+  // Check if any detected code matches known database ingredients (prioritizing HIGH risk matches)
+  const matchedIngredients: Ingredient[] = [];
   for (const code of detectedCodes) {
     const knownCodeMatch = INGREDIENT_DATABASE.find(
       k => (k.insNumber && k.insNumber.toUpperCase() === code) ||
@@ -197,7 +198,18 @@ function resolveIngredientFromRaw(rawText: string, position: number): Ingredient
            (k.eNumber && k.eNumber.toUpperCase() === code) ||
            k.synonyms.some(s => s.toUpperCase() === code || s.toUpperCase() === `INS ${code}`)
     );
-    if (knownCodeMatch) return knownCodeMatch;
+    if (knownCodeMatch && !matchedIngredients.some(m => m.id === knownCodeMatch.id)) {
+      matchedIngredients.push(knownCodeMatch);
+    }
+  }
+
+  if (matchedIngredients.length > 0) {
+    // Sort so HIGH risk additives (e.g. INS 122 Azorubine, INS 102 Tartrazine) take priority over LOW risk (e.g. INS 330 Citric Acid)
+    matchedIngredients.sort((a, b) => {
+      const rank = (r: string) => (r === 'HIGH' ? 3 : r === 'MEDIUM' ? 2 : 1);
+      return rank(b.riskLevel) - rank(a.riskLevel);
+    });
+    return matchedIngredients[0];
   }
 
   // 3. Fallback: Check if raw text indicates an additive category
@@ -704,6 +716,13 @@ export async function mapProductToReport(p: any): Promise<TransparencyReport> {
         if (/metabisulfite/i.test(raw)) codeMatches.push('223');
         if (/lecithin/i.test(raw)) codeMatches.push('322');
         if (/msg|glutamate/i.test(raw)) codeMatches.push('621');
+        if (/carmoisine|azorubine/i.test(raw)) codeMatches.push('122');
+        if (/tartrazine/i.test(raw)) codeMatches.push('102');
+        if (/sunset yellow/i.test(raw)) codeMatches.push('110');
+        if (/ponceau/i.test(raw)) codeMatches.push('124');
+        if (/allura red/i.test(raw)) codeMatches.push('129');
+        if (/brilliant blue/i.test(raw)) codeMatches.push('133');
+        if (/titanium dioxide/i.test(raw)) codeMatches.push('171');
 
         const uniqueKeys = Array.from(new Set(codeMatches));
         const facts: AdditiveFact[] = [];
@@ -857,10 +876,12 @@ export async function mapProductToReport(p: any): Promise<TransparencyReport> {
 
   // 2. Compute Label Warning Cards & Ban Alerts
   const labelWarnings: any[] = [];
-  // FIX: operator precedence bug — || must bind to the empty-string fallback only.
-  // Previously: (p.ingredients_text || ('' + ' ' + codes)) — additiveCodes were never appended.
-  // Correct:    ((p.ingredients_text || '') + ' ' + codes) — always concatenated.
-  const allTextUpper = ((p.ingredients_text || '') + ' ' + additiveCodes.join(' ')).toUpperCase();
+  // Concatenate top-level ingredients text, all tokenized raw ingredient lines, and additive codes for 100% complete text coverage
+  const allTextUpper = [
+    p.ingredients_text || '',
+    ...rawIngredientsList.map(i => i.rawName),
+    ...additiveCodes
+  ].join(' ').toUpperCase();
 
   // Southampton Warning (E102, E104, E110, E122, E124, E129)
   const southamptonMatches = ['E102', '102', 'E104', '104', 'E110', '110', 'E122', '122', 'E124', '124', 'E129', '129'].filter(code => allTextUpper.includes(code));
@@ -873,6 +894,19 @@ export async function mapProductToReport(p: any): Promise<TransparencyReport> {
       warningText: 'May have an adverse effect on activity and attention in children.',
       jurisdiction: 'United Kingdom (FSA) & European Union (EFSA)',
       authorityRef: 'UK Regulation (EC) No 1333/2008 Annex V'
+    });
+  }
+
+  // Azorubine / Carmoisine US & Japan Ban (E122 / INS 122)
+  if (allTextUpper.includes('E122') || allTextUpper.includes('122') || allTextUpper.includes('AZORUBINE') || allTextUpper.includes('CARMOISINE')) {
+    labelWarnings.push({
+      id: 'warn_e122_ban',
+      title: 'US FDA & Japan Prohibited Synthetic Color (Azorubine / Carmoisine)',
+      type: 'FDA_REVOCATION',
+      appliedAdditives: ['E122 / INS 122 (Azorubine / Carmoisine)'],
+      warningText: 'Azorubine (Carmoisine) is not authorized for food use in the United States by the FDA and is prohibited in Japan due to toxicological concerns.',
+      jurisdiction: 'United States (FDA) & Japan (MHLW)',
+      authorityRef: '21 CFR Part 74 / Japan Food Sanitation Act Approved List'
     });
   }
 

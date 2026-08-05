@@ -60,6 +60,64 @@ export const INGREDIENT_DATABASE: Ingredient[] = [
     ]
   },
   {
+    id: 'ing_e122',
+    canonicalName: 'Azorubine (Carmoisine)',
+    scientificName: 'Disodium 4-hydroxy-3-(4-sulfonato-1-naphthylazo)naphthalene-1-sulfonate',
+    synonyms: ['Carmoisine', 'Azorubine', 'INS 122', 'E122', 'CI 14720', 'Food Red 3'],
+    insNumber: '122',
+    eNumber: 'E122',
+    category: 'ARTIFICIAL_COLOR',
+    riskLevel: 'HIGH',
+    baseRiskWeight: -15,
+    description: 'A synthetic red azo dye used as food coloring. Part of the Southampton Six dyes linked to hyperactivity and attention deficits in children. Banned in the United States and Japan due to toxicity concerns.',
+    processingLevel: 'NOVA_4_ULTRA_PROCESSED',
+    regulatoryRecords: [
+      {
+        countryCode: 'IN',
+        countryName: 'India (FSSAI)',
+        flagEmoji: '🇮🇳',
+        status: 'RESTRICTED',
+        restrictionDetails: 'Permitted in specified food categories up to 100 mg/kg under FSSAR 2011.',
+        regulationRef: 'FSSAI Food Additives Schedule 2.4.5'
+      },
+      {
+        countryCode: 'EU',
+        countryName: 'European Union (EFSA)',
+        flagEmoji: '🇪🇺',
+        status: 'RESTRICTED',
+        restrictionDetails: 'Requires mandatory warning label: "May have an adverse effect on activity and attention in children". Reduced ADI of 4 mg/kg bw.',
+        regulationRef: 'EU Regulation No 1333/2008 Annex V'
+      },
+      {
+        countryCode: 'US',
+        countryName: 'United States (FDA)',
+        flagEmoji: '🇺🇸',
+        status: 'BANNED',
+        restrictionDetails: 'Not authorized for food use in the United States by the FDA.',
+        regulationRef: '21 CFR Part 74 (Unlisted / Prohibited Azo Dyes)'
+      },
+      {
+        countryCode: 'JP',
+        countryName: 'Japan (MHLW)',
+        flagEmoji: '🇯🇵',
+        status: 'BANNED',
+        restrictionDetails: 'Prohibited food additive in Japan under the Food Sanitation Act.',
+        regulationRef: 'Japan MHLW Approved Additives List'
+      }
+    ],
+    citations: [
+      {
+        id: 'pmid_17825405_e122',
+        title: 'Food additives and hyperactive behaviour in 3-year-old and 8/9-year-old children in the community',
+        journal: 'The Lancet',
+        year: 2007,
+        doi: '10.1016/S0140-6736(07)61306-3',
+        summary: 'Southampton randomized controlled trial establishing hyperactive behavioral impact of synthetic azo dye Mix B containing Carmoisine (E122).',
+        evidenceStrength: 'STRONG'
+      }
+    ]
+  },
+  {
     id: 'ing_e150d',
     canonicalName: 'Sulfite Ammonia Caramel',
     scientificName: 'Class IV Caramel Color',
