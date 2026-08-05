@@ -1,0 +1,35 @@
+# Large data files - not needed for Vercel build
+*.parquet
+*.csv
+*.json.bak
+
+# Root-level data files (ingestion outputs)
+food.parquet
+all_supabase_products.csv
+off_india_clean.csv
+product_ingredients.csv
+product_images.csv
+indian_products_ingredients.json
+
+# Output reports
+output/
+
+# Scripts
+scripts/
+scratch/
+
+# Python files
+*.py
+
+# SQL seed files (already applied to DB)
+supabase/
+
+# Node modules (Vercel installs these automatically)
+node_modules/
+
+# Build output (Vercel builds fresh)
+dist/
+
+# Local env
+.env.local
+.env
