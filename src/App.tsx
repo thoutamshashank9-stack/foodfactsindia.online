@@ -7,6 +7,7 @@ import { PRESEEDED_PRODUCTS } from './data/productsDatabase';
 import { TransparencyReport } from './types';
 import { ArrowLeft, Sparkles, Filter, Grid, ShieldAlert, CheckCircle2, Database } from 'lucide-react';
 import { fetchLiveCatalog } from './services/supabaseService';
+import { fetchRawIngredientsTaxonomyAsync } from './services/decoupledAdditiveService';
 
 // Lazy-loaded components for route code-splitting
 const ScanScannerModal = lazy(() => import('./components/ScanScannerModal').then(m => ({ default: m.ScanScannerModal })));
@@ -33,6 +34,8 @@ export function App() {
 
   // Load initial product catalog from Supabase Realtime Database
   useEffect(() => {
+    fetchRawIngredientsTaxonomyAsync();
+
     async function loadCatalog() {
       try {
         setIsLiveLoading(true);

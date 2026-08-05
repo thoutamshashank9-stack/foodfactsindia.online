@@ -1,7 +1,23 @@
 import { Ingredient, RegulatoryRecord, ResearchCitation } from '../types';
 import { INGREDIENT_DATABASE } from '../data/ingredientsDatabase';
 import globalAdditivesMaster from '../data/global_additives_master.json';
-import rawIngredientsTaxonomy from '../data/raw_ingredients_taxonomy.json';
+
+let rawIngredientsTaxonomy: Record<string, any> = {};
+let rawIngredientsLoaded = false;
+
+export async function fetchRawIngredientsTaxonomyAsync() {
+  if (rawIngredientsLoaded) return;
+  try {
+    const resp = await fetch('/raw_ingredients_taxonomy.json');
+    if (resp.ok) {
+      rawIngredientsTaxonomy = await resp.json();
+      rawIngredientsLoaded = true;
+      initializeDecoupledIndex(true);
+    }
+  } catch (e) {
+    console.error('Failed to load raw ingredients taxonomy:', e);
+  }
+}
 
 export interface CanonicalAdditive {
   id: string;
@@ -71,8 +87,8 @@ export function tokenizeRawLabelText(rawText: string): string[] {
 /**
  * Builds the decoupled in-memory database index from master records and taxonomy mappings.
  */
-function initializeDecoupledIndex() {
-  if (synonymLookupMap.size > 0) return;
+function initializeDecoupledIndex(force: boolean = false) {
+  if (synonymLookupMap.size > 0 && !force) return;
 
   // 1. Index high-confidence local database records
   INGREDIENT_DATABASE.forEach(ing => {
