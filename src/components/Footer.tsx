@@ -6,9 +6,9 @@ import { PrivacyTermsModal } from './PrivacyTermsModal';
 export const Footer: React.FC = () => {
   const [isIntlModalOpen, setIsIntlModalOpen] = useState(false);
   const [isPrivacyModalOpen, setIsPrivacyModalOpen] = useState(false);
-  const [privacyTab, setPrivacyTab] = useState<'privacy' | 'terms' | 'retention'>('privacy');
+  const [privacyTab, setPrivacyTab] = useState<'privacy' | 'terms'>('privacy');
 
-  const openPrivacyModal = (tab: 'privacy' | 'terms' | 'retention') => {
+  const openPrivacyModal = (tab: 'privacy' | 'terms') => {
     setPrivacyTab(tab);
     setIsPrivacyModalOpen(true);
   };

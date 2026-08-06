@@ -1,5 +1,5 @@
-import React from 'react';
-import { Search, Sun, Moon } from 'lucide-react';
+import React, { useState } from 'react';
+import { Search, Sun, Moon, Menu, X, Scan } from 'lucide-react';
 
 interface HeaderProps {
   currentTab: 'home' | 'products' | 'methodology' | 'compare' | 'about';
@@ -10,93 +10,78 @@ interface HeaderProps {
   onSearchClick: () => void;
 }
 
+const NAV_ITEMS: { label: string; tab: 'home' | 'products' | 'methodology' | 'compare' | 'about' }[] = [
+  { label: 'Products', tab: 'products' },
+  { label: 'Methodology', tab: 'methodology' },
+  { label: 'Compare', tab: 'compare' },
+  { label: 'About', tab: 'about' },
+];
+
 export const Header: React.FC<HeaderProps> = ({
   currentTab,
   setCurrentTab,
   darkMode,
   setDarkMode,
+  onOpenScan,
   onSearchClick,
 }) => {
+  const [isMobileOpen, setIsMobileOpen] = useState(false);
+
+  const handleNav = (tab: typeof currentTab) => {
+    setCurrentTab(tab);
+    setIsMobileOpen(false);
+  };
+
   return (
     <header className="sticky top-0 z-40 w-full bg-[#fcfbf9]/95 dark:bg-[#0e1117]/95 backdrop-blur-sm border-b border-stone-200 dark:border-stone-800 transition-colors">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-14 flex items-center justify-between">
         
-        {/* Brand Logo & Tagline */}
+        {/* Brand */}
         <div 
-          onClick={() => setCurrentTab('home')}
-          className="flex items-center gap-3 cursor-pointer group focus:outline-none rounded-lg py-1"
+          onClick={() => handleNav('home')}
+          className="flex items-center gap-2 cursor-pointer group"
           role="button"
           tabIndex={0}
-          onKeyDown={(e) => e.key === 'Enter' && setCurrentTab('home')}
+          onKeyDown={(e) => e.key === 'Enter' && handleNav('home')}
           aria-label="FoodFactsIndia Home"
         >
-          <div>
-            <div className="flex items-center gap-2">
-              <span className="font-serif font-bold text-xl tracking-tight text-stone-900 dark:text-stone-100 group-hover:text-teal-700 dark:group-hover:text-teal-400 transition-colors">
-                FoodFactsIndia
-              </span>
-            </div>
-            <p className="text-xs text-stone-500 dark:text-stone-400 font-normal hidden sm:block -mt-0.5">
-              Food label transparency
-            </p>
-          </div>
+          <span className="font-serif font-bold text-lg tracking-tight text-stone-900 dark:text-stone-100 group-hover:text-teal-700 dark:group-hover:text-teal-400 transition-colors">
+            FoodFactsIndia
+          </span>
         </div>
 
-        {/* Calm 5-Item Editorial Navigation */}
-        <nav className="hidden md:flex items-center gap-6">
+        {/* Desktop Nav */}
+        <nav className="hidden md:flex items-center gap-1">
+          {NAV_ITEMS.map(({ label, tab }) => (
+            <button
+              key={tab}
+              onClick={() => handleNav(tab)}
+              className={`px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${
+                currentTab === tab
+                  ? 'bg-teal-50 dark:bg-teal-950/30 text-teal-800 dark:text-teal-300'
+                  : 'text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-200 hover:bg-stone-100 dark:hover:bg-stone-800'
+              }`}
+            >
+              {label}
+            </button>
+          ))}
           <button
-            onClick={() => setCurrentTab('products')}
-            className={`text-sm font-medium transition-colors py-1.5 border-b-2 ${
-              currentTab === 'products'
-                ? 'border-teal-700 text-teal-800 dark:border-teal-400 dark:text-teal-300 font-semibold'
-                : 'border-transparent text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-200'
-            }`}
+            onClick={() => { onOpenScan(); setIsMobileOpen(false); }}
+            className="px-3 py-1.5 rounded-md text-sm font-medium text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-200 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors flex items-center gap-1.5"
           >
-            Products
-          </button>
-
-          <button
-            onClick={() => setCurrentTab('methodology')}
-            className={`text-sm font-medium transition-colors py-1.5 border-b-2 ${
-              currentTab === 'methodology'
-                ? 'border-teal-700 text-teal-800 dark:border-teal-400 dark:text-teal-300 font-semibold'
-                : 'border-transparent text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-200'
-            }`}
-          >
-            Methodology
-          </button>
-
-          <button
-            onClick={() => setCurrentTab('compare')}
-            className={`text-sm font-medium transition-colors py-1.5 border-b-2 ${
-              currentTab === 'compare'
-                ? 'border-teal-700 text-teal-800 dark:border-teal-400 dark:text-teal-300 font-semibold'
-                : 'border-transparent text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-200'
-            }`}
-          >
-            Compare
-          </button>
-
-          <button
-            onClick={() => setCurrentTab('about')}
-            className={`text-sm font-medium transition-colors py-1.5 border-b-2 ${
-              currentTab === 'about'
-                ? 'border-teal-700 text-teal-800 dark:border-teal-400 dark:text-teal-300 font-semibold'
-                : 'border-transparent text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-200'
-            }`}
-          >
-            About
+            <Scan className="w-3.5 h-3.5" />
+            Scan Label
           </button>
         </nav>
 
-        {/* Right Utilities: Search Button & Theme Toggle */}
-        <div className="flex items-center gap-3">
+        {/* Right Utilities */}
+        <div className="flex items-center gap-2">
           <button
             onClick={onSearchClick}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium text-stone-600 dark:text-stone-300 bg-stone-100 dark:bg-stone-800/80 hover:bg-stone-200 dark:hover:bg-stone-700 transition-colors"
+            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-md text-xs font-medium text-stone-600 dark:text-stone-300 bg-stone-100 dark:bg-stone-800/80 hover:bg-stone-200 dark:hover:bg-stone-700 transition-colors"
           >
             <Search className="w-3.5 h-3.5" />
-            <span>Search</span>
+            <span className="hidden sm:inline">Search</span>
           </button>
 
           <button
@@ -107,9 +92,44 @@ export const Header: React.FC<HeaderProps> = ({
           >
             {darkMode ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4" />}
           </button>
+
+          {/* Mobile hamburger */}
+          <button
+            onClick={() => setIsMobileOpen(!isMobileOpen)}
+            className="md:hidden p-1.5 rounded-md text-stone-600 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors"
+            aria-label="Toggle menu"
+          >
+            {isMobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </button>
         </div>
 
       </div>
+
+      {/* Mobile Drawer */}
+      {isMobileOpen && (
+        <div className="md:hidden border-t border-stone-200 dark:border-stone-800 bg-[#fcfbf9] dark:bg-[#0e1117] px-4 pb-4 pt-2 space-y-1">
+          {NAV_ITEMS.map(({ label, tab }) => (
+            <button
+              key={tab}
+              onClick={() => handleNav(tab)}
+              className={`block w-full text-left px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                currentTab === tab
+                  ? 'bg-teal-50 dark:bg-teal-950/30 text-teal-800 dark:text-teal-300'
+                  : 'text-stone-700 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-800'
+              }`}
+            >
+              {label}
+            </button>
+          ))}
+          <button
+            onClick={() => { onOpenScan(); setIsMobileOpen(false); }}
+            className="block w-full text-left px-3 py-2 rounded-md text-sm font-medium text-stone-700 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors flex items-center gap-2"
+          >
+            <Scan className="w-4 h-4" />
+            Scan Label
+          </button>
+        </div>
+      )}
     </header>
   );
 };

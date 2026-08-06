@@ -7,14 +7,14 @@ interface HeroSectionProps {
   products: TransparencyReport[];
   onSelectProduct: (product: TransparencyReport) => void;
   onOpenScan: () => void;
-  onGoToProducts: () => void;
+  onGoToSearch: (query: string) => void;
 }
 
 export const HeroSection: React.FC<HeroSectionProps> = ({
   products,
   onSelectProduct,
   onOpenScan,
-  onGoToProducts,
+  onGoToSearch,
 }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState<TransparencyReport[]>([]);
@@ -62,6 +62,14 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   const getIssuesCount = (p: TransparencyReport) =>
     p.scoreBreakdown ? p.scoreBreakdown.filter((b) => b.type === 'DEDUCTION').length : 0;
 
+  const handleSearchSubmit = () => {
+    if (searchQuery.trim()) {
+      onGoToSearch(searchQuery.trim());
+      setSearchQuery('');
+      setSearchResults([]);
+    }
+  };
+
   return (
     <section className="pt-12 pb-10 border-b border-stone-200 dark:border-stone-800/80">
       <div className="max-w-3xl mx-auto px-4 text-center space-y-6">
@@ -73,7 +81,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
         {/* Headline */}
         <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-normal leading-tight text-stone-900 dark:text-stone-100">
-          What packaged food labels don’t make obvious.
+          What packaged food labels don't make obvious.
         </h1>
 
         {/* Body */}
@@ -81,7 +89,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           Declared ingredients, additives, and nutrition facts — reviewed through a clearer public-interest lens.
         </p>
 
-        {/* Search Box Component */}
+        {/* Search Box */}
         <div className="relative max-w-xl mx-auto pt-2">
           <div className="relative flex items-center">
             <Search className="absolute left-4 w-4 h-4 text-stone-400 pointer-events-none" />
@@ -89,8 +97,15 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                  e.preventDefault();
+                  handleSearchSubmit();
+                }
+              }}
               placeholder="Search products or ingredients..."
               className="w-full pl-11 pr-10 py-3 rounded-lg bg-white dark:bg-stone-900 border border-stone-300 dark:border-stone-700 text-stone-900 dark:text-stone-100 placeholder-stone-400 focus:outline-none focus:border-teal-700 dark:focus:border-teal-500 text-sm font-normal transition-all shadow-sm"
+              aria-label="Search products or ingredients"
             />
             {isSearching && (
               <Loader2 className="absolute right-3.5 w-4 h-4 text-teal-700 animate-spin pointer-events-none" />
@@ -106,42 +121,53 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                   <span>Searching verified database...</span>
                 </div>
               ) : searchResults.length > 0 ? (
-                [...searchResults].map((product) => {
-                  const issues = getIssuesCount(product);
-                  return (
-                    <div
-                      key={product.productId}
-                      onClick={() => {
-                        onSelectProduct(product);
-                        setSearchQuery('');
-                      }}
-                      className="p-3 hover:bg-stone-50 dark:hover:bg-stone-800/80 cursor-pointer flex items-center justify-between transition-colors"
-                    >
-                      <div className="flex items-center gap-3">
-                        <img
-                          src={product.imageUrl}
-                          alt={product.productName}
-                          className="w-10 h-10 rounded object-cover border border-stone-200 dark:border-stone-700"
-                        />
-                        <div>
-                          <h4 className="font-semibold text-sm text-stone-900 dark:text-stone-100">
-                            {product.productName}
-                          </h4>
-                          <p className="text-xs text-stone-500 dark:text-stone-400">
-                            {product.brand} • {product.category}
-                          </p>
+                <>
+                  {searchResults.slice(0, 8).map((product) => {
+                    const issues = getIssuesCount(product);
+                    return (
+                      <div
+                        key={product.productId}
+                        onClick={() => {
+                          onSelectProduct(product);
+                          setSearchQuery('');
+                          setSearchResults([]);
+                        }}
+                        className="p-3 hover:bg-stone-50 dark:hover:bg-stone-800/80 cursor-pointer flex items-center justify-between transition-colors"
+                      >
+                        <div className="flex items-center gap-3">
+                          <img
+                            src={product.imageUrl}
+                            alt={product.productName}
+                            className="w-10 h-10 rounded object-cover border border-stone-200 dark:border-stone-700"
+                          />
+                          <div>
+                            <h4 className="font-semibold text-sm text-stone-900 dark:text-stone-100">
+                              {product.productName}
+                            </h4>
+                            <p className="text-xs text-stone-500 dark:text-stone-400">
+                              {product.brand} • {product.category}
+                            </p>
+                          </div>
+                        </div>
+
+                        <div className="flex items-center gap-2">
+                          <span className="text-xs text-stone-500 font-mono">
+                            {issues > 0 ? `${issues} signals` : 'Standard'}
+                          </span>
+                          <ArrowRight className="w-3.5 h-3.5 text-stone-400" />
                         </div>
                       </div>
-
-                      <div className="flex items-center gap-2">
-                        <span className="text-xs text-stone-500 font-mono">
-                          {issues > 0 ? `${issues} signals` : 'Standard'}
-                        </span>
-                        <ArrowRight className="w-3.5 h-3.5 text-stone-400" />
-                      </div>
-                    </div>
-                  );
-                })
+                    );
+                  })}
+                  {searchResults.length > 8 && (
+                    <button
+                      onClick={handleSearchSubmit}
+                      className="w-full p-3 text-center text-xs font-medium text-teal-800 dark:text-teal-400 hover:bg-stone-50 dark:hover:bg-stone-800/80 transition-colors"
+                    >
+                      View all {searchResults.length} results →
+                    </button>
+                  )}
+                </>
               ) : (
                 <div className="p-4 text-center text-xs text-stone-500 flex flex-col items-center gap-1.5">
                   <AlertCircle className="w-4 h-4 text-stone-400" />
@@ -155,7 +181,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         {/* Primary & Secondary Actions */}
         <div className="flex items-center justify-center gap-4 pt-1">
           <button
-            onClick={onGoToProducts}
+            onClick={handleSearchSubmit}
             className="px-5 py-2.5 rounded-md bg-teal-800 hover:bg-teal-900 dark:bg-teal-700 dark:hover:bg-teal-600 text-white font-medium text-sm transition-colors shadow-sm"
           >
             Search products

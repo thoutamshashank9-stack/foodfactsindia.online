@@ -8,14 +8,39 @@ interface InternationalMethodologyModalProps {
   ratings?: InternationalRatings;
 }
 
+const defaultRatings: InternationalRatings = {
+  nutriScore: {
+    grade: 'A',
+    score: 0,
+    negativePoints: 0,
+    positivePoints: 0,
+    isBeverage: false,
+    breakdown: {
+      energyPoints: 0,
+      sugarsPoints: 0,
+      satFatPoints: 0,
+      sodiumPoints: 0,
+      fiberPoints: 0,
+      proteinPoints: 0,
+      fvlnPoints: 0,
+    },
+  },
+  fdaLabel: {
+    saturatedFat: { level: 'LOW', dvPercentage: 0, gramsPerServing: 0 },
+    sodium: { level: 'LOW', dvPercentage: 0, mgPerServing: 0 },
+    addedSugar: { level: 'LOW', dvPercentage: 0, gramsPerServing: 0 },
+  },
+  warningOctagons: [],
+};
+
 export const InternationalMethodologyModal: React.FC<InternationalMethodologyModalProps> = ({
   isOpen,
   onClose,
   ratings,
 }) => {
-  if (!isOpen || !ratings) return null;
+  if (!isOpen) return null;
 
-  const { nutriScore, fdaLabel, warningOctagons } = ratings;
+  const { nutriScore, fdaLabel, warningOctagons } = ratings || defaultRatings;
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm animate-fade-in">

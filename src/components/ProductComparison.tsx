@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
-import { GitCompare, CheckCircle2, ShieldAlert, AlertTriangle, ArrowRight, Plus, Trash2 } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { GitCompare, CheckCircle2, ShieldAlert, AlertTriangle, ArrowRight, Plus, Trash2, Search, Loader2 } from 'lucide-react';
 import { TransparencyReport } from '../types';
 import { PRESEEDED_PRODUCTS } from '../data/productsDatabase';
+import { searchLiveProducts } from '../services/supabaseService';
 import { ScoreGauge } from './ScoreGauge';
 
 interface ProductComparisonProps {
@@ -10,24 +11,71 @@ interface ProductComparisonProps {
 }
 
 export const ProductComparison: React.FC<ProductComparisonProps> = ({ products = PRESEEDED_PRODUCTS, onSelectProduct }) => {
-  const [selectedIds, setSelectedIds] = useState<string[]>([
-    products[0]?.productId || PRESEEDED_PRODUCTS[0].productId,
-    products[1]?.productId || PRESEEDED_PRODUCTS[1].productId
-  ]);
+  const [selectedProducts, setSelectedProducts] = useState<TransparencyReport[]>(() => {
+    const initial: TransparencyReport[] = [];
+    if (products[0]) initial.push(products[0]);
+    if (products[1]) initial.push(products[1]);
+    return initial;
+  });
 
-  const selectedProducts = products.filter((p) =>
-    selectedIds.includes(p.productId)
-  );
+  // Live search state for add-product input
+  const [addQuery, setAddQuery] = useState('');
+  const [addResults, setAddResults] = useState<TransparencyReport[]>([]);
+  const [isAddSearching, setIsAddSearching] = useState(false);
+  const [showDropdown, setShowDropdown] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
-  const handleAddProduct = (id: string) => {
-    if (!selectedIds.includes(id) && selectedIds.length < 3) {
-      setSelectedIds([...selectedIds, id]);
+  // Close dropdown on outside click
+  useEffect(() => {
+    const handler = (e: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+        setShowDropdown(false);
+      }
+    };
+    document.addEventListener('mousedown', handler);
+    return () => document.removeEventListener('mousedown', handler);
+  }, []);
+
+  // Debounced search
+  useEffect(() => {
+    if (addQuery.trim().length < 2) {
+      setAddResults([]);
+      setShowDropdown(false);
+      return;
+    }
+
+    const timer = setTimeout(async () => {
+      setIsAddSearching(true);
+      try {
+        const results = await searchLiveProducts(addQuery.trim());
+        const selectedIds = selectedProducts.map((p) => p.productId);
+        setAddResults(results.filter((r) => !selectedIds.includes(r.productId)));
+        setShowDropdown(true);
+      } catch {
+        setAddResults([]);
+      } finally {
+        setIsAddSearching(false);
+      }
+    }, 300);
+
+    return () => clearTimeout(timer);
+  }, [addQuery, selectedProducts]);
+
+  const handleAddProduct = (product: TransparencyReport) => {
+    if (
+      selectedProducts.length < 4 &&
+      !selectedProducts.some((p) => p.productId === product.productId)
+    ) {
+      setSelectedProducts([...selectedProducts, product]);
+      setAddQuery('');
+      setAddResults([]);
+      setShowDropdown(false);
     }
   };
 
   const handleRemoveProduct = (id: string) => {
-    if (selectedIds.length > 1) {
-      setSelectedIds(selectedIds.filter((i) => i !== id));
+    if (selectedProducts.length > 1) {
+      setSelectedProducts(selectedProducts.filter((p) => p.productId !== id));
     }
   };
 
@@ -49,24 +97,58 @@ export const ProductComparison: React.FC<ProductComparisonProps> = ({ products =
           </p>
         </div>
 
-        {/* Add product dropdown */}
-        {selectedIds.length < 3 && (
-          <div className="flex items-center gap-2 bg-white/10 p-2 rounded-2xl backdrop-blur-md">
-            <Plus className="w-4 h-4 text-purple-200" />
-            <select
-              onChange={(e) => {
-                if (e.target.value) handleAddProduct(e.target.value);
-              }}
-              defaultValue=""
-              className="bg-transparent text-xs font-bold text-white focus:outline-none cursor-pointer"
-            >
-              <option value="" disabled className="text-slate-900">Add Product to Compare...</option>
-              {PRESEEDED_PRODUCTS.filter((p) => !selectedIds.includes(p.productId)).map((p) => (
-                <option key={p.productId} value={p.productId} className="text-slate-900">
-                  {p.productName} (Score {p.deterministicScore})
-                </option>
-              ))}
-            </select>
+        {/* Add product search input */}
+        {selectedProducts.length < 4 && (
+          <div ref={dropdownRef} className="relative w-full sm:w-72">
+            <div className="flex items-center gap-2 bg-white/10 backdrop-blur-md rounded-md border border-white/20 px-3 py-2">
+              {isAddSearching ? (
+                <Loader2 className="w-4 h-4 text-purple-200 animate-spin flex-shrink-0" />
+              ) : (
+                <Search className="w-4 h-4 text-purple-200 flex-shrink-0" />
+              )}
+              <input
+                type="text"
+                value={addQuery}
+                onChange={(e) => setAddQuery(e.target.value)}
+                onFocus={() => { if (addResults.length > 0) setShowDropdown(true); }}
+                placeholder="Search & add product..."
+                className="bg-transparent w-full text-xs font-medium text-white placeholder-purple-200/60 focus:outline-none"
+              />
+            </div>
+
+            {/* Autocomplete dropdown */}
+            {showDropdown && addResults.length > 0 && (
+              <div className="absolute z-50 mt-1.5 w-full bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-700 rounded-md shadow-xl max-h-60 overflow-y-auto">
+                {addResults.map((result) => (
+                  <button
+                    key={result.productId}
+                    onClick={() => handleAddProduct(result)}
+                    className="w-full flex items-center gap-3 px-3 py-2.5 text-left hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors border-b border-stone-100 dark:border-stone-800 last:border-b-0"
+                  >
+                    <img
+                      src={result.imageUrl}
+                      alt={result.productName}
+                      className="w-8 h-8 rounded-md object-cover border border-stone-200 dark:border-stone-700 flex-shrink-0"
+                    />
+                    <div className="min-w-0 flex-1">
+                      <p className="text-xs font-semibold text-stone-800 dark:text-stone-100 truncate">
+                        {result.productName}
+                      </p>
+                      <p className="text-[10px] text-stone-500 dark:text-stone-400">
+                        {result.brand} • Score {result.deterministicScore}
+                      </p>
+                    </div>
+                    <Plus className="w-3.5 h-3.5 text-teal-600 dark:text-teal-400 flex-shrink-0" />
+                  </button>
+                ))}
+              </div>
+            )}
+
+            {showDropdown && addQuery.trim().length >= 2 && !isAddSearching && addResults.length === 0 && (
+              <div className="absolute z-50 mt-1.5 w-full bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-700 rounded-md shadow-xl px-3 py-3">
+                <p className="text-xs text-stone-400 dark:text-stone-500 text-center">No products found</p>
+              </div>
+            )}
           </div>
         )}
       </div>
@@ -83,7 +165,7 @@ export const ProductComparison: React.FC<ProductComparisonProps> = ({ products =
               <span className="px-2.5 py-1 rounded-lg bg-blue-50 dark:bg-blue-950 text-blue-700 dark:text-blue-300 text-xs font-semibold">
                 {product.category}
               </span>
-              {selectedIds.length > 1 && (
+              {selectedProducts.length > 1 && (
                 <button
                   onClick={() => handleRemoveProduct(product.productId)}
                   className="p-1.5 text-slate-400 hover:text-rose-500 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"

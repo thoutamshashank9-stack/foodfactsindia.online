@@ -19,9 +19,10 @@ import { UnverifiedProductStubView } from './UnverifiedProductStubView';
 interface TransparencyReportViewProps {
   report: TransparencyReport;
   onBackToSearch?: () => void;
+  onCategoryFilter?: (category: string) => void;
 }
 
-export const TransparencyReportView: React.FC<TransparencyReportViewProps> = ({ report, onBackToSearch }) => {
+export const TransparencyReportView: React.FC<TransparencyReportViewProps> = ({ report, onBackToSearch, onCategoryFilter }) => {
   if ((report.pageState && report.pageState !== 'verified_published') || report.isScoreWithheld) {
     return <UnverifiedProductStubView report={report} onBack={onBackToSearch} />;
   }
@@ -113,9 +114,14 @@ export const TransparencyReportView: React.FC<TransparencyReportViewProps> = ({ 
           )}
 
           <div className="hidden sm:flex items-center gap-1.5 text-stone-500">
-            <span>Products</span>
+            <button onClick={onBackToSearch} className="hover:text-teal-800 dark:hover:text-teal-400 hover:underline transition-colors">Products</button>
             <ChevronRight className="w-3 h-3" />
-            <span>{report.category}</span>
+            <button
+              onClick={() => onCategoryFilter?.(report.category)}
+              className="hover:text-teal-800 dark:hover:text-teal-400 hover:underline transition-colors"
+            >
+              {report.category}
+            </button>
             <ChevronRight className="w-3 h-3" />
             <span className="text-stone-900 dark:text-stone-100 font-medium truncate max-w-[200px]">{report.productName}</span>
           </div>

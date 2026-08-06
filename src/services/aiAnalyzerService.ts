@@ -44,7 +44,7 @@ export function analyzeRawIngredientLabel(
         category: isAdditive ? 'OTHER' : 'WHOLE_FOOD',
         riskLevel: isHighRisk ? 'HIGH' : isAdditive ? 'MEDIUM' : 'EXCELLENT',
         baseRiskWeight: isHighRisk ? -15 : isAdditive ? -8 : 0,
-        description: `Ingested label entry analyzed by FoodFactsIndia AI NLP normalization service.`,
+        description: `Ingested label entry analyzed by FoodFactsIndia NLP normalization service.`,
         processingLevel: isAdditive ? 'NOVA_4_ULTRA_PROCESSED' : 'NOVA_1_UNPROCESSED',
         regulatoryRecords: [
           {
