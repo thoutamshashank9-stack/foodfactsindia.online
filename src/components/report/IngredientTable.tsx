@@ -53,7 +53,7 @@ export const IngredientTable: React.FC<IngredientTableProps> = ({
                   key={ing.id || `ing_${idx}`}
                   onClick={() => onSelectIngredient(ing, item.rawName || ing.canonicalName)}
                   className={`hover:bg-stone-50 dark:hover:bg-stone-850/40 cursor-pointer transition-colors ${
-                    isBanned ? 'bg-rose-50/30 dark:bg-rose-955/10' : ''
+                    isBanned ? 'bg-rose-50/30 dark:bg-rose-950/10' : ''
                   }`}
                 >
                   <td className="py-3 font-semibold text-stone-900 dark:text-stone-100">

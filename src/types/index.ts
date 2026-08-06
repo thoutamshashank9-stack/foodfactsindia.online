@@ -174,7 +174,7 @@ export interface TransparencyReport {
     verdictTitle: string;
     keyTakeaways: string[];
     riskSummaryText: string;
-    processingNovaClass: number; // 1-4
+    processingNovaClass?: number; // 1-4, optional
   };
 
   ingredientsList: {

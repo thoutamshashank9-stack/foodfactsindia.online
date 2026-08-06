@@ -156,21 +156,27 @@ export const UnverifiedProductStubView: React.FC<UnverifiedProductStubViewProps>
 
           <div className="space-y-3 flex-1">
             <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2">
-              <span className="text-xs font-extrabold uppercase tracking-wider text-slate-500 dark:text-slate-400">
-                {report.brand}
-              </span>
-              <span className="text-[11px] text-slate-400 dark:text-slate-500 font-mono">
-                • GTIN: {report.barcode}
-              </span>
+              {report.brand && (
+                <span className="text-xs font-extrabold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+                  {report.brand}
+                </span>
+              )}
+              {report.barcode && (
+                <span className="text-[11px] text-slate-400 dark:text-slate-500 font-mono">
+                  {report.brand ? '• ' : ''}GTIN: {report.barcode}
+                </span>
+              )}
             </div>
 
             <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-              {report.productName}
+              {report.productName || 'Unknown Product'}
             </h1>
 
-            <p className="text-xs text-slate-500 dark:text-slate-400 font-medium">
-              {report.category} • Pack Size: {report.packageSize}
-            </p>
+            {(report.category || report.packageSize) && (
+              <p className="text-xs text-slate-500 dark:text-slate-400 font-medium">
+                {[report.category, report.packageSize ? `Pack Size: ${report.packageSize}` : null].filter(Boolean).join(' • ')}
+              </p>
+            )}
 
             <div className="pt-1">
               <span
@@ -325,11 +331,13 @@ export const UnverifiedProductStubView: React.FC<UnverifiedProductStubViewProps>
                     className="w-12 h-12 rounded-xl object-cover border border-slate-200 dark:border-slate-700 shrink-0"
                   />
                   <div className="min-w-0 flex-1">
-                    <span className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400 block truncate">
-                      {alt.brand}
-                    </span>
+                    {alt.brand && (
+                      <span className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400 block truncate">
+                        {alt.brand}
+                      </span>
+                    )}
                     <h4 className="text-xs font-extrabold text-slate-900 dark:text-white truncate group-hover:text-blue-600 transition-colors">
-                      {alt.productName}
+                      {alt.productName || 'Unknown Product'}
                     </h4>
                   </div>
                 </div>

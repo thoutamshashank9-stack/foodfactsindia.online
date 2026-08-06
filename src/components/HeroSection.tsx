@@ -142,11 +142,13 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                           />
                           <div>
                             <h4 className="font-semibold text-sm text-stone-900 dark:text-stone-100">
-                              {product.productName}
+                              {product.productName || 'Unknown Product'}
                             </h4>
-                            <p className="text-xs text-stone-500 dark:text-stone-400">
-                              {product.brand} • {product.category}
-                            </p>
+                            {(product.brand || product.category) && (
+                              <p className="text-xs text-stone-500 dark:text-stone-400">
+                                {[product.brand, product.category].filter(Boolean).join(' • ')}
+                              </p>
+                            )}
                           </div>
                         </div>
 

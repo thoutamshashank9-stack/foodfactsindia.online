@@ -184,11 +184,13 @@ export const ProductComparison: React.FC<ProductComparisonProps> = ({ products =
                 className="w-24 h-24 mx-auto rounded-2xl object-cover border border-slate-200 dark:border-slate-700 shadow-md"
               />
               <h3 className="font-extrabold text-base text-slate-900 dark:text-white line-clamp-2">
-                {product.productName}
+                {product.productName || 'Unknown Product'}
               </h3>
-              <p className="text-xs text-slate-500 dark:text-slate-400 font-medium">
-                {product.brand} • {product.servingSize}
-              </p>
+              {(product.brand || product.servingSize) && (
+                <p className="text-xs text-slate-500 dark:text-slate-400 font-medium">
+                  {[product.brand, product.servingSize].filter(Boolean).join(' • ')}
+                </p>
+              )}
             </div>
 
             {/* Score Gauge */}
@@ -241,7 +243,9 @@ export const ProductComparison: React.FC<ProductComparisonProps> = ({ products =
               <div className="pt-2 flex justify-between items-center">
                 <span className="text-slate-500 dark:text-slate-400 font-medium">NOVA Processing Level</span>
                 <span className="font-mono font-bold text-slate-900 dark:text-white">
-                  NOVA Class {product.executiveSummary.processingNovaClass}
+                  {product.executiveSummary.processingNovaClass != null
+                    ? `NOVA Class ${product.executiveSummary.processingNovaClass}`
+                    : 'Unknown'}
                 </span>
               </div>
 

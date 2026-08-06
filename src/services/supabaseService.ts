@@ -673,7 +673,7 @@ export async function searchLiveProducts(query: string): Promise<TransparencyRep
   }
 
   const validFoodProducts = products.filter(p => !isNonFoodProduct(p));
-  const reports = await Promise.all(validFoodProducts.map(async (p) => mapProductToReport(p)));
+  const reports = await batchMapProductsToReports(validFoodProducts);
 
   searchCache.set(q, reports);
   return reports;
@@ -694,9 +694,7 @@ export async function fetchLiveCatalog(): Promise<TransparencyReport[]> {
     return [];
   }
 
-  const reports: TransparencyReport[] = await Promise.all(
-    products.map(async (p) => mapProductToReport(p))
-  );
+  const reports = await batchMapProductsToReports(products);
 
   catalogCache = { timestamp: Date.now(), data: reports };
   return reports;
@@ -724,47 +722,137 @@ function getFssaiCategoryCode(category: string): string | null {
   return null;
 }
 
+
+export async function batchMapProductsToReports(products: any[]): Promise<TransparencyReport[]> {
+  if (products.length === 0) return [];
+  
+  const uncachedProducts = products.filter(p => !reportCache.has(String(p.barcode)));
+  const uncachedBarcodes = uncachedProducts.map(p => String(p.barcode));
+  
+  if (uncachedBarcodes.length === 0) {
+    return products.map(p => reportCache.get(String(p.barcode))!);
+  }
+
+  // 1. Fetch ingredients and additives for all uncached products
+  const [{ data: dbIngredients }, { data: dbAdditives }] = await Promise.all([
+    supabase
+      .from('product_ingredients')
+      .select('barcode, ingredient_raw, position')
+      .in('barcode', uncachedBarcodes)
+      .order('position', { ascending: true }),
+    supabase
+      .from('product_additives')
+      .select('barcode, additive_code')
+      .in('barcode', uncachedBarcodes)
+  ]);
+
+  const ingredientsByBarcode = new Map<string, any[]>();
+  const additivesByBarcode = new Map<string, any[]>();
+  
+  dbIngredients?.forEach(ing => {
+    if (!ingredientsByBarcode.has(ing.barcode)) ingredientsByBarcode.set(ing.barcode, []);
+    ingredientsByBarcode.get(ing.barcode)!.push(ing);
+  });
+  
+  const allAdditiveCodesSet = new Set<string>();
+  dbAdditives?.forEach(add => {
+    if (!additivesByBarcode.has(add.barcode)) additivesByBarcode.set(add.barcode, []);
+    additivesByBarcode.get(add.barcode)!.push(add);
+    allAdditiveCodesSet.add(add.additive_code.toUpperCase());
+  });
+
+  // 2. Fetch category limits
+  const fssaiCategories = Array.from(new Set(uncachedProducts.map(p => getFssaiCategoryCode(p.categories || p.category || '')).filter(Boolean))) as string[];
+  let allCatLimits: any[] = [];
+  if (fssaiCategories.length > 0) {
+    const { data: catLimits } = await supabase.from('fssai_category_limits').select('*').in('category_code', fssaiCategories);
+    allCatLimits = catLimits || [];
+  }
+
+  // 3. Fetch additive rulebook
+  let rulebookData: any[] = [];
+  if (allAdditiveCodesSet.size > 0) {
+    const { data: rules } = await supabase
+      .from('additive_rulebook')
+      .select('*')
+      .in('additive_code', Array.from(allAdditiveCodesSet));
+    rulebookData = rules || [];
+  }
+
+  // 4. Pre-fetch unknown INS codes for all ingredients
+  const allInsCodes: string[] = [];
+  dbIngredients?.forEach((ing: any) => {
+    const raw = cleanRawIngredientText(ing.ingredient_raw || '');
+    const codeMatches = Array.from(raw.matchAll(/([0-9]{3,4}(?:\\([a-z0-9]+\\))?)/gi)).map(m => m[1]);
+    if (/annatto/i.test(raw)) codeMatches.push('160b');
+    if (/caramel/i.test(raw)) codeMatches.push('150d');
+    if (/metabisulfite/i.test(raw)) codeMatches.push('223');
+    if (/lecithin/i.test(raw)) codeMatches.push('322');
+    if (/msg|glutamate/i.test(raw)) codeMatches.push('621');
+    allInsCodes.push(...codeMatches);
+  });
+
+  const uniqueInsCodes = Array.from(new Set(allInsCodes.map(normalizeInsCode))).filter(Boolean);
+  const uncachedCodes = uniqueInsCodes.filter(code => !additiveCache.has(code));
+
+  if (uncachedCodes.length > 0) {
+    const { data: refData } = await supabase
+      .from('additive_reference')
+      .select('*')
+      .in('ins_code', uncachedCodes);
+
+    refData?.forEach((row: any) => {
+      const fact: AdditiveFact = {
+        ins_code: row.ins_code,
+        common_name: row.common_name,
+        origin: row.origin,
+        category: row.category,
+        fssai_status: row.fssai_status,
+        efsa_status: row.efsa_status,
+        fda_status: row.fda_status,
+        adi_value: row.adi_value,
+        concern_level: row.concern_level,
+        accurate_description: row.accurate_description,
+        caveat: row.caveat,
+        source_url: row.source_url,
+        source_citation: row.source_citation
+      };
+      additiveCache.set(row.ins_code, fact);
+    });
+  }
+
+  // 5. Build reports synchronously
+  const results = await Promise.all(products.map(async (p) => {
+    const barcode = String(p.barcode);
+    if (reportCache.has(barcode)) {
+      return reportCache.get(barcode)!;
+    }
+
+    const fssaiCatCode = getFssaiCategoryCode(p.categories || p.category || '');
+    const pIngredients = ingredientsByBarcode.get(barcode) || [];
+    const pAdditives = additivesByBarcode.get(barcode) || [];
+    const pCatLimits = allCatLimits.filter(cl => cl.category_code === fssaiCatCode);
+    
+    return mapProductToReportWithData(p, pIngredients, pAdditives, pCatLimits, rulebookData);
+  }));
+
+  return results;
+}
+
 export async function mapProductToReport(p: any): Promise<TransparencyReport> {
+  const reports = await batchMapProductsToReports([p]);
+  return reports[0];
+}
+
+export async function mapProductToReportWithData(p: any, dbIngredients: any[], dbAdditives: any[], dbCatLimits: any[], rulebookData: any[]): Promise<TransparencyReport> {
   const barcode = String(p.barcode);
   if (reportCache.has(barcode)) {
     return reportCache.get(barcode)!;
   }
 
-  const fssaiCatCode = getFssaiCategoryCode(p.categories || p.category || '');
+    const additiveCodes = (dbAdditives || []).map((a: any) => a.additive_code.toUpperCase());
 
-  // Fetch tokenized ingredients, additives, and FSSAI category limits concurrently
-  const [{ data: dbIngredients }, { data: dbAdditives }, { data: dbCatLimits }] = await Promise.all([
-    supabase
-      .from('product_ingredients')
-      .select('ingredient_raw, position')
-      .eq('barcode', barcode)
-      .order('position', { ascending: true }),
-    supabase
-      .from('product_additives')
-      .select('additive_code')
-      .eq('barcode', barcode),
-    fssaiCatCode
-      ? supabase.from('fssai_category_limits').select('*').eq('category_code', fssaiCatCode)
-      : Promise.resolve({ data: [] as any[] })
-  ]);
-
-  const additiveCodes = (dbAdditives || []).map((a: any) => a.additive_code.toUpperCase());
-
-  // Fetch regulatory rulebook data for additives
-  let rulebookData: any[] = [];
-  if (additiveCodes.length > 0) {
-    const { data: rules } = await supabase
-      .from('additive_rulebook')
-      .select('*')
-      .in('additive_code', additiveCodes);
-    rulebookData = rules || [];
-  }
-
-  // Construct nutrition object.
-  // calories and totalCarbsG are typed number|null — null signals "label not parsed".
-  // Never fabricate defaults: missing energy must push product into insufficient_data.
-  // Zero is a valid value for diet drinks, water, table salt etc.
-  const nutrition: NutritionFacts = {
+const nutrition: NutritionFacts = {
     calories: p.energy_100g != null ? Math.round(Number(p.energy_100g)) : null,
     servingSize: p.serving_size || p.quantity || '100g',
     totalFatG: round1(p.fat_100g),
@@ -871,7 +959,7 @@ export async function mapProductToReport(p: any): Promise<TransparencyReport> {
             id: `cit_${f.ins_code}`,
             title: f.source_citation,
             journal: 'Official Safety Evaluation',
-            year: 2026,
+            year: new Date().getFullYear(),
             doi: f.source_url || `10.1000/ins_${f.ins_code}`,
             summary: f.accurate_description,
             evidenceStrength: 'STRONG' as const
@@ -1187,16 +1275,16 @@ export async function mapProductToReport(p: any): Promise<TransparencyReport> {
 
   const report: TransparencyReport = {
     productId: `prod_live_${barcode}`,
-    productName: toEnglishOnly(p.product_name || 'Unverified Product'),
-    brand: toEnglishOnly(p.brands || 'Unspecified Brand'),
-    manufacturer: toEnglishOnly(p.manufacturer || p.brands || 'Unspecified Manufacturer'),
-    category: toEnglishOnly(p.categories || 'Packaged Food & Beverages'),
+    productName: toEnglishOnly(p.product_name || ''),
+    brand: toEnglishOnly(p.brands || ''),
+    manufacturer: toEnglishOnly(p.manufacturer || p.brands || ''),
+    category: toEnglishOnly(p.categories || ''),
     barcode,
-    imageUrl: p.image_front_url || getBrandImage(p.brands, p.product_name, p.categories),
-    imageFrontUrl: p.image_front_url || getBrandImage(p.brands, p.product_name, p.categories),
+    imageUrl: p.image_front_url || undefined,
+    imageFrontUrl: p.image_front_url || undefined,
     imageIngredientsUrl: p.image_ingredients_url || undefined,
     imageNutritionUrl: p.image_nutrition_url || undefined,
-    packageSize: p.quantity ? toEnglishOnly(String(p.quantity)) : 'Unspecified Size',
+    packageSize: p.quantity ? toEnglishOnly(String(p.quantity)) : '',
     servingSize: p.serving_size || p.quantity || '100g',
     pageState: isDataIncomplete ? 'insufficient_data' : 'verified_published',
     stateMessage: isDataIncomplete ? 'We do not have enough verified package data to analyze this product yet.' : 'Verified package label report.',
@@ -1232,7 +1320,7 @@ export async function mapProductToReport(p: any): Promise<TransparencyReport> {
         p.nova_group != null ? `NOVA Classification: Group ${p.nova_group} food item.` : `NOVA Classification: Unclassified.`
       ],
       riskSummaryText: isDataIncomplete ? 'Package evidence pending verification.' : `Live verified dataset analysis from Supabase database for ${p.product_name}.`,
-      processingNovaClass: isDataIncomplete ? 0 : (p.nova_group != null ? Number(p.nova_group) : 0)
+      processingNovaClass: isDataIncomplete ? undefined : (p.nova_group != null ? Number(p.nova_group) : undefined)
     },
     ingredientsList: isDataIncomplete ? [] : ingredientsList,
     nutrition,
@@ -1240,10 +1328,11 @@ export async function mapProductToReport(p: any): Promise<TransparencyReport> {
     labelWarnings: isDataIncomplete ? undefined : labelWarnings,
     globalRegulatoryOverview,
     evidenceConfidence: {
-      confidenceScore: isDataIncomplete ? 30 : 90,
+      confidenceScore: isDataIncomplete ? 30 : 
+        (p.energy_100g != null && p.fat_100g != null && p.sugars_100g != null && ingredientsList.length > 0 ? 90 : 60),
       peerReviewedStudiesCount: ingredientsList.reduce((acc, i) => acc + (i.ingredient.citations?.length || 0), 0),
-      regulatoryBodiesCount: globalRegulatoryOverview.filter(r => (r.bannedCount || 0) > 0 || (r.restrictedCount || 0) > 0).length || 1,
-      lastUpdated: 'Live Supabase Sync',
+      regulatoryBodiesCount: globalRegulatoryOverview.filter(r => (r.bannedCount || 0) > 0 || (r.restrictedCount || 0) > 0).length,
+      lastUpdated: new Date().toISOString().split('T')[0],
       verificationStatus: isDataIncomplete ? 'pending_verification' : 'database_indexed'
     }
   };
@@ -1294,28 +1383,7 @@ export function calculateWHOSugarFlag(nutrition: { totalSugarG?: number | null; 
   return null;
 }
 
-function getBrandImage(brand?: string, name?: string, category?: string): string | undefined {
-  const b = (brand || '').toLowerCase();
-  const n = (name || '').toLowerCase();
-  const c = (category || '').toLowerCase();
 
-  // Return verified image links only if exact brand matches
-  if (b.includes('red bull') || b.includes('redbull') || n.includes('red bull') || n.includes('redbull')) {
-    return 'https://images.openfoodfacts.org/images/products/000/009/044/8492/front_fr.3.400.jpg';
-  }
-  if (b.includes('coca') || n.includes('coke')) {
-    return 'https://images.openfoodfacts.org/images/products/544/900/000/0996/front_en.1107.400.jpg';
-  }
-  if (n.includes('sprite')) {
-    return 'https://images.openfoodfacts.org/images/products/544/900/001/4535/front_en.12.400.jpg';
-  }
-  if (b.includes('amul')) {
-    return 'https://images.openfoodfacts.org/images/products/490/148/801/0320/front_en.3.400.jpg';
-  }
-
-  // Do NOT return hallucinated stock photos for unmatched products
-  return undefined;
-}
 
 /**
  * V2 Discriminated Variant Supplier

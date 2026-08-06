@@ -18,14 +18,19 @@ export const ProductHeader: React.FC<ProductHeaderProps> = ({ report }) => {
         />
 
         <div className="flex-1 space-y-1.5 text-center md:text-left">
-          <div className="text-[10px] font-bold uppercase tracking-wider text-teal-800 dark:text-teal-400">
-            {report.brand} • {report.category}
-          </div>
+          {!!(report.brand || report.category) && (
+            <div className="text-[10px] font-bold uppercase tracking-wider text-teal-800 dark:text-teal-400">
+              {[report.brand, report.category].filter(Boolean).join(' • ')}
+            </div>
+          )}
           <h1 className="font-serif text-xl sm:text-2xl font-bold text-stone-900 dark:text-stone-100 leading-tight">
-            {report.productName}
+            {report.productName || 'Unknown Product'}
           </h1>
           <div className="text-xs text-stone-500 dark:text-stone-400 font-mono">
-            Pack Size: {report.packageSize} • GTIN: {report.barcode}
+            {[
+              report.packageSize ? `Pack Size: ${report.packageSize}` : null,
+              report.barcode ? `GTIN: ${report.barcode}` : null
+            ].filter(Boolean).join(' • ')}
           </div>
         </div>
       </div>

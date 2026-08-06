@@ -22,7 +22,7 @@ export const ProductPage: React.FC<ProductPageProps> = ({ data, onBack, onSelect
                   productId: data.product.productId,
                   productName: data.product.productName,
                   brand: data.product.brand,
-                  manufacturer: data.product.manufacturer || 'Unverified',
+                  manufacturer: data.product.manufacturer || '',
                   category: data.product.category,
                   barcode: data.product.barcode,
                   packageSize: data.product.packageSize,
@@ -38,7 +38,7 @@ export const ProductPage: React.FC<ProductPageProps> = ({ data, onBack, onSelect
                     verdictTitle: 'Verification Pending',
                     keyTakeaways: [],
                     riskSummaryText: 'Package evidence pending verification.',
-                    processingNovaClass: 0
+                    processingNovaClass: undefined
                   },
                   ingredientsList: [],
                   nutrition: { servingSize: '100g', calories: 0, totalFatG: 0, saturatedFatG: 0, transFatG: 0, sodiumMg: 0, totalCarbsG: 0, fiberG: 0, totalSugarG: 0, addedSugarG: 0, proteinG: 0 },
@@ -59,7 +59,7 @@ export const ProductPage: React.FC<ProductPageProps> = ({ data, onBack, onSelect
                   productId: data.product.productId,
                   productName: data.product.productName,
                   brand: data.product.brand,
-                  manufacturer: data.product.manufacturer || 'Unverified',
+                  manufacturer: data.product.manufacturer || '',
                   category: data.product.category,
                   barcode: data.product.barcode,
                   packageSize: data.product.packageSize,
@@ -75,7 +75,7 @@ export const ProductPage: React.FC<ProductPageProps> = ({ data, onBack, onSelect
                     verdictTitle: 'Verification Pending',
                     keyTakeaways: [],
                     riskSummaryText: 'Package evidence pending verification.',
-                    processingNovaClass: 0
+                    processingNovaClass: undefined
                   },
                   ingredientsList: [],
                   nutrition: { servingSize: '100g', calories: 0, totalFatG: 0, saturatedFatG: 0, transFatG: 0, sodiumMg: 0, totalCarbsG: 0, fiberG: 0, totalSugarG: 0, addedSugarG: 0, proteinG: 0 },
