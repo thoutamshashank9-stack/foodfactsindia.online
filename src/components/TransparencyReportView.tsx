@@ -165,9 +165,6 @@ export const TransparencyReportView: React.FC<TransparencyReportViewProps> = ({
 
         <ProductHeader report={report} issuesCount={unifiedFindings.length} />
         
-        {/* Unified Key Concerns list */}
-        <KeyConcernsList findings={unifiedFindings} />
-
         {/* Multi-Jurisdiction Front-of-Package Ratings */}
         <JurisdictionRatings
           ratings={report.internationalRatings}
@@ -182,6 +179,9 @@ export const TransparencyReportView: React.FC<TransparencyReportViewProps> = ({
             onOpenMethodology={() => setIsIntlModalOpen(true)}
           />
         )}
+
+        {/* Unified Key Concerns list */}
+        <KeyConcernsList findings={unifiedFindings} />
 
         {/* Ingredient list and risk matrix analysis */}
         <IngredientTable

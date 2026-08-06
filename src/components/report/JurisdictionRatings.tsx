@@ -1,7 +1,7 @@
 import React from 'react';
 import { InternationalRatings } from '../../types';
 import { Info, Globe } from 'lucide-react';
-import { CollapsibleSection } from '../CollapsibleSection';
+import { Card } from '../Card';
 
 interface JurisdictionRatingsProps {
   ratings?: InternationalRatings;
@@ -32,138 +32,114 @@ export const JurisdictionRatings: React.FC<JurisdictionRatingsProps> = ({
 
   const { nutriScore, fdaLabel } = ratings;
   const grade = nutriScore.grade;
-  const nutriStyle = NUTRI_SCORE_COLORS[grade] || NUTRI_SCORE_COLORS['E'];
 
   return (
-    <div className="w-full">
-      <CollapsibleSection
-        title={
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <Globe className="w-4 h-4 text-stone-500 shrink-0" />
-              <span>Multi-Jurisdictional Ratings</span>
-            </div>
-            {onOpenMethodology && (
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  onOpenMethodology();
-                }}
-                className="inline-flex items-center gap-1 text-[11px] font-semibold text-teal-800 dark:text-teal-400 hover:underline focus:outline-none"
-              >
-                <Info className="w-3.5 h-3.5" />
-                <span>Methodology</span>
-              </button>
-            )}
-          </div>
-        }
-        collapsedPreview={
-          <div className="flex items-center gap-3 mt-2">
-            {/* EU Nutri-Score minimal */}
-            <div className={`px-3 py-1 rounded font-bold text-sm ${nutriStyle.activeBg}`}>
-              EU: {grade}
-            </div>
-            {/* India Benchmark minimal */}
-            <div className="px-3 py-1 rounded font-bold text-sm bg-stone-100 dark:bg-stone-800 text-stone-800 dark:text-stone-200">
-              IN: {foodfactsScore}/100
-            </div>
-            {/* US FDA minimal */}
-            <div className="flex gap-1">
-              <div className={`w-3 h-6 rounded ${FDA_LEVEL_STYLES[fdaLabel.saturatedFat.level]} border`} title={`Fat: ${fdaLabel.saturatedFat.level}`} />
-              <div className={`w-3 h-6 rounded ${FDA_LEVEL_STYLES[fdaLabel.sodium.level]} border`} title={`Salt: ${fdaLabel.sodium.level}`} />
-              <div className={`w-3 h-6 rounded ${FDA_LEVEL_STYLES[fdaLabel.addedSugar.level]} border`} title={`Sugar: ${fdaLabel.addedSugar.level}`} />
-            </div>
-          </div>
-        }
-      >
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
-          {/* EU Nutri-Score */}
-          <div className="p-3.5 rounded-lg bg-stone-50 dark:bg-stone-850 border border-stone-200 dark:border-stone-800 flex flex-col justify-between min-h-[110px]">
-            <div className="flex items-center justify-between pb-1.5 border-b border-stone-200/60 dark:border-stone-700/60">
-              <span className="text-[11px] font-bold text-stone-700 dark:text-stone-300">
-                🇪🇺 EU Nutri-Score (2024)
-              </span>
-              <span className="text-[10px] font-mono text-stone-500">
-                Score {nutriScore.score}
-              </span>
-            </div>
+    <Card className="space-y-4">
+      <div className="flex items-center justify-between border-b border-stone-200 dark:border-stone-850 pb-2">
+        <div className="flex items-center gap-2">
+          <Globe className="w-4 h-4 text-stone-500 shrink-0" />
+          <h3 className="text-xs font-bold uppercase tracking-wider text-stone-850 dark:text-stone-200">
+            Multi-Jurisdictional Front-of-Package Ratings
+          </h3>
+        </div>
+        {onOpenMethodology && (
+          <button
+            onClick={onOpenMethodology}
+            className="inline-flex items-center gap-1 text-[11px] font-semibold text-teal-800 dark:text-teal-400 hover:underline focus:outline-none"
+          >
+            <Info className="w-3.5 h-3.5" />
+            <span>Methodology</span>
+          </button>
+        )}
+      </div>
 
-            <div className="flex items-center justify-between gap-1 pt-2">
-              {['A', 'B', 'C', 'D', 'E'].map((letter) => {
-                const isActive = letter === grade;
-                const style = NUTRI_SCORE_COLORS[letter];
-                return (
-                  <div
-                    key={letter}
-                    className={`flex-1 py-1 text-center text-xs font-bold rounded transition-all ${
-                      isActive
-                        ? `${style.activeBg} scale-105 shadow-sm`
-                        : `${style.bg} ${style.text} opacity-50`
-                    }`}
-                  >
-                    {letter}
-                  </div>
-                );
-              })}
-            </div>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        {/* EU Nutri-Score */}
+        <div className="p-3.5 rounded-lg bg-stone-50 dark:bg-stone-850 border border-stone-200 dark:border-stone-800 flex flex-col justify-between min-h-[110px]">
+          <div className="flex items-center justify-between pb-1.5 border-b border-stone-200/60 dark:border-stone-700/60">
+            <span className="text-[11px] font-bold text-stone-700 dark:text-stone-300">
+              🇪🇺 EU Nutri-Score (2024)
+            </span>
+            <span className="text-[10px] font-mono text-stone-500">
+              Score {nutriScore.score}
+            </span>
           </div>
 
-          {/* FoodFactsIndia Standard */}
-          <div className="p-3.5 rounded-lg bg-stone-50 dark:bg-stone-850 border border-stone-200 dark:border-stone-800 flex flex-col justify-between min-h-[110px]">
-            <div className="flex items-center justify-between pb-1.5 border-b border-stone-200/60 dark:border-stone-700/60">
-              <span className="text-[11px] font-bold text-stone-700 dark:text-stone-300">
-                🇮🇳 India Benchmark
-              </span>
-              <span className="text-[9px] uppercase tracking-wider font-bold text-teal-800 dark:text-teal-400">
-                0-100 Scale
-              </span>
-            </div>
-            <div className="flex items-center justify-between pt-1.5">
-              <div>
-                <div className="text-xl font-bold text-stone-900 dark:text-white font-mono">
-                  {foodfactsScore}<span className="text-[10px] text-stone-400">/100</span>
+          <div className="flex items-center justify-between gap-1 pt-2">
+            {['A', 'B', 'C', 'D', 'E'].map((letter) => {
+              const isActive = letter === grade;
+              const style = NUTRI_SCORE_COLORS[letter];
+              return (
+                <div
+                  key={letter}
+                  className={`flex-1 py-1 text-center text-xs font-bold rounded transition-all ${
+                    isActive
+                      ? `${style.activeBg} scale-105 shadow-sm`
+                      : `${style.bg} ${style.text} opacity-50`
+                  }`}
+                >
+                  {letter}
                 </div>
-                <p className="text-[9px] text-stone-500">
-                  Formula v1.4
-                </p>
-              </div>
-              <div className={`px-2 py-0.5 rounded text-[10px] font-bold ${
-                foodfactsScore >= 75 ? 'bg-emerald-50 text-emerald-800 dark:bg-emerald-950/40 dark:text-emerald-300' :
-                foodfactsScore >= 50 ? 'bg-amber-50 text-amber-800 dark:bg-amber-950/40 dark:text-amber-300' :
-                'bg-rose-50 text-rose-800 dark:bg-rose-950/40 dark:text-rose-300'
-              }`}>
-                {foodfactsScore >= 75 ? 'Clean' : foodfactsScore >= 50 ? 'Moderate' : 'UPF'}
-              </div>
-            </div>
+              );
+            })}
           </div>
+        </div>
 
-          {/* US FDA proposed FOP */}
-          <div className="p-3.5 rounded-lg bg-stone-50 dark:bg-stone-850 border border-stone-200 dark:border-stone-800 flex flex-col justify-between min-h-[110px]">
-            <div className="flex items-center justify-between pb-1.5 border-b border-stone-200/60 dark:border-stone-700/60">
-              <span className="text-[11px] font-bold text-stone-700 dark:text-stone-300">
-                🇺🇸 US FDA proposed FOP
-              </span>
-              <span className="text-[9px] text-stone-500 font-mono">
-                % DV
-              </span>
+        {/* FoodFactsIndia Standard */}
+        <div className="p-3.5 rounded-lg bg-stone-50 dark:bg-stone-850 border border-stone-200 dark:border-stone-800 flex flex-col justify-between min-h-[110px]">
+          <div className="flex items-center justify-between pb-1.5 border-b border-stone-200/60 dark:border-stone-700/60">
+            <span className="text-[11px] font-bold text-stone-700 dark:text-stone-300">
+              🇮🇳 India Benchmark
+            </span>
+            <span className="text-[9px] uppercase tracking-wider font-bold text-teal-800 dark:text-teal-400">
+              0-100 Scale
+            </span>
+          </div>
+          <div className="flex items-center justify-between pt-1.5">
+            <div>
+              <div className="text-xl font-bold text-stone-900 dark:text-white font-mono">
+                {foodfactsScore}<span className="text-[10px] text-stone-400">/100</span>
+              </div>
+              <p className="text-[9px] text-stone-500">
+                Formula v1.4
+              </p>
             </div>
-            <div className="grid grid-cols-3 gap-1 pt-1.5">
-              <div className={`p-1 rounded border text-center ${FDA_LEVEL_STYLES[fdaLabel.saturatedFat.level]}`}>
-                <div className="text-[8px] font-bold uppercase truncate">Fat</div>
-                <div className="text-xs font-bold leading-none py-0.5">{fdaLabel.saturatedFat.dvPercentage}%</div>
-              </div>
-              <div className={`p-1 rounded border text-center ${FDA_LEVEL_STYLES[fdaLabel.sodium.level]}`}>
-                <div className="text-[8px] font-bold uppercase truncate">Salt</div>
-                <div className="text-xs font-bold leading-none py-0.5">{fdaLabel.sodium.dvPercentage}%</div>
-              </div>
-              <div className={`p-1 rounded border text-center ${FDA_LEVEL_STYLES[fdaLabel.addedSugar.level]}`}>
-                <div className="text-[8px] font-bold uppercase truncate">Sugar</div>
-                <div className="text-xs font-bold leading-none py-0.5">{fdaLabel.addedSugar.dvPercentage}%</div>
-              </div>
+            <div className={`px-2 py-0.5 rounded text-[10px] font-bold ${
+              foodfactsScore >= 75 ? 'bg-emerald-50 text-emerald-800 dark:bg-emerald-950/40 dark:text-emerald-300' :
+              foodfactsScore >= 50 ? 'bg-amber-50 text-amber-800 dark:bg-amber-950/40 dark:text-amber-300' :
+              'bg-rose-50 text-rose-800 dark:bg-rose-950/40 dark:text-rose-300'
+            }`}>
+              {foodfactsScore >= 75 ? 'Clean' : foodfactsScore >= 50 ? 'Moderate' : 'UPF'}
             </div>
           </div>
         </div>
-      </CollapsibleSection>
-    </div>
+
+        {/* US FDA proposed FOP */}
+        <div className="p-3.5 rounded-lg bg-stone-50 dark:bg-stone-850 border border-stone-200 dark:border-stone-800 flex flex-col justify-between min-h-[110px]">
+          <div className="flex items-center justify-between pb-1.5 border-b border-stone-200/60 dark:border-stone-700/60">
+            <span className="text-[11px] font-bold text-stone-700 dark:text-stone-300">
+              🇺🇸 US FDA proposed FOP
+            </span>
+            <span className="text-[9px] text-stone-500 font-mono">
+              % DV
+            </span>
+          </div>
+          <div className="grid grid-cols-3 gap-1 pt-1.5">
+            <div className={`p-1 rounded border text-center ${FDA_LEVEL_STYLES[fdaLabel.saturatedFat.level]}`}>
+              <div className="text-[8px] font-bold uppercase truncate">Fat</div>
+              <div className="text-xs font-bold leading-none py-0.5">{fdaLabel.saturatedFat.dvPercentage}%</div>
+            </div>
+            <div className={`p-1 rounded border text-center ${FDA_LEVEL_STYLES[fdaLabel.sodium.level]}`}>
+              <div className="text-[8px] font-bold uppercase truncate">Salt</div>
+              <div className="text-xs font-bold leading-none py-0.5">{fdaLabel.sodium.dvPercentage}%</div>
+            </div>
+            <div className={`p-1 rounded border text-center ${FDA_LEVEL_STYLES[fdaLabel.addedSugar.level]}`}>
+              <div className="text-[8px] font-bold uppercase truncate">Sugar</div>
+              <div className="text-xs font-bold leading-none py-0.5">{fdaLabel.addedSugar.dvPercentage}%</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Card>
   );
 };
