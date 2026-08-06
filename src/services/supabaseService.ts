@@ -723,21 +723,25 @@ export async function fetchLiveCatalog(): Promise<TransparencyReport[]> {
 function getFssaiCategoryCode(category: string): string | null {
   if (!category) return null;
   const cat = category.toLowerCase();
+  
+  // Specific patterns first
+  if (cat.includes('ice cream') || cat.includes('ice lolly') || cat.includes('sherbet') || cat.includes('sorbet') || cat.includes('cassatta')) return 'CAT_03';
+  if (cat.includes('savoury') || cat.includes('snack') || cat.includes('chip') || cat.includes('crisp') || cat.includes('namkeen') || cat.includes('popcorn') || cat.includes('extruded') || cat.includes('pringles') || cat.includes('doritos')) return 'CAT_15';
+  if (cat.includes('beverage') || cat.includes('drink') || cat.includes('soda') || cat.includes('cola') || cat.includes('juice') || cat.includes('water') || cat.includes('squash') || cat.includes('energy drink') || cat.includes('syrup') || cat.includes('sharbat')) return 'CAT_14';
+  if (cat.includes('confectionery') || cat.includes('chocolate') || cat.includes('candy') || cat.includes('toffee') || cat.includes('lollipop') || cat.includes('caramel') || cat.includes('sweet snacks') || cat.includes('m&m') || cat.includes('snickers')) return 'CAT_05';
+  
+  // General categories
   if (cat.includes('dairy') || cat.includes('milk') || cat.includes('cheese') || cat.includes('yogurt') || cat.includes('cream') || cat.includes('paneer')) return 'CAT_01';
   if (cat.includes('fat') || cat.includes(' oil') || cat.includes('butter') || cat.includes('margarine')) return 'CAT_02';
-  if (cat.includes('ice cream') || cat.includes('ice lolly') || cat.includes('sherbet') || cat.includes('sorbet')) return 'CAT_03';
   if (cat.includes('fruit') || cat.includes('vegetable') || cat.includes('jam') || cat.includes('jelly') || cat.includes('pickle') || cat.includes('chutney')) return 'CAT_04';
-  if (cat.includes('confectionery') || cat.includes('chocolate') || cat.includes('candy') || cat.includes('toffee') || cat.includes('lollipop') || cat.includes('caramel')) return 'CAT_05';
-  if (cat.includes('cereal') || cat.includes('flour') || cat.includes('grain') || cat.includes('pasta') || cat.includes('rice')) return 'CAT_06';
-  if (cat.includes('bakery') || cat.includes('bread') || cat.includes('cake') || cat.includes('biscuit') || cat.includes('cookie') || cat.includes('pastry') || cat.includes('rusk') || cat.includes('toast')) return 'CAT_07';
+  if (cat.includes('cereal') || cat.includes('flour') || cat.includes('grain') || cat.includes('pasta') || cat.includes('rice') || cat.includes('vermicelli')) return 'CAT_06';
+  if (cat.includes('bakery') || cat.includes('bread') || cat.includes('cake') || cat.includes('biscuit') || cat.includes('cookie') || cat.includes('pastry') || cat.includes('rusk') || cat.includes('toast') || cat.includes('oreo')) return 'CAT_07';
   if (cat.includes('meat') || cat.includes('poultry') || cat.includes('chicken') || cat.includes('mutton') || cat.includes('pork') || cat.includes('beef') || cat.includes('sausage') || cat.includes('deli')) return 'CAT_08';
   if (cat.includes('fish') || cat.includes('seafood') || cat.includes('prawn') || cat.includes('shrimp') || cat.includes('crab')) return 'CAT_09';
   if (cat.includes('egg')) return 'CAT_10';
   if (cat.includes('sweetener') || cat.includes('honey')) return 'CAT_11';
   if (cat.includes('salt') || cat.includes('spice') || cat.includes('soup') || cat.includes('sauce') || cat.includes('condiment') || cat.includes('ketchup') || cat.includes('dressing')) return 'CAT_12';
   if (cat.includes('infant') || cat.includes('baby') || cat.includes('medical food') || cat.includes('formula')) return 'CAT_13';
-  if (cat.includes('beverage') || cat.includes('drink') || cat.includes('soda') || cat.includes('cola') || cat.includes('juice') || cat.includes('water') || cat.includes('squash') || cat.includes('energy drink')) return 'CAT_14';
-  if (cat.includes('savoury') || cat.includes('snack') || cat.includes('chip') || cat.includes('crisp') || cat.includes('namkeen') || cat.includes('popcorn') || cat.includes('extruded')) return 'CAT_15';
   return null;
 }
 
