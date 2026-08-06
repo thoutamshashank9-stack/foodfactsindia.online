@@ -12,6 +12,7 @@ import { UnverifiedProductStubView } from './UnverifiedProductStubView';
 
 // Sub-components
 import { ProductHeader } from './report/ProductHeader';
+import { BannedStatusBanner } from './report/BannedStatusBanner';
 import { JurisdictionRatings } from './report/JurisdictionRatings';
 import { WarningLabels } from './report/WarningLabels';
 import { KeyConcernsList } from './report/KeyConcernsList';
@@ -54,6 +55,20 @@ export const TransparencyReportView: React.FC<TransparencyReportViewProps> = ({
   const bannedIngredients = report.ingredientsList.filter((item) =>
     item.ingredient.regulatoryRecords?.some((r) => r.status === 'BANNED')
   );
+
+  const bannedItems = bannedIngredients.map((item) => {
+    const ing = item.ingredient;
+    const bannedRecords = ing.regulatoryRecords.filter((r) => r.status === 'BANNED');
+    const bannedCountries = bannedRecords.map((r) => `${r.flagEmoji || ''} ${r.countryName || r.countryCode}`).join(', ');
+    const bannedRefs = bannedRecords.map((r) => r.regulationRef).filter(Boolean).join('; ');
+    const harmText = ing.description || 'Prohibited food additive.';
+    return {
+      name: `${ing.canonicalName}${ing.eNumber ? ` (${ing.eNumber})` : ''}`,
+      countries: bannedCountries,
+      reason: harmText,
+      citations: bannedRefs
+    };
+  });
 
   bannedIngredients.forEach((item, idx) => {
     const ing = item.ingredient;
@@ -144,6 +159,10 @@ export const TransparencyReportView: React.FC<TransparencyReportViewProps> = ({
       {/* 2. Main Redesigned Layout: Single Column Stack */}
       <div className="flex flex-col space-y-4">
         
+        {bannedItems.length > 0 && (
+          <BannedStatusBanner bannedItems={bannedItems} />
+        )}
+
         <ProductHeader report={report} issuesCount={unifiedFindings.length} />
         
         {/* Unified Key Concerns list */}

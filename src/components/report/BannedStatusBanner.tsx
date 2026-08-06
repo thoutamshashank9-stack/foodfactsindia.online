@@ -24,10 +24,15 @@ export const BannedStatusBanner: React.FC<BannedStatusBannerProps> = ({ bannedIt
           </div>
         }
         collapsedPreview={
-          <div className="text-xs text-stone-600 dark:text-stone-400 leading-relaxed mt-1">
-            {bannedItems.length === 1
-              ? `${bannedItems[0].name} is banned in ${bannedItems[0].countries}.`
-              : `${bannedItems.length} ingredients are banned in other countries.`}
+          <div className="space-y-1.5 mt-2">
+            {bannedItems.map((item, idx) => (
+              <div key={idx} className="text-xs text-stone-700 dark:text-stone-300 leading-relaxed">
+                • <span className="font-semibold text-red-600 dark:text-red-400">{item.name}</span> is banned in <span className="font-medium">{item.countries}</span> ({item.reason})
+              </div>
+            ))}
+            <div className="text-[10px] text-teal-700 dark:text-teal-400 mt-1 font-semibold">
+              Click to view detailed report and official citations
+            </div>
           </div>
         }
       >
