@@ -6,3 +6,6 @@ dist/
 *.log
 batch_products_*.sql
 combined_bundle_*.sql
+
+.vercel
+.env*

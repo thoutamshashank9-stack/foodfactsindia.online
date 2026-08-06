@@ -86,7 +86,6 @@ export const LatAmOctagonBadge: React.FC<LatAmOctagonBadgeProps> = ({
       {warnings && warnings.length > 0 ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 pt-2">
           {warnings.map((w) => {
-            const nativeText = selectedCountry === 'MX' ? w.mexicoLabel : w.chileLabel;
             const isStopOctagon = !w.id.includes('SWEETENERS') && !w.id.includes('CAFFEINE');
 
             return (
@@ -106,13 +105,8 @@ export const LatAmOctagonBadge: React.FC<LatAmOctagonBadgeProps> = ({
                     borderRadius: isStopOctagon ? undefined : '12px'
                   }}
                 >
-                  {/* Line 1: Native Warning Label (Max 2 lines inside shape) */}
-                  <div className="text-xs sm:text-sm font-black uppercase tracking-tight leading-tight">
-                    {nativeText}
-                  </div>
-                  
-                  {/* Line 2: English Translation */}
-                  <div className="text-[10px] sm:text-[11px] font-medium opacity-80 mt-1 leading-snug">
+                  {/* Single English Warning Label */}
+                  <div className="text-xs sm:text-sm font-black uppercase tracking-tight leading-tight px-1">
                     {w.englishSubtitle}
                   </div>
                 </div>

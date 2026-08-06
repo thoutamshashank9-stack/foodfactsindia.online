@@ -266,10 +266,10 @@ export function calculateLatAmOctagons(
   if (calories >= calorieThreshold) {
     warnings.push({
       id: 'HIGH_CALORIES',
-      mexicoLabel: 'EXCESO CALORÍAS',
-      chileLabel: 'ALTO EN CALORÍAS',
+      mexicoLabel: 'EXCESS CALORIES',
+      chileLabel: 'HIGH IN CALORIES',
       englishSubtitle: 'High in Calories',
-      thresholdDeclared: isLiquid ? '≥ 70 kcal / 100ml' : '≥ 275 kcal / 100g'
+      thresholdDeclared: isLiquid ? '>= 70 kcal / 100ml' : '>= 275 kcal / 100g'
     });
   }
 
@@ -277,10 +277,10 @@ export function calculateLatAmOctagons(
   if (totalSugars >= 10 || (calories > 0 && (sugarCalories / calories) >= 0.10)) {
     warnings.push({
       id: 'HIGH_SUGAR',
-      mexicoLabel: 'EXCESO AZÚCARES',
-      chileLabel: 'ALTO EN AZÚCARES',
+      mexicoLabel: 'EXCESS SUGARS',
+      chileLabel: 'HIGH IN SUGARS',
       englishSubtitle: 'High in Sugars',
-      thresholdDeclared: '≥ 10% of total energy or ≥ 10g/100g'
+      thresholdDeclared: '>= 10% of total energy or >= 10g/100g'
     });
   }
 
@@ -288,10 +288,10 @@ export function calculateLatAmOctagons(
   if (satFat >= 4 || (calories > 0 && (satFatCalories / calories) >= 0.10)) {
     warnings.push({
       id: 'HIGH_SAT_FAT',
-      mexicoLabel: 'EXCESO GRASAS SATURADAS',
-      chileLabel: 'ALTO EN GRASAS SATURADAS',
+      mexicoLabel: 'EXCESS SATURATED FAT',
+      chileLabel: 'HIGH IN SATURATED FAT',
       englishSubtitle: 'High in Saturated Fat',
-      thresholdDeclared: '≥ 10% of total energy or ≥ 4g/100g'
+      thresholdDeclared: '>= 10% of total energy or >= 4g/100g'
     });
   }
 
@@ -299,10 +299,10 @@ export function calculateLatAmOctagons(
   if (sodium >= 300 || (calories > 0 && sodium / calories >= 1.0)) {
     warnings.push({
       id: 'HIGH_SODIUM',
-      mexicoLabel: 'EXCESO SODIO',
-      chileLabel: 'ALTO EN SODIO',
+      mexicoLabel: 'EXCESS SODIUM',
+      chileLabel: 'HIGH IN SODIUM',
       englishSubtitle: 'High in Sodium',
-      thresholdDeclared: '≥ 1mg/kcal or ≥ 300mg/100g'
+      thresholdDeclared: '>= 1mg/kcal or >= 300mg/100g'
     });
   }
 
@@ -310,10 +310,10 @@ export function calculateLatAmOctagons(
   if (transFat > 0 && (calories > 0 && (transFatCalories / calories) >= 0.01)) {
     warnings.push({
       id: 'HIGH_TRANS_FAT',
-      mexicoLabel: 'EXCESO GRASAS TRANS',
-      chileLabel: 'ALTO EN GRASAS TRANS',
+      mexicoLabel: 'EXCESS TRANS FAT',
+      chileLabel: 'HIGH IN TRANS FAT',
       englishSubtitle: 'High in Trans Fat',
-      thresholdDeclared: '≥ 1% of total energy'
+      thresholdDeclared: '>= 1% of total energy'
     });
   }
 
@@ -321,9 +321,9 @@ export function calculateLatAmOctagons(
   if (hasSweeteners) {
     warnings.push({
       id: 'CONTAINS_SWEETENERS',
-      mexicoLabel: 'CONTIENE EDULCORANTES',
-      chileLabel: 'CONTIENE EDULCORANTES',
-      englishSubtitle: 'Contains Sweeteners - Avoid in Children',
+      mexicoLabel: 'CONTAINS SWEETENERS',
+      chileLabel: 'CONTAINS SWEETENERS',
+      englishSubtitle: 'Contains Sweeteners — Avoid in Children',
       thresholdDeclared: 'Presence of non-nutritive artificial sweeteners'
     });
   }
@@ -332,9 +332,9 @@ export function calculateLatAmOctagons(
   if (hasCaffeine) {
     warnings.push({
       id: 'CONTAINS_CAFFEINE',
-      mexicoLabel: 'CONTIENE CAFEÍNA',
-      chileLabel: 'CONTIENE CAFEÍNA',
-      englishSubtitle: 'Contains Caffeine - Avoid in Children',
+      mexicoLabel: 'CONTAINS CAFFEINE',
+      chileLabel: 'CONTAINS CAFFEINE',
+      englishSubtitle: 'Contains Caffeine — Avoid in Children',
       thresholdDeclared: 'Presence of caffeine'
     });
   }

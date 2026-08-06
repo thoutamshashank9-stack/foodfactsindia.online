@@ -163,13 +163,55 @@ function toEnglishOnly(text: string): string {
 }
 
 function cleanRawIngredientText(raw: string): string {
-
   if (!raw) return '';
-  return raw
+  let cleaned = raw
     .replace(/<[^>]*>/g, '') // Strip HTML tags like <span class="allergen">
     .replace(/\bcashew\s+buts\b/gi, 'cashew nuts') // Fix OCR typo
     .replace(/\binvert\s+sugar\s+strup\b/gi, 'invert sugar syrup') // Fix OCR typo
     .trim();
+
+  // Bug 5b: OCR Header Sanitizer — strip brand/marketing text before "ingredients:" keyword
+  const ingredientsIdx = cleaned.toLowerCase().indexOf('ingredients:');
+  if (ingredientsIdx > 0) {
+    cleaned = cleaned.substring(ingredientsIdx + 12).trim();
+  }
+
+  return cleaned;
+}
+
+/**
+ * Bug 5a: Grouped INS Unroller.
+ * Splits multi-code strings like "colours (ins 102, ins 133, ins 110)" into
+ * individual Ingredient objects for each additive code, rather than returning
+ * only the single highest-risk item.
+ */
+function unrollGroupedAdditives(rawText: string, basePosition: number): Ingredient[] {
+  const cleaned = cleanRawIngredientText(rawText);
+
+  // Detect grouped additive patterns: "colours (ins 102, ins 133, ins 110, ins 122)"
+  // or "acidity regulators (296, 330)" or "emulsifiers (e471, e472e)"
+  const groupMatch = cleaned.match(/^(.*?)\s*\(([^)]+)\)\s*$/i);
+  if (!groupMatch) return [resolveIngredientFromRaw(rawText, basePosition)];
+
+  const prefix = groupMatch[1].trim().toLowerCase();
+  const inner = groupMatch[2];
+
+  // Check if the prefix is a functional additive group name
+  const isAdditiveGroup = /colou?rs?|emulsifiers?|preservatives?|stabilisers?|acidity regulators?|raising agents?|flavou?r enhancers?|antioxidants?|thickeners?|sweeteners?/i.test(prefix);
+  if (!isAdditiveGroup) return [resolveIngredientFromRaw(rawText, basePosition)];
+
+  // Split inner codes: "ins 102, ins 133, ins 110, ins 122" or "296, 330"
+  const codeParts = inner.split(/[,;]+/).map(s => s.trim()).filter(Boolean);
+  if (codeParts.length <= 1) return [resolveIngredientFromRaw(rawText, basePosition)];
+
+  // Resolve each code individually
+  const results: Ingredient[] = [];
+  codeParts.forEach((code, idx) => {
+    const resolved = resolveIngredientFromRaw(code, basePosition + idx * 0.1);
+    results.push(resolved);
+  });
+
+  return results;
 }
 
 /**
@@ -181,6 +223,47 @@ function cleanRawIngredientText(raw: string): string {
 function resolveIngredientFromRaw(rawText: string, position: number): Ingredient {
   const cleaned = cleanRawIngredientText(rawText);
   const lower = cleaned.toLowerCase();
+
+  // Bug 5c: Hydrogenated Oil Classification — must come BEFORE whole food fallback
+  if (/hydrogenated|partially hydrogenated/i.test(lower)) {
+    return {
+      id: `ing_transfat_${position}`,
+      canonicalName: cleaned,
+      synonyms: [cleaned, 'hydrogenated fat', 'trans fat source'],
+      category: 'PROCESSING_AID' as const,
+      riskLevel: 'HIGH' as const,
+      baseRiskWeight: -20,
+      description: 'Hydrogenated vegetable oil is an industrial trans fat source. WHO targets global elimination by 2023. Associated with cardiovascular disease, LDL cholesterol elevation, and systemic inflammation.',
+      processingLevel: 'NOVA_4_ULTRA_PROCESSED' as const,
+      regulatoryRecords: [
+        {
+          countryCode: 'IN' as const,
+          countryName: 'India (FSSAI)',
+          flagEmoji: '🇮🇳',
+          status: 'RESTRICTED' as const,
+          restrictionDetails: 'FSSAI mandates trans fat < 2% in oils/fats (2022 regulation).',
+          regulationRef: 'FSSAI Trans Fat Regulation 2022'
+        },
+        {
+          countryCode: 'US' as const,
+          countryName: 'United States (FDA)',
+          flagEmoji: '🇺🇸',
+          status: 'BANNED' as const,
+          restrictionDetails: 'FDA revoked GRAS status for partially hydrogenated oils (PHOs) in 2018.',
+          regulationRef: 'FDA Final Rule 21 CFR 189.1 (2018)'
+        }
+      ],
+      citations: [{
+        id: 'cit_who_replace',
+        title: 'WHO REPLACE Trans Fat Action Package',
+        journal: 'World Health Organization',
+        year: 2018,
+        doi: 'https://www.who.int/publications/i/item/replace-trans-fat',
+        summary: 'Global strategy to eliminate industrially produced trans fat from food supply by 2023.',
+        evidenceStrength: 'STRONG' as const
+      }]
+    };
+  }
 
   // 1. Direct or Synonym Match
   const directMatch = INGREDIENT_DATABASE.find(
@@ -214,7 +297,9 @@ function resolveIngredientFromRaw(rawText: string, position: number): Ingredient
         flagEmoji: r.jurisdictionCode === 'US' ? '🇺🇸' : (r.jurisdictionCode === 'JP' ? '🇯🇵' : (r.jurisdictionCode === 'EU' ? '🇪🇺' : '🇮🇳')),
         status: r.status,
         restrictionDetails: r.restrictionDetails,
-        regulationRef: r.regulationRef
+        regulationRef: r.regulationRef,
+        scopeCategory: r.scopeCategory,
+        maxLimitMgKg: r.maxLimitMgKg
       })),
       citations: primary.citations || []
     };
@@ -617,14 +702,38 @@ export async function fetchLiveCatalog(): Promise<TransparencyReport[]> {
   return reports;
 }
 
+/** Map a product category string to FSSAI Food Category System (FCS) code. */
+function getFssaiCategoryCode(category: string): string | null {
+  if (!category) return null;
+  const cat = category.toLowerCase();
+  if (cat.includes('dairy') || cat.includes('milk') || cat.includes('cheese') || cat.includes('yogurt') || cat.includes('cream') || cat.includes('paneer')) return 'CAT_01';
+  if (cat.includes('fat') || cat.includes(' oil') || cat.includes('butter') || cat.includes('margarine')) return 'CAT_02';
+  if (cat.includes('ice cream') || cat.includes('ice lolly') || cat.includes('sherbet') || cat.includes('sorbet')) return 'CAT_03';
+  if (cat.includes('fruit') || cat.includes('vegetable') || cat.includes('jam') || cat.includes('jelly') || cat.includes('pickle') || cat.includes('chutney')) return 'CAT_04';
+  if (cat.includes('confectionery') || cat.includes('chocolate') || cat.includes('candy') || cat.includes('toffee') || cat.includes('lollipop') || cat.includes('caramel')) return 'CAT_05';
+  if (cat.includes('cereal') || cat.includes('flour') || cat.includes('grain') || cat.includes('pasta') || cat.includes('rice')) return 'CAT_06';
+  if (cat.includes('bakery') || cat.includes('bread') || cat.includes('cake') || cat.includes('biscuit') || cat.includes('cookie') || cat.includes('pastry') || cat.includes('rusk') || cat.includes('toast')) return 'CAT_07';
+  if (cat.includes('meat') || cat.includes('poultry') || cat.includes('chicken') || cat.includes('mutton') || cat.includes('pork') || cat.includes('beef') || cat.includes('sausage') || cat.includes('deli')) return 'CAT_08';
+  if (cat.includes('fish') || cat.includes('seafood') || cat.includes('prawn') || cat.includes('shrimp') || cat.includes('crab')) return 'CAT_09';
+  if (cat.includes('egg')) return 'CAT_10';
+  if (cat.includes('sweetener') || cat.includes('honey')) return 'CAT_11';
+  if (cat.includes('salt') || cat.includes('spice') || cat.includes('soup') || cat.includes('sauce') || cat.includes('condiment') || cat.includes('ketchup') || cat.includes('dressing')) return 'CAT_12';
+  if (cat.includes('infant') || cat.includes('baby') || cat.includes('medical food') || cat.includes('formula')) return 'CAT_13';
+  if (cat.includes('beverage') || cat.includes('drink') || cat.includes('soda') || cat.includes('cola') || cat.includes('juice') || cat.includes('water') || cat.includes('squash') || cat.includes('energy drink')) return 'CAT_14';
+  if (cat.includes('savoury') || cat.includes('snack') || cat.includes('chip') || cat.includes('crisp') || cat.includes('namkeen') || cat.includes('popcorn') || cat.includes('extruded')) return 'CAT_15';
+  return null;
+}
+
 export async function mapProductToReport(p: any): Promise<TransparencyReport> {
   const barcode = String(p.barcode);
   if (reportCache.has(barcode)) {
     return reportCache.get(barcode)!;
   }
 
-  // Fetch tokenized ingredients and additives concurrently to prevent network waterfalls
-  const [{ data: dbIngredients }, { data: dbAdditives }] = await Promise.all([
+  const fssaiCatCode = getFssaiCategoryCode(p.categories || p.category || '');
+
+  // Fetch tokenized ingredients, additives, and FSSAI category limits concurrently
+  const [{ data: dbIngredients }, { data: dbAdditives }, { data: dbCatLimits }] = await Promise.all([
     supabase
       .from('product_ingredients')
       .select('ingredient_raw, position')
@@ -633,7 +742,10 @@ export async function mapProductToReport(p: any): Promise<TransparencyReport> {
     supabase
       .from('product_additives')
       .select('additive_code')
-      .eq('barcode', barcode)
+      .eq('barcode', barcode),
+    fssaiCatCode
+      ? supabase.from('fssai_category_limits').select('*').eq('category_code', fssaiCatCode)
+      : Promise.resolve({ data: [] as any[] })
   ]);
 
   const additiveCodes = (dbAdditives || []).map((a: any) => a.additive_code.toUpperCase());
@@ -714,9 +826,12 @@ export async function mapProductToReport(p: any): Promise<TransparencyReport> {
 
   // Build clean, deduplicated ingredients list asynchronously with getAdditiveFact lookups
   const rawIngredientsList = (dbIngredients && dbIngredients.length > 0)
-    ? await Promise.all(dbIngredients.map(async (ing: any) => {
+    ? (await Promise.all(dbIngredients.map(async (ing: any) => {
         const raw = cleanRawIngredientText(ing.ingredient_raw || '');
-        let resolved = resolveIngredientFromRaw(raw, ing.position);
+
+        // Bug 5a: Unroll grouped additives like "colours (ins 102, ins 133, ins 110)"
+        const unrolledIngredients = unrollGroupedAdditives(raw, ing.position);
+        let resolved = unrolledIngredients[0]; // Primary resolved ingredient
 
         // Extract ALL embedded INS/E codes or keywords in raw ingredient text
         const codeMatches = Array.from(raw.matchAll(/([0-9]{3,4}(?:\([a-z0-9]+\))?)/gi))
@@ -771,13 +886,24 @@ export async function mapProductToReport(p: any): Promise<TransparencyReport> {
           };
         }
 
-        return {
+        // Return primary + any additional unrolled additives as separate line items
+        const primaryResult = {
           ingredient: resolved,
           rawName: raw,
           position: ing.position,
           isControversial: resolved.riskLevel !== 'LOW' || additiveCodes.some(c => raw.toUpperCase().includes(c))
         };
-      }))
+
+        // Bug 5a: Add remaining unrolled additives as separate line items
+        const additionalUnrolled = unrolledIngredients.slice(1).map((unrolledIng, idx) => ({
+          ingredient: unrolledIng,
+          rawName: unrolledIng.canonicalName,
+          position: ing.position + (idx + 1) * 0.1,
+          isControversial: unrolledIng.riskLevel !== 'LOW'
+        }));
+
+        return [primaryResult, ...additionalUnrolled];
+      }))).flat()
     : [
         {
           ingredient: {
@@ -820,7 +946,12 @@ export async function mapProductToReport(p: any): Promise<TransparencyReport> {
     p.fat_100g == null &&
     p.sugars_100g == null;
 
-  const isDataIncomplete = hasPlaceholderIngredients || isNutritionAbsent;
+  // Bug 5d: Enhanced completeness gate — also catch products where all nutrition values are zero
+  // (indicates missing data, not genuinely zero-calorie food like water)
+  const isAllNutritionZero = nutrition.calories === 0 && nutrition.totalFatG === 0 
+    && nutrition.totalSugarG === 0 && nutrition.sodiumMg === 0 && nutrition.proteinG === 0;
+  const isDataIncomplete = hasPlaceholderIngredients || isNutritionAbsent
+    || (isAllNutritionZero && ingredientsList.length > 3);
 
   // Calculate score using standard scoring engine
   const scoreResult = calculateDeterministicScore(ingredientsList.map(i => i.ingredient), nutrition);
@@ -956,6 +1087,42 @@ export async function mapProductToReport(p: any): Promise<TransparencyReport> {
       warningText: 'PHENYLKETONURICS: CONTAINS PHENYLALANINE.',
       jurisdiction: 'India (FSSAI), US (FDA), EU (EFSA)',
       authorityRef: 'FSSAI Food Safety and Standards (Labelling) Regulations'
+    });
+  }
+
+  // FSSAI Category-Specific Limits Warning Cards (from fssai_category_limits table)
+  if (dbCatLimits && dbCatLimits.length > 0) {
+    (dbCatLimits as any[]).forEach((limit: any) => {
+      const insNorm = limit.additive_code.replace(/^0+/, '').toLowerCase();
+      const hasAdditive =
+        additiveCodes.some(c => c.toLowerCase().includes(insNorm)) ||
+        allTextUpper.includes(`INS ${limit.additive_code.toUpperCase()}`) ||
+        allTextUpper.includes(`E${limit.additive_code.toUpperCase()}`) ||
+        allTextUpper.includes(` ${limit.additive_code.toUpperCase()}`);
+
+      if (hasAdditive) {
+        if (limit.status === 'BANNED') {
+          labelWarnings.push({
+            id: `warn_fssai_cat_${limit.category_code}_${limit.additive_code}`,
+            title: `FSSAI Banned in ${limit.category_name}`,
+            type: 'EU_BAN',
+            appliedAdditives: [`INS ${limit.additive_code}`],
+            warningText: limit.restriction_details || `Additive INS ${limit.additive_code} is banned in the ${limit.category_name} category by FSSAI.`,
+            jurisdiction: 'India (FSSAI)',
+            authorityRef: limit.regulation_ref
+          });
+        } else if (limit.status === 'RESTRICTED' && limit.max_limit_mg_kg != null) {
+          labelWarnings.push({
+            id: `warn_fssai_cat_${limit.category_code}_${limit.additive_code}`,
+            title: `FSSAI Category Limit: Max ${limit.max_limit_mg_kg} mg/kg`,
+            type: 'OTHER',
+            appliedAdditives: [`INS ${limit.additive_code}`],
+            warningText: `In the ${limit.category_name} category, INS ${limit.additive_code} is restricted to a maximum of ${limit.max_limit_mg_kg} mg/kg under ${limit.regulation_ref}.`,
+            jurisdiction: 'India (FSSAI)',
+            authorityRef: limit.regulation_ref
+          });
+        }
+      }
     });
   }
 

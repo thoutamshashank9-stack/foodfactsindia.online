@@ -10,6 +10,8 @@ export interface RegulatoryRecord {
   year?: number;
   restrictionDetails?: string;
   regulationRef: string;
+  scopeCategory?: string;
+  maxLimitMgKg?: number | null;
 }
 
 export interface ResearchCitation {
