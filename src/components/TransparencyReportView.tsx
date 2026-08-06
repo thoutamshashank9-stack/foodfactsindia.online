@@ -3,18 +3,22 @@ import {
   Calculator,
   ArrowLeft,
   ChevronRight,
-  ShieldAlert,
   Share2
 } from 'lucide-react';
 import { TransparencyReport, Ingredient } from '../types';
-import { ScoreGauge } from './ScoreGauge';
 import { ScoreBreakdownModal } from './ScoreBreakdownModal';
 import { EvidenceDrawerModal } from './EvidenceDrawerModal';
-import { ProductImage } from './ProductImage';
-import { GlobalRatingsStrip } from './GlobalRatingsStrip';
-import { LatAmOctagonBadge } from './LatAmOctagonBadge';
 import { InternationalMethodologyModal } from './InternationalMethodologyModal';
 import { UnverifiedProductStubView } from './UnverifiedProductStubView';
+
+// Sub-components
+import { ProductHeader } from './report/ProductHeader';
+import { ScoreHero } from './report/ScoreHero';
+import { JurisdictionRatings } from './report/JurisdictionRatings';
+import { WarningLabels } from './report/WarningLabels';
+import { KeyConcernsList } from './report/KeyConcernsList';
+import { IngredientTable } from './report/IngredientTable';
+import { Card } from './Card';
 
 interface TransparencyReportViewProps {
   report: TransparencyReport;
@@ -22,12 +26,15 @@ interface TransparencyReportViewProps {
   onCategoryFilter?: (category: string) => void;
 }
 
-export const TransparencyReportView: React.FC<TransparencyReportViewProps> = ({ report, onBackToSearch, onCategoryFilter }) => {
+export const TransparencyReportView: React.FC<TransparencyReportViewProps> = ({
+  report,
+  onBackToSearch,
+  onCategoryFilter,
+}) => {
   if ((report.pageState && report.pageState !== 'verified_published') || report.isScoreWithheld) {
     return <UnverifiedProductStubView report={report} onBack={onBackToSearch} />;
   }
 
-  const [activeTab, setActiveTab] = useState<'ingredients' | 'regulatory'>('ingredients');
   const [isMethodologyOpen, setIsMethodologyOpen] = useState(false);
   const [isIntlModalOpen, setIsIntlModalOpen] = useState(false);
   const [copied, setCopied] = useState(false);
@@ -42,10 +49,10 @@ export const TransparencyReportView: React.FC<TransparencyReportViewProps> = ({ 
 
   const issues = report.scoreBreakdown.filter((b) => b.type === 'DEDUCTION');
 
-  // Build 1-sentence issue summaries
+  // Build unified findings
   const unifiedFindings: { id: string; title: string; subtitle: string; severity: 'CRITICAL' | 'WARNING' | 'INFO' }[] = [];
 
-  // 1. Bubbled Banned Additives (placed at the absolute top of the findings)
+  // 1. Bubbled Banned Additives
   const bannedIngredients = report.ingredientsList.filter((item) =>
     item.ingredient.regulatoryRecords?.some((r) => r.status === 'BANNED')
   );
@@ -59,7 +66,7 @@ export const TransparencyReportView: React.FC<TransparencyReportViewProps> = ({ 
 
     unifiedFindings.push({
       id: `banned_ing_${idx}`,
-      title: `🔴 BANNED ADDITIVE: ${ing.canonicalName} (${ing.eNumber || 'No E-Number'})`,
+      title: `Banned Additive: ${ing.canonicalName} (${ing.eNumber || 'No E-Number'})`,
       subtitle: `Prohibited in: ${bannedCountries}. Regulation: ${bannedRefs || 'Not specified'}. Harmful effect: ${harmText}`,
       severity: 'CRITICAL'
     });
@@ -98,7 +105,7 @@ export const TransparencyReportView: React.FC<TransparencyReportViewProps> = ({ 
   });
 
   return (
-    <div className="max-w-4xl mx-auto space-y-8 pb-16">
+    <div className="max-w-6xl mx-auto space-y-6 pb-16">
       
       {/* 1. Toolbar Navigation */}
       <div className="flex items-center justify-between text-xs pt-2">
@@ -106,9 +113,9 @@ export const TransparencyReportView: React.FC<TransparencyReportViewProps> = ({ 
           {onBackToSearch && (
             <button
               onClick={onBackToSearch}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 hover:bg-stone-200 dark:hover:bg-stone-700 transition-colors font-medium"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-stone-100 dark:bg-stone-850 text-stone-700 dark:text-stone-300 hover:bg-stone-200 dark:hover:bg-stone-800 transition-colors font-medium"
             >
-              <ArrowLeft className="w-3.5 h-3.5 text-stone-500" />
+              <ArrowLeft className="w-3.5 h-3.5" strokeWidth={2.5} />
               <span>Back to products</span>
             </button>
           )}
@@ -129,212 +136,74 @@ export const TransparencyReportView: React.FC<TransparencyReportViewProps> = ({ 
 
         <button
           onClick={handleShare}
-          className="px-3 py-1.5 rounded-md bg-stone-100 dark:bg-stone-800 hover:bg-stone-200 dark:hover:bg-stone-700 text-stone-700 dark:text-stone-300 font-medium flex items-center gap-1.5 transition-colors"
+          className="px-3 py-1.5 rounded-md bg-stone-100 dark:bg-stone-850 hover:bg-stone-200 dark:hover:bg-stone-800 text-stone-700 dark:text-stone-300 font-medium flex items-center gap-1.5 transition-colors"
         >
           <Share2 className="w-3.5 h-3.5 text-stone-500" />
           <span>{copied ? 'Copied' : 'Share'}</span>
         </button>
       </div>
 
-      {/* 2. Product Header & Title */}
-      <div className="editorial-card p-6 sm:p-8 space-y-6">
-        <div className="flex flex-col sm:flex-row items-start gap-6">
-          <ProductImage
-            barcode={report.barcode}
-            productName={report.productName}
-            className="w-28 h-28 sm:w-32 sm:h-32 rounded-md object-cover border border-stone-200 dark:border-stone-700 shrink-0"
+      {/* 2. Main Redesigned Layout: 2 Columns on Desktop, Stacked on Mobile */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+        
+        {/* Left column (40% width on desktop) - Sticky overview cards */}
+        <div className="lg:col-span-5 lg:sticky lg:top-18 space-y-6">
+          <ProductHeader report={report} />
+          
+          <ScoreHero
+            report={report}
+            issuesCount={unifiedFindings.length}
+            onOpenRules={() => setIsMethodologyOpen(true)}
+          />
+        </div>
+
+        {/* Right column (60% width on desktop) - Deep dive findings */}
+        <div className="lg:col-span-7 space-y-6">
+          
+          {/* Multi-Jurisdiction Front-of-Package Ratings */}
+          <JurisdictionRatings
+            ratings={report.internationalRatings}
+            foodfactsScore={report.deterministicScore}
+            onOpenMethodology={() => setIsIntlModalOpen(true)}
           />
 
-          <div className="space-y-2 flex-1">
-            <div className="text-xs font-semibold uppercase tracking-wider text-teal-800 dark:text-teal-400">
-              {report.brand} • {report.category}
-            </div>
-
-            <h1 className="font-serif text-2xl sm:text-3xl font-semibold text-stone-900 dark:text-stone-100">
-              {report.productName}
-            </h1>
-
-            <p className="text-xs text-stone-500 dark:text-stone-400">
-              Manufacturer: {report.manufacturer} • Pack Size: {report.packageSize} • GTIN: {report.barcode}
-            </p>
-
-            <div className="pt-2">
-              <p className="text-sm text-stone-700 dark:text-stone-300 leading-relaxed bg-stone-50 dark:bg-stone-800/60 p-3.5 rounded border border-stone-200 dark:border-stone-700">
-                {report.executiveSummary.verdictTitle}
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Score Block */}
-        <div className="pt-6 border-t border-stone-200 dark:border-stone-800 grid grid-cols-1 sm:grid-cols-2 gap-6 items-center">
-          <div className="flex items-center gap-4">
-            <ScoreGauge
-              score={report.deterministicScore}
-              grade={report.executiveSummary.grade}
-              size="md"
-              issuesCount={unifiedFindings.length}
-            />
-            <div>
-              <h3 className="font-serif text-lg font-semibold text-stone-900 dark:text-stone-100">
-                Score: {report.deterministicScore} / 100
-              </h3>
-              <p className="text-xs text-stone-500 dark:text-stone-400 mt-0.5">
-                Grade {report.executiveSummary.grade} based on declared food composition and additives.
-              </p>
-              <button
-                onClick={() => setIsMethodologyOpen(true)}
-                className="text-xs text-teal-800 dark:text-teal-400 hover:underline mt-1 inline-flex items-center gap-1 font-medium"
-              >
-                <Calculator className="w-3 h-3" />
-                View score rules
-              </button>
-            </div>
-          </div>
-
-          <div className="space-y-3">
-            <GlobalRatingsStrip
-              ratings={report.internationalRatings}
-              foodfactsScore={report.deterministicScore}
+          {/* Simulated Warning Labels (NOM-051, Ley 20.606) */}
+          {report.internationalRatings?.warningOctagons && (
+            <WarningLabels
+              warnings={report.internationalRatings.warningOctagons}
               onOpenMethodology={() => setIsIntlModalOpen(true)}
             />
+          )}
 
-            {report.internationalRatings?.warningOctagons && (
-              <LatAmOctagonBadge
-                warnings={report.internationalRatings.warningOctagons}
-                onOpenMethodology={() => setIsIntlModalOpen(true)}
-              />
-            )}
-          </div>
-        </div>
-      </div>
+          {/* Unified Key Concerns list */}
+          <KeyConcernsList findings={unifiedFindings} />
 
-      {/* 3. Key Concerns (1 sentence per finding) */}
-      <div className="editorial-card p-6 space-y-4">
-        <h2 className="font-serif text-xl font-semibold text-stone-900 dark:text-stone-100 flex items-center gap-2">
-          <ShieldAlert className="w-5 h-5 text-amber-700 dark:text-amber-500" />
-          Key Concerns & Findings ({unifiedFindings.length})
-        </h2>
+          {/* Ingredient list and risk matrix analysis */}
+          <IngredientTable
+            ingredientsList={report.ingredientsList}
+            onSelectIngredient={(ing, rawName) => {
+              setSelectedDrawerIngredient(ing);
+              setDrawerRawName(rawName);
+            }}
+          />
 
-        {unifiedFindings.length === 0 ? (
-          <p className="text-xs text-stone-600 dark:text-stone-400">
-            No high-risk regulatory concerns or WHO nutrient benchmark violations flagged for this product.
-          </p>
-        ) : (
-          <div className="space-y-3">
-            {unifiedFindings.map((finding) => (
-              <div
-                key={finding.id}
-                className="p-3.5 rounded bg-stone-50 dark:bg-stone-800/60 border border-stone-200 dark:border-stone-700/80 space-y-1"
-              >
-                <h4 className="font-semibold text-sm text-stone-900 dark:text-stone-100">
-                  {finding.title}
-                </h4>
-                <p className="text-xs text-stone-600 dark:text-stone-300 leading-normal">
-                  {finding.subtitle}
-                </p>
-              </div>
-            ))}
-          </div>
-        )}
-      </div>
-
-      {/* 4. Ingredient & Regulatory Tabs */}
-      <div className="editorial-card p-6 space-y-6">
-        <div className="flex border-b border-stone-200 dark:border-stone-800 gap-6">
-          <button
-            onClick={() => setActiveTab('ingredients')}
-            className={`pb-2.5 text-sm font-medium border-b-2 transition-colors ${
-              activeTab === 'ingredients'
-                ? 'border-teal-700 text-teal-800 dark:border-teal-400 dark:text-teal-300 font-semibold'
-                : 'border-transparent text-stone-500 hover:text-stone-900 dark:hover:text-stone-200'
-            }`}
-          >
-            Ingredient Analysis ({report.ingredientsList.length})
-          </button>
-
-          <button
-            onClick={() => setActiveTab('regulatory')}
-            className={`pb-2.5 text-sm font-medium border-b-2 transition-colors ${
-              activeTab === 'regulatory'
-                ? 'border-teal-700 text-teal-800 dark:border-teal-400 dark:text-teal-300 font-semibold'
-                : 'border-transparent text-stone-500 hover:text-stone-900 dark:hover:text-stone-200'
-            }`}
-          >
-            Regulatory References
-          </button>
-        </div>
-
-        {activeTab === 'ingredients' && (
-          <div className="space-y-4">
-            <div className="divide-y divide-stone-200 dark:divide-stone-800">
-              {[...report.ingredientsList]
-                .sort((a, b) => {
-                  const aBanned = a.ingredient.regulatoryRecords?.some((r) => r.status === 'BANNED') ? 1 : 0;
-                  const bBanned = b.ingredient.regulatoryRecords?.some((r) => r.status === 'BANNED') ? 1 : 0;
-                  return bBanned - aBanned;
-                })
-                .map((item, idx) => {
-                  const ing = item.ingredient;
-                  const isBanned = ing.regulatoryRecords?.some((r) => r.status === 'BANNED');
-                  return (
-                    <div
-                      key={ing.id || `ing_${idx}`}
-                      className={`py-3 flex items-center justify-between cursor-pointer transition-colors px-2.5 rounded my-1.5 ${
-                        isBanned
-                          ? 'bg-rose-50/50 dark:bg-rose-950/20 border-l-4 border-rose-500 hover:bg-rose-100/40 dark:hover:bg-rose-900/20'
-                          : 'hover:bg-stone-50 dark:hover:bg-stone-800/40'
-                      }`}
-                      onClick={() => {
-                        setSelectedDrawerIngredient(ing);
-                        setDrawerRawName(item.rawName || ing.canonicalName);
-                      }}
-                    >
-                      <div className="space-y-0.5">
-                        <h4 className="font-semibold text-sm text-stone-900 dark:text-stone-100 flex items-center gap-2">
-                          <span>{ing.canonicalName}</span>
-                          {ing.eNumber && (
-                            <span className="px-1.5 py-0.5 rounded text-[11px] font-mono bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-400">
-                              {ing.eNumber}
-                            </span>
-                          )}
-                          {isBanned && (
-                            <span className="px-1.5 py-0.5 rounded text-[10px] uppercase font-bold bg-rose-100 text-rose-800 dark:bg-rose-950 dark:text-rose-200">
-                              Banned
-                            </span>
-                          )}
-                        </h4>
-                        <p className="text-xs text-stone-500 dark:text-stone-400">
-                          Category: {ing.category} • Risk: {ing.riskLevel}
-                        </p>
-                      </div>
-
-                      <span className="text-xs text-teal-800 dark:text-teal-400 font-medium">
-                        Evidence &rarr;
-                      </span>
-                    </div>
-                  );
-                })}
-            </div>
-          </div>
-        )}
-
-        {activeTab === 'regulatory' && (
-          <div className="space-y-4 text-xs text-stone-700 dark:text-stone-300">
-            <h3 className="font-serif text-base font-semibold text-stone-900 dark:text-stone-100">
-              Regulatory Gazette & Citation Mapping
-            </h3>
-            <p className="leading-relaxed">
-              Regulatory findings are cross-checked against FSSAI Food Safety and Standards (Food Products Standards and Food Additives) Regulations, EU Regulation (EC) No 1333/2008, and US FDA 21 CFR standards.
+          {/* Regulatory Citation matrix */}
+          <Card className="space-y-3">
+            <h4 className="font-serif text-sm font-bold text-stone-900 dark:text-stone-100">
+              Regulatory Gazette &amp; Mapping Sources
+            </h4>
+            <p className="text-xs text-stone-605 dark:text-stone-400 leading-relaxed">
+              Findings mapped directly from Schedule 2.4.5 of FSSAI Food Safety and Standards (Food Additives) Regulations, EU Additives Database (EC No 1333/2008), and FDA 21 CFR standards.
             </p>
-            <div className="p-4 rounded bg-stone-50 dark:bg-stone-800/60 border border-stone-200 dark:border-stone-700 space-y-2 font-mono">
-              <div>• FSSAI Gazette Schedule 2.4.5: Food Additives Authorization Matrix</div>
-              <div>• US FDA 21 CFR Part 74/172: Food Additive Permitted Uses</div>
-              <div>• EU Commission Regulation (EU) 2022/63: E171 Titanium Dioxide Status</div>
-              <div>• WHO Guideline (2015): Sugars Intake for Adults and Children</div>
+            <div className="p-3 rounded-lg bg-stone-50 dark:bg-stone-850 border border-stone-200 dark:border-stone-800 space-y-1.5 font-mono text-[10px] text-stone-500 dark:text-stone-400">
+              <div>• FSSAI Category: {report.category}</div>
+              <div>• EU Commission Regulation (EU) 2022/63: titanium dioxide update</div>
+              <div>• Codex General Standard for Food Additives (GSFA Online Database)</div>
             </div>
-          </div>
-        )}
+          </Card>
+
+        </div>
+
       </div>
 
       {/* Modals */}
