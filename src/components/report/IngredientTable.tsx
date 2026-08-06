@@ -21,10 +21,18 @@ export const IngredientTable: React.FC<IngredientTableProps> = ({
     return 'neutral';
   };
 
+  const getRiskScore = (ing: Ingredient) => {
+    const isBanned = ing.regulatoryRecords?.some((r) => r.status === 'BANNED');
+    if (isBanned) return 4;
+    const risk = (ing.riskLevel || '').toUpperCase();
+    if (risk.includes('HIGH') || risk.includes('SEVERE')) return 3;
+    if (risk.includes('MEDIUM') || risk.includes('MODERATE')) return 2;
+    if (risk.includes('LOW') || risk.includes('SAFE') || risk.includes('MINIMAL')) return 1;
+    return 0;
+  };
+
   const sortedList = [...ingredientsList].sort((a, b) => {
-    const aBanned = a.ingredient.regulatoryRecords?.some((r) => r.status === 'BANNED') ? 1 : 0;
-    const bBanned = b.ingredient.regulatoryRecords?.some((r) => r.status === 'BANNED') ? 1 : 0;
-    return bBanned - aBanned;
+    return getRiskScore(b.ingredient) - getRiskScore(a.ingredient);
   });
 
   const bannedCount = sortedList.filter((item) =>
