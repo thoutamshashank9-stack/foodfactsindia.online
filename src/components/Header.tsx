@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { Search, Sun, Moon, Menu, X, Scan } from 'lucide-react';
 
 interface HeaderProps {
-  currentTab: 'home' | 'products' | 'methodology' | 'compare' | 'about';
-  setCurrentTab: (tab: 'home' | 'products' | 'methodology' | 'compare' | 'about') => void;
+  currentTab: 'home' | 'products' | 'methodology' | 'compare' | 'about' | 'grievance' | 'terms';
+  setCurrentTab: (tab: any) => void;
   darkMode: boolean;
   setDarkMode: (val: boolean) => void;
   onOpenScan: () => void;

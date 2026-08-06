@@ -4,6 +4,8 @@ import { HeroSection } from './components/HeroSection';
 import { WhyThisMatters } from './components/WhyThisMatters';
 import { MethodologySnapshot } from './components/MethodologySnapshot';
 import { AboutView } from './components/AboutView';
+import { GrievanceView } from './components/GrievanceView';
+import { TermsView } from './components/TermsView';
 import { TransparencyReportView } from './components/TransparencyReportView';
 import { Footer } from './components/Footer';
 import { PRESEEDED_PRODUCTS } from './data/productsDatabase';
@@ -27,14 +29,17 @@ const CATEGORY_MAP: Record<string, string[]> = {
 const CATEGORY_CHIPS = ['ALL', 'NOODLES', 'BEVERAGES', 'SNACKS', 'CHOCOLATE'] as const;
 const ITEMS_PER_PAGE = 12;
 
+// ─── Shared tab type ────────────────────────────────────────────────────────
+type TabId = 'home' | 'products' | 'methodology' | 'compare' | 'about' | 'grievance' | 'terms';
+
 // ─── History state shape ────────────────────────────────────────────────────
 interface HistoryState {
-  tab: 'home' | 'products' | 'methodology' | 'compare' | 'about';
+  tab: TabId;
   productId: string | null;
 }
 
 export function App() {
-  const [currentTab, setCurrentTab] = useState<'home' | 'products' | 'methodology' | 'compare' | 'about'>('home');
+  const [currentTab, setCurrentTab] = useState<TabId>('home');
   const [selectedProduct, setSelectedProduct] = useState<TransparencyReport | null>(null);
   const [darkMode, setDarkMode] = useState<boolean>(false);
   const [isScanOpen, setIsScanOpen] = useState<boolean>(false);
@@ -494,6 +499,16 @@ export function App() {
             {currentTab === 'about' && (
               <AboutView />
             )}
+
+            {/* 6. GRIEVANCE TAB */}
+            {currentTab === 'grievance' && (
+              <GrievanceView />
+            )}
+
+            {/* 7. TERMS TAB */}
+            {currentTab === 'terms' && (
+              <TermsView />
+            )}
           </>
         )}
       </main>
@@ -510,7 +525,20 @@ export function App() {
       )}
 
       {/* Footer */}
-      <Footer />
+      <Footer
+        onOpenGrievance={() => {
+          setCurrentTab('grievance');
+          setSelectedProduct(null);
+          pushHistoryState('grievance', null);
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }}
+        onOpenManifesto={() => {
+          setCurrentTab('about');
+          setSelectedProduct(null);
+          pushHistoryState('about', null);
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }}
+      />
     </div>
   );
 }

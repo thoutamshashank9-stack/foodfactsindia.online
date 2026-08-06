@@ -1,5 +1,5 @@
 import React from 'react';
-import { ShieldCheck, FileText, HeartHandshake } from 'lucide-react';
+import { ShieldCheck, FileText, HeartHandshake, Scale } from 'lucide-react';
 
 export const AboutView: React.FC = () => {
   return (
@@ -14,6 +14,19 @@ export const AboutView: React.FC = () => {
       </div>
 
       <div className="space-y-6 text-sm text-stone-700 dark:text-stone-300 leading-relaxed">
+        <div className="editorial-card p-6 space-y-3 border-l-4 border-teal-600 dark:border-teal-400">
+          <h2 className="font-serif text-xl font-semibold text-stone-900 dark:text-stone-100 flex items-center gap-2">
+            <Scale className="w-5 h-5 text-teal-700 dark:text-teal-400" />
+            Our Mission & Legal Posture
+          </h2>
+          <p>
+            FoodFactsIndia.online is an independent, zero-profit, citizen-led public health initiative. We accept no money, run no advertisements, and sell no products. Our sole purpose is academic research, consumer awareness, and advocating for the Right to Health by lobbying the FSSAI for stricter Front-of-Package (FOP) warning labels.
+          </p>
+          <p>
+            We operate under the protection of the Indian Constitution's Right to Freedom of Speech and Expression (Article 19(1)(a)) and the Right to Health (Article 21), publishing verifiable facts sourced from global government regulatory gazettes.
+          </p>
+        </div>
+
         <div className="editorial-card p-6 space-y-3">
           <h2 className="font-serif text-xl font-semibold text-stone-900 dark:text-stone-100 flex items-center gap-2">
             <ShieldCheck className="w-5 h-5 text-teal-700 dark:text-teal-400" />

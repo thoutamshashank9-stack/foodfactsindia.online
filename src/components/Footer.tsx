@@ -3,7 +3,12 @@ import { ShieldCheck, HeartHandshake, Info } from 'lucide-react';
 import { InternationalMethodologyModal } from './InternationalMethodologyModal';
 import { PrivacyTermsModal } from './PrivacyTermsModal';
 
-export const Footer: React.FC = () => {
+interface FooterProps {
+  onOpenGrievance?: () => void;
+  onOpenManifesto?: () => void;
+}
+
+export const Footer: React.FC<FooterProps> = ({ onOpenGrievance, onOpenManifesto }) => {
   const [isIntlModalOpen, setIsIntlModalOpen] = useState(false);
   const [isPrivacyModalOpen, setIsPrivacyModalOpen] = useState(false);
   const [privacyTab, setPrivacyTab] = useState<'privacy' | 'terms'>('privacy');
@@ -66,7 +71,26 @@ export const Footer: React.FC = () => {
             >
               Terms
             </button>
+            <button
+              onClick={() => onOpenGrievance?.()}
+              className="hover:text-stone-900 dark:hover:text-stone-100 transition-colors focus:outline-none hover:underline"
+            >
+              Grievance
+            </button>
+            <button
+              onClick={() => onOpenManifesto?.()}
+              className="hover:text-stone-900 dark:hover:text-stone-100 transition-colors focus:outline-none hover:underline"
+            >
+              Manifesto
+            </button>
           </div>
+        </div>
+
+        {/* Legal & Regulatory Disclaimer */}
+        <div className="pt-6 border-t border-stone-200 dark:border-stone-800 text-[10px] text-stone-400 dark:text-stone-500 leading-relaxed">
+          <p>
+            <strong className="text-stone-500 dark:text-stone-400">Legal & Regulatory Notice:</strong> FoodFactsIndia.online is an independent educational platform. We are not affiliated with any FMCG brand, the FSSAI, or any government body. All trademarks and brand names are the property of their respective owners and are used strictly for product identification under the doctrine of Nominative Fair Use. Simulated warning labels represent foreign policies and are NOT Indian Government mandates. Data is aggregated from open-source global databases; formulations change periodically.
+          </p>
         </div>
 
       </div>

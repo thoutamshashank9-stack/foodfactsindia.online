@@ -2,7 +2,10 @@ import React, { useState } from 'react';
 import {
   ArrowLeft,
   ChevronRight,
-  Share2
+  Share2,
+  ShieldCheck,
+  Globe,
+  RefreshCw
 } from 'lucide-react';
 import { TransparencyReport, Ingredient } from '../types';
 import { ScoreBreakdownModal } from './ScoreBreakdownModal';
@@ -157,11 +160,28 @@ export const TransparencyReportView: React.FC<TransparencyReportViewProps> = ({
         </button>
       </div>
 
-      {/* 2. Main Redesigned Layout: Single Column Stack */}
+      {/* 2. FSSAI Compliance Notice — "Green Shield" (Legal Disclaimer 1) */}
+      <div className="rounded-lg border border-emerald-200 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-950/30 p-3 flex gap-2.5 items-start">
+        <ShieldCheck className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
+        <p className="text-[11px] text-emerald-800 dark:text-emerald-300 leading-relaxed">
+          <strong>FSSAI Compliance Notice:</strong> The product displayed is legally formulated, licensed, and approved for sale in India under current FSSAI regulations. FoodFactsIndia.online does not claim this product is unsafe or illegal in India. The data below represents independent nutritional analysis and international regulatory comparisons for academic research. Always verify the physical label.
+        </p>
+      </div>
+
+      {/* 3. Main Redesigned Layout: Single Column Stack */}
       <div className="flex flex-col space-y-4">
         
         {bannedItems.length > 0 && (
-          <BannedStatusBanner bannedItems={bannedItems} />
+          <>
+            {/* International Regulatory Divergence Tag (Legal Disclaimer 2) */}
+            <div className="rounded-lg border border-sky-200 dark:border-sky-800 bg-sky-50 dark:bg-sky-950/30 p-3 flex gap-2.5 items-start">
+              <Globe className="w-4 h-4 text-sky-600 dark:text-sky-400 shrink-0 mt-0.5" />
+              <p className="text-[11px] text-sky-800 dark:text-sky-300 leading-relaxed">
+                <strong>International Regulatory Divergence:</strong> The following ingredients are permitted by the Indian FSSAI but are restricted or banned in specific foreign jurisdictions (e.g., US FDA, EU EFSA, Japan MHLW) due to differing toxicological thresholds and regional food safety laws. This data is provided to highlight global double-standards and advocate for stricter domestic labeling.
+              </p>
+            </div>
+            <BannedStatusBanner bannedItems={bannedItems} />
+          </>
         )}
 
         <ProductHeader report={report} issuesCount={unifiedFindings.length} />
@@ -192,6 +212,21 @@ export const TransparencyReportView: React.FC<TransparencyReportViewProps> = ({
             setDrawerRawName(rawName);
           }}
         />
+
+        {/* Report Label Update — Safe Harbor mechanism */}
+        <div className="rounded-lg border border-stone-200 dark:border-stone-800 bg-stone-50 dark:bg-stone-900 p-4 flex flex-col sm:flex-row items-start sm:items-center gap-3">
+          <div className="flex-1 space-y-0.5">
+            <p className="text-xs font-semibold text-stone-700 dark:text-stone-300">Is this information outdated?</p>
+            <p className="text-[10px] text-stone-500 dark:text-stone-400">Brands and consumers can report label updates for immediate verification.</p>
+          </div>
+          <a
+            href={`mailto:legal@foodfactsindia.online?subject=Label%20Update%20Report%20-%20${report.barcode}`}
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-teal-700 hover:bg-teal-800 text-white text-xs font-medium transition-colors whitespace-nowrap"
+          >
+            <RefreshCw className="w-3 h-3" />
+            Report a Label Update
+          </a>
+        </div>
 
         {/* Regulatory Citation matrix */}
         <Card className="space-y-3">
