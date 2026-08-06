@@ -15,6 +15,27 @@ export const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 const round1 = (val: number | null | undefined): number =>
   typeof val === 'number' && !isNaN(val) ? Math.round(val * 10) / 10 : 0;
 
+function parseSodiumMg(sodium_100g: any, salt_100g: any, category: string = ''): number {
+  if (sodium_100g == null) {
+    return salt_100g != null ? Math.round(Number(salt_100g) * 400) : 0;
+  }
+  let sodiumVal = Number(sodium_100g);
+  const saltVal = salt_100g != null ? Number(salt_100g) : null;
+  
+  if (saltVal !== null) {
+    if (sodiumVal > saltVal * 3) {
+      sodiumVal = sodiumVal / 1000.0;
+    }
+  } else {
+    const isSavory = /salt|soup|savou|season|masala|spice|condiment|bouillon/i.test(category);
+    if (sodiumVal > 5.0 && !isSavory) {
+      sodiumVal = sodiumVal / 1000.0;
+    }
+  }
+  return Math.round(sodiumVal * 1000);
+}
+
+
 export interface AdditiveFact {
   ins_code: string;
   common_name: string;
@@ -617,9 +638,7 @@ export async function fetchOpenFoodFactsProduct(barcode: string): Promise<Transp
     if (nutriments['saturated-fat_100g'] != null) {
       report.nutrition.saturatedFatG = round1(Number(nutriments['saturated-fat_100g']));
     }
-    if (nutriments.sodium_100g != null) {
-      report.nutrition.sodiumMg = Math.round(Number(nutriments.sodium_100g) * 1000);
-    }
+    report.nutrition.sodiumMg = parseSodiumMg(nutriments.sodium_100g, nutriments.salt_100g, report.category);
     if (nutriments.sugars_100g != null) {
       report.nutrition.totalSugarG = round1(Number(nutriments.sugars_100g));
       report.nutrition.addedSugarG = round1(Number(nutriments.sugars_100g));
@@ -858,9 +877,7 @@ const nutrition: NutritionFacts = {
     totalFatG: round1(p.fat_100g),
     saturatedFatG: round1(p.saturated_fat_100g),
     transFatG: round1(p.trans_fat_100g),
-    sodiumMg: p.sodium_100g != null
-      ? Math.round(Number(p.sodium_100g) * 1000)
-      : (p.salt_100g != null ? Math.round(Number(p.salt_100g) * 400) : 0),
+    sodiumMg: parseSodiumMg(p.sodium_100g, p.salt_100g, p.categories || ''),
     totalCarbsG: p.carbohydrates_100g != null ? round1(p.carbohydrates_100g) : null,
     fiberG: round1(p.fibre_100g),
     totalSugarG: round1(p.sugars_100g),
