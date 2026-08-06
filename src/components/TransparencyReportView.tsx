@@ -125,8 +125,9 @@ export const TransparencyReportView: React.FC<TransparencyReportViewProps> = ({
         <div className="flex items-center gap-2 text-stone-600 dark:text-stone-400">
           {onBackToSearch && (
             <button
+              type="button"
               onClick={onBackToSearch}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-stone-100 dark:bg-stone-850 text-stone-700 dark:text-stone-300 hover:bg-stone-200 dark:hover:bg-stone-800 transition-colors font-medium"
+              className="relative z-50 flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-stone-100 dark:bg-stone-850 text-stone-700 dark:text-stone-300 hover:bg-stone-200 dark:hover:bg-stone-800 active:scale-95 transition-all font-medium pointer-events-auto"
             >
               <ArrowLeft className="w-3.5 h-3.5" strokeWidth={2.5} />
               <span>Back to products</span>

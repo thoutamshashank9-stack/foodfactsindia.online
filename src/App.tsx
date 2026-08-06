@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo, useCallback, Suspense, lazy } from 'react';
+import React, { useState, useEffect, useMemo, useCallback, useRef, Suspense, lazy } from 'react';
 import { Header } from './components/Header';
 import { HeroSection } from './components/HeroSection';
 import { WhyThisMatters } from './components/WhyThisMatters';
@@ -27,6 +27,12 @@ const CATEGORY_MAP: Record<string, string[]> = {
 const CATEGORY_CHIPS = ['ALL', 'NOODLES', 'BEVERAGES', 'SNACKS', 'CHOCOLATE'] as const;
 const ITEMS_PER_PAGE = 12;
 
+// ─── History state shape ────────────────────────────────────────────────────
+interface HistoryState {
+  tab: 'home' | 'products' | 'methodology' | 'compare' | 'about';
+  productId: string | null;
+}
+
 export function App() {
   const [currentTab, setCurrentTab] = useState<'home' | 'products' | 'methodology' | 'compare' | 'about'>('home');
   const [selectedProduct, setSelectedProduct] = useState<TransparencyReport | null>(null);
@@ -36,6 +42,54 @@ export function App() {
   const [catalogProducts, setCatalogProducts] = useState<TransparencyReport[]>(PRESEEDED_PRODUCTS);
   const [globalSearchQuery, setGlobalSearchQuery] = useState<string>('');
   const [currentPage, setCurrentPage] = useState<number>(1);
+
+  // ─── Browser History Integration ────────────────────────────────────────────
+  // Ref guards prevent infinite loops: pushState → state change → pushState...
+  const isRestoringFromHistory = useRef(false);
+  const catalogRef = useRef(catalogProducts);
+  catalogRef.current = catalogProducts;
+
+  // Replace the initial history entry with our current state on mount
+  useEffect(() => {
+    const initialState: HistoryState = { tab: 'home', productId: null };
+    window.history.replaceState(initialState, '');
+  }, []);
+
+  // Listen for browser back/forward button presses
+  useEffect(() => {
+    const onPopState = (event: PopStateEvent) => {
+      const state = event.state as HistoryState | null;
+      if (!state) {
+        // Fell off the bottom of our history stack — go to home
+        isRestoringFromHistory.current = true;
+        setCurrentTab('home');
+        setSelectedProduct(null);
+        isRestoringFromHistory.current = false;
+        return;
+      }
+
+      isRestoringFromHistory.current = true;
+      setCurrentTab(state.tab);
+
+      if (state.productId) {
+        const product = catalogRef.current.find(p => p.productId === state.productId) ?? null;
+        setSelectedProduct(product);
+      } else {
+        setSelectedProduct(null);
+      }
+      isRestoringFromHistory.current = false;
+    };
+
+    window.addEventListener('popstate', onPopState);
+    return () => window.removeEventListener('popstate', onPopState);
+  }, []);
+
+  /** Push a new history entry (skipped when we're restoring from popstate). */
+  const pushHistoryState = useCallback((tab: string, productId: string | null) => {
+    if (isRestoringFromHistory.current) return;
+    const histState: HistoryState = { tab: tab as HistoryState['tab'], productId };
+    window.history.pushState(histState, '');
+  }, []);
 
   useEffect(() => {
     if (darkMode) {
@@ -71,11 +125,17 @@ export function App() {
 
   const handleSelectProduct = useCallback((product: TransparencyReport) => {
     setSelectedProduct(product);
+    pushHistoryState(currentTab, product.productId);
     window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, []);
+  }, [currentTab, pushHistoryState]);
 
   const handleBackToCatalog = useCallback(() => {
-    setSelectedProduct(null);
+    // Use the browser's history stack so the native back button stays in sync
+    if (window.history.state?.productId) {
+      window.history.back();
+    } else {
+      setSelectedProduct(null);
+    }
   }, []);
 
   // Search handler — wired from HeroSection and Header
@@ -168,6 +228,7 @@ export function App() {
           setCurrentTab(tab);
           setSelectedProduct(null);
           setGlobalSearchQuery('');
+          pushHistoryState(tab, null);
         }}
         darkMode={darkMode}
         setDarkMode={setDarkMode}
