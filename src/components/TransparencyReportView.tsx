@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import {
-  Calculator,
   ArrowLeft,
   ChevronRight,
   Share2
@@ -13,7 +12,6 @@ import { UnverifiedProductStubView } from './UnverifiedProductStubView';
 
 // Sub-components
 import { ProductHeader } from './report/ProductHeader';
-import { ScoreHero } from './report/ScoreHero';
 import { JurisdictionRatings } from './report/JurisdictionRatings';
 import { WarningLabels } from './report/WarningLabels';
 import { KeyConcernsList } from './report/KeyConcernsList';
@@ -105,7 +103,7 @@ export const TransparencyReportView: React.FC<TransparencyReportViewProps> = ({
   });
 
   return (
-    <div className="max-w-6xl mx-auto space-y-6 pb-16">
+    <div className="max-w-3xl mx-auto space-y-6 pb-16">
       
       {/* 1. Toolbar Navigation */}
       <div className="flex items-center justify-between text-xs pt-2">
@@ -143,66 +141,52 @@ export const TransparencyReportView: React.FC<TransparencyReportViewProps> = ({
         </button>
       </div>
 
-      {/* 2. Main Redesigned Layout: 2 Columns on Desktop, Stacked on Mobile */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+      {/* 2. Main Redesigned Layout: Single Column Stack */}
+      <div className="flex flex-col space-y-4">
         
-        {/* Left column (40% width on desktop) - Sticky overview cards */}
-        <div className="lg:col-span-5 lg:sticky lg:top-18 space-y-6">
-          <ProductHeader report={report} />
-          
-          <ScoreHero
-            report={report}
-            issuesCount={unifiedFindings.length}
-            onOpenRules={() => setIsMethodologyOpen(true)}
-          />
-        </div>
+        <ProductHeader report={report} issuesCount={unifiedFindings.length} />
+        
+        {/* Unified Key Concerns list */}
+        <KeyConcernsList findings={unifiedFindings} />
 
-        {/* Right column (60% width on desktop) - Deep dive findings */}
-        <div className="lg:col-span-7 space-y-6">
-          
-          {/* Multi-Jurisdiction Front-of-Package Ratings */}
-          <JurisdictionRatings
-            ratings={report.internationalRatings}
-            foodfactsScore={report.deterministicScore}
+        {/* Multi-Jurisdiction Front-of-Package Ratings */}
+        <JurisdictionRatings
+          ratings={report.internationalRatings}
+          foodfactsScore={report.deterministicScore}
+          onOpenMethodology={() => setIsIntlModalOpen(true)}
+        />
+
+        {/* Simulated Warning Labels (NOM-051, Ley 20.606) */}
+        {report.internationalRatings?.warningOctagons && (
+          <WarningLabels
+            warnings={report.internationalRatings.warningOctagons}
             onOpenMethodology={() => setIsIntlModalOpen(true)}
           />
+        )}
 
-          {/* Simulated Warning Labels (NOM-051, Ley 20.606) */}
-          {report.internationalRatings?.warningOctagons && (
-            <WarningLabels
-              warnings={report.internationalRatings.warningOctagons}
-              onOpenMethodology={() => setIsIntlModalOpen(true)}
-            />
-          )}
+        {/* Ingredient list and risk matrix analysis */}
+        <IngredientTable
+          ingredientsList={report.ingredientsList}
+          onSelectIngredient={(ing, rawName) => {
+            setSelectedDrawerIngredient(ing);
+            setDrawerRawName(rawName);
+          }}
+        />
 
-          {/* Unified Key Concerns list */}
-          <KeyConcernsList findings={unifiedFindings} />
-
-          {/* Ingredient list and risk matrix analysis */}
-          <IngredientTable
-            ingredientsList={report.ingredientsList}
-            onSelectIngredient={(ing, rawName) => {
-              setSelectedDrawerIngredient(ing);
-              setDrawerRawName(rawName);
-            }}
-          />
-
-          {/* Regulatory Citation matrix */}
-          <Card className="space-y-3">
-            <h4 className="font-serif text-sm font-bold text-stone-900 dark:text-stone-100">
-              Regulatory Gazette &amp; Mapping Sources
-            </h4>
-            <p className="text-xs text-stone-605 dark:text-stone-400 leading-relaxed">
-              Findings mapped directly from Schedule 2.4.5 of FSSAI Food Safety and Standards (Food Additives) Regulations, EU Additives Database (EC No 1333/2008), and FDA 21 CFR standards.
-            </p>
-            <div className="p-3 rounded-lg bg-stone-50 dark:bg-stone-850 border border-stone-200 dark:border-stone-800 space-y-1.5 font-mono text-[10px] text-stone-500 dark:text-stone-400">
-              <div>• FSSAI Category: {report.category}</div>
-              <div>• EU Commission Regulation (EU) 2022/63: titanium dioxide update</div>
-              <div>• Codex General Standard for Food Additives (GSFA Online Database)</div>
-            </div>
-          </Card>
-
-        </div>
+        {/* Regulatory Citation matrix */}
+        <Card className="space-y-3">
+          <h4 className="font-serif text-sm font-bold text-stone-900 dark:text-stone-100">
+            Regulatory Gazette &amp; Mapping Sources
+          </h4>
+          <p className="text-xs text-stone-605 dark:text-stone-400 leading-relaxed">
+            Findings mapped directly from Schedule 2.4.5 of FSSAI Food Safety and Standards (Food Additives) Regulations, EU Additives Database (EC No 1333/2008), and FDA 21 CFR standards.
+          </p>
+          <div className="p-3 rounded-lg bg-stone-50 dark:bg-stone-850 border border-stone-200 dark:border-stone-800 space-y-1.5 font-mono text-[10px] text-stone-500 dark:text-stone-400">
+            <div>• FSSAI Category: {report.category}</div>
+            <div>• EU Commission Regulation (EU) 2022/63: titanium dioxide update</div>
+            <div>• Codex General Standard for Food Additives (GSFA Online Database)</div>
+          </div>
+        </Card>
 
       </div>
 
