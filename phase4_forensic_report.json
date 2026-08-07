@@ -1,0 +1,69 @@
+{
+  "phase": 4,
+  "platform": "foodfactsindia.online",
+  "verified_smoking_guns": [
+    {
+      "barcode": "8901058901542",
+      "product": "Maggi 2-Minute Noodles",
+      "brand": "Nestlé India",
+      "banned_item": "TBHQ (INS 319)",
+      "confession": "antioxidant (ins 319) & thickener (ins 412)"
+    },
+    {
+      "barcode": "8908014480080",
+      "product": "Bovonto Sparkling Beverage",
+      "brand": "Kali Mark",
+      "banned_item": "Carmoisine (E122) & Ponceau 4R (E124)",
+      "confession": "colour (ins 150d, ins 122, ins 102, ins 124, ins 133)"
+    },
+    {
+      "barcode": "8901063029279",
+      "product": "Britannia Jim Jam 92g",
+      "brand": "Britannia",
+      "banned_item": "Carmoisine (E122)",
+      "confession": "gelling agent (440) and colour (122)"
+    },
+    {
+      "barcode": "8901063139374",
+      "product": "Britannia Bourbon 100g",
+      "brand": "Britannia",
+      "banned_item": "Carmoisine (E122)",
+      "confession": "colours (122, 110, 133 & 102)"
+    },
+    {
+      "barcode": "8904132958181",
+      "product": "Campa Orange Flavoured 500ml",
+      "brand": "Campa (Reliance)",
+      "banned_item": "Carmoisine (E122)",
+      "confession": "colors (e 110, e 122)"
+    },
+    {
+      "barcode": "8901044600930",
+      "product": "Mapro Rose Sharbat",
+      "brand": "Mapro",
+      "banned_item": "Carmoisine (E122)",
+      "confession": "permitted synthetic food colour (ins-122)"
+    },
+    {
+      "barcode": "8901808000068",
+      "product": "WeiKFiELD Vanilla Custard Powder",
+      "brand": "Weikfield",
+      "banned_item": "Carmoisine (E122)",
+      "confession": "synthetic food colours (ins 102,110,122)"
+    },
+    {
+      "barcode": "8906080604300",
+      "product": "Paper Boat Zero Sparkling Cranberry",
+      "brand": "Paper Boat",
+      "banned_item": "Carmoisine (E122)",
+      "confession": "food colours (129, 122, 133)"
+    },
+    {
+      "barcode": "8906005611147",
+      "product": "Winkies Fruit Cake",
+      "brand": "Winkies",
+      "banned_item": "Fast Green FCF (E143) & Ponceau 4R (E124)",
+      "confession": "synthetic food colour (ins 110, ins 102, ins 143, ins 124)"
+    }
+  ]
+}
