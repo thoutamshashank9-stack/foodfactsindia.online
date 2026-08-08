@@ -13,6 +13,7 @@ import { TransparencyReport } from './types';
 import { Grid, ShieldAlert, CheckCircle2, Database, Search, ArrowRight, HelpCircle, ChevronLeft, ChevronRight } from 'lucide-react';
 import { fetchLiveCatalog } from './services/supabaseService';
 import { fetchRawIngredientsTaxonomyAsync } from './services/decoupledAdditiveService';
+import { searchTransparencyReports } from './services/searchService';
 
 // Lazy-loaded components for route code-splitting
 const ScanScannerModal = lazy(() => import('./components/ScanScannerModal').then(m => ({ default: m.ScanScannerModal })));
@@ -165,14 +166,9 @@ export function App() {
   const filteredCatalog = useMemo(() => {
     let list = catalogProducts;
 
-    // Apply search query if present
+    // Apply multi-field relevance-scored search if search query is present
     if (globalSearchQuery.trim()) {
-      const q = globalSearchQuery.toLowerCase();
-      list = list.filter((p) =>
-        p.productName.toLowerCase().includes(q) ||
-        p.brand.toLowerCase().includes(q) ||
-        p.category.toLowerCase().includes(q)
-      );
+      list = searchTransparencyReports(list, globalSearchQuery);
     }
 
     // Apply strict category filter

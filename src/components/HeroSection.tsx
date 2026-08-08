@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { Search, Scan, ArrowRight, Loader2, AlertCircle } from 'lucide-react';
+import React, { useState, useEffect, useMemo } from 'react';
+import { Search, Scan, ArrowRight, Loader2, AlertCircle, X } from 'lucide-react';
 import { TransparencyReport } from '../types';
-import { searchLiveProducts, isNonFoodProduct } from '../services/supabaseService';
+import { searchLiveProducts } from '../services/supabaseService';
+import { searchTransparencyReports } from '../services/searchService';
 
 interface HeroSectionProps {
   products: TransparencyReport[];
@@ -17,12 +18,30 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   onGoToSearch,
 }) => {
   const [searchQuery, setSearchQuery] = useState('');
-  const [searchResults, setSearchResults] = useState<TransparencyReport[]>([]);
+  const [liveSearchResults, setLiveSearchResults] = useState<TransparencyReport[]>([]);
   const [isSearching, setIsSearching] = useState(false);
 
+  // 1. Instant local search (0ms latency, zero lag on keystroke)
+  const localSearchResults = useMemo(() => {
+    return searchTransparencyReports(products, searchQuery);
+  }, [products, searchQuery]);
+
+  // Combine local & live results seamlessly (local results take priority)
+  const combinedResults = useMemo(() => {
+    if (!searchQuery.trim()) return [];
+    const list = [...localSearchResults];
+    for (const liveP of liveSearchResults) {
+      if (!list.some(item => item.barcode === liveP.barcode || item.productId === liveP.productId)) {
+        list.push(liveP);
+      }
+    }
+    return list;
+  }, [searchQuery, localSearchResults, liveSearchResults]);
+
+  // 2. Background network enrichment (200ms debounce)
   useEffect(() => {
     if (!searchQuery.trim()) {
-      setSearchResults([]);
+      setLiveSearchResults([]);
       setIsSearching(false);
       return;
     }
@@ -30,44 +49,39 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
     const timer = setTimeout(async () => {
       setIsSearching(true);
       try {
-        const localMatches = products
-          .filter(p => !isNonFoodProduct(p))
-          .filter(
-            (p) =>
-              p.productName.toLowerCase().includes(searchQuery.toLowerCase()) ||
-              p.brand.toLowerCase().includes(searchQuery.toLowerCase()) ||
-              p.category.toLowerCase().includes(searchQuery.toLowerCase())
-          );
-
         const liveMatches = await searchLiveProducts(searchQuery);
-
-        const combined = [...localMatches];
-        for (const liveP of liveMatches) {
-          if (!combined.some(c => c.barcode === liveP.barcode)) {
-            combined.push(liveP);
-          }
-        }
-
-        setSearchResults(combined);
+        setLiveSearchResults(liveMatches || []);
       } catch (err) {
-        console.error('Search error:', err);
+        console.error('Live search error:', err);
       } finally {
         setIsSearching(false);
       }
-    }, 250);
+    }, 200);
 
     return () => clearTimeout(timer);
-  }, [searchQuery, products]);
+  }, [searchQuery]);
 
   const getIssuesCount = (p: TransparencyReport) =>
     p.scoreBreakdown ? p.scoreBreakdown.filter((b) => b.type === 'DEDUCTION').length : 0;
 
   const handleSearchSubmit = () => {
-    if (searchQuery.trim()) {
-      onGoToSearch(searchQuery.trim());
+    const q = searchQuery.trim();
+    if (!q) return;
+
+    // Direct resolution: If user typed an exact barcode or title match, navigate directly to product
+    const cleanDigits = q.replace(/[^0-9]/g, '');
+    const exactBarcodeMatch = combinedResults.find(p => p.barcode === cleanDigits || p.barcode === q);
+    if (exactBarcodeMatch) {
+      onSelectProduct(exactBarcodeMatch);
       setSearchQuery('');
-      setSearchResults([]);
+      setLiveSearchResults([]);
+      return;
     }
+
+    // Otherwise navigate to products tab search
+    onGoToSearch(q);
+    setSearchQuery('');
+    setLiveSearchResults([]);
   };
 
   return (
@@ -103,26 +117,41 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                   handleSearchSubmit();
                 }
               }}
-              placeholder="Search products or ingredients..."
+              placeholder="Search by product name, brand, barcode (e.g. 890...), or additive (e.g. TBHQ, E122)..."
               className="w-full pl-11 pr-10 py-3 rounded-lg bg-white dark:bg-stone-900 border border-stone-300 dark:border-stone-700 text-stone-900 dark:text-stone-100 placeholder-stone-400 focus:outline-none focus:border-teal-700 dark:focus:border-teal-500 text-sm font-normal transition-all shadow-sm"
               aria-label="Search products or ingredients"
             />
-            {isSearching && (
-              <Loader2 className="absolute right-3.5 w-4 h-4 text-teal-700 animate-spin pointer-events-none" />
-            )}
+            <div className="absolute right-3.5 flex items-center gap-1.5">
+              {isSearching && (
+                <Loader2 className="w-4 h-4 text-teal-700 animate-spin pointer-events-none" />
+              )}
+              {searchQuery && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    setSearchQuery('');
+                    setLiveSearchResults([]);
+                  }}
+                  className="p-1 rounded-full text-stone-400 hover:text-stone-600 dark:hover:text-stone-200 transition-colors"
+                  aria-label="Clear search"
+                >
+                  <X className="w-4 h-4" />
+                </button>
+              )}
+            </div>
           </div>
 
           {/* Autocomplete Results Dropdown */}
           {searchQuery.trim() && (
             <div className="absolute top-full left-0 right-0 mt-2 bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 rounded-lg shadow-lg overflow-hidden z-30 max-h-80 overflow-y-auto text-left divide-y divide-stone-100 dark:divide-stone-800">
-              {isSearching && searchResults.length === 0 ? (
+              {isSearching && combinedResults.length === 0 ? (
                 <div className="p-4 text-center text-xs text-stone-500 flex items-center justify-center gap-2">
                   <Loader2 className="w-3.5 h-3.5 text-teal-700 animate-spin" />
                   <span>Searching verified database...</span>
                 </div>
-              ) : searchResults.length > 0 ? (
+              ) : combinedResults.length > 0 ? (
                 <>
-                  {searchResults.slice(0, 8).map((product) => {
+                  {combinedResults.slice(0, 8).map((product) => {
                     const issues = getIssuesCount(product);
                     return (
                       <div
@@ -130,29 +159,27 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                         onClick={() => {
                           onSelectProduct(product);
                           setSearchQuery('');
-                          setSearchResults([]);
+                          setLiveSearchResults([]);
                         }}
                         className="p-3 hover:bg-stone-50 dark:hover:bg-stone-800/80 cursor-pointer flex items-center justify-between transition-colors"
                       >
-                        <div className="flex items-center gap-3">
+                        <div className="flex items-center gap-3 min-w-0">
                           <img
                             src={product.imageUrl}
                             alt={product.productName}
-                            className="w-10 h-10 rounded object-cover border border-stone-200 dark:border-stone-700"
+                            className="w-10 h-10 rounded object-cover border border-stone-200 dark:border-stone-700 shrink-0"
                           />
-                          <div>
-                            <h4 className="font-semibold text-sm text-stone-900 dark:text-stone-100">
+                          <div className="min-w-0">
+                            <h4 className="font-semibold text-sm text-stone-900 dark:text-stone-100 truncate">
                               {product.productName || 'Unknown Product'}
                             </h4>
-                            {(product.brand || product.category) && (
-                              <p className="text-xs text-stone-500 dark:text-stone-400">
-                                {[product.brand, product.category].filter(Boolean).join(' • ')}
-                              </p>
-                            )}
+                            <p className="text-xs text-stone-500 dark:text-stone-400 truncate">
+                              {[product.brand, product.category, product.barcode].filter(Boolean).join(' • ')}
+                            </p>
                           </div>
                         </div>
 
-                        <div className="flex items-center gap-2">
+                        <div className="flex items-center gap-2 shrink-0 ml-2">
                           <span className="text-xs text-stone-500 font-mono">
                             {issues > 0 ? `${issues} signals` : 'Standard'}
                           </span>
@@ -161,12 +188,12 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                       </div>
                     );
                   })}
-                  {searchResults.length > 8 && (
+                  {combinedResults.length > 8 && (
                     <button
                       onClick={handleSearchSubmit}
                       className="w-full p-3 text-center text-xs font-medium text-teal-800 dark:text-teal-400 hover:bg-stone-50 dark:hover:bg-stone-800/80 transition-colors"
                     >
-                      View all {searchResults.length} results →
+                      View all {combinedResults.length} results →
                     </button>
                   )}
                 </>
