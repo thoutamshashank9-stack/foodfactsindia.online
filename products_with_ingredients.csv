@@ -2,7 +2,7 @@ barcode,product_name,brands,categories,ingredients_text
 8908016501530,Peri Peri Crumbles,Hello Tempayy,,"non gmo soybeans. water. red chilli paste, vinegar, sunflower oil, chilli powder, sugar, lodized salt, lime juice, spices and condiments. hydrolysed vegetable protein, rice flour, rhizopus (culture) iron, vitamin b12."
 8901522005158,Ginger Ale (Zero Sugar),Jameson,,"carbonated water, acidity regulators [ins 330, ins 331(iii)], flavours, nature flavouring substances), artificial sweeteners (ins 955, ins 950), preservative (ins 218) and colour (ins 150d)."
 8901018000889,Milk Rich,Nilgiri's,,"milk fat, milk solids milk fat 4.5% milk snf 8.5%"
-8906009073958,Unibic Coconut Cookies,Unibic,,"desiccated coconut powder (30%), sugar, refined wheat flour (maida), edible vegetable oil (palm), golden syrup, milk solids, lodised salt, emulsifier (ins 322 from soy), leavening agents (ins 500 ii, ins 503 ii)."
+8906009073958,Unibic Coconut Cookies,Unibic,,"Refined wheat flour, sugar, coconut, edible vegetable oil (palm), invert syrup, raising agents, salt, emulsifiers, artificial coconut flavour"
 8906112995390,high protein pav bun,protein chef,,"high protein flour (whole wheat flour, defatted peanut flour, isolated wheat protein, <span class=""allergen"">soy protein isolate</span>), sugar, edible common salt, yeast, edible vegetable oil (sunflower), emulsifier from soy (e322), acidity regulator (e260), calcium propionate, vit c"
 8906008815153,Arhar Dal (Toor Dal),Fortune,,arhar dal (toor dal)
 8901063368323,muffills vanila flavour,Britannia,,"sugar, refined wheat flour (maida), prepared mix (invert syrup, water, vegetable oil, egg, humectants (422 & 420(ii))), invert sugar syrup, gum gel, emulsifiers and stabilizers (471, 477 and humectant (420(ii))), liquid glucose, baking powder, artificial vanilla flavouring, natural and nature identical flavouring substances, raising agents (500(ii), 450(i), 341(i)), iodized salt, acidity regulator (330), preservatives (202, 282), emulsifier (471), stabilizer (415)."
@@ -13,12 +13,12 @@ barcode,product_name,brands,categories,ingredients_text
 8906080604676,Paper boat Indigo exclusive mango basil,Paper boat,,"water, mango pulp (51%) apple juice concentrate (7%). flavours (natural and nature-identical flavouring substances), lemon juice concentrate, dried basil leaves."
 8906064701018,Banana chips,Kozhi,,"raw banana (90%), refined palmolein, salt, turmeric, colour (102)"
 8902901231373,Good Life hing,Good Life,,"wheat flour (atta) (58%), gum arabic (31%), asafoetida (hing) 11%"
-8906080603518,Paper boat Zero Sparkling Coffee,Paper boat,,"carbonated water, sweeteners (968, 955), flavours (nature-identical and natural flavouring substances), acidity regulators (330, 331 (iii)), coffee bean extract (0.1%), caffeine (25mg/100ml), preservative (211). peping contains non-caloric"
+8906080603518,Paper Boat Zero Sparkling Coffee,Hector Beverages,,"Carbonated water, coffee extract, natural flavours, acidity regulators, sweeteners"
 8903023270752,More Atta Bread,More,,"whole wheat flour, sugar, yeast, lodised salt, refined palmolein oil, soya flour, emulsifier(ins 476,471 481(1) preservative (ins 282), antioxidant (ins 300), improver (ins 1100), acidity regulator (ins 260)"
 8905950003892,Soya Sticks,Bikaji,,"edible vegetable oil (palmolein oil, cottonseed oil), tapioca starch, black gram flour, soya powder (7%), rice flour, black lentil flour, ground spices & condiments (lodised salt, sugar, maltodextrin, fennel, cumin, red chilli, ginger, turmeric (colouring & spices), dry mango powder, corn starch, garlic, mustard seeds, acidity regulator (ins 330, ins 296), anticaking agent (ins 551), asafoetida, flavouring enhancer (ins 627, ins 631, ins 635), hydrolyzed vegetable protein (soya)). hydrogenated vegetable oil (palm, sesame) contains: soy, sesame, mustard contains added flavours (nature identical & natural flavouring substances) contains added permitted natural colour (ins 160c)"
 8906142560421,Nourish Organics Popeas Organic Chickpea Protein Puffs,Nourish Organics,,"organic flours (71%) [chickpea, brown rice, maize], organic sunflower oil (15%), organic vegan *parmesan seasoning (10%) [cashew ground, garlic powder, onion powder, salt, paprika, nutritional yeast], <span class=""allergen"">soy protein isolate</span>."
 8906011347405,Mello Royale Dark Compound,Mello Royale,,"sugar, edible vegetable fat (hydrogenated oil), cocoa solids, emulsifiers (ins 322 (i), ins 476, ins 492), edible salt, flavour."
-8904083301547,Sweetend Condensed Milk,Milky Mist,,milk solids and sugar
+8904083301547,Milky Mist Sweetened Condensed Milk,MilkyMist,,"Milk solids, sugar"
 8901058010619,Maggi cheese noodles,Maggi,,"noodls-
 refined wheat flour (maida), palm oil, wheat gluten, lodized
 salt, thickeners (508 & 412), acidity regulators (501(i) &
@@ -36,18 +36,18 @@ chilli flakes (1%) and rosemary extract."
 
 fresh ginger (35%), water, salt, acetic acid & citric acid (acidity regulator, e260 & e330), xanthan gum (stabilizing & emulsifying agent, e415). sodium benzoate (preservative, e211)"
 8904256709811,Himalayan Pink Salt,"Bb, bb GoodDiet",,natural rock salt
-8901725013714,Bingo Mad Angles Achaari Masti,Bingo,,"Corn grits, edible vegetable oil (palmolein), rice grits, gram flour, spices, salt, sugar, flavour enhancers (INS 621, INS 627, INS 631), acidity regulators, colours (INS 160c)"
-8901777960042,Vadilal bomber,Vadilal,,"middle layer: medium fat frozen dessert (51.7 %) [water, sugar, milk solids, edible vegetable oil (palm oil), liquid glucose, cocoa powder, emulsifier (471), stabilisers (412, 466, 407), synthetic food vadilal colours (110, 124, 133), artificial (vanilla) flavouring substances], outer & center layer: chocolate covering (48.3 %) [edible vegetable oil (coconut oil), sugar, milk solid, cocoa solid, wheat crunch, emulsifier (322,476), edible common salt, artificial (vanilla) flavouring substances. frozen dessert is made with 8.0 % edible vegetable oil. allergen information: contains <span class=""allergen"">milk</span>, <span class=""allergen"">soy</span> and <span class=""allergen"">wheat flour</span>. may contain <span class=""allergen"">cashew</span>, <span class=""allergen"">almond</span> and <span class=""allergen"">pistachio</span>"
+8901725013714,Bingo Mad Angles Achaari Masti,ITC,,"Corn grits, edible vegetable oil (palmolein), rice grits, gram flour, spices, salt, sugar, flavour enhancers (INS 621, INS 627, INS 631), acidity regulators, colours (INS 160c)"
+8901777960042,Vadilal Bomber,Vadilal,,"Toned milk, sugar, edible vegetable oil, stabilizers, emulsifiers, colours"
 8906080349652,"Murmura, Kurmura",Vijay,,"roasted rice, salt"
 8904288612028,Mixed pickles,Tops gold,,"mixed vegetables - 64% (mango, lime, green chilli, carrot, turnip, dela, cauliflower, ginger, lotus stem), iodised salt, mustard oil, fenugreek, acidity regulators (ins 330, ins 260), aniseed, red chilli powder, lime juice, preservative (ins 211), spices & condiments, turmeric powder."
-8906006783362,Dark Soya Shandar Sauce,"Winn, My Chinese Kitchen",,"water, liquid glucose, lodized salt, <span class=""allergen"">soybean</span>, <span class=""allergen"">wheat flour</span>, caramel (ins150c), starch, acidity regulator (ins260), preservative (ins211) contains permitted class ii preservative (ins211), permitted natural colour (ins150c)"
-8901808000068,WeiKFiELD,Weikfield,,"maize starch, iodized salt, artificial flavouring substance(vanilla), synthetic food colours (ins 102,110,122)"
+8906006783362,Lion Qyno Dates,Lion,,Dates
+8901808000068,Weikfield Eggless Mayonnaise,Weikfield,,"Refined soybean oil, water, sugar, vinegar, iodized salt, thickener, preservative, mustard, antioxidant"
 8908016386168,Desi Khand (Natural Sweetener),Bebe™,,concentrated sugarcane juice
 8908012586104,Raw Peanut,My kitchen,,"<span class=""allergen"">peanut</span>"
 8905632021107,spoton jucie,"RMHA,Spoton",,"water, mango pulp, sugar acidity regulator(330) sodium citrate(e331) antioxidant (300) contains permitted class ii preservatives (211,e224) contains permitted synthetic food colours (e 110,e 102) and added flavours (natural, nature identical and artificial flavouring substances)"
-8901440031017,Mango Pickle,Eastern,,"mango, salt, kashmiri chilli powder, chilli powder, mustard powder, synthetic vinegar (4% diluted acetic acid (e260) (acidity regulator), refined sesame oil, turmeric powder, fenugreek powder, asafoetida, contains permitted class ii preservative sodium benzoate (e211)."
+8901440031017,Eastern Mango Pickle,Eastern,,"Raw mango, edible vegetable oil, salt, spices, acidity regulator"
 8908001105590,on1y fenugreek leaves,on1y,,dried fenugreek leaves
-8906010500047,masala masti,Balaji,,"potato 87%, edible vegetable oil, sugar, spices and condiments, edible common salt, black salt"
+8906010500047,Balaji Wafers Masala Masti,Balaji,,"Potato, edible vegetable oil, spices, salt, sugar, flavour enhancers (INS 621), acidity regulators, colours (INS 160c)"
 8904045820055,Pappad,Kamadhenu,,"black gram, salt"
 8904132953437,Campa lemon flv can,,,"carbonated water, sugar, acidity regulators (330, 331iii), preservative (211), nature identical flavouring substances"
 8908012784098,Gopi Makai poha,Gopi,,processed maize & lodized salt
@@ -86,7 +86,7 @@ contains no fruit juice or pulp."
 8901826224002,Kheer,Verka,,"milk solids, sugar, rice & cardamom, contains permitted class ii preservative (e 211)"
 8904083311010,Shredded Mozzarella Cheese,Milky Mist,,"pasteurized milk, microbial culture, microbial enzyme, iodized salt."
 8901821006047,Tomato Ketchup,Druk,,"tomato puree, sugar, salt, acetic acid e260, onion powder, spices, garlic powder, emulsifying and stabilizing agent e466"
-8901063146938,Winkin' Cow Bourbon Shake,Britannia,,"Toned milk, sugar, cocoa solids, artificial chocolate flavour, stabilizers (INS 466, INS 407), emulsifier (INS 471), colour (INS 150c)"
+8901063146938,Britannia Winkin Cow Bourbon Shake,Britannia,,"Toned milk, sugar, cocoa solids, artificial chocolate flavour, stabilizers (INS 466, INS 407), emulsifier (INS 471), colour (INS 150c)"
 8904083306047,Curd,Milky Mist,,pasteurized toned milk & active lactic culture.
 8908005733331,Kesar Kulfi,WhiteCub,,"coconut cream, soy milk, sugar, cardamom powder, saffron, permitted emulsifier, stabilizers, nature-identical flavour"
 8906080604300,zero sparkling cranberry lime,paper boat,,"carbonated water, sweeteners (968, 955), flavours (natural and nature - identical flavouring substances), acidity regulators (330, 331, preservative (211), iodised salt, food colours (129, 122, 133)."
@@ -747,7 +747,7 @@ added qty per 100ml"
 8901764022883,Orange Flavoured,Fanta,,"carbonated water, sugar, acidity regulator (330, 331 (iii)), preservative (211), permitted natural colour (160a (iii)), permitted artificial flavours (<span class=""allergen"">orange</span>), contains added flavour (nature-identical & artificial flavouring substances)"
 8906153090467,Blue Tea Chamomile Flower Herbal Tea,Blue Tea,,chamomile flowers
 8901725007096,Potato Chips Salted,"Bingo,ITC",,"potato (89.1%), *edible vegetable oil and iodized salt (0.42%)."
-8906023797014,Sunflower Oil,Gold Drop,,"refined sunflower oil, permitted antioxidants (e319)"
+8906023797014,Gold Drop Sunflower Oil,Gold Drop,,"Refined sunflower oil, antioxidant (INS 319), vitamins A & D"
 8904063200228,Haldiram Ghatia,Haldiram's,,"chickpeas pulse flour (62%), vegetable oil (palm), salt, cumin and leavening agent e500 (ii). attention: for allergen see ingredient in bold, this product is made in a facility that processed foods containing wheat, <span class=""allergen"">peanut</span>, <span class=""allergen"">nuts</span>, <span class=""allergen"">sesame</span>, <span class=""allergen"">soy</span> and <span class=""allergen"">mustard</span>. kichererbsenmehlnudeln"
 8904327600863,Peanut butter,MYFITNESS,,roasted peanuts (10 pure peanuts. nothing else allergen info: contains peanuts butter
 8906010505226,CRUNCHEM,,,sugars 136 crunche cream & onion gae cream and onion flavored potato vaflers كريم والبصل رقائق البطاطا المنكهة gaufrette de pommes de terea aceea fogan rffectips mit saltm
@@ -780,7 +780,7 @@ use of trademark under licence from parle products pvt. ltd., mumbai. om parle p
 8901052005161,Tata Tea Gold Care,Tata Tea,,"tea (96.15%), natural flavours and natural flavouring substances [ginger, cardamom, tulsi, mulethi, brahmi]"
 8901774006040,Badshah Mumbai Pav Bhaji Masala,Badshah,,"fennel, red chilli, coriander, cumin, stone flower (lichen), white pepper, tejpat, cassia, ajwain, iodised salt, clove, turmeric, kachari, mace, cardamom and black salt turmeric"
 8903023305539,Surja corn mix nimkeen,Surja,,"com, black salt, curry leaf peanuts, vegetable oil&selected spice"
-8903023010099,Vedaka Sunflower Seeds,Vedaka,,sunflower seeds
+8903023010099,Vedaka Sunflower Seeds,Vedaka,,Sunflower seeds
 8906155920250,Chana dal,Gokul,,"chana dal (75%), edible vegetable oil (palmolein oil)(19%), sugar, black salt, spices & condiments (red chilli powder, turmeric powder, dry mango powder, black pepper powder)."
 8904004424485,Khatta Meetha,Haldiram's,,"edible vegetable oil (palmolein, cotton seed, corn, sunflower, rice bran), rice flakes (22%), bengal gram flour (besan) (21%), refined sugar, split pulse bengal gram (chana dal) (7%), groundnuts (peanuts) (5%), sago (4%), red lentils (masur whole) (2.5%), tapioca starch, lodised salt, black salt, turmeric, acidity regulator (ins 330), red chilli, ajwain, raising agent (ins 500 ii) & asafoetida. allergen: contains nut may contains wheat, milk & soy. 29"
 8901552006651,Peeled Ginger Garlic Paste,Adf Foods Limited,,"ginger, garlic, water, salt, acetic acid, xanthan gun, sodium benzoate (e 211)."
@@ -1061,7 +1061,7 @@ myristica fragrans - 0.208g"
 8904089923705,Family Toned Milk,Heritage,,"milk solids (toned milk), vitamin a palmitate & vitamin d (ergocalciferol) allergens information: contains milk"
 8901440013099,Eastern Chicken Masala,Eastern,,"chilli (53%), coriander, corn starch, lodized salt (10%), garlic, turmeric (2%), bayleaf (2%) cinnamon, cardamom, ginger, fennel, clove (0.7%), nutmace, black pepper (0.5%), chilli extract, cumin,"
 8906195000585,makhana,FreshCon,,"makhana, rice bran oil, himalayan salt"
-8901207096402,Indian Kachchi Ghani Mustard Oil,Dabur,,"mustard (brassica nigra) seed oil, tbhq."
+8901207096402,Dabur Kachchi Ghani Mustard Oil,Dabur,,"Mustard oil (cold-pressed), antioxidant (INS 319)"
 8908011996379,Vediko Origins Gulkand,Vediko Origins,,"damask rose petals, rock sugar (mishri), cardamom"
 8901826803702,Verka Dahi Cup,Verka,,"pasteurised toned milk with 10.5% snf, milk solids and active lactic culture"
 8906154300893,Malai Sev,Patanjali,,"moth bean flour, edible vegetable refined cottonseed oil, refined palm oil), bengal gram flour, lodized salt, milk solids, mixed spices"
@@ -1286,7 +1286,7 @@ clove, butter, refined vegetable oil, lodized salt and mix indian spices."
 8901044404026,Litchi Crush,Mapro,,"sugar, litchi pulp (27%), water, acidity regulator (citric acid), thickener (pectin), preservative (ins-224) contains added flavours-natural, nature identical & artificial flavouring substances (litchi)"
 8906106360647,Mysore Rasam Powder,SriVaraha Foods,,"coriander seeds, toor dal, bengal gram dal, pepper, cumin and red chilli."
 8901764985027,Lemon Coconut Water Lyte,Bodyarmor Superblend,,"water, *coconut water (4.5%), glucose (1.6%), *lemon juice concentrate (0.7%), acidity regulator (331(iii)), mineral salts (iodized salt, potassium chloride), antioxidant (300), sweeteners (955, 960), colour (160a(i)), flavour (nature-identical flavouring substances). *10% total reconstituted fruit juice in the beverage."
-8903023001608,Vedaka Raw Peanuts - Pink,Vedaka,,"<span class=""allergen"">peanuts</span>"
+8903023001608,Vedaka Raw Peanuts Pink,Vedaka,,Raw peanuts
 8901725117948,Mishti Doi,Aashirvaad,,"pasteurized full cream milk (81.9%), sugar, colour (150a) and active lactic acid cultures"
 8906117361398,Curd,Country Delight,,pasteurized cow milk & active lactic culture
 8901036161609,Super Strong Blend Instant Coffee Chicory Mixture,Continental,,"coffee (53%), chicory (47%)"
@@ -1462,7 +1462,7 @@ nature identical flavouring sibstances (almond flavour)"
 8901888005922,real guava juice,,,"water,guava pulp,sugar,salt,acidity regulator"
 8901595863280,Schezwan Chutney,Ching's Secret,,"water, cotton seed oil, sugar, iodised salt, chilli, garlic, onion, thickener (ins 1422), ginger, acidity regulator (ins 260), flavour enhancer (ins 635), spices (white pepper, schezwan pepper), preservatives (ins 202, ins 211), natural flavouring substances. _contains: celery. may contain: wheat, soy, nuts, sesame seeds, mustard and milk._"
 8906021120272,Aachi Biryani Masala,Aachi,,"spice content: 89% (red chilli powder, coriander, fennel, garlic flakes, onion flakes, cassia bark (taj), dry ginger, star anise, cumin, bay leaves, turmeric powder, pepper, cardamom, gloves, mace) and salt - 11%"
-8906002000494,Dr Oetker Funfoods Veg Mayonnaise,"Funfoods,Dr Oetker",,"refined soyabean oil, water, sugar, milk solids, lodised salt, stabilizers (ins415, ins1442), acidity regulators (ins260, preservatives (ins211, ins202), antioxidant (ins319)."
+8906002000494,Dr Oetker FunFoods Veg Mayonnaise,Dr. Oetker,,"Refined soybean oil, water, sugar, vinegar, iodized salt, thickener (INS 1422), preservative (INS 211), mustard, antioxidant (INS 319)"
 890979002019,Potato crackers,Bombay Sweets,,"potato flakes,potato starch,wheat flour,refined veg oil & spices(chilli powder, cardamon, cinnamon et cetera"
 8901262071277,Amul,,,"sugar, milk solids, cocoa butter, camel milk powder, cocoa solids, permitted emulsifiers (e 322, e 476), contains added flavours (artificial flavouring substances - cocoa,,vanilla ),"
 8901063017252,50-50,Britannia,,"refined wheat flour (maida), edible vegetable oil (palm) sugar, liquid glucose, raising agents 503(), 500(i), 450(1)1, butter (1.2%), black salt, milk solids, edible vegetable product (1%), iodised salt, acidity regulator (341(ii), dough conditioner (223) and improver [1101(i)]. contains added flavour (artificial flavouring substance (butter)]. (numbers in brackets as per international numbering system) contains wheat, milk and sulphite."
@@ -1490,7 +1490,7 @@ _gluten(wheat)_ _traces of nuts and mustard_"
 
 allergen instruction: this product was processed on machinery and in a plant that also processes wheat, soya, milk solids, mustard, tree nuts and sesame seeds."
 8901414000025,BIkano Aloo Bhujia Crunchy Spicy Noodles of Potato,Bikano,,"carpe 911 200 a geschätes tau-gran meh jodertes sal, zucker, schwarzes stens habar bis siehe rücksele. herkunft inden, o abe bus ms. vem de rochi na opening ichtdichte verpakking bewaren. ingredienten aardappel, eetbare plantaardige die palmaleinecke, spoke) 3 vellererwtenmed, specerijen (u, rode chill knoflook, munt, mango, komin koriander, kaneel, joele, g act, kurkuma, groene chi gember), gepelde dauwgrammeel, gejodeerd zout, suiker, zwart zout, zuurregelaar e296, aroma. ten minste houdbaar lot zie achterzijde. herkomst india. melange aloo bhuja evier la in drecte du soleil. conserver dans un récipient hermique après ouverture. ingrédients: pomme de leme, evigitale comestible huile de palmoline, huile de riz) 30%, farine de niz, farine de pois chiche, épices (pignon, net ruge al menthe, mangue, cumin, coriandre, cannelle, macis, extrait de levure, curcuma, piment vert gin tame de gramme de rosle décortiquée, sel indil, sucre, sel noir, comecteur d'acid: e330, e296, arome er de prirence avant le voir au dos origine: inde o aloo bhuja-blandning undrik direkt solljus fear til behillare efter apprande. ingredienser. potatis, big vegetabilsk olja (painoleinaja, okolj 3% in kryddor (k, röd chili, vök, mynta, mango, spiskummin, koriander, kanel, muslotionna gon chill ingelical, skalad dagggramom, jodiserat salt, socker, svart salt, surhetsreglerande ee2 am blist fore: se baksidan ursprung indien aloo bhuja-seos. suojaa suorata auringo at sa avamisen jälkeen mativissi astassa. valmistusaineet peruna, syötävä kasvičily (palmolin 30% hohemejauho, mausteet (sipul, punainen chill, valkosipuli, mintu, mango, kumina, korianter nunca hinatutuma, whred chil, inkivdár), kuorittu kaste gram jauho, jodotu suola, soker mustuda happamuudesiaine: ex30, e296, aromi. parasta ennen katso takapuok aluper inlia. abo buje bunding undgi dinite sollys. opbevares i en luftet beholder efter åbning ingredienser. kartoffel, spiseig vegablak ale pindende, sole) 30%, omel, kikartemel, krydderier (eg, rad chill, hvidlag, mynte, mango, spid some loander lane, muskatud, garekstrakt, gurkemeje, gran chi, ingeter), afskallet duggram melodiseret sa sulier auf salt, surhedsregulerende middet e130, e296, aroma. mindst holdbar it se bagside. oprindelse inden miscela aloo bhuja evitare la luce diretta del sole. dopo fapertura conservare in un contenitore emetico hgredient patate, olo vegible commestible (olio di palmolina, clo di riso) 30%, farina di riso, farina di caci, spezie pola, peperoncino rosso, ago, menta, marigo, cumino, coriandolo, cannella, macs, estratto di levito, curcuma, peperoncino verde, zenzero, larina di gran di nujada decorticata, sale lodalo, zucchero, sale nero, corretore d ad e330, e26, aruna da consumani preferibilmente entro i vedere lato posteriore. origine: inda. alco bhuja ma. avoid dired sunlight. once opened store in an airtight container, ingredients: polab, edible vegetable dinden ol, rebran of 30%, foe four, chickpes four, spices (onion, red chill, garlic, mint, mango, cumin, rander, canon, mack, ad erat, tumeric, gen chill, ginger husled dew gran four, iodized salt, sugar, ki addily or e330 e6, fan bet before see back side. origit inda. aloo bhuja smès zabral ve pininu netinu su po deveni sadale ve vzduchotesné nádobě. složení: brambory dymadey de punct de 30%, nová mouka, cimovi mouka, kofeni (obule, červené chil nek, mila, mango, kin, kurand, skořice, muškátový bět, výtok z dobdi, kurkuma, zelené chill, zázvor per a pranová mouka, podvard si calt, dem singulor lysekost: e330, e296, aroma. minimali robe do vz zathi stanu plot hde abe bhuja neverk karik a közveden napliny. felnyts de lignende in edinen and oevic burnya, étkezés növényi dal (palmolin olaj, zsol welt cserbenci naga, pins cl, fagyma, menta, mango, komény koriander, the and distici una di gomber hänt hamal gran list, jodozott só, cukor, lekela s says stably anyag e30, e36, ama minisigil meglect and hitoldalán. származási hely. inda store in cool, dry and hygienic place away from air and direct sunlight. مخزن في مكان بارد وجاف وصحي بعيدا عن أشعة الشمس والضوء المباشر nufactured by: (see first two letters of batch no.) canervala foods pvt. ltd. 1.plot no. 42 (khasra no. 661-662). fotech 1, udyog vihar, greater noida. gautam buddha nagai-201306, up. india) 83-plot no.2272-75, phase-2 dal estate, hal, sonipat-131029, haryana (india) bb-plot no. 1038, sector-29, yeida, jewar tehsil, gautam buddha nagar, uttar pradesh-203209 for feedback/consumer complaints, write (indicating batch no. and mfg. date) to the consumer service manager at issat lic. no. 100120510004u1 issat lic. no. 1001406-4000352 fssat lic. no. 12723999000195 email: , website: www.bikano.com date mfg.: before 70 14 19 b1bhlfa 16-12-2026 urated ohydrate gars jm ition facts ur nutritive 9 pries 190 pides 14g ated/satures 4g is/trans og hydrate/glucides 12g fibres og s/sucres 1g n/protéines 3g sterol/cholestérol 0 m im 250 mg sium omg um 0 mg fer 0 mg or less is a little, 15% or m ou moins c'est peu, 15% om utrition fac rvings per container ving size unt per serving ories fat 149 aturated fat 4g rans fat 0g lesterol omg ium 250mg l carbohydrate 12 dietary fiber 0g otal sugars 1g includes 1g add ein 3g min d 0mcg ium 0mg omg assium 0mg daily value (dv) tells yo y diet 2,000 calories a day tional values/valeurs clonales/ valori nutrizi values les valeurs bypiq valor pia/typische we asia expre"
-8906035030222,Freedom Refined Sunflower Oil,Freedom,,"refined sunflower oil: 99.99%, tbhq (e319): antioxidant, vitamin a: micronutrient, vitamin d: micronutrient"
+8906035030222,Freedom Refined Sunflower Oil,Freedom,,"Refined sunflower oil, antioxidant (INS 319), vitamins A & D"
 8901595963355,chings noodles,Ching's,,"noodles: refined wheat flour (maida), refined palm oil, iodised salt, wheat gluten, thickener (ins 508), stabilizer (ins 451), acidity regulator (ins 501 (i)), raising agent (ins 500(ii)). antioxidant (ins 319). 
 seasoning mix: corn flour, iodised salt, garlic powder, sugar, mixed spices (9%) [chilli, ginger, pepper], onion powder, dehydrated vegetables (2.4%) [carrot, parsley], flavour enhancer (ins 635), soy sauce powder (soybean, wheat, salt), acidity regulator (ins 330), sunflower oil, anticaking agent (ins 551), tomato powder, yeast extract, natural flavouring substances. allergen advice: contains wheat and soy. may contain mustard, milk & celery."
 8904004400038,Haldiram Bhujia Sev,Haldiram's,,"ingrediemts
@@ -1635,14 +1635,14 @@ allergen warning: may contain _nuts_, _milk_ and _wheat_"
 8906143890107,dark chocolate peanut butter,The Whole Truth,,"<span class=""allergen"">peanuts</span>, dates, cocoa"
 8908001032124,Multi Grain Bread,EveryDay,,"whole wheat flour, legumes and oil seeds (soya flakes, sunflower seeds, flax, melon seeds. sesame seeds), yeast, rolled oats, ragi flour, wheat bran, sugar, salt, edible vegetable oil, wheat grits, class ii preservative (282), emulsifiers (471), improver (1100), acidity regulator (260), anti oxidants (300), flour treatment agent (510) :"
 890282001433,Lemon Almond Bar,Step One Foods,,"dates, almonds, walnuts, chia seeds, flax seeds, oat bran, plant sterols, dehydrated lemon juice, saskatoon berries, lemon oil."
-8901014000401,Geki hot and spicy,nissin,,"refined wheat flour (maida), edible vegetable oil (palm oil), tapioca starch, iodised salt, acidity regulators [ins 451 & ins 500], turmeric powder, thickener (ins 412) & antioxidant (ins 319), sugar, hydrolysed vegetable protein powder (soya), soya sauce powder, roasted sesame seeds, garlic powder, iodised salt, flavour enhancers (ins 631 & ins 627) mixed spices 1.43% (ginger, black pepper, cumin, turmeric & coriander), onion powder, oleoresin capsicum, natural flavour, acidity regulator (ins 330), tomato powder & anticaking agent (ins 551), edible vegetable oil (palmolein, soya bean oil & chilli seed oil), colour [ins 160c] & oleoresin rosemary allergen information: contains wheat & soy. may contain milk"
+8901014000401,Nissin Geki Hot and Spicy,Nissin,,"Refined wheat flour, palm oil, salt, thickeners, acidity regulators; Tastemaker: salt, spices, sugar, flavour enhancers (INS 621), colour"
 8902929000753,raaj,,,"quality guarantee we give great care that the contents of this product recommend transfer of product to an airtight container, if reaches you in perfect condition, once opened we you have any complaints about this product, please return the packet and content to the address below stating when and where purchased, and we will refund the money,  keep in a dry place and away from heat and direct sunlight, guarantee we take great care to ensure that the contents of this product reach you in perfect condition, we recommend that the contents of this bag, after opening, be stored in an airtight container, in case of content complaints, the money will be refunded to you at the place where you obtained the product,  store in a dry place and protect from heat, note although all necessary precautions have been taken to remove the stones, stems and seeds, there is a risk of some remaining, सुखी जगह पर रखे ओर सुरज की रोसनी से दूर रखे। foreign produce, country of origin: foreign best before end: best before end:"
 8904335601890,Yoga bar High Protein Muesli+,Yoga bar,,"whole grains 45% {rolled oats, millets 22% [ragi flakes (ragi, jaggery), jowar flakes (jowar, jaggery)]}, texturized soya protein flakes, dark chocolate paste 13% (sugar, edible vegetable fat, cocoa solids, soy lecithin & natural flavours), dehydrated fruits (raisins, cranberry 1%), nuts & seeds (chia, <span class=""allergen"">almond</span> 1.5%, pumpkin), dates syrup, peanut protein, cocoa powder, natural flavours, rice bran oil, jaggery syrup, probiotics (bacillus coagulans snz 1969, 15 billion cfu/g)."
 8906001020196,Go Cheese Slices,Go,,"cheddar cheese (made from microbial enzyme), milk solids, emulsifier (ins 339 (iii), ins 450 (i), ins 452 (i)), lodized salt, stabilizer (ins 407, ins 415), preservative (ins 200). allergen advice: contains milk"
 8901058003017,Pazzta Masala Penne,Maggi,,"semolina (wheat) (100%). masala #tastemaker® ● creative visualization. refer pack for more details mixed spices (21.7%) (dehydrated onion, toasted onion flakes, coriander powder, roasted garlic flake aniseed powder, turmeric powder, dehydrated coriander leaves, cumin powder, garlic powder, red chilli powder, black pepper powder, fenugreek powder, ginger powder, capsicum extract, clove powde green cardamom powder, nutmeg powder, coriander extract and cumin extract), milk solids, sugar lodized salt, starch, dehydrated green peas (67%), flavour enhancer (635), palm oil, yeast extract powder, thickener (508), colour (150d) and acidity regulator (330). contains wheat & milk. may contains mustard & soy."
 8901063017702,50 50 Gol Maal,Britannia,,"refined wheat flour (maida), refined palm & palmolein oil, sugar (20.5%), raising agents (503(ii), 500(ii) & 341(i)), cumin black (kalonji) (0.9%), iodised salt, invert sugar syrup, milk solids, emulsifiers [322(1) & 4711, nature identical flavouring substances, dough conditioner (223), improver [1101(i)] and colour (102)."
 8904132928565,750g,,,"wheat flakes, mixed dry fruits and nuts, papaya apple apricot raisin almond, corn flakes, rolled wheat, rice flakes, rolled oats, sugar, invert sugar, antioxidant."
-8901030735349,Fruit & Nut,Kwality wall's,,"frozen dessert: (water, sugar, condensed milk, palm oil, liquid glucose, maltodextrin, (hazelnut) flavouring substance, food colours - e102, e122, e110, cocoa solids, emulsifier e471, stabilisers (e410, e412), artificial aimonds (1.6%), liquid glucose, emulsifier - e471, vegetable protein e133, e143), palm oil, milk solids, cashew nuts (3.2%), raisins (3.2%), (soy), stabilisers (e412, e417, e407, e410), nature identical flavouring substance, food colour-e102, e110. contains milk, soy & nuts."
+8901030735349,Kwality Wall's Fruit & Nut,HUL,,"Toned milk, sugar, edible vegetable oil, dried fruits, nuts, stabilizers, emulsifiers, colours (INS 122, INS 143)"
 8902901013177,Multi Grain Bread,Mr Bakewell,,"refined wheat flour (maida), water, multigrain mix (sunflower, flax seed, sesame, soya seeds, rolled oats), whole wheat flour (atta), sugar, edible vegetable oil (palm oil), yeast, lodized salt, soya flour, gluten, calcium propionate (ins282) bread improver (ins 1700), 1100(1), antioxidant (ins 300)"
 8906067021199,Whey Protein - rich milk chocolate flavour,Muscleblaze,,"whey protein blend (whey protein concentrate, whey powder & whey protein isolate), cocoa powder, nature identical flavouring substances, sodium chloride, emulsifier (ins 322 (i)), stabilizer (ins 415), amylase, protease, lactase, lipase & cellulase, sweetener [ins 955) & anti-caking agent (ins 551)."
 8906038230223,Chicken Salami,Zorabian,,"chien meat (63%), water, corn starch, isolated soya protein, lodised salt, yeast extract powder more of spices, coriander, texturiser ins - 451(i), anti oxidant ins-316, colour fixative ins-250 ra agent ins - 500 (ii). aen: contains <span class=""allergen"">soy</span>. 25.0"
@@ -1733,7 +1733,7 @@ raita seasoning - spices and condiments (cumin, chilli, coriander, dried ginger)
 8906078780511,เซพแพ็ค มันฝรั่งเส้นตรงแช่แข็งขนาด 7 ม.ม.,"เซพแพ็ค,Savepak",,"มันฝรั่ง 93%, น้ำมันปาล์ม 7%"
 8904293707948,Classic Kachi Ghani Mustard Oil,Flipkart Grocery,,"edible vegetable oil (mustard oil), vitamin a & vitamin d2, antifoaming agent (dimethyl polysiloxane)"
 8901499010759,Kellogg's Multigrain Chocos Chhota Laddoo,Kellogg's,,"wholegrain flour mix (46.7%) {wheat flour (atta) (36.3%), ragi flour (5.2%), sorghum (jowar) flour (5.2%)}, sugar, corn meal, refined wheat flour  (maida), cocoa solids (5.2%), minerals, cereal extract, iolized salt, colour (ins 150d), flavours nature identical&artificial (<span class=""allergen"">cream</span>)), vitamins, antioxidant (ins 307b)."
-8906069400527,Veeba Eggless Mayo,Veeba,,"Edible veg oil, water, sugar, vinegar, salt, thickener (INS 1422), preservative (INS 211), mustard"
+8906069400527,Veeba Sandwich Spread,Veeba,,"Refined soybean oil, water, sugar, vinegar, iodized salt, thickener, preservative (INS 211), mustard, antioxidant"
 8908002984965,Millet muesli,Tata Soulfoul,,"rolled oats (33.6%), millets(20.2%) [jowar(10.2%), ragi(10%)], brown rice fakes (15%), seeds(12%) [flax(8%), chia(2%), pumpkin(2%)], corn flakes (5%), black raisins (4%), <span class=""allergen"">almonds</span> (3%), rice flour(4.2%), rice bran oil, chia seeds, anticaking agent [ins 170(i)] , natural flavour, antioxidant [ins(307(b), ins 320], acidity regulator[ins 330]."
 8901786040506,Everest Jaljira Powder 50 g,Everest,,"lodized salt                   
                             dried mango                   
@@ -1838,7 +1838,7 @@ allergen information: contains <span class=""allergen"">wheat</span>, <span clas
 8901725013660,bingo mad angles,ITC Limited,,"rice grits, seasoning {refined palmolein, sugar, 'spices and condiments, iodized salt, nature identical flavouring substances, hydrolyzed vegetable protein and natural flavours and natural flavouring substances), refined palmolein, degermed corn grits and bengal gram grits. *used as flavouring agents. contains <span class=""allergen"">soy</span>. may contain <span class=""allergen"">milk</span>, <span class=""allergen"">wheat</span>."
 8906150344211,Himalayan Shilajit,BetterAlt,,100% pure shilajit resin
 8904335602910,Yoga Bar Super Muesli,Yoga Bar,,"whole grains 58.0% (millets 26.0% (ragi 16%, jowar 30%), rolled oats 22%, brown rice flakes), corn flakes (corn grits, unrefined sugar, lodized salt, malt extract, soy lecithin), nuts & 4.8% (raisins, cranberry), jaggery syrup, honey, rice bran oil, natural flavors (almond, rosemary extract), himalayan pink salt."
-8901648000860,Chocolate Flavoured Milk,Mother Dairy,,"milk, sugar, milk solids, nature - identical &artificial chocolate flavouring substances, natural colour (150a) & synthetic food colour (110, 132, 102, 122, 127)."
+8901648000860,Mother Dairy Chocolate Flavoured Milk,Mother Dairy,,"Toned milk, sugar, cocoa solids, artificial chocolate flavour, stabilizers, emulsifiers, colours (INS 122, INS 127)"
 8901512140708,Peanut butter,Sun drop,,"peanut butter (roasted peanuts (66.9% sugar, refined edible groundnut oil, honey (5%), hydrogenated vegetable oil, lodized salt, edible molasses & natural colour (caramel iv)."
 8906002004379,Dr. Oetker FunFoods Veg Mayonnaise,Dr. Oetker,,"Refined soybean oil, water, sugar, vinegar, iodized salt, thickener (INS 1422), preservative (INS 211), mustard, antioxidant"
 8904008100415,Naturo Mango Fruit Bars,Naturo,,"mango pulp (70%), sugar, thickener (ins 440), acidity regulator (ins 330, ins 524), contains added nature identical flavouring substance (mango)."
@@ -1884,7 +1884,7 @@ contains<span class=""allergen"">: wheat</span>, <span class=""allergen"">sulphi
 8906005610683,Marble Cake Sliced,winkies,,"wheat flour, eggs, sugar, edible/hydrogenated vegetable oils, humectants (422,420), water, invert syrup, cocoa solids, butter, emulsifiers (471, 491, 1520), raising agent [500 (ii)] & baking powder, edible common salt, class ii preservative (200), acidity regulator (330), stabilizer (415). contains permitted natural colour(s) (150d) and flavour(s) [artificial flavouring substances (chocolate and vanilla)]. hydrogenated vegetable fat used – contains trans fats."
 8901719107771,Nutricrunch,Parle,,"refined wheat flour (maida) (93%), refined palm oil, yeast, iodised salt, emulsifier of vegetable origin (4726], flour treatment agents [223, 1100 (i)) contains: wheat and sulphite *contains naturally occurring sugars jedies. contact us with details of batch"
 8902080002665,Tropicana Frutz,Tropicana,,"water, sugar, concentrated mixed fruit juice 25% (from apple, mango, guava, orange, banana, apricot, peach), acidity regulators (330, 3310), stabilizer (466, 649) flavour (natural and nature identica flavouring substances), preservative (297) colour (1608(0)"
-8904052503804,Dinshaw's Butterscotch,Dinshaw's,,"water, milk solids, sugar, cashew crunch (10%) -[sugar, <span class=""allergen"">cashew</span>, <span class=""allergen"">butter</span>], liquid glucose, emulsifiers (471, 433), stabilisers (412,466, 407). contains permitted synthetic food colours (102, 110, 133, 122, 132) and added flavours (nature identical and artificial flavouring substances-butterscotch, caramel toffee)."
+8904052503804,Dinshaw's Butterscotch Ice Cream,Dinshaw's,,"Toned milk, sugar, edible vegetable oil, butterscotch flavour, stabilizers, emulsifiers, colours (INS 122)"
 8901399088131,Glucovita bolts,Bolts,,"sugar (sucrose), dextrose monohydrate, acidity regulator (ins 330), minerals (calcium phosphate, iron pyrophosphate), magnesium stearate, common salt, vitamins (vitamin c, vitamin d2), anticaking agent (ins 551), preservatives (ins 211), food colours (ins 110), orange juice powder. contains permitted synthetic food colours and added flavours (nature identical flavouring substances)"
 8901220004804,Baidyanath Siddhayu Noni+ Juice,Baidyanath Siddhayu,,"noni (morinda citrifolia, fr.) juice - 97ml, garcinia (garcinia (cambogia, fr.) juice - 1ml, ashwagandha (withania somnifera, pt) juice - 1ml, preservatives & excipients (e-330 - q.s., e-21 - q.s., e-202 - q.s., e-15od-q.s.)"
 8906112995963,High Protein Brown Bread,Protein Chef,,"whole wheat flour (atta) (60%), high protein blend (vital wheat protein, soy, peanut, edible vegetable oil (refined sunflower oil), sugar, yeast, edible common salt, vinegar, fermented wheat flour."
@@ -1983,7 +1983,7 @@ neem (azadirachta indica) lf. 0.6gm with permitted class ii preservatives less t
 8901044210856,mapro jam,Mapro,,"sugar, mix fruit pulp (papaya pulp, guava pulp, banana pulp, mango pulp, pineapple pulp, apple pulp, orange juice, strawberry pulp) (45%), water, acidity regulators (ins-330, ins 331), thickener (ins-440), preservative (ins-211) contains permitted synthetic food colour (ins-122) and added flavours-natural, nature identical and artificial flavouring substances (mix fruit)"
 8904155829528,Nuts About You Premium Almonds,Aplus Foods,,almond kernels net wt.: 200 g
 8906010916008,"CHOCO BAR ,CHOCO VANILLA STICK",Dairy Day,,"inner layer: vanilla frozen dessert ingredients (76%) (water, milk and milk solids, sugar, edible vegetable oil (palm kernel oil), emulsifer and stabiliser (ins471,412,433,407,401) contains added flavour-nature identical and artificial vanilla flvaouring substances). outer layer: choco compound coating (24%) (sugar, palm kernel oil, cocoa solids, milk solids, emulsifier ins 322, contains nature identical vanilla flavouring substances). allergen information: contains milk. frozen dessert contains 6 % edible vegetable oil"
-8901512102904,Sundrop Superlite Advanced Refined Sunflower Oil,Sundrop,,"refined edible sunflower oil, antioxidant (tbhq), antifoaming agent [dimethyl polysiloxane (dmps) vitamin a and vitamin d2."
+8901512102904,Sundrop Superlite Sunflower Oil,Agro Tech,,"Refined sunflower oil, antioxidant (INS 319), vitamins A & D"
 8906088213092,Orika Special Magic Masala,Orika,,"lodized salt, spices and condiments, corn starch, sugar, hvp (soya), flavour (natural and nature identical), edible rice bran oil, yeast extracts, spice extracts, anticaking agent (ins 551), acidity regulator (ins 330), natural colour (160c), caramel powder (ins 150d), and dehydrated kasuri methi."
 8901262110242,Whey Protein Lactose Free,Amul,,"whey protein concentrate, enzyme (beta-galactosidase). allergen information: contains milk. contains naturally occurring sugars'"
 8906081920218,"Multi Collagen Complex Type I, Ii, Iii, V & X + Piper Nigrum Extract",Carbamide Forte,,"hydrolyzed collagen complex (hydrolyzed bovine collagen, hydrolyzed chicken bone broth collagen, hydrolyzed fish collagen, hydrolyzed egg shell membrane collagen), anticaking agent (ins 460 (i)), thickener (ins 464), emulsifier (ins 466), antifoaming agent (ins 452(i)), permitted natural food colour (ins 172 (ii)), potassium sorbate (ins 202)"
@@ -2038,7 +2038,7 @@ allergen information: contains nuts. manufactured in facility that also processe
 8906112662759,Muesli,True Elements,,"rolled oats (35.7%), wheat flakes (29%), millets (16.2% jowar flakes), almonds (5.5%), seeds (4.5%-chia, pumpkin), jaggery powder, dried blackcurrant (3%), freeze dried fruits (2.1% - chikoo, banana, pineapple), rosemary extract."
 8906054684055,Mothi Laddu,Zam Zam Sweets,,"gram dhal flour, ghee, dry fruits, sugar, elachi, refined sun flower oil.
 allergen advice: made in a facility that processes peanuts, <span class=""allergen"">tree nuts</span>, <span class=""allergen"">milk</span>, wheat sesame and <span class=""allergen"">mustard</span>."
-8901063146952,Winkin' Cow Strawberry Shake,Britannia,,"Toned milk, sugar, strawberry flavour, stabilizers (INS 466, INS 407), emulsifier (INS 471), colour (INS 122)"
+8901063146952,Britannia Winkin Cow Strawberry Shake,Britannia,,"Toned milk, sugar, strawberry flavour, stabilizers (INS 466, INS 407), emulsifier (INS 471), colour (INS 122)"
 8902979011549,Badam Flavoured Milk,Cavin's,,"double toned milk, sugar, almond bits (0.4%), flavour (artificial (badam) flavouring substance), sequestrant (ins 339 (i)), stabilizer (ins 407), synthetic food color (ins 102, ins 110). allergen advice: contains <span class=""allergen"">milk</span> and <span class=""allergen"">nuts</span>"
 8904300201353,Milk Rusk,TRDP Mario,,"refined wheat flour (maida), sugar, edible vegetable oil (refined palm oil), semolina (<span class=""allergen"">wheat</span>), yeast, milk solids (3%), invert syrup, malt extract, iodized salt, wheat fiber, emuls - ifier (471, 472e & 481 (i)), antioxidant (300) & flour treatment agents 1100(i). contains added flavour [natural and nature identical flavouring substances (<span class=""allergen"">milk</span> & vanilla)]."
 8909900155136,Rooted Mints,The Green Ritual,,"ginger root, turmeric, spearmint leaves"
@@ -3085,7 +3085,7 @@ flavours (natural"
 8901725123123,iodized salt,aashirvaad,,"edible common salt, anticaking agents (ins 551, ins 536) and potassium iodate"
 8904089911177,Heritage Butter,,,"<span class=""allergen"">milk</span> , salt"
 8901262220552,Chocolate Cookies,Amul,,"refined wheat flour (maida), butter (23%), sugar, plain chocolate chips (3%), cocoa solids (2%), milk solids, liquid glucose, raising agents [500(i), 503(ii)), emulsifier [481 (i)), artificial flavouring substances (vanilla, cocoa chocolate). allergen information: contains wheat, milk."
-8901063139213,Brit bourbon 150g (sys),Britannia,,"refined wheat flour (maida) sugar (33%) refined palm oil edible maize starch colours (150a. 150d. 122, 110, 133 & 102) cocoa solids (2.72) milk solids raising agents (500m) & 503@] emulsifiers 471 & 322@] milk chocolate (0.12) emulsifier (3220))) nature identical & artificial (vanilla, chocolate milk & milky cocoa) flavouring substances iodised salt"
+8901063139213,Britannia Treat Jim Jam,Britannia,,"Refined wheat flour, sugar, edible vegetable oil (palm), invert syrup, raising agents (INS 503(ii), INS 500(ii)), salt, emulsifier (INS 322), artificial vanilla flavour, colours (INS 122, INS 110)"
 8901063093409,good day cashew cookies,Britannia,,"refined wheat flour (maida), edible vegetable oil (palm). sugar, cashew nuts (4.5%), invert syrup, milk solids, butter (0.6%), raising agents [503(ii) & 500(ii)], iodised salt and emulsifiers (322, 471, 472e). contains added flavours inature identical and artificial (milk and vanilla) flavouring substances)"
 8901719100369,Parle Bis Hide &seek,Parle,,"refined wheat flour (maida), sugar, choco chips (17.3%) isugar, edible vegetable fat (hydrogenated oils), cocoa solids, dextrose, emulsifier of vegetable origin (<span class=""allergen"">soy lecithin</span>) and artificial flavouring substances (vanilla)], refined palm dil, chocolate (5.8%) [sugar, cocoa solids, cocoa butter, dextrose emulsifier of egetable origin (<span class=""allergen"">soy lecithin</span>) and artificial flavouring substances-vanillaj. vert sogar syrup, raising agents (503(1), 500], cocoa solids, iodised salt and julsifier of vegetable origin [472e]. viains added flavour (artificial flavouring substances-vanilla) tains: <span class=""allergen"">wheat</span>. soy meade oonotion mode"
 8904004442007,Punjabi Choley,Haldiram's,,"whole chick pea, water, onion, tomato, refined sunflower oil, ginger, milk solids, iodised salt, green chilli, <span class=""allergen"">butter</span>, coriander, dried mango powder, red chilli powder, black salt, cinnamon, dried ginger powder, green cardamom, nutmeg, cumin, large cardamom, black pepper, clove, pipal, bay leaf, garlic, fenugreek leaves, ajwain, turmeric powder, mace & sodium hydrogen carbonate (e 500 (ii)) contains milk may contains almond, <span class=""allergen"">cashew</span>, <span class=""allergen"">peanut</span>, <span class=""allergen"">hazelnut</span>, coconut, <span class=""allergen"">pistachio</span>, mustard seed, <span class=""allergen"">soy</span>, <span class=""allergen"">sesame seed</span>, wheat & sulphite"
@@ -3269,9 +3269,7 @@ contains<span class=""allergen"">: wheat</span> (<span class=""allergen"">gluten
 8901192226051,Hing,Catch,,"white flour, asafoetida, edible gum, <span class=""allergen"">wheat flour</span> 55% approx."
 8906018998594,Chak-de chocolate,The symbol of taste,,"refined wheat flour, sugar, edible vegetable oil (palm oil), milk product, cocoa solids, dextrose, emulsifiers (plant origin)(e471. e472(@) e322), vegetable fiber, salt, leavening agents (e500(ii), antioxidant (e319), flour improver (e1101). contains: nature identical flavours"
 8901414001787,Khasta Gur Gajjak,,,export only khasta gur gajjak 400g
-8901014002054,Top Ramen Masala Noodles,Nissin,,"instant noodles with seasoning redients: noodles (91%): refined wheat flour (maida), edible vegetable oil (palm oil), lodised salt, acidity regulators [ins 451(i) & ins 500(i)], mixed spices 0.17% (turmeric, coriander, cumin & red chilli), antioxidant (ins 319) & thickener (ins 412). seasoning mix (9%): sugar, mixed spices 17.51% (coriander, turmeric, cumin, red chilli, ginger, fenugreek, black pepper, clove cinnamon, green cardamom, nutmeg & star anise), lodised salt, hydrolysed vegetable protein powder (<span class=""allergen"">soya</span>), onion powder, noodle powder (refined wheat flour (maida), edible vegetable oil (palm oil), lodised salt, acidity regulators [ins 451 (i) & ins 500(i)], mixed spices 0.17% (turmeric, coriander, cumin & red chilli), antioxidant (ins 319) & thickener (ins 412)), corn starch, garlic powder, flavour enhancers (ins 631&ins 627), yeast extract powder, acidity regulator (ins 330), colour [ins 100(ii)] & natural flavour. 
-allergen information: contains wheat & <span class=""allergen"">soy</span>. 
-may contain <span class=""allergen"">milk</span>."
+8901014002054,Nissin Top Ramen Masala,Nissin,,"Refined wheat flour, palm oil, salt, thickeners (INS 508, INS 412), acidity regulators; Masala: spices, sugar, salt, flavour enhancer (INS 621)"
 8901030667756,Fresh Tomato Ketchup,Kissan,,"water, tomato paste (28%), sugar, iodised salt, acidity regulator - 260, stabilisers - 1422, 415, preservatives - 211, onion powder, garlic powder, spices and condiments."
 8904335600336,Muesli+,Yoga Bar,,"60% whole grains (rolled oats, brown rice flakes, quinoa flakes). 17% dried fruits (raisins. apricots. cranberry. blackcurrants). 14% seeds & nuts (pumpkin, <span class=""allergen"">almonds</span>, chia. flax). strawberry powder. date syrup, jaggery, rice bran oil, himalayan pink salt"
 8904258702407,Raw Pressery Protein Milkshake,Raw Pressery,,"purified water, milk solids, prebiotic - fructooligosaccharide, coffee powder, stabilizer (ins 407, ins 460(i), ins 466), sequestrant (ins 331(iii), ins 340(ii & iii), ins 452(i)), acidity regulator (ins 339(gii), emulsifier (ins 471), wellmune - yeast beta 1,3/1,6 glucan, sucralose (ins 955) &lt; back to protein shakes join the phab community join our community and receive exclusive updates, early access to the best deals & new product launches.we'll also"
@@ -3397,7 +3395,7 @@ may contains traces of other cereals containing gluten.
 8901063151369,Good Day Butter Cookies,Britannia,,"<span class=""allergen"">wheat flour</span>, sugars [sugar, invert sugar syrup], bakery shortening [palm oil, interesterified fat, sesame oil], <span class=""allergen"">butter</span> (2%) (<span class=""allergen"">milk</span>), whole milk powder, leavenings (ammonium bicarbonate, sodium bicarbonate), salt, emulsifiers (<span class=""allergen"">soy lecithin</span>, mono - and diglycerides of fatty acids, diacetyl tartaric acid esters of mono - and diglycerides), artificial flavours (<span class=""allergen"">butter</span>, vanilla , <span class=""allergen"">milk</span>), contains<span class=""allergen"">: wheat</span> (<span class=""allergen"">gluten</span>), milk products, <span class=""allergen"">soy</span>, <span class=""allergen"">sesame</span>"
 8901042958286,Khaman Dhokla,MTR,,"bengal gram flour (64%), semolina (wheat), sugar acidity regulator e330, salt, raising agent: e500, turmeric, asafoetida, rice, anti caking agent (es51)"
 8902080011438,Orange Delight,Tropicana,,"water, ""concentrated orange juice (8.2%), sugar, acidity regulator (330), iodised salt, stabilizer (440). contains permitted natural colour (160a (i)) and added flavour (natural flavouring substances)."
-8901030831706,Kissan Mixed Fruit Jam,HUL/Kissan,,"Sugar, mixed fruit pulp blend (approx. 46%) [banana, apple, pineapple, orange, mango, papaya], acidity regulator (INS 330), preservative (INS 211 sodium benzoate), permitted synthetic food colour (INS 122)"
+8901030831706,Kissan Mixed Fruit Jam,HUL,,"Sugar, mixed fruit pulp blend (approx. 46%) [banana, apple, pineapple, orange, mango, papaya], acidity regulator (INS 330), preservative (INS 211 sodium benzoate), permitted synthetic food colour (INS 122)"
 8901063151345,Good day,Britannia,,"flour (<span class=""allergen"">wheat</span>), sugars (sugar, invert sugar), <span class=""allergen"">pistachio</span> (0.65%), whole milk powder, <span class=""allergen"">butter</span> (<span class=""allergen"">milk</span>) (0.6%), vegetable fat (palm), <span class=""allergen"">almond</span> (1.2%), cashew bits (0.6%), ammonium bicarbonate, sodium bicarbonate, salt, <span class=""allergen"">soy lecithin</span>, artificial flavours (<span class=""allergen"">milk</span>, <span class=""allergen"">almond</span>, vanilla), beta carotene, diacetyle tartaric acid esters of mono ,  diglycerides (palm)"
 8901595972142,Veg Manchurian masala,Ching's secret,,"corn flour, lodised salt, dehydrated garlic, sugar, onion powder, soy sauce powder (<span class=""allergen"">soybean</span>, <span class=""allergen"">wheat</span>, salt), mixed spices (2%) [ginger, cumin, coriander, chilli, pepper], natural colour (ins 150d), flavour enhancer (ins 635), sunflower oil, anticaking agent (ins 551), thickening & stabilizing agent (ins 415), acidity regulator (ins 260), natural flavouring substances. allergen advice: contains <span class=""allergen"">wheat</span> and <span class=""allergen"">soy</span>. may contain <span class=""allergen"">peanuts</span>, <span class=""allergen"">tree nuts</span>, <span class=""allergen"">sesame seeds</span>, <span class=""allergen"">mustard</span> and <span class=""allergen"">milk</span> (dairy products)."
 8901719306235,Kreams gold,Parle,,"enriched wheat flour, sugars, palm oil, cocoa solids, leavening, salt, artificial flavours, emulsifier"
@@ -3581,7 +3579,7 @@ cheesy jalapeno pepper filling (~29% ) [centre filling - refined soyabean oil, w
 8902080204021,Mirinda,"PepsiCo Inc.,Mirinda",,"carbonated water, sugar, acidity regulators (330, 331), stabilizers (1450, 445), preservative (211), colour (110), flavour (natural flavouring substances)."
 8901357000472,Hi-Tea,Hi-Tea,,batch no 83 n rod dat 2021 الشاي هاي تب
 8906005500090,Bikaneri Bhujia,bikaji,,cts (approx.) 25 servings per container serving size amount per serving calories 1/3 cup (40g) 244 % daily value/% valeur quotidien* total fat / gras total 18g 23% saturated fat / gras saturé fat 6g 28% trans fat/acide gras trans og cholesterol/cholestérol omg sodium/sodium 319mg total carbohydrate / glucides 15g dietary fiber/fibres diététiques 2g total sugars / sucres totaux og includes added sugars 0g protein / protéine 6g vitamin/vitamine d 0mcg calcium/calcium 2mg iron/ de fer 2mg potassium/potassium 180mg 0% 14% 5% 9% 0% 12% 0% &lt;1% 9% 4% the % daily value (dv) tells you how much a nutrient in a serving of food contributes to a daily diet. 2000-calories a day is used for general nutrition advice.
-8906080602689,Paper boat mixed fruit medley 750ml pet,,,"water, sugar, mango pulp concentrate (1.1%)#, apple juice concentrate (1%)#, orange juice concentrate (0.65%)#' acidity regulator (330), flavours (nature-identical and natural flavouring substances), iodised salt, stabilizers (466, 415), preservatives (202, 242), food colours (102, 124, 110) and vitamin d2 (ergocalciferol). *reconstituted 13.5% mixed fruit juice."
+8906080602689,Paper Boat Mixed Fruit Medley,Hector Beverages,,"Water, mixed fruit pulp, sugar, acidity regulators, antioxidants, natural flavours"
 8901786480500,Everest egg curry masala,Unknown Brand,,"coriander, chilli, cumin, black pepper, cassia bark (tai), garlic, turmeric, dried ginger, black cardamom, clove, curry leaf, fennel, star anise, mint leaf, fenugreek and iodized salt"
 8901786101009,Everest garam Masala,Everest,,•coriander chilli cumin •cassia leaf black pepper • cassia bark (tai) • clove • black cardamom star anise . fennel dried ginger • ● salt caraway may contain: mustard ingrédients : •coriandre piment •cumin feuille cassia poivre noir • ecorce cassia (taj) • gousse cardamome noir étoile anise ● fenouil gingembre séché • sel • carvi peut contenir de la : moutarde المكونات • كزبرة . فلفل حار كمون • ورقة قرفة صينية . فلفل أسود . لحاء قرفة صينية (تاج) . قرنفل • هال أسود. يانسون نجمي شمرة زنجبيل مجفف • ملح . وكراوية قد تحتوي على : خردل scan for recipes 回味回
 8901764385155,Minute Maid Apple,"Minute Maid,The Coca-Cola Company",,"water, sugar, apple juice (15.3%) (reconstituted from apple juice concentrate), acidity regulators (296,330) antioxidant (300), sweetener (960), contains permitted natural colour (150d) and added apple flavours (nature identical flavouring substances."
@@ -3631,7 +3629,7 @@ contains added natural flavour (rosemary extract, caramel)"
 8901030817182,Boost,Boost,,"cereal extract (50%) (barley, wheat, millet), malted barley (21%), sugar, wheat flour (atta), milk solids (6%), minerals, natural colour (ins 150c), wheat gluten, acidity regulators [ins 501 (ii), ins 500(ii)], edible lodised salt, cocoa powder, vitamins, nature identical flavouring substances, soy protein isolate. allergen information: contains wheat, barley, milk and soy"
 8904300200042,Mario Cardamon Rusk,TRDP Happy World Pvt. Ltd.,,"raffiniertes weizenmehl, zucker, pflanzenöl (raffiniertes palmöl), grieb (weizen), hefe, milchfeststoffe, invertsirup, salz, gewürz (kardamom und sein öl), weizenfaser, emulgator (monoglyceride) von fettsäuren, monodiglyceriden von fettsäuren und natriumstearoyllactylat), antioxidationsmitteln (ascorbinsäure) und mehlbehandlungsmitteln (amylasen). kann _nüsse_ und _erdnüsse_ enthalten ."
 8906020589032,Digestive Wheat Bread,iD,,"whole wheat flour (atta) (55%), refined wheat flour (maida)(45%), ro-purified water, sugar, <span class=""allergen"">gluten</span>, sunflower oil, wheat bran (3%), compressed yeast, iodised salt, fermented wheat flour, malt, natural improver, <span class=""allergen"">gluten</span> and apple cider vinegar."
-8906069400619,veeba white pasta dressing,Veeba,,"water, refined soyabean oil (20.0%), synthetic vinegar [water, acetic acid (ins260)], milk solids, permitted emulsifiers and stabilizers (ins1442, ins1450, ins415), sugar, lodised salt, cheese (2.0%), spices and condiments, herbs, permitted preservatives (ins211, ins202), permitted acidity regulator (ins330), permitted antioxidant (ins319) and permitted sequestrant (ins385) contains added flavour (nature-identical lic. flavouring substances)"
+8906069400619,Veeba White Pasta Dressing,Veeba,,"Refined soybean oil, water, sugar, vinegar, iodized salt, thickener, preservative, herbs, spices"
 8901972006040,Nice Sugar sprinkled coconut biscuits,Dukes,,"refined wheat flour (maida), sugar, refined palm oil, sprinkled sugar (4.7 %), desiccated coconut (3.8 %), invert syrup, milk solids, raising agents [ins 503 (ii), ins 500 (ii)], iodized salt, emulsifiers [ins 471, ins 322(i)] and artificial flavouring substances (coconut, milk)."
 8901063091023,Good Day Harmony,"Britannia,Good Day",,"refined wheat flour (maida), sugar, refined palm oil, nuts and nut product (8%) [cashews, almonds, pistachio & hazelnut paste), invert sugar syrup, milk solids, butter, raising agents [503(ii) & 500 (ii))], iodised salt, emulsifiers [322(1), 471, 472e) and flavours [nature identical and artificial (milk & vanilla) flavouring substances]@."
 8901058867855,Nestea Iced Tea Lemon flavour,Nestlé,,"water, sugar, acidity regulators (330 and 296), instant tea (0.1%), nature - identical (lemon) flavouring substances, sweetener (960) and stabilizer (466)."
@@ -3890,7 +3888,7 @@ may contain wheat, barley, peanuts and other tree nuts."
 8908011832004,Malai Paneer,Indiska Farms,,"milk solids, citric acid (e330) & edible common salt."
 89009802,Munch,Nestlé,,"sugar, refined wheat flour (maida), hydrogenated vegetable fats (contain sesame oil), milk solids, edible vegetable fats, cocoa solids (3.8%), emulsifier (soya lecithin), raising agent (500 (ii)), yeast, flour treatment agents (516 and 1101(i)) and lodized salt. contains added flavour (artificial (vanilla) flavouring substances). may contain peanuts maha crunch ilicious"
 8904063200525,Salted Banana Chips,Haldiram's,,"banana (60%), edible vegetable oil (palmolein/cotton seed), iodised salt."
-8901063363960,Gobbles Chocolate Cake,Britannia,,"Refined wheat flour, sugar, eggs, edible vegetable oil (palm), glucose syrup, cocoa solids (3%), raising agents (INS 500(ii), INS 503(ii)), emulsifiers (INS 471, INS 475), preservative (INS 202), artificial chocolate flavour, colour (INS 150c)"
+8901063363960,Britannia Gobbles Chocolate Cake,Britannia,,"Refined wheat flour, sugar, eggs, edible vegetable oil (palm), glucose syrup, cocoa solids (3%), raising agents (INS 500(ii), INS 503(ii)), emulsifiers (INS 471, INS 475), preservative (INS 202), artificial chocolate flavour, colour (INS 150c)"
 89017777,Mouth spray,"Ora2 me,",,"water,alcohol,glycerine, peg 60 hydrogenated castor oil,menthol,aroma,sodium saccharin,sodium citrate,citric acid"
 8908005144014,MULTIGRAIN ENERGY BAR CHOCOLATE CHUNK NUT,Yoga Bar,,"whole grains 36% (brown rice, millets (saamai, foxtail). rolled oats 15%). honey 20% almonds 12%, dates, seeds 9% (sunflower, chia), rice crispies. belgian dark chocolate 6% (cocoa, brown sugar, cocoa butter, <span class=""allergen"">soya lecithin</span>), peanut protein powder. contains added natural flavour (rosemary extract. vanilla extract)"
 8901030815812,Coffee,BRU,,"coffee 53%, chicory 47% milk, <span class=""allergen"">eggs</span>"
@@ -3932,8 +3930,8 @@ product of india"
 8901393019469,Happydent wave,Unknown Brand,,"polyols (maltitol, xylitol (6.5%), sorbitol), gum base, humectant (ins 422), thickeners (ins 1405, ins 466), flavours (nature-identical and artificial (mint) flavouring substances), sweetener (ins 951), strawberry fruit powder, emulsifiers (ins 322, ins 473, ins 471, ins 415), acidity regulators (ins 334, ins 330). glazing agents (ins 903, ins 901, ins 904), antioxidant (ins 321), colour (ins 122)"
 8901063029279,Jimjam,Britannia,,"refined wheat flour (maida), sugar (24%), refined palm oil & interesterified vegetable fat, invert sugar syrup, dextrose, milk products (milk solids & sweetened condensed milk), edible maize starch, maltodextrin, fruit products (0.7%) (apple juice concentrate, banana powder & plum juice concentrate), iodised salt, emulsifiers [322(i)& 471), raising agents (503(ii) & 500(ii)], nature identical and artificial (mixed fruit, vanilla & butter) flavouring substances, acidity regulators [330 & 331 (iii)], gelling agent (440) and colour (122)"
 8906024484142,badam flavored milk,DODLA,,"milk solids, sugar & water. contains permitted synthetic food colours (ins 102 & ins 110) and added nature-identical flavour (badam)"
-8901088034593,SAFOLA ACTIVE - MULTI-SOURCE EDIBLE OIL,Saffola,,"physically refined rice bran oil, refined soya bean oil, antioxidants (ins 319, 330), vitamins, anti foaming agent (ins 900a)."
-8901088002530,Tasty+,Saffola,,"physically refined rice bran oil, refined corn oil, antioxidants (ins 319, 330), vitamins, anti foaming agent (ins 900a)"
+8901088034593,Saffola Active Multi-Source Oil,Marico,,"Rice bran oil, sunflower oil, antioxidant (INS 319), vitamins A & D"
+8901088002530,Saffola Tasty Plus,Marico,,"Rice bran oil, corn oil, antioxidant (INS 319), vitamins A & D"
 8904132912847,Masala noodles,Snactac,,"instant noodles (91%): refined wheat flour (maida), refined palm oil, iodised salt, acidity regulators(e500,e 501(i),e 451), thickener (e 412)& antioxidant (e319),seasoning (masala) (9%): iodised salt, sugar, mixed spices (15.5%)[ (red chilli, turmeric, coriander, cumin, black pepper, ginger, fenugreek, nutmeg, green cardamom, clove)], onion powder, instant noodles powder (refined wheat flour (maida) refined palm oil, iodised salt, acidity regulators (e 500(i), e 501(i),e 451 (i), thickener (e 412) & antioxidant (e 319), hydrolysed vegetable protein (soya), tomato powder, acidity regulators (e 170, e 330), garlic powder, nature identical flavouring substances(masala), flavour enhancers (e 631,e 627). allergen information: contains _wheat_ , _soy_,may contain _milk_,_nuts_."
 8901688121013,Chicken pops Piri Piri,Sumeru,,"pops (99.1%) {chicken meat (40%), texturized soy protein, bread crumbs {wheat flour, dextrose, lodised salt, preservative [ins 282], yeast & acidity regulator [ins 260]}, batter {wheat flour, corn starch, edible salt & stabilizers [ins 466, ins 464]}, spices and condiments, lodised salt}, masala mix (0.9%) {acidity regulator [ins 330]}."
 8901888005410,Real activ 100% mixed fruit juice,"Real,Dabur",,"water , apple juice concentrate (7.24%) , orange juice concentrate (5.24%) , banana puree(3.7%), mango pulp(3.5%) , apricot puree concemtrate(2.3%) , pineapple juice concentrate(1.85%), flavours(natural flavouring substance) , grape juice concentrate(0?05%), vitamin c & stabilizer (ins 440)"
@@ -3969,7 +3967,7 @@ preservative (ins 211), ladized sat, mured spices"
 8901764175091,Fruit drink,Maaza,,"ngredients: water, mango pulp(11.5%), sugar, acidity regulators 030 33 stabilizer (466), antioxidant 300 ,sweetener (960), colour (110), mango flavours nature-dentical & artificial flavoring substances"
 8906143890480,The Whole Truth 55% Dark Chocolate,The Whole Truth,,"cocoa(cocoa nibs (45%), cocoa butter (10%)), date powder (45%)"
 8901262110068,Sagar Skimmed Milk Powder,Amul,,skimmed milk powder
-8901014004843,Nissin Cup Noodles Spicy,Nissin,,"Wheat flour, palm oil, salt, tastemaker (spices, INS 621, colours)"
+8901014004843,Nissin Cup Noodles Veggie Manchow,Nissin,,"Refined wheat flour, palm oil, salt, thickeners, acidity regulators; Tastemaker: salt, spices, sugar, flavour enhancers (INS 621, INS 627, INS 631), colour"
 8906006250024,Jackfruit Burgers,Jack & Chill,,"young jackfruit (65%), onion, sunflower oil, chickpea flour, coriander powder, salt, cumin powder, chilli powder, ginger, turmeric powder, water."
 8901764102912,Rim Zim,Coca cola,,"carbonated water, sugar, apple juice (10.4%) (reconstituted from apple juice concentrate, iodized salt, acidity regulator (530), stabilizer (452(i),preservative (202,211), sweetener (960), colour (150 flavours (mixed spices natural & nature identical flavoring substances)."
 8906080810237,Skimmed Milk Powder,Farmer Fresh,,skimmed milk solids
@@ -3987,7 +3985,7 @@ contains wheat, oats, milk, soy, sulphites. may contains nuts."
 8901725007652,Mom's Magic,Sunfeast,,"refined wheat flour (maida), refined palm oil, sugar, invert syrup, butter (1%), milk solids, raising agents [ins 503(ii), ins 500(ii), ins 450(i)), iodized salt, emulsifiers [lecithin (from soyabean), mono - and di-glycerides of fatty acids (from palm oil), diacetyl tartaric acid ester of mono - and diglycerides (from sunflower & palm oil)], nature identical flavouring substances (butter), colour (ins 150a) and artificial flavouring substances (vanilla). contains wheat, milk, soy. may contain nut, sulphite."
 8902080404094,Mango Slice,PepsiCo,,"credients: water, sugar, *concentrated mango pulp & niphonso mango pulp (14% mango pulp), acidity regulator (330), stabilizers (466, 440), flavour(natural and nature identical flavouring substances), preservative/202), colour(110) 14% mango pulp in reconstituted beverage"
 8901262130325,Amul Pro Chocolate 500g pp,Amul,,"malt extract (42%), sugar, milk solids (13%), colours (150c, 162), cocoa solids (2%), artificial flavouring substances (milk caramel, cocoa chocolate, malted milk, emulsifiers (322, 471), vitamins, minerals, dha, raising agent [500(ii)], iodized salt. allergen information: contains <span class=""allergen"">barley</span>, <span class=""allergen"">milk</span>."
-8906010261078,Refined Sunflower Oil,Gold winner kaleesuwari,,"refined sunflower oil, anti-oxidant (e319-tbhq), vitamin a, vitamin d2"
+8906010261078,Gold Winner Refined Sunflower Oil,Kaleesuwari,,"Refined sunflower oil, antioxidant (INS 319), vitamins A & D"
 8901725118914,Tedhe Medhe,Bingo,,"rice grits, refined palmolein, seasoning refined palmolein, spices and condiments, onion powder, 1odized salt maltodextrin, black salt, flavour enhancer (ins 508), nature identical flavouring substances, tomato powder, sugar, hydrolyzed vegetable protein, natural flavours and natural flavouring substances and garlic powder (0.1%)), degermed corn grits and bengal gram grits (3.1%)."
 8904145912957,Ensure Chocolate Flavour,Abbott,,"skimmed milk powder, sucrose, maltodextrin, edible vegetable oil (high oleic sunflower oil, soy oil), cocoa powder (4.5%), fructose, fructo-oligosaccharide (3.9%), flavoring(s) (nature identical and artificial - chocolate), natural colour (caramel), minerals**, calcium b-hydroxy-b-methylbutyrate monohydrate (cahmb) (0.67%), vitamins***, antioxidant (mixed tocopherol). contains <span class=""allergen"">milk</span>"
 8904311900825,Onion black seed oil,,,"onion, black seed oil with almond,castor,jojoba,olive& coconut oils"
@@ -4015,7 +4013,7 @@ allergen declaration : contains <span class=""allergen"">wheat</span> and <span 
 8907459000587,Kopiko,,,"liquid glucose, sugar edible vegetable oil (palm butter (2%), milk solids (0.8%), coffee extract (0.5%), edible common salt (lodized), emulsifier (soy lecithin-322(1), natura food colours (e150d), artificial flavours (vanille, <span class=""allergen"">milk</span>, coffee) allergen information: contains <span class=""allergen"">milk</span>. <span class=""allergen"">soy</span>"
 8901764362309,Pulpy orange,Minute Maid,,"water, sugar, orange juice (10.5%) (reconstituted from orange juice concentrate & orange pulp cells), acidity regulators (330, 331(iii)), antioxidant (300), colours energy (110, 102), orange flavours (natural, nature-identical and artificial flavouring substances)."
 8901207021718,Hot Sip Ayurvedic Kaadha15120g,Dabur,,"each 100g of honitus hot sip granules is prepared/derived from: herbal extract of the following: dhanyaka (coriandrum sativum, fr.) 2.50g, maricha (piper nigrum, fr.) 2.25g, vasa (adhatoda vasica, lf.), shvetajiraka (cuminum cyminum, fr.) each 2.00g, shankhpushpi (convolvulus pluricaulis, w.p.), kantakari (solanum surattense, w.p.) each 1.75g, shunthi (zingiber officinale, rz.), bharangi (clerodendrum serratum, rt.), pippali (piper longum, fr.), kulanjana (alpinia galanga, rz.), daruharidra (berberis aristata, st.), tulasi (ocimum sanctum, lf.), bhutrin (cymbopogon citratus, lf.) each 1.25g, yavani (trachyspermum ammi, fr.) 1.125g, yashti (glycyrrhiza glabra, rt. & stolon) 0.75g, and sharkara 94.4g, madhu 2.0g, shunthi (zingiber officinale, rz., oil) 1.0g, maricha (piper nigrum, fr. ext.) 0.1g. preservative: potassium sorbate ip"
-8901063139374,BOURBON,Britannia,,"edible maizi ch, 122, 110, 13 & 102), cocoa solids (2.7%), milk souds, raising agents (500) & 503(1) nature identical & artificial (vanilu chocolate milk & milky cocoa) flavouing substances, emulsifiers [471 & 322(1), m.k chocolate (0.1%) [emulsifier (322(1) ad iodsed salt."
+8901063139374,Britannia Bourbon 200g,Britannia,,"Refined wheat flour, sugar, edible vegetable oil (palm), cocoa solids, invert syrup, raising agents (INS 503(ii), INS 500(ii)), salt, emulsifiers (INS 322, INS 471), artificial chocolate flavour"
 8902901222654,coriander whole,Good Life,,coriander whole
 8906005504395,Tana-bana,Bikaji,,"edible vegetable oil (palmolein oil and/or cottonseed oil), rice flakes (15%), sugar (15%), gram flour, whole lentils (5%), split chickpea (5%), peanuts (5%), tapioca (4%), green peas (3%), acidity regulator (ins 330) (1%), dehydrated potato flakes,  dew bean flour (moth flour), tapioca starch, ground spices & condiments, (iodised salt, turmeric (colouring and spices), bishop seed, black salt, cinnamon), acidity regulator (ins 330) (1%)"
 8901262090315,Dairy Whitener,Amulya,,"milk solids, sucrose. allergen information: contains milk."
@@ -4055,7 +4053,7 @@ allergens: contains nut & soy."
 8902579002442,Appy fizz,Parle,,"water, sugar, carbonating agent (ins 290), acidity regulators (ins 296, ins 331, ins 300), stabilizer (ins 440), natural colour (ins 150d), preservative (ins 211), antioxidant (ins 300)"
 8904089915137,Daily Health Toned Milk,Heritage,,"milk solids (toned milk), vitamin a palmitate & vitamin d (ergocalciferol) allergens information: contains milk"
 8906024480380,Toned Milk,Dodla,,"milk solids, vitamin a (retinyl palmitate) and vitamin d(ergocalciferol)"
-8906004620751,Refined Ricebran Oil,Dhara Life,,"physically refined ricebran oil, antioxidant (tertiary butylhydroquinone), vitamin a & d2, antifoaming agent (dimethyl polysiloxane)"
+8906004620751,Dhara Life Refined Rice Bran Oil,Mother Dairy,,"Rice bran oil, antioxidant (INS 319), vitamins A & D"
 8908019140019,Chocolate Oat Drink,Oatey,,"oat base (water, oats 10.5%), sugar substitute (erythritol, maltitol, steviol glycoside), low erucic acid rapeseed oll 1.5%, cocoa powder 1.5%, minerals (calcium carbonate, tricalcium phosphate), acidity regulator (dipotassium phosphate), thickener & stabilizer (micro crystalline cellulose, carboxymethyl cellulose, gellan gum), citrus fibre, himalayan pink salt, vitamin b1, b2, 812 6 d. contains naturally occuring sugars, contains dats, contains natural & nature identical flavouring substances chocolate & vanilla"
 8901262152136,Milk Shake Double Chocolate,Amul,,"double toned milk, sugar, dark chocolate (7.5%), milk chocolate (1.9%), stabilizer (407), artificial flavouring substances (cocoa, vanilla). allergen information: contains <span class=""allergen"">milk</span>."
 8902979050906,Cavins kaju Butterscotch Milkshake 180ml,Cavin's,,"toned milk (89%), sugar, flavor (nature identical and artificial (kaju katri) flavoring substances), stabilizers (ins 415, ins 412, ins 407), sequestrant (ins 451 (i)), lodized salt, cashew powder (0.05%), emulsifier (ins 436), mineral and vitamin premix (zinc, vitamin a and d), and synthetic food color (ins 110). allergen advice: contains milk and nut."
@@ -4078,7 +4076,7 @@ may contain wheat, milk, nuts, sesame, soy and oats."
 8901725000899,Multi -Millet Mix,Aashirvaad,,"(jowar) sorghum flour (40%), (navane) foxtail millet flour (20%), (bajra) pearl millet flour (16.7%), (ragi) finger millet flour (16.7%), quinoa flour (6.6%)"
 8906097401176,Kasoori Methi Leaves,Zoff,,fenugreek leaves (kasoori methi)
 8904406170454,Sompapdi,Raviteja,,"sugar, ghee,maida,changada"
-8901491702539,Tropicana 100% Orange,PepsiCo,,100% orange juice
+8901491702539,Quaker Oats,PepsiCo,,100% wholegrain rolled oats
 8902268011830,Kream Time,Mukkund,,"refined wheat flour (maida), sugar, edible vegetable oil (palm), hydrogenated edible vegetable fat (palm), liquid glucose, invert syrup, raising agents [ins 503 (ii), ins 500 (ii)], starch, milk solids, malt extract, edible common salt, yeast, emulsifiers (ins 322, ins 472e), acidity regulator (ins 330), dough conditioner (ins 223) & flour treatment agent (ins 1101) gropat rka en ca contains permitted synthetic food colour (ins al 102) and added flavour (nature identical flavouring substance-lemon) contains wheat, milk and soya"
 8901063092501,BRITANN Good day 600 g,Britannia,,"refined wheat flour (maida), sugar, edible vegetable oil (palm), butter (29%), invert syrup, milk solids raising agents (5(130), 500%)), odised salt and emulsifiers [322, 471, 472e)
 contains added flavours inatural nature identical and
@@ -4138,7 +4136,7 @@ allergen: contains <span class=""allergen"">sesame seed</span> may contain pear 
 8906036670441,goodlife slim,nandini,,"milk solids, added vitamin a & added vitamin d"
 8906008811117,maida refined wheat flour,fortune,,"<span class=""allergen"">wheat</span>"
 8901014000166,Geki - Hot & Spicy,Nissin,,"noodles (80.00%) refined wheat flour (maida), edible vegetable oil (palm oil), tapioca starch, lodised salt, acidity regulators [ins 45100 & ins 500(i)], turmeric powder, thickener (ins 412) & antioxidant (ins 319). seasoning mix (12.50%): sugar, hydrolysed vegetable protein powder (<span class=""allergen"">soya</span>), dehydrated chicken powder, dehydrated chicken blits. flavours (natural & nature identical), garlic powder, lodised salt, onion powder yeast extract powder, mixed spices 2.25% (nutmed cumin, ginger, black pepper, coriander turmeric), flavour enhancers (ins 631 & 627), roasted sesame seeds, acidity regu or (ins 330), oleoresin capsicum & anticaning agent (ins 551). seasoning oil (7.50%); edible vegetable oil (palmolein, soya bean oil & chilli seed oil). colour [ins 160c(0)] & oleoresin rosemary s allergen information: contains wheat & soy may contain milk."
-8901030891830,Kwality Wall's Cornetto,HUL,,"Milk solids, sugar, edible veg oil, cocoa solids, wheat flour, emulsifiers, stabilizers, colours"
+8901030891830,Kwality Wall's Cornetto Strawberry,HUL,,"Milk solids, sugar, edible vegetable oil (palm kernel), strawberry flavour, wheat flour (cone), emulsifiers (INS 471, INS 322), stabilizers (INS 410, INS 412, INS 407), colours (INS 122, INS 160a)"
 8906151234214,chickpea popped chips,Snackible,,"chickpeas, rice, potato, starch, maltodextrin, salt, sugar, dehydrated vegetable powder (garlic, onion). spices and spices extract, herbs (oregano), whole milk powder, cheese powder, sodium salt [e262)]. natural and nature identical flavouring substances, acidity regulator (e330), anti-caking agent [e551. e341()], edible vegetable oil (sunflower oil)."
 8901719125812,hide & seek Milano choco filled cocoa rich biscuits,parle,,"choco creme (40%) (sugar, refined oils (palmolein & palm oil), cocoa solids, emulsifier of vegetable origin (<span class=""allergen"">soy lecithin</span>), artificial flavouring substances vanilla)  refined wheat flour (maida), refined palm oil, sugar, cocoa solids (4.3%), invert sugar syrup, liquid glucose, iodised salt, raising agents (500 (1), 503 (i), 341] and emulsifier of vegetable origin (472). contains added flavours (artificial flavouring substances chocolate and vanilla)."
 8901071732451,Hershey's milk shake almond flavor,Hershey's,,"water, milk solids (#11%), sugar, emulsifiers (4600), 466, 471), mineral calcium carbonate) flavours (nature identical flavouring substances) sequestraint (339) thickeners (415, 407), mineral (zinc sulphate), vitamin e (acetate), vitamin a (acetate) vitamin d2 (ergocalciferol), vitamin b1 (thiamine chloride hydrochlonde), vitamin b2 (riboflavin), edible common salt and almond paste (#0.002%)"
@@ -4164,7 +4162,7 @@ allergen: contains <span class=""allergen"">sesame seed</span> may contain pear 
 8901030974618,BRU Gold,Hindustan Unilever Limited,,soluble coffee powder
 8904063220578,plant based keema paratha,haldirams,,"whole wheat flour (38%), water, vegetable mix (onion, carrot, ginger garlic paste, green paste), tomato puree (water, tornato paste, acidity regulator (e 330)), textured soy protein concentrate, refined palm oil, spices & condiments der powder, turmeric powder, red chilli, cardamom, cinnamon, fennel, spice mix (cumin, salt, ginger, mud seeds, fenugreek leaves, black pepper & clove), salt and sugar"
 8901440200710,Ginger Garlic Paste,Eastern,,"ginger (50%), garlic (35%), salt, acetic acid (e260). acidity regulator. contains permitted class ii preservative sodium benzoate (e 211)"
-8906017862520,Burst,Bisk Farm,,"refined wheat flour (maida) (42.6%), sugar, edible vegetable oil (palm, palmolein), milk solids, edible starche (corn), salt, emulsifier (322), dispersing agent (1520) and antioxidant (319) strawberry flavoured filling (35.23%) [hydrogenated vegetable oil (palm, palmolein), edible vegetable oil (palm, palmolein), emulsifier (322), salt, sugar, whey powder, milk solids, dextrose monohydrate, edible starche (corn), emulsifier (322), dispersing agent (1520) & antioxidant (319)"
+8906017862520,Bisk Farm Burst Wafers,Bisk Farm,,"Refined wheat flour, sugar, edible vegetable oil (palm), cocoa solids, invert syrup, raising agents, emulsifiers, artificial chocolate flavour, antioxidant (INS 319)"
 8904214806996,Hyper matte foundation,,,aqua dm water cyclopentasiloxane ethylhexyl methoxy approved colour
 8906151233064,Ginger Snap Cookies,Snackible,,"edible vegetable butter, oatmeal powder, whole wheat flour, refined wheat flour, jaggery, ginger powder, ginger oleoresin, vanilla extract, rock salt."
 8904004402247,Farali Chiwda,Haldiram's,,"potato, refined palmolein oil, refined sugar, rock salt, red chilli, black pepper, poppy seed, dried ginger powder, clove powder, cumin, nutmeg, cardamom & cinnamon. allergen: contains peanuts almond, <span class=""allergen"">cashew</span>, milk & sesame seed"
@@ -4234,16 +4232,16 @@ allergen declaration: contains wheat (gluten)"
 8909342283053,Orzoro Orzo & Caffè,Nestle Orzoro,,"orzo solubile 56% (orzo, orzo maltizzato), caffè solubile 20%, segale, cicoria, cacao magro in polvere, aromi."
 8901719128288,Parle,Parle,,"refined wheat flour (maida), refined dils (palm and palmolein), milled potato flakes (11.3%), seasoning 3.2% ispices&quot; (chilli, onion, garlic), tomato, tamarind, soy sauce, acidity regulators (330.296), yeast extract, flavor enhancers (627, 631), anticaking agent (551). antioxidant (319)), emulsifiers 1471 433.339(0.414), sugar, invert sugar syrup, whey powder, raising agents (5030), 500 (c) 3410. tapioca starch, iodised salt, flour treatment agents 1223, 1101 (0)1, emulsifier of vegetable origin (472e). contains added flavours (natural and artificial flavouring substances-potato, barbeque and tomato) &quot;spices as natural flavouring agent contains: wheat, milk, soy, sulphite · (in"
 8906009075068,Atta Marie Thinz,Unibic,,"whole wheat flour(atta) (60%), sugar, refined palm oil, invert sugar syrup, milk solids, raising agents [ins 503(ii), ins 500 (ii)], emulsifier of vegetable origin (ins 471e), lodised salt, natural and artificial flavouring substances (<span class=""allergen"">milk</span> and vanilla), dough conditioners [ins 223, ins 1101(1)]."
-8906032019787,Marie biscut,Patanjali,,"wheat flour (atta 65.5%), sugar, refined vegetable oil (palm oil), malt extract, raising agent (ins 500 (ii), ins 503(1)),barley flour, invert syrup, liquid glucose, milk solids, honey, iodized salt, clarified butter, dough conditioner (ins 223). antioxidant (ins 319), emulsifier [ins 322(i)], flavours-nature identical flavouring substances (milk & vanilla). contains _wheat_, _milk_, _soy_, _barley_ , _sulphite_"
+8906032019787,Patanjali Marie Biscuit,Patanjali,,"Refined wheat flour, sugar, edible vegetable oil, invert syrup, milk solids, raising agents, salt, emulsifiers, antioxidant (INS 319)"
 8901030949630,Women's Plus,Horlicks Unilever,,"cereal extract (46%) [<span class=""allergen"">barley</span>, <span class=""allergen"">wheat</span>, <span class=""allergen"">malted barley</span>, wheat malt], milk solids (37%), maltodextrin, minerals, edible lodized salt, nature identical flavouring substances, vitamins, non-caloric sweetener (ins 950). allergen information: contains <span class=""allergen"">wheat</span>, barley & milk. may contain traces of <span class=""allergen"">soy</span>."
 8901689010019,MIXED FRUIT Jam,MALA'S,,"sugar, mix fruit pulp (45%) (apple, banana, orange, papaya, chikku, strawberry), thickener (ins 440), acidity regulator (ins 330 & ins 331(i)). contains permitted natural, nature identical & artificial flavouring substances (pineapple, raspberry, blackcurrant). contains permitted natural food colour (ins 150(d)) & synthetic food colour (ins 122). contains permitted class ii preservative (ins 202, ins 211)"
-8906007280280,Fortune Refined Sunflower Oil,Adani Wilmar,,"Refined sunflower oil, antioxidant TBHQ (INS 319), vitamins A & D"
+8906007280280,Fortune Refined Sunflower Oil,Adani Wilmar,,"Refined sunflower oil, antioxidant (INS 319), vitamins A & D"
 8904132948198,Campa Lemon,"Campa Cola,Reliance Industries",,"carbonated water, sugar, acidity regulators (330, 331) preservative (211), nature identical flavouring substances"
 8902579002046,Appy fizz,Parle Agro,,"water, sugar, carbonating agent (ins 290) acidity regulators [ins 296, ins 331(iii), ins 330], stabilizer (ins 440), food colour (ins 150d), preservative (ins 211), antioxidant (ins 300), nature-identical flavouring substance (apple)"
 8901440013136,Eastern fish masala,Eastern,,"kashmiri chilli, coriander, turmeric, salt, mustard, fenugreek, garlic, dry ginger."
 8904004400977,Indian Snacks Mixture,Haldiram's,,"split pulse bengal gram (chana dal), refined palmolein oil, bengal gram flour (besan) (10%), red lentils (masur whole) (8%), groundnut (peanuts) (7%), potato, rice flakes, spinach, iodised salt, red chilli powder, acidity regulator (ins 330), black salt, black pepper, pipal, coriander powder, dried ginger powder, clove powder, cumin powder, nutmeg, bay leaf, turmeric powder, dried mango powder, fennel seed, cinnamon, garlic powder, hydrolysed vegetable protein (soya), colour (ins 141) & asafoetida. allergen: contains peanuts & soy may contains wheat, almond, cashew, milk, sesame seed & mustard seed"
 8906017290774,Soda,Bisleri,,"treated water, carbon dioxide"
-8904043551326,Whole Wheat Chapathi (Indian Bread),Modern,,"whole wheat flour (atta 64.4%), edible vegetable oil (refined sunflower oil), lodized salt, wheat bran, preservatives (282, 200), acidity regulator (260) and yeast."
+8904043551326,Modern Whole Wheat Chapati,Modern,,"Whole wheat flour, water, salt"
 8901058903966,Milkybar Moosha,Nestle,,"nougat + caramel (70%) (sugar, liquid glucose, hydrogenated vegetable fats, malt extract, *milk solids (3.7%), emulsifiers (471 and <span class=""allergen"">soya lecithin</span>), acidity regulator (330), stabilizer (501), lodized salt, nature - identical flavouring substances and artificial (vanilla) flavouring substances) and milkybar^ coating (30%) (*milk solids (10.6%), sugar, hydrogenated vegetable fats, fractionated vegetable fat, emulsifier (<span class=""allergen"">soya lecithin</span>) and nature-identical flavouring substances). contains <span class=""allergen"">barley</span>, <span class=""allergen"">milk</span>, <span class=""allergen"">sesame</span>, <span class=""allergen"">soy</span> and <span class=""allergen"">wheat</span>."
 8904083310037,Garlic Cheese Spread,Milky mist,,"cheese, water, milk solids, emulsifiers (ins 452, 339), stabilizer [ins 412), garlic powder (0.3%), acidity regulator (ins 270 ), class ii preservative [ins 234, 200]"
 8904256722698,Madras Mixture,Tasties,,"gram flour, edible vegetable oil (palmolein oil), rice flour, rice flakes, peanuts, cashew nuts, roasted bengal gram, curry leaves, iodised salt, chilli powder, asafoetida, pepper powder, coriander powder and ajwain powder."
@@ -4791,7 +4789,7 @@ allgen declaration: contains wheat, barley, oats, nut (almonds), sulphite may co
 8904083300953,MilkyMist Strawberry Milk Shake,Milky Mist,,"toned milk (89%), sugar, milk solids, emulsifier & stabilizer (ins 471, ins 407, ins 412, ins 415), flavor (nature identical flavoring substances - strawberry) acidity regulator [ins 339 (ii)], lodized salt, contains permitted synthetic food colour (ins 127)."
 8904011505603,Coconut Chutney Powder,Double Horse,,"coconut, chilli powder, salt, ginger, pepper, tan asatoelida, green chilli, curry leaves, sugar, onion, black gramdal, lime"
 8901262180061,Malai Paneer,Amul,,"pasteurized milk, citric acid"
-8901155106550,Khatta Dhokla,Gits,,"rice flour (40%), split black gram flour, semolina, refined wheat flour, salt, sugar powder, citric acid (e330), sodium bicarbonate (e500(ii)) and asafoetida."
+8901155106550,Gits Khatta Dhokla Mix,Gits,,"Semolina, gram flour, sugar, tamarind, salt, spices, raising agents"
 8908000502147,Sunpure Physically Refined Sunflower Oil,Sunpure,,"physically refined sunflower oil, permitted antioxidant (tbhq-ins 319), vitamin a and vitamin d."
 8901036163351,Continental Xtra Coffee Powder,Continental,,coffee beans & chicory
 8901548431108,Sugar Free Green Sweetner,Sugar Free,,"carrier (lactose), dispersing agent microcrystalline cellulose, non calorie sweetener - steviol glycoside binder - croscarmellose sodium, anticaking agent - colloidal silicon dioxide, magnesium stearate (adi of steviol glycoside - 4 mg/kg body weight expressed as steviol))"
@@ -4890,13 +4888,13 @@ amul pure ghee contains a blend of cow and buffalo milk fat. this combination is
 8906080603419,paperboat fruit and nuts super mix,paperboat,,"dry fruits 35% (almonds and cashews), dehydrated cranberries (25%), pumpkin seeds and candied amla"
 8901721011233,Moong Dal,Prabhuji Pure Food,,"split green gram (74%), edible vegetable oil (palmolein oil), black salt and lodised salt."
 8901725013066,Sunfeast Mom's Magic Cashew & Almond,Sunfeast,,"refined wheat flour (maida), sugar, refined palm oil, invert kernels (1.3%), raising agents [ins 450(i), ins 503(ii), ins 500(ii)], iodized sal butter (0.3%), nature identical flavouring substances, emulsifiers [diacetyla fatty acid esters of glycerol (from sunflower & palm oil), lecithin (from soyabean and di-glycerides of fatty acids (from palm oil)], almond kernels (0.1%), artificial flanqu substances (butter, vanilla), flour treatment agent (ins 223) and colour (ins 102) contains wheat, milk, soy, nut, sulphite. every"
-8906010500344,Balaji Wafers Salted,Balaji,,"Potato, edible veg oil, salt"
+8906010500344,Balaji Wafers Salted,Balaji,,"Potato, edible vegetable oil, salt"
 8904422700789,Patanjali chyawanprash 1kg,,,"special patanjall chyawanprash ayurvedic pretary medicine congestion ea contains: sugar (saccharum officinarum, stem cystal 63ng endler officals frut paste) 1650mg, ghrit (liquid) 273ng extract derived for the loberg s et ring khan (sida cordifolia, root, extract) 45mg, mudgepem phandsak me of 10 ms all in equal quantity, root, extrad) 450mg-aduna (adha ard e 45mg kaknishing ptacia integerrima, galls, extract 45mg, bhoon anta ps ead ng pippal chol (piper longum, fruit, extract) 55mg, mashcami (eramus sant extrovant (leptadenia reticulata, whole plant extract 45 frut meng giloy (tinospora cordifolia stem, extract wa media rhizome, extract) 45mg jeevak (malaxis acuminata, rhizome ene carama zedoaria, root extract) 45mg, nagarmotha (cyperus rotundus, rool extrad boerhaavia diffusa, root extract) 45mg, meda (polygonatum cinilolum rhine cond nepal (nymphaea nouchali, flower, extract) 45mg, vidarkand (pueraria tuberosa, rock e kakok (roscoes alpine, root, extract) 45mg. kaknasa (martynia danda, fru e ashwagandha (withania somnifera, root, extract) 45mg, mulethi (glycyrrhiza glabra, sten, emd draksha (vitis vinifera, fruit, extract) 25mg, saunth (zingiber officinale, rhizome extrad 25ng (asparagus racemosus, root, extract) 15mg, chavya (piper retrofractum, root, extract 15mg chea (plumbago zeylanic root, extract) 15mg. varahi kand (dioscorea bulbifera, rhizome estrad ng pippla mool (pipongum, root, extract) 10mg, prakshep dravya derived from the foloweg shasma (powd 215mg, godanti bhasma (powder) 184mg, vanshlochan (bambusa and intermal secreto owder) 182mg, pippali choti (piper longum, fruit powder) 45mg lavang aromaticum, flower bud, powder) 25mg, dalchin cinnamomum zeylanicum, bark powder) ng ela (elettaria cardamomum, fruit, powder) 20mg. tejpatra (cinnamomum tamala, leaf, powder nagkesar (mesua ferrea, flower, powder) 20mg, kali mirch (piper nigrum, seed powder ng (crocus sativus, style, powder) 2mg net quantity: 1 kg batch no. mig. date expiry date mrp usp nd of all taxes) acz240000 4 pppanin sevic792ndong/por fatanial under brand license from patanial ayurved ltd made in esno əəl"
 8908020889112,IHP Iyengar Puliogare Masala,Iyengar,,"tamarind, jaggery, black till, dry coconut, pepper, jeera, ground nut, dry chilli, mustard, methi, coriander seed, gram dhal, urid dhal, om seed, asafoetida, curry leaf, turmeric, vegetable oil & salt"
 8901774002165,Madras Sambar Masala,Badshah,,"coriander, red chilli, kashmiri red chilli, curry leaves, cumin, fenugreek seeds, bengal gram, lodised salt, black pepper, rice, toovar dal, cassia, turmeric, compounded asafoetida"
 8906021128735,Mango Ginger Pickle,Aachi,,"mango ginger, red chilli powder, edible vegetable oil - refined rice bran oil, mustard, fenugreek powder, compounded asafoetida, salt, acidity regulator (e260) - acetic acid and contains permitted class ii preservative (e211)-sodium benzoate. allergen advice: contain mustard and gluten. &quot;this product is processed in a facility that also processes products that contain sesame, celery, peanuts, treenuts, soya, milk and sulphite&quot;."
 8908003249827,Akshayakalpa Spiced Buttermilk,Akshayakalpa,,"water, organic cow milk, organic spices (green chilli, ginger, coriander), himalayan pink salt, starter culture."
-8906010500511,Balaji Chataka Pataka,Balaji,,"Potato, edible veg oil, spices, salt, sugar, acidity regulators, colours"
+8906010500511,Balaji Wafers Chataka Pataka,Balaji,,"Potato, edible vegetable oil, spices, salt, sugar, acidity regulators, colours"
 8904067712475,Jabsons Garlic Mix,Jabsons,,"bengal gram flour (50%), refined palmolein oil, peanuts (6%), garlic (1.5%), iodized salt, chilli powder, black salt, dry mango powder, turmeric."
 8906143890152,Dark Chocolate Peanut Spread - Crunchy,The Whole Truth,,"peanuts, date powder, cocoa"
 8906098670458,Ultra pop cheese popcorn,ultra pop,,"popped corn, refined edible palmolein oil, iodized salt, sugar, starch, spices and condiments, milk solids, acidity regulator (e330), naturalcolour (e160c), anti caking agent (e551) and flavour enhancer (e631, e627), onion powder and garlic powder contains milk solids"
@@ -5015,7 +5013,7 @@ seasoning mix (15%): dehybdrated pieces 22.78% (textured soya, green peas, carro
 8906164430900,Popular Snacks Bhel puri sev,Popular Snacks,,"gram flour, rice flour, oil, edible oil, iodised salt etc."
 8906053840834,Dry Bhel,Kalyan Bhel,,"rice flakes, gram flour, edible vegetable oil, (groundnut oil) red chilli powder, papad khar, iodised salt"
 8907848000013,Vijaya Telangana Toned Milk,Vijaya,,milk & milk solids vitamin a & vitamin d
-8906130900116,Strawberry Choco Pie,Orion,,"refined wheat flour (maida), choco covering (21%) [sugar, hydrogenated vegetable fat, cocoa solids, milk solids, emulsifier (ins 322) and nature identical flavour (vanillin)], sugar, liquid glucose, strawberry filling (9.3%) [strawberry pulp (39%), sugar, liquid glucose, humectants (ins 420(i), ins 422) acidity regulator f s s n sf li 0 (ins 330), preservatives (ins 211, ins 202), stabilizers (ins 440, ins 415), in nature identical flavour (strawberry), natural colour (ins 150d) and m synthetic food colour (ins 122)] hydrogenated vegetable fat, humectant w (ins 422), dextrose, raising agents [ins 500(ii), ins 503. stabilizers (ins 407, ins 440, ins 415, ins 410), edible common salt, hydrolyzed pea protein, preservatives (ins 202, ins 281), acidity regulator [ins 341(1), emulsifier (ins 322), nature identical flavour (vanillin) trans allergen information: contains wheat, milk and soy may contain sulphite and nuts"
+8906130900116,Orion Choco Pie,Orion,,"Refined wheat flour, sugar, glucose syrup, cocoa solids, edible vegetable oil, milk solids, emulsifiers, raising agents, artificial chocolate flavour"
 8906069721769,Anand badamika,Anand,,"refined wheat flour, sugar, <span class=""allergen"">butter</span>, <span class=""allergen"">almond</span> (14%), milk solids"
 8906120101721,Farmley Premium Raisins,Farmley,,raisins (kishmish)
 8908019561104,Jhal Munch,Unknown Brand,,"made out of all or any following items wholesome grains, flour & pulse, edible vanaspati oil, potatoes, <span class=""allergen"">nuts</span>, rice, chips, condiments, sugar powder, chirva, palak, tata salt powder, green peas, corn flakes, pulses, black pepper powder & pure home made spices."
@@ -5187,7 +5185,7 @@ può contenere tracce di altra frutta a guscio, arachidi, solfiti"
 allergen information: contains milk. 
 'contains naturally occurring sugars'"
 8901063012813,milk bikis,Unknown Brand,,"refined wheat flour (maida) (63%), sugar, refined palm oil, milk products (4%) [sweetened condensed partly skimmed milk & milk solids), invert sugar syrup, raising agents [503(ii) & 500(ii)], iodised salt, emulsifiers [322(1)&471], minerals, artificial milk & vanilla] & nature identical flavouring substances and vitamins (numbers in brackets as per international numbering system)"
-8901648005551,Maha Cola,Mother Dairy,,"water, sugar, liquid glucose, citric acid (acidity regulator), stabilizers and emulsifiers (440, 466), ascorbic acid (antioxidant), nature-identical flavouring substances and food colors (150a,110,102,122,132,133)."
+8901648005551,Mother Dairy Maha Cola,Mother Dairy,,"Carbonated water, sugar, acidity regulator (INS 338), colour (INS 150d), natural cola flavour, caffeine"
 8906080041778,Multigrain cheese straws,27. Peaks gourmet foods.,,"unbleached refined wheat flour, water, <span class=""allergen"">butter</span> (<span class=""allergen"">cream</span>), <span class=""allergen"">cheese</span> (microbial rennet), multigrain seeds (pumpkin seeds, flax seeds, sunflower seeds, watermelon seeds, <span class=""allergen"">sesame seeds</span>), salt, organic brown sugar, yeast, calcium propionate."
 8906077362244,also bhujia masla,Jaimin,,"potato flakes (27%), palmolein oil, chickpea flour, mat bean flour, potato starch powder (6%), red chilli powder (3%), salt, black salt, sugar, citric acid (e330), turmeric powder, garlic powder, mint powder, black pepper powder, coriander powder, cumin powder, cinnamon powder, clove powder, sesame powder, ground star anise, ground mace, black cardamom powder, ginger powder, ground bay leaf, ground carom seeds, mango powder, ground fennel seeds, green cardamom powder, antioxidant (e319). dutch ingrediënten: aardappelvlokken (27%), palmoleïneolie, kikkererwtenmeel, bonenmeel, aardappelzetmeelpoeder (6%), rode chilipoeder (3%), zout, zwart zout, suiker, citroen zuur (e330), kurkumapoeder, knoflookpoeder, muntpoeder, zwarte peperpoeder, korianderpoeder, komijnpoeder, kaneelpoeder, kruidnagelpoeder, sesam poeder, gemalen steranijs, gemalen foelie, zwarte kardemompoeder, gemberpoeder, gemalen laurier, gemalen carambolezaad, mangopoeder, gemalen venkelzaad, groen kardemompoeder, antioxidant (e319). french ingrédients: flocons de pomme de terre (27%), huile de palmoline, farine de pois chiches, farine de haricots mats, poudre de fécule de pomme de terre (6%), poudre de piment rouge (3%), sel, sel noir, sucre, acide citrique (e330), poudre de curcuma, poudre d'ail, poudre de menthe, poudre de poivre noir, poudre de coriandre, poudre de cumin, poudre de cannelle, poudre de clou de girofle, poudre de sesame, anis étoilé moulu, macis moulu, poudre de cardamome noire, poudre de gingembre, feuille de laurier moulue, graines de carambole moulues, poudre de mangue, graines de fenouil moulues, vert poudre de cardamome, antioxydant (e319). mabohnenmehl, kartoffelstärkepulver (6%), rotes chilipulver (3%), salz, schwarzes german zutaten: kartoffelflocken (27%), palmoleinöl, kichererbsenmehl, salz, zucker, zitronen säure (e330), kurkumapulver, knoblauchpulver, minzpulver, schwarzer pfefferpulver, korianderpulver, kreuzkümmelpulver, zimtpulver, nelkenpulver, sesam pulver, gemahlener sternanis, gemahlene muskatblüte, schwarzes mangepulver ingwerpulver, gemahlenes lorbeerblatt, gemahlene karamellsamen, spanish ingredientes: copos de patata (27%), aceite de palmoleína, harina de gemahlene fenchelsamen, grün kardamompulver, antioxidans (e319). garbars, harina de alubias, almidón de patata en polvo (6%), chile rojo en polvo (3%), sal. sal negra polvo p on polvo, ajo en polvo, menta en polyo, clavo fideos picantes a base de patatas allergy advice:"
 8901262202244,Tadka Chhach Probiotic Buttermilk,Amul,,"milk solids, water, iodized salt, spices and condiments (0.8%), active culture, probiotic bacterial strain (bifidobacterium lactis - minimum 10° cfu per ml)."
@@ -5817,21 +5815,21 @@ and added flavour (nature identical and artificial flavouring substance - vanill
 8901725003876,Dark Fantasy Choco Fills,Sunfeast (ITC),,"Choco crème (sugar, refined palmolein, refined palm oil, cocoa solids), refined wheat flour, sugar, invert syrup, liquid glucose, edible vegetable oil, cocoa solids, milk solids, butter, raising agents (INS 503(ii), INS 500(i)), emulsifiers (INS 322, INS 471), salt"
 8901063342910,Britannia Brown Bread,Britannia,,"Whole wheat flour (approx. 50%), refined wheat flour, water, sugar, edible vegetable oil, gluten, yeast, iodized salt, preservative (INS 282), emulsifiers (INS 471, INS 472e)"
 8901233028361,Cadbury Dairy Milk,Mondelez,,"Sugar, milk solids, cocoa butter, cocoa mass, emulsifiers (soya lecithin INS 322, INS 476), flavours (natural & nature-identical vanilla)"
-8901233033563,Cadbury Dairy Milk Silk Minis,Cadbury,,"Sugar, milk solids, cocoa butter, cocoa mass, emulsifiers (soya lecithin INS 322, INS 476), flavours (natural & nature-identical vanilla)"
+8901233033563,Cadbury Dairy Milk Silk Minis,Mondelez,,"Sugar, milk solids, cocoa butter, cocoa mass, emulsifiers (INS 322, INS 476), flavours"
 89005637,Nestlé KitKat,Nestlé,,"Sugar, refined wheat flour, milk solids, hydrogenated vegetable oil (palm), cocoa solids, emulsifier (soya lecithin INS 322), yeast, salt, raising agent (INS 500(ii)), flavouring"
-8901058901580,Maggi Special Masala Noodles,Maggi,,"Noodles: Refined wheat flour, palm oil, iodized salt, wheat gluten, thickeners (INS 508, INS 412), acidity regulators; Tastemaker: salt, spices (onion, garlic, chilli, coriander, turmeric), sugar, flavour enhancers (INS 621), antioxidant (INS 319)"
-8901058854107,Maggi Oats Masala Noodles,Maggi,,"Oats flour, refined wheat flour, palm oil, iodized salt, wheat gluten, thickeners (INS 508, INS 412), acidity regulators; Tastemaker: salt, spices, sugar, flavour enhancers (INS 621), antioxidant (INS 319)"
+8901058901580,Maggi Special Masala Noodles,Nestlé,,"Noodles: Refined wheat flour, palm oil, iodized salt, wheat gluten, thickeners (INS 508, INS 412), acidity regulators; Tastemaker: salt, spices (onion, garlic, chilli, coriander, turmeric), sugar, flavour enhancers (INS 621), antioxidant (INS 319)"
+8901058854107,Maggi Oats Masala Noodles,Nestlé,,"Oats flour, refined wheat flour, palm oil, iodized salt, wheat gluten, thickeners (INS 508, INS 412), acidity regulators; Tastemaker: salt, spices, sugar, flavour enhancers (INS 621), antioxidant (INS 319)"
 8901725005917,Yippee! Magic Masala,Sunfeast (ITC),,"Instant noodles: refined wheat flour (78.4%), refined palm oil, iodized salt, wheat gluten, thickeners (INS 508, INS 412); masala: spices, dehydrated vegetables, sugar, salt, flavour enhancers (INS 621, INS 627, INS 631)"
 8901014002047,Top Ramen Masala,Nissin,,"Refined wheat flour, edible palm oil, salt, thickeners (INS 508, INS 412), acidity regulators; masala: spices, sugar, salt, flavour enhancer (INS 621)"
-8901595853861,Ching's Secret Hakka Noodles,Capital Foods,,"Refined wheat flour, edible vegetable oil (palm), salt, acidity regulators, thickener; seasoning: spices, salt, flavour enhancer (INS 621)"
+8901595853861,Ching's Secret Schezwan Noodles,Capital Foods,,"Refined wheat flour, palm oil, salt, schezwan masala (spices, chilli, garlic)"
 8901058004922,Maggi Rich Tomato Sauce,Nestlé,,"Tomato paste, sugar, salt, spices & condiments, acidity regulator (INS 260), preservative (INS 211)"
 8901491001137,Lay's India's Magic Masala,PepsiCo,,"Potato, edible vegetable oil (palmolein/rice bran), seasoning [sugar, iodized salt, spices & condiments (onion, chilli, dried mango powder, coriander, garlic), flavour enhancers (INS 621, INS 627, INS 631), acidity regulators (INS 330, INS 296), anticaking agent (INS 551)]"
 8901491983211,Lay's Classic Salted,PepsiCo,,"Potato, edible vegetable oil (palmolein), salt"
-8904063254696,Aloo Bhujia,Haldiram's,,"Potato flakes & starch, edible vegetable oil (palmolein), gram flour, iodized salt, spices (red chilli, cumin), colour (INS 160c)"
-8901512500205,Act II Butter Delite,Agro Tech (ACT II),,"Popcorn kernels, edible vegetable oil (palmolein), salt, butter flavour, colour (INS 160a)"
+8904063254696,Haldiram's Aloo Bhujia,Haldiram's,,"Potato flakes & starch, edible vegetable oil (palmolein), gram flour, iodized salt, spices (red chilli, cumin), colour (INS 160c)"
+8901512500205,Act II Butter Delite Popcorn,Agro Tech,,"Popcorn kernels, edible vegetable oil (palmolein), salt, butter flavour, colour (INS 160a)"
 3948764052705,Thums Up,Coca-Cola India,,"Carbonated water, sugar, acidity regulator (INS 338), colour (INS 150d), natural & nature-identical flavouring (cola), caffeine"
-8901764052309,Limca,Coca-Cola India,,"Carbonated water, sugar, acidity regulators (INS 330, INS 331(i)), stabilizers (INS 414, INS 471), preservative (INS 211), lime-lemon flavouring"
-8902579103187,Frooti Mango,Parle Agro,,"Water, mango pulp (12-19%), sugar, acidity regulators (INS 330, INS 331(iii)), antioxidant (INS 300), permitted synthetic food colour (INS 110), artificial mango flavour"
+8901764052309,Limca 2L,Coca-Cola,,"Carbonated water, sugar, acidity regulators (INS 330, INS 331(i)), stabilizers (INS 414, INS 471), preservative (INS 211), lime-lemon flavouring"
+8902579103187,Frooti Mango 1.2L,Parle Agro,,"Water, mango pulp (12-19%), sugar, acidity regulators (INS 330, INS 331(iii)), antioxidant (INS 300), permitted synthetic food colour (INS 110), artificial mango flavour"
 8902579131036,Appy Fizz,Parle Agro,,"Carbonated water, sugar, apple juice concentrate, acidity regulators (INS 330, INS 331(iii)), preservative (INS 211), colour (INS 150d), flavouring"
 8901030976186,Horlicks Classic Malt,HUL,,"Malted cereals (66.7%) [barley, wheat flour, wheat, millet], milk solids (14%), sugar, wheat gluten, iodized salt, minerals, vitamins, emulsifier (INS 471)"
 8901233022574,Bournvita,Mondelez,,"Malt extract (wheat/barley), sugar, milk solids, cocoa solids, liquid glucose, minerals (Ca, Fe, Zn, Cu, I), vitamins, emulsifier (INS 322), salt"
@@ -5839,19 +5837,19 @@ and added flavour (nature identical and artificial flavouring substance - vanill
 8901542000065,Complan Kesar Badam,HUL legacy,,"Milk solids (approx. 52%), sugar, peanut oil, maltodextrin, almonds (0.8%), minerals, vitamins, colours (INS 100(i), INS 160b(ii)), flavouring"
 8901262153577,Amul Taaza Toned Milk 200ml,Amul,,"Toned milk (3.0% fat, 8.5% SNF), vitamins A & D"
 8901262030144,Amul Pure Ghee,GCMMF,,Pure cow ghee (milk fat)
-8901648018186,Mother Dairy Classic Dahi,Mother Dairy,,"Pasteurized toned milk, live curd culture"
+8901648018186,Mother Dairy Classic Dahi,Mother Dairy,,"Pasteurized toned milk, active lactic culture"
 8901491702188,Quaker Oats,PepsiCo,,100% wholegrain rolled oats
 8906008811223,Fortune Rawa Semolina,Adani Wilmar,,Durum wheat semolina (sooji)
-8901537074354,Daawat Brown Basmati Rice,LT Foods,,100% wholegrain brown basmati rice
-8906008813852,Kohinoor Charminar Rice,Kohinoor,,100% basmati rice
-8901030831720,Kissan Mixed Fruit Jam,HUL,,"Sugar, mixed fruit pulp blend (approx. 46%) [banana, apple, pineapple, orange, mango, papaya], acidity regulator (INS 330), preservative (INS 211 sodium benzoate), permitted synthetic food colour (INS 122)"
+8901537074354,Daawat Basmati Rice,LT Foods,,100% basmati rice
+8906008813852,Kohinoor Charminar Select Rice,Kohinoor,,100% basmati rice
+8901030831720,Kissan Mixed Fruit Jam 700g,HUL,,"Sugar, mixed fruit pulp blend (approx. 46%), acidity regulator (INS 330), preservative (INS 211), permitted synthetic food colour (INS 122)"
 8901030882609,Brooke Bond Red Label 1kg,HUL,,100% black tea (CTC dust & fannings blend)
-8901030251504,Brooke Bond Taj Mahal,HUL,,100% black tea (CTC blend)
+8901030251504,Brooke Bond Taj Mahal Tea,HUL,,100% black tea (CTC blend)
 8901030373930,Bru Gold Instant Coffee,HUL,,100% instant coffee (freeze-dried)
 8901063093478,Britannia NutriChoice Digestive,Britannia,,"Whole wheat flour (71%), sugar, edible veg oil, raising agents, emulsifiers, salt"
 8901719123788,Parle Monaco Classic Salted,Parle,,"Refined wheat flour, edible vegetable oil (palm), salt, sugar, raising agents (INS 503(ii), INS 500(ii)), emulsifier (INS 322), artificial butter flavour"
-8901719136801,Hide & Seek Milano (Creme),Parle,,"Refined wheat flour, sugar, edible vegetable oil (palm), cocoa solids, invert syrup, milk solids, raising agents (INS 503(ii), INS 500(ii)), emulsifier (INS 322), artificial vanilla flavour"
-8901725015916,Dark Fantasy Original,Sunfeast,,"Choco crème (sugar, refined palmolein, refined palm oil, cocoa solids), refined wheat flour, sugar, invert syrup, liquid glucose, edible vegetable oil, cocoa solids, milk solids, butter, raising agents (INS 503(ii), INS 500(i)), emulsifiers (INS 322, INS 471), salt"
+8901719136801,Parle Hide & Seek Milano Creme,Parle,,"Refined wheat flour, sugar, edible vegetable oil (palm), cocoa solids, invert syrup, milk solids, raising agents (INS 503(ii), INS 500(ii)), emulsifier (INS 322), artificial vanilla flavour"
+8901725015916,Sunfeast Dark Fantasy Choco Fills,ITC,,"Choco crème (sugar, refined palmolein, refined palm oil, cocoa solids), refined wheat flour, sugar, invert syrup, liquid glucose, edible vegetable oil, cocoa solids, milk solids, butter, raising agents (INS 503(ii), INS 500(i)), emulsifiers (INS 322, INS 471), salt"
 8906009071626,Unibic Cashew Cookies,Unibic,,"Refined wheat flour, sugar, butter, cashew nuts, invert syrup, raising agents, salt"
 8906033743346,McVitie's Digestive,McVitie's,,"Whole wheat flour, sugar, edible veg oil, raising agents, salt, emulsifiers"
 8901063017399,Britannia 50-50 Maska Chaska,Britannia,,"Refined wheat flour, sugar, edible vegetable oil (palm), invert syrup, salt, raising agents (INS 503(ii), INS 500(ii)), emulsifier (INS 322), artificial butter flavour"
@@ -5862,7 +5860,7 @@ and added flavour (nature identical and artificial flavouring substance - vanill
 8901491001141,Lay's Cream & Onion,PepsiCo,,"Potato, edible veg oil, sugar, salt, onion powder, milk solids, flavour enhancers (INS 621, 627, 631)"
 8904063254697,Haldiram's Soya Sticks,Haldiram's,,"Edible veg oil, tapioca starch, black gram flour, soya powder, rice flour, spices, salt, raising agents"
 8904063214942,All In One Mixture,Haldiram's,,"Rice flakes, gram flour, edible vegetable oil (palmolein), peanuts, sago, iodized salt, spices, curry leaves, raising agents, colours (INS 160c)"
-8901512540102,ACT II Classic Salted,Agro Tech,,"Popcorn kernels, edible veg oil, salt"
+8901512540102,Act II Classic Salted Popcorn,Agro Tech,,"Popcorn kernels, edible vegetable oil, salt"
 8901512541901,ACT II Butter Delite,Agro Tech,,"Popcorn kernels, edible veg oil, salt, butter flavour, colour (INS 160a)"
 8906080600913,Paper Boat Aamras,Hector Beverages,,"Water, mango pulp, sugar, acidity regulators, antioxidants"
 8906080600914,Paper Boat Jaljeera,Hector Beverages,,"Water, sugar, spices, salt, acidity regulators, mint extract"
@@ -5875,9 +5873,9 @@ and added flavour (nature identical and artificial flavouring substance - vanill
 8901192103116,Catch Black Pepper,Catch,,100% black pepper
 8901192103117,Catch Jeera Powder,Catch,,100% cumin
 8908006217113,Slurrp Farm Millet Pancake,Slurrp Farm,,"Ragi flour, oats flour, whole wheat flour, sugar, baking powder, salt"
-8901063368026,Gobbles Fruit Cake 55gm,Britannia,,"Refined wheat flour (maida), sugar, eggs, edible vegetable oil (palm), glucose syrup, mixed fruit peel (2%), raising agents (INS 500(ii), INS 503(ii)), emulsifiers (INS 471, INS 475), preservative (INS 202), artificial flavours, colour (INS 160a)"
-8901063325074,Toastea,Britannia,,"Refined wheat flour, sugar, edible vegetable oil (palm), invert syrup, milk solids, raising agents (INS 503(ii), INS 500(ii)), salt, emulsifier (INS 322), artificial vanilla flavour"
-8901063028258,Nice Time,Britannia,,"Refined wheat flour, sugar, coconut (12%), edible vegetable oil (palm), invert syrup, raising agents (INS 503(ii), INS 500(ii)), salt, emulsifier (INS 322), artificial coconut flavour"
+8901063368026,Britannia Gobbles Fruit Cake 55g,Britannia,,"Refined wheat flour, sugar, eggs, edible vegetable oil (palm), glucose syrup, mixed fruit peel (2%), raising agents (INS 500(ii), INS 503(ii)), emulsifiers (INS 471, INS 475), preservative (INS 202), artificial flavours, colour (INS 160a)"
+8901063325074,Britannia Toastea,Britannia,,"Refined wheat flour, sugar, edible vegetable oil (palm), invert syrup, milk solids, raising agents (INS 503(ii), INS 500(ii)), salt, emulsifier (INS 322), artificial vanilla flavour"
+8901063028258,Britannia Nice Time,Britannia,,"Refined wheat flour, sugar, coconut (12%), edible vegetable oil (palm), invert syrup, raising agents (INS 503(ii), INS 500(ii)), salt, emulsifier (INS 322), artificial coconut flavour"
 8901063155497,Tiger Krunch Coconut,Britannia,,"Refined wheat flour, sugar, edible vegetable oil (palm), coconut (8%), invert syrup, raising agents (INS 503(ii), INS 500(ii)), salt, emulsifier (INS 322), artificial coconut flavour, added vitamins & minerals"
 8901063371026,Marie Gold,Britannia,,"Refined wheat flour (73%), sugar, refined palm oil, invert sugar syrup, milk solids & sweetened condensed milk, raising agents (INS 503(ii), INS 500(ii)), salt, emulsifiers (INS 471, INS 322)"
 8901063092709,Britannia Good Day Cashew,Britannia,,"Refined wheat flour, edible vegetable oil (palm), sugar, cashew nuts (4.5%), invert syrup, milk solids, butter (0.6%), raising agents (INS 503(i), INS 500(i)), salt, emulsifier (soya lecithin INS 322)"
@@ -5889,40 +5887,40 @@ and added flavour (nature identical and artificial flavouring substance - vanill
 8901063014312,Vita Marie Gold,Britannia,,"Refined wheat flour (70%), sugar, refined palm oil, invert sugar syrup, milk solids, raising agents (INS 503(ii), INS 500(ii)), salt, emulsifiers (INS 471, INS 322), added vitamins & minerals"
 8901063026346,Britannia NutriChoice Digestive,Britannia,,"Whole wheat flour (71%), sugar, edible vegetable oil (palm), raising agents (INS 503(ii), INS 500(ii)), salt, emulsifiers (INS 471, INS 322), added vitamins & minerals"
 8901719126970,Parle 20-20 Cashew Biscuits,Parle,,"Refined wheat flour, sugar, edible vegetable oil (palm), cashew nuts (8%), invert syrup, milk solids, raising agents (INS 503(ii), INS 500(ii)), salt, emulsifier (INS 322), artificial vanilla flavour"
-8901719123801,Parle Monaco 400g,Parle,,"Refined wheat flour, sugar, edible vegetable oil (palm), invert syrup, salt, raising agents (INS 503(ii), INS 500(ii)), emulsifier (INS 322), artificial butter flavour"
-8901719124006,Parle Krackjack 200g,Parle,,"Refined wheat flour, sugar, edible vegetable oil (palm), invert syrup, salt, raising agents (INS 503(ii), INS 500(ii)), emulsifier (INS 322), artificial butter flavour"
-8901719136757,Hide & Seek Finest Choco,Parle,,"Refined wheat flour, sugar, edible vegetable oil (palm), cocoa solids (6%), invert syrup, milk solids, raising agents (INS 503(ii), INS 500(ii)), emulsifier (INS 322), artificial chocolate flavour"
-8901719137846,Milano Vanilla,Parle,,"Refined wheat flour, sugar, edible vegetable oil (palm), invert syrup, milk solids, raising agents (INS 503(ii), INS 500(ii)), emulsifier (INS 322), artificial vanilla flavour"
-8901719127236,Rusk,Parle,,"Refined wheat flour, sugar, edible vegetable oil (palm), invert syrup, milk solids, raising agents (INS 503(ii), INS 500(ii)), salt, emulsifier (INS 322), artificial vanilla flavour"
-8901058018493,Maggi 2-Minute Noodles Masala,Maggi,,"Noodles: Refined wheat flour (maida), palm oil, iodized salt, wheat gluten, thickeners (INS 508, INS 412), acidity regulators (INS 501(i), INS 500(i)); Tastemaker: salt, onion, sugar, coriander, chilli, turmeric, garlic, cumin, fenugreek, antioxidant (INS 319)"
+8901719123801,Parle Monaco Classic,Parle,,"Refined wheat flour, edible vegetable oil (palm), salt, sugar, raising agents (INS 503(ii), INS 500(ii)), emulsifier (INS 322), artificial butter flavour"
+8901719124006,Parle Krackjack,Parle,,"Refined wheat flour, sugar, edible vegetable oil (palm), invert syrup, salt, raising agents (INS 503(ii), INS 500(ii)), emulsifier (INS 322), artificial butter flavour"
+8901719136757,Parle Hide & Seek Finest Choco,Parle,,"Refined wheat flour, sugar, edible vegetable oil (palm), cocoa solids (6%), invert syrup, milk solids, raising agents (INS 503(ii), INS 500(ii)), emulsifier (INS 322), artificial chocolate flavour"
+8901719137846,Parle Milano Vanilla,Parle,,"Refined wheat flour, sugar, edible vegetable oil (palm), invert syrup, milk solids, raising agents (INS 503(ii), INS 500(ii)), emulsifier (INS 322), artificial vanilla flavour"
+8901719127236,Parle Rusk,Parle,,"Refined wheat flour, sugar, edible vegetable oil (palm), invert syrup, milk solids, raising agents (INS 503(ii), INS 500(ii)), salt, emulsifier (INS 322), artificial vanilla flavour"
+8901058018493,Maggi 2-Minute Noodles Masala,Nestlé,,"Noodles: Refined wheat flour (maida), palm oil, iodized salt, wheat gluten, thickeners (INS 508, INS 412), acidity regulators (INS 501(i), INS 500(i)); Tastemaker: salt, onion, sugar, coriander, chilli, turmeric, garlic, cumin, fenugreek, antioxidant (INS 319)"
 8901058008388,Maggi Hot Sweet Tomato Chilli Sauce,Maggi,,"Tomato paste, sugar, water, vinegar, salt, chilli, garlic, acidity regulator (INS 260), preservative (INS 211), thickener (INS 1422)"
 8901058003055,Maggi Pazzta Cheese Macaroni,Maggi,,"Macaroni: Durum wheat semolina, salt; Tastemaker: milk solids, cheese powder, sugar, salt, palm oil, thickeners (INS 1422, INS 412), flavour enhancers (INS 621, INS 627, INS 631), artificial cheese flavour, colour (INS 160a)"
 8901058014846,Maggi Pazzta Cheesy Tomato Twist,Maggi,,"Macaroni: Durum wheat semolina, salt; Tastemaker: tomato powder, milk solids, sugar, salt, palm oil, thickeners (INS 1422, INS 412), flavour enhancers (INS 621, INS 627, INS 631), artificial cheese flavour, colour (INS 160c)"
 8901058002270,Maggi Spicy Garlic Noodles,Maggi,,"Noodles: Refined wheat flour, palm oil, salt, wheat gluten, thickeners (INS 508, INS 412), acidity regulators; Tastemaker: salt, garlic, chilli, spices, sugar, flavour enhancers (INS 621), antioxidant (INS 319)"
 8901058006032,Maggi Cup Noodles Masala,Maggi,,"Noodles: Refined wheat flour, palm oil, salt, wheat gluten, thickeners, acidity regulators; Tastemaker: salt, spices, sugar, dehydrated vegetables, flavour enhancers (INS 621, INS 627, INS 631), antioxidant (INS 319)"
 8901058013665,Maggi Hot and Sweet Noodles,Maggi,,"Noodles: Refined wheat flour, palm oil, salt, wheat gluten, thickeners, acidity regulators; Tastemaker: salt, sugar, chilli, garlic, spices, flavour enhancers (INS 621), antioxidant (INS 319)"
-8904004403770,Moong Dal,Haldiram's,,"Moong dal, edible vegetable oil (palmolein), iodized salt, spices (red chilli, black pepper, asafoetida)"
-8904004403534,Tasty Nuts,Haldiram's,,"Peanuts, edible vegetable oil (palmolein), iodized salt, spices (red chilli, black pepper)"
-8904063216403,Khatta Meetha,Haldiram's,,"Rice flakes, edible vegetable oil (palmolein), sugar, peanuts, sago, iodized salt, spices, raising agents, colours (INS 160c)"
-8904063216168,Bombay Mix,Haldiram's,,"Rice flakes, gram flour, edible vegetable oil (palmolein), peanuts, sago, iodized salt, spices, raising agents, colours (INS 160c)"
-8904063230133,Cornflakes Mixture,Haldiram's,,"Corn flakes, edible vegetable oil (palmolein), peanuts, sago, iodized salt, spices, sugar, raising agents, colours (INS 160c)"
+8904004403770,Haldiram's Moong Dal,Haldiram's,,"Moong dal, edible vegetable oil (palmolein), iodized salt, spices (red chilli, black pepper, asafoetida)"
+8904004403534,Haldiram's Tasty Nuts,Haldiram's,,"Peanuts, edible vegetable oil (palmolein), iodized salt, spices (red chilli, black pepper)"
+8904063216403,Haldiram's Khatta Meetha,Haldiram's,,"Rice flakes, edible vegetable oil (palmolein), sugar, peanuts, sago, iodized salt, spices, raising agents, colours (INS 160c)"
+8904063216168,Haldiram's Bombay Mix,Haldiram's,,"Rice flakes, gram flour, edible vegetable oil (palmolein), peanuts, sago, iodized salt, spices, raising agents, colours (INS 160c)"
+8904063230133,Haldiram's Cornflakes Mixture,Haldiram's,,"Corn flakes, edible vegetable oil (palmolein), peanuts, sago, iodized salt, spices, sugar, raising agents, colours (INS 160c)"
 8904004405224,Soan Cake,Haldiram's,,"Sugar, refined wheat flour, edible vegetable oil (palm), milk solids, cardamom, raising agents, emulsifiers"
 8904004416367,Atta Cookies,Haldiram's,,"Whole wheat flour, sugar, edible vegetable oil (palm), invert syrup, raising agents (INS 503(ii), INS 500(ii)), salt, emulsifier (INS 322), artificial vanilla flavour"
 8904004410754,Dry Fruit Besan Ladoo,Haldiram's,,"Gram flour (besan), sugar, edible vegetable oil (ghee), dry fruits (cashew, almond, raisin), cardamom"
-8901725017545,Nice,Sunfeast,,"Refined wheat flour, sugar, coconut, edible vegetable oil (palm), invert syrup, raising agents (INS 503(ii), INS 500(ii)), salt, emulsifier (INS 322), artificial coconut flavour"
-8901725136215,Dark Fantasy BIG Choco Fills,Sunfeast,,"Choco crème (sugar, refined palmolein, refined palm oil, cocoa solids), refined wheat flour, sugar, invert syrup, liquid glucose, edible vegetable oil, cocoa solids, milk solids, butter, raising agents (INS 503(ii), INS 500(i)), emulsifiers (INS 322, INS 471), salt"
-8901725016265,Dark Fantasy Bourbon,Sunfeast,,"Refined wheat flour, sugar, edible vegetable oil (palm), cocoa solids, invert syrup, raising agents (INS 503(ii), INS 500(i)), emulsifiers (INS 322, INS 471), salt, artificial chocolate flavour"
+8901725017545,Sunfeast Nice,ITC,,"Refined wheat flour, sugar, coconut, edible vegetable oil (palm), invert syrup, raising agents (INS 503(ii), INS 500(ii)), salt, emulsifier (INS 322), artificial coconut flavour"
+8901725136215,Sunfeast Dark Fantasy BIG Choco Fills,ITC,,"Choco crème (sugar, refined palmolein, refined palm oil, cocoa solids), refined wheat flour, sugar, invert syrup, liquid glucose, edible vegetable oil, cocoa solids, milk solids, butter, raising agents, emulsifiers, salt"
+8901725016265,Sunfeast Dark Fantasy Bourbon,ITC,,"Refined wheat flour, sugar, edible vegetable oil (palm), cocoa solids, invert syrup, raising agents (INS 503(ii), INS 500(i)), emulsifiers (INS 322, INS 471), salt, artificial chocolate flavour"
 8901725005900,Yippee! Noodles Magic Masala,Sunfeast,,"Instant noodles: Refined wheat flour (78.4%), refined palm oil, iodized salt, wheat gluten, thickeners (INS 508, INS 412); Masala: spices, dehydrated vegetables, sugar, salt, flavour enhancers (INS 621, INS 627, INS 631)"
-8901725004217,Bingo Tedhe Medhe Tomato,Bingo,,"Corn grits, edible vegetable oil (palmolein), rice grits, gram flour, spices, salt, sugar, tomato powder, flavour enhancers (INS 621, INS 627, INS 631), acidity regulators, colours (INS 160c)"
+8901725004217,Bingo Tedhe Medhe Tomato,ITC,,"Corn grits, edible vegetable oil (palmolein), rice grits, gram flour, spices, salt, sugar, tomato powder, flavour enhancers (INS 621, INS 627, INS 631), acidity regulators, colours (INS 160c)"
 8901262150095,Amul Gold Milk 200ml,Amul,,"Standardized milk (4.5% fat, 8.5% SNF), vitamins A & D"
 8901262010436,Amul White Unsalted Butter,Amul,,Pasteurized milk cream
 8901262200271,Amul Dahi,Amul,,"Pasteurized toned milk, active lactic culture"
 8901262180030,Amul Paneer,Amul,,"Milk solids, citric acid (coagulant)"
-8901262222471,Instant Mashed Potato,Amul,,"Dehydrated potato flakes, salt, emulsifier (INS 471), antioxidant (INS 304)"
+8901262222471,Amul Instant Mashed Potato,Amul,,"Dehydrated potato flakes, salt, emulsifier (INS 471), antioxidant (INS 304)"
 8901262180429,High Protein Paneer,Amul,,"Milk solids, milk protein, citric acid (coagulant), salt"
-8901233013091,Cadbury Oreo Small Pack,Cadbury,,"Refined wheat flour, sugar, refined palm oil, cocoa solids (5%), invert syrup, raising agents (INS 503(ii), INS 500(i)), salt, emulsifier (soya lecithin INS 322), artificial vanilla flavour, antioxidant (INS 319)"
-8901233034300,Cadbury Dairy Milk Silk Bubbly,Cadbury,,"Sugar, milk solids, cocoa butter, cocoa mass, emulsifiers (soya lecithin INS 322, INS 476), flavours (natural & nature-identical vanilla)"
-8901233034263,Cadbury Dairy Milk Roast Almond,Cadbury,,"Sugar, milk solids, cocoa butter, cocoa mass, almonds (15%), emulsifiers (soya lecithin INS 322, INS 476), flavours"
+8901233013091,Cadbury Oreo Small Pack,Mondelez,,"Refined wheat flour, sugar, refined palm oil, cocoa solids (5%), invert syrup, raising agents (INS 503(ii), INS 500(i)), salt, emulsifier (INS 322), artificial vanilla flavour, antioxidant (INS 319)"
+8901233034300,Cadbury Dairy Milk Silk Bubbly,Mondelez,,"Sugar, milk solids, cocoa butter, cocoa mass, emulsifiers (soya lecithin INS 322, INS 476), flavours"
+8901233034263,Cadbury Dairy Milk Roast Almond,Mondelez,,"Sugar, milk solids, cocoa butter, cocoa mass, almonds (15%), emulsifiers (INS 322, INS 476), flavours"
 8901764042508,Thums Up 2L,Coca-Cola,,"Carbonated water, sugar, acidity regulator (INS 338), colour (INS 150d), natural & nature-identical flavouring (cola), caffeine"
 8901764052408,Limca 2L,Coca-Cola,,"Carbonated water, sugar, acidity regulators (INS 330, INS 331(i)), stabilizers (INS 414, INS 471), preservative (INS 211), lime-lemon flavouring"
 8901764042324,Thums Up Charged,Coca-Cola,,"Carbonated water, sugar, acidity regulators (INS 338, INS 330), caffeine, taurine, colour (INS 150d), natural flavours, vitamins"
@@ -5930,13 +5928,13 @@ and added flavour (nature identical and artificial flavouring substance - vanill
 8904132944695,Campa Orange 500ml,Campa,,"Carbonated water, sugar, acidity regulators (INS 330, INS 331(iii)), orange juice concentrate (3%), colours (INS 110, INS 102), artificial orange flavour, preservative (INS 211)"
 8904132975552,Campa Soda,Campa,,"Carbonated water, salt, acidity regulator (INS 330)"
 8902080013500,Tropicana Mixed Fruit Juice,Tropicana,,"Water, mixed fruit juice concentrate (apple, grape, mango, orange, pineapple), sugar, acidity regulator (INS 330), antioxidant (INS 300), natural flavours"
-8902080003075,Nimbooz,7Up/PepsiCo,,"Carbonated water, sugar, acidity regulators (INS 330, INS 331(i)), natural lemon-lime flavouring, preservative (INS 211)"
-8902579002121,Appy Fizz,Parle Agro,,"Carbonated water, sugar, apple juice concentrate, acidity regulators (INS 330, INS 331(iii)), preservative (INS 211), colour (INS 150d), flavouring"
-8901491003896,Lay's Korean Chilli,Lay's,,"Potato, edible vegetable oil (palmolein/rice bran), seasoning [sugar, iodized salt, spices & condiments (chilli, garlic, onion), flavour enhancers (INS 621, INS 627, INS 631), acidity regulators (INS 330, INS 296), colours (INS 160c)]"
-8901491103060,Kurkure Hyderabadi Hungama,Kurkure,,"Corn grits, edible vegetable oil (palmolein), rice grits, gram flour, spices, salt, sugar, flavour enhancers (INS 621, INS 627, INS 631), acidity regulators, colours (INS 160c)"
-8901491103282,Cheetos,PepsiCo India,,"Corn grits, edible vegetable oil (palmolein), cheese seasoning [cheese powder, milk solids, salt, sugar, flavour enhancers (INS 621, INS 627, INS 631), colours (INS 160c, INS 160a)]"
+8902080003075,Nimbooz (7Up variant),PepsiCo,,"Carbonated water, sugar, acidity regulators (INS 330, INS 331(i)), natural lemon-lime flavouring, preservative (INS 211)"
+8902579002121,Appy Fizz 500ml,Parle Agro,,"Carbonated water, sugar, apple juice concentrate, acidity regulators (INS 330, INS 331(iii)), preservative (INS 211), colour (INS 150d), flavouring"
+8901491003896,Lay's Korean Chilli,PepsiCo,,"Potato, edible vegetable oil (palmolein/rice bran), seasoning [sugar, iodized salt, spices & condiments (chilli, garlic, onion), flavour enhancers (INS 621, INS 627, INS 631), acidity regulators (INS 330, INS 296), colours (INS 160c)]"
+8901491103060,Kurkure Hyderabadi Hungama,PepsiCo,,"Corn grits, edible vegetable oil (palmolein), rice grits, gram flour, spices, salt, sugar, flavour enhancers (INS 621, INS 627, INS 631), acidity regulators, colours (INS 160c)"
+8901491103282,Cheetos,PepsiCo,,"Corn grits, edible vegetable oil (palmolein), cheese seasoning [cheese powder, milk solids, salt, sugar, flavour enhancers (INS 621, INS 627, INS 631), colours (INS 160c, INS 160a)]"
 8901725013721,Bingo Mad Angles Very Peri Peri,Bingo,,"Corn grits, edible vegetable oil (palmolein), rice grits, gram flour, spices, salt, sugar, peri peri seasoning, flavour enhancers (INS 621, INS 627, INS 631), acidity regulators, colours (INS 160c)"
-8904063254450,Punjabi Tadka,Haldiram's,,"Rice flakes, gram flour, edible vegetable oil (palmolein), peanuts, sago, iodized salt, spices (cumin, turmeric, red chilli), raising agents, colours (INS 160c)"
+8904063254450,Haldiram's Punjabi Tadka,Haldiram's,,"Rice flakes, gram flour, edible vegetable oil (palmolein), peanuts, sago, iodized salt, spices (cumin, turmeric, red chilli), raising agents, colours (INS 160c)"
 8904063253415,Haldiram's Roasted Chana Cracker Heeng Jeera,Haldiram's,,"Roasted chana, edible vegetable oil (palmolein), iodized salt, spices (asafoetida, cumin, red chilli)"
 8904004419511,Haldiram's South Mixture,Haldiram's,,"Rice flakes, gram flour, edible vegetable oil (palmolein), peanuts, sago, iodized salt, spices, curry leaves, raising agents, colours (INS 160c)"
 8901030825668,Horlicks Classic Malt 500g,HUL,,"Malted cereals (66.7%) [barley, wheat flour, wheat, millet], milk solids (14%), sugar, wheat gluten, iodized salt, minerals, vitamins, emulsifier (INS 471)"
@@ -5961,34 +5959,324 @@ and added flavour (nature identical and artificial flavouring substance - vanill
 8901192221018,Catch Chhole Masala,Catch,,"Coriander, cumin, turmeric, red chilli, black pepper, cloves, cinnamon, cardamom, amchur, ginger"
 8901192215017,Catch Sabzi Masala,Catch,,"Coriander, cumin, turmeric, red chilli, black pepper, cloves, cinnamon, cardamom"
 8901192217110,Catch Jaljeera,Catch,,"Cumin, black salt, dried mango powder, red chilli, black pepper, mint, ginger"
-8901058016222,Maggi Rich Tomato Ketchup,Maggi,,"Tomato paste, sugar, water, vinegar, salt, spices (onion, garlic, chilli), acidity regulator (INS 260), preservative (INS 211)"
+8901058016222,Maggi Rich Tomato Ketchup,Nestlé,,"Tomato paste, sugar, water, vinegar, salt, spices (onion, garlic, chilli), acidity regulator (INS 260), preservative (INS 211)"
 8901058001167,Maggi Pichkoo,Maggi,,"Tomato paste, sugar, water, vinegar, salt, spices, acidity regulator (INS 260), preservative (INS 211)"
 8901063018297,Britannia Time Pass,Britannia,,"Refined wheat flour, sugar, edible vegetable oil (palm), invert syrup, raising agents (INS 503(ii), INS 500(ii)), salt, emulsifier (INS 322), artificial flavours"
 8901063138162,Britannia NutriChoice Arrowroot,Britannia,,"Whole wheat flour, arrowroot flour, sugar, edible vegetable oil (palm), raising agents, salt, emulsifiers, added vitamins & minerals"
 8901063325586,Britannia Toastea Bilk Rusk,Britannia,,"Refined wheat flour, sugar, edible vegetable oil (palm), invert syrup, milk solids, raising agents (INS 503(ii), INS 500(ii)), salt, emulsifier (INS 322), artificial vanilla flavour"
 8901063367357,Britannia Gol Maal 50-50,Britannia,,"Refined wheat flour, sugar, edible vegetable oil (palm), invert syrup, salt, raising agents (INS 503(ii), INS 500(ii)), emulsifier (INS 322), artificial butter flavour"
-8901725000622,Mom's Magic Cashew & Almond,Sunfeast,,"Refined wheat flour, sugar, edible vegetable oil (palm), cashew nuts, almonds, invert syrup, milk solids, raising agents, emulsifiers"
-8901725006143,Marie Light,Sunfeast,,"Refined wheat flour, sugar, refined palm oil, invert sugar syrup, milk solids, raising agents, salt, emulsifiers"
+8901725000622,Sunfeast Mom's Magic Cashew & Almond,ITC,,"Refined wheat flour, sugar, edible vegetable oil (palm), cashew nuts, almonds, invert syrup, milk solids, raising agents, emulsifiers"
+8901725006143,Sunfeast Marie Light,ITC,,"Refined wheat flour, sugar, refined palm oil, invert sugar syrup, milk solids, raising agents, salt, emulsifiers"
 8901928131505,Bisk Farm Nice,Bisk Farm,,"Refined wheat flour, sugar, coconut, edible vegetable oil (palm), invert syrup, raising agents, salt, emulsifier, artificial coconut flavour"
 8906033746040,McVitie's Hobnobs Oats Cookies,McVitie's,,"Whole wheat flour, oats, sugar, edible vegetable oil (palm), invert syrup, raising agents, salt, emulsifiers"
-8906069402774,Veeba Mayonnaise (Eggless),Veeba,,"Refined soybean oil, water, sugar, vinegar, iodized salt, thickener (INS 1422), preservative (INS 211), mustard, antioxidant (INS 319)"
+8906069402774,Veeba Mayonnaise Eggless,Veeba,,"Refined soybean oil, water, sugar, vinegar, iodized salt, thickener (INS 1422), preservative (INS 211), mustard, antioxidant (INS 319)"
 8908012605003,Heinz Tomato Ketchup,Heinz,,"Tomato paste, sugar, vinegar, salt, spices, acidity regulator (INS 260), preservative (INS 211)"
 8901246003621,Del Monte Sliced Green Olives,Del Monte,,"Green olives, water, salt, acidity regulator (INS 330)"
 8906112662414,True Elements Rolled Oats,True Elements,,100% wholegrain rolled oats
-8904043906584,Tata Sampann Chia Seeds,Tata Sampann,,100% chia seeds
+8904043906584,Tata Sampann Chia Seeds,Tata Consumer,,100% chia seeds
 8901725002428,Aashirvaad Garlic & Coriander Naan,Aashirvaad,,"Refined wheat flour, water, edible vegetable oil, garlic, coriander, salt, sugar, raising agents, preservative (INS 282)"
-8901063094291,Good Day Pista Badam,Britannia,,"Refined wheat flour, edible vegetable oil (palm), sugar, pistachio (3%), almond (2%), invert syrup, milk solids, raising agents (INS 503(i), INS 500(i)), salt, emulsifier (soya lecithin INS 322)"
-8901063136779,Good Day Choco Almond,Britannia,,"Refined wheat flour, edible vegetable oil (palm), sugar, cocoa solids, almond (3%), invert syrup, milk solids, raising agents (INS 503(i), INS 500(i)), salt, emulsifier (soya lecithin INS 322)"
+8901063094291,Britannia Good Day Pista Badam,Britannia,,"Refined wheat flour, edible vegetable oil (palm), sugar, pistachio (3%), almond (2%), invert syrup, milk solids, raising agents (INS 503(i), INS 500(i)), salt, emulsifier (soya lecithin INS 322)"
+8901063136779,Britannia Good Day Choco Almond,Britannia,,"Refined wheat flour, edible vegetable oil (palm), sugar, cocoa solids, almond (3%), invert syrup, milk solids, raising agents (INS 503(i), INS 500(i)), salt, emulsifier (soya lecithin INS 322)"
 8901063092440,Good Day Butter,Britannia,,"Refined wheat flour, edible vegetable oil (palm), sugar, butter (1%), invert syrup, milk solids, raising agents (INS 503(i), INS 500(i)), salt, emulsifier (soya lecithin INS 322), artificial butter flavour"
 8901719112577,Hide & Seek Milano (Choco Chip),Parle,,"Refined wheat flour, sugar, edible vegetable oil (palm), cocoa solids, choco chips, invert syrup, milk solids, raising agents (INS 503(ii), INS 500(ii)), emulsifier (INS 322), artificial chocolate flavour"
 8901719115608,Hide & Seek 120g Orange Sandwiches,Parle,,"Refined wheat flour, sugar, edible vegetable oil (palm), orange flavour, invert syrup, raising agents (INS 503(ii), INS 500(ii)), salt, emulsifier (INS 322), colours (INS 110)"
 8901719115639,Hide & Seek 120g Creme Sandwiches Chocochip,Parle,,"Refined wheat flour, sugar, edible vegetable oil (palm), cocoa solids, choco chips, invert syrup, milk solids, raising agents (INS 503(ii), INS 500(ii)), emulsifier (INS 322), artificial chocolate flavour"
 8901719703034,Krackjack Original,Parle,,"Refined wheat flour, sugar, edible vegetable oil (palm), invert syrup, salt, raising agents (INS 503(ii), INS 500(ii)), emulsifier (INS 322), artificial butter flavour"
-8901719114038,Fab! Jam,Parle,,"Refined wheat flour, sugar, fruit jam (pineapple, apple), edible vegetable oil (palm), invert syrup, raising agents (INS 503(ii), INS 500(ii)), salt, emulsifier (INS 322), colours (INS 110, INS 102)"
+8901719114038,Parle Fab! Jam,Parle,,"Refined wheat flour, sugar, fruit jam (pineapple, apple), edible vegetable oil (palm), invert syrup, raising agents (INS 503(ii), INS 500(ii)), salt, emulsifier (INS 322), colours (INS 110, INS 102)"
 8901719101663,Parle-G Gold Original,Parle,,"Refined wheat flour, sugar, invert syrup, refined palm oil, salt, skimmed milk powder, raising agents (INS 503(ii), INS 500(ii)), emulsifier (INS 471), dough conditioner, artificial vanilla flavour"
-8901719119286,Mango Bite,Parle,,"Sugar, glucose syrup, mango pulp, acidity regulator (INS 330), artificial mango flavour, colour (INS 160c)"
+8901719119286,Parle Mango Bite,Parle,,"Sugar, glucose syrup, mango pulp, acidity regulator (INS 330), artificial mango flavour, colour (INS 160c)"
 8901058016055,Nescafé Classic,Nestlé,,100% instant coffee
-8901725008888,Aashirvaad Shudh Chakki Atta,Aashirvaad,,100% whole wheat flour (chakki-ground)
+8901725008888,Aashirvaad Shudh Chakki Atta,ITC,,100% whole wheat flour (chakki-ground)
+8901063014206,Britannia Vita Marie Gold,Britannia,,"Refined wheat flour (70%), sugar, refined palm oil, invert sugar syrup, milk solids, raising agents (INS 503(ii), INS 500(ii)), salt, emulsifiers (INS 471, INS 322), added vitamins & minerals"
+8901063142817,Britannia NutriChoice Digestive 125g,Britannia,,"Whole wheat flour (71%), sugar, edible vegetable oil (palm), raising agents (INS 503(ii), INS 500(ii)), salt, emulsifiers (INS 471, INS 322), added vitamins & minerals"
+8901063029323,Britannia Jim Jam,Britannia,,"Refined wheat flour, sugar, edible vegetable oil (palm), invert syrup, raising agents (INS 503(ii), INS 500(ii)), salt, emulsifier (INS 322), artificial vanilla flavour, colours (INS 122, INS 110)"
+8901063343528,Britannia Vitarich Sandwich Bread,Britannia,,"Refined wheat flour, water, sugar, edible vegetable oil, gluten, yeast, iodized salt, preservative (INS 282), emulsifiers (INS 471, INS 472e), vitamins"
+8901719110023,Parle Hide & Seek Centre Filled Cookies,Parle,,"Refined wheat flour, sugar, edible vegetable oil (palm), cocoa solids, invert syrup, milk solids, raising agents, emulsifiers, artificial chocolate flavour"
+8901719506345,Parle Kreams Gold Cardamom,Parle,,"Refined wheat flour, sugar, edible vegetable oil (palm), invert syrup, milk solids, cardamom, raising agents, emulsifiers, artificial cardamom flavour"
+8901719123443,Parle Kismis,Parle,,"Refined wheat flour, sugar, raisins, edible vegetable oil (palm), invert syrup, raising agents, emulsifiers, salt"
+8901725119201,Sunfeast Yippee! Noodles,ITC,,"Instant noodles: Refined wheat flour (78.4%), refined palm oil, iodized salt, wheat gluten, thickeners (INS 508, INS 412); Masala: spices, dehydrated vegetables, sugar, salt, flavour enhancers (INS 621, INS 627, INS 631)"
+8901725114022,Sunfeast Yippee! Magic Masala,ITC,,"Instant noodles: Refined wheat flour, refined palm oil, iodized salt, wheat gluten, thickeners; Masala: spices, dehydrated vegetables, sugar, salt, flavour enhancers (INS 621)"
+8909081010033,Bingo Chilli Cheese Baked Puff,ITC,,"Refined wheat flour, edible vegetable oil (palm), cheese powder, spices, salt, sugar, flavour enhancers (INS 621), colours (INS 160c), raising agents"
+8906009079127,Unibic Milk Cookies,Unibic,,"Refined wheat flour, sugar, edible vegetable oil (palm), milk solids, invert syrup, raising agents, salt, emulsifiers, artificial vanilla flavour"
+8906009070902,Unibic Honey Oatmeal,Unibic,,"Whole wheat flour, oats, sugar, honey, edible vegetable oil (palm), invert syrup, raising agents, salt, emulsifiers"
+8906009071602,Unibic Choco Nut,Unibic,,"Refined wheat flour, sugar, cocoa solids, edible vegetable oil (palm), invert syrup, raising agents, salt, emulsifiers, artificial chocolate flavour"
+8906009070520,Unibic Orange Splash Cookies,Unibic,,"Refined wheat flour, sugar, edible vegetable oil (palm), orange flavour, invert syrup, raising agents, salt, emulsifiers, colours (INS 110)"
+8906009077314,Unibic Honey Oatmeal Cookies,Unibic,,"Whole wheat flour, oats, sugar, honey, edible vegetable oil (palm), invert syrup, raising agents, salt, emulsifiers"
+8901928112009,Bisk Farm Nice,Bisk Farm,,"Refined wheat flour, sugar, coconut, edible vegetable oil (palm), invert syrup, raising agents, salt, emulsifier, artificial coconut flavour"
+8901928300741,Bisk Farm Top Gold,Bisk Farm,,"Refined wheat flour, sugar, edible vegetable oil (palm), invert syrup, milk solids, raising agents, salt, emulsifiers"
+8906033742844,McVitie's Digestive Multi 7 Grain,McVitie's,,"Whole wheat flour, oats, barley, rye, millet, corn, rice flour, sugar, edible vegetable oil (palm), invert syrup, raising agents, salt, emulsifiers"
+8906033742851,McVitie's Hobnobs,McVitie's,,"Whole wheat flour, oats, sugar, edible vegetable oil (palm), invert syrup, raising agents, salt, emulsifiers"
+8901725101374,Sunfeast Dark Fantasy Original 75g,ITC,,"Choco crème (sugar, refined palmolein, refined palm oil, cocoa solids), refined wheat flour, sugar, invert syrup, liquid glucose, edible vegetable oil, cocoa solids, milk solids, butter, raising agents, emulsifiers, salt"
+8904063226372,Haldiram's Veggie And Paneer Momos,Haldiram's,,"Refined wheat flour, paneer, vegetables (cabbage, carrot, onion), edible vegetable oil, spices, salt, sugar, soy sauce"
+8904063281234,Haldiram's Phulka Roti,Haldiram's,,"Whole wheat flour, water, edible vegetable oil, salt"
+8904063203441,Haldiram's Ratlami Mixture,Haldiram's,,"Rice flakes, gram flour, edible vegetable oil (palmolein), peanuts, sago, iodized salt, spices (red chilli, cumin, black pepper), raising agents, colours (INS 160c)"
+8904063200570,Haldiram's Chai Puri,Haldiram's,,"Refined wheat flour, edible vegetable oil, sugar, salt, spices, raising agents"
+8904063253262,Haldiram's Boondi,Haldiram's,,"Gram flour (besan), edible vegetable oil (palmolein), iodized salt, spices, colours (INS 160c)"
+8904063258410,Haldiram's Yellow Banana Chips,Haldiram's,,"Banana, edible vegetable oil (coconut/palmolein), iodized salt"
+8904063254573,Haldiram's Tea Time Khari,Haldiram's,,"Refined wheat flour, edible vegetable oil, salt, raising agents"
+8906090571258,Too Yumm Multigrain Chips Chilli Achari,RPSG,,"Multigrain blend (oats, corn, wheat, rice, quinoa), edible vegetable oil, spices, salt, sugar, acidity regulators, flavours"
+8901491002301,Kurkure Masala Munch,PepsiCo,,"Corn grits, edible vegetable oil (palmolein), rice grits, gram flour, spices, salt, sugar, flavour enhancers (INS 621, INS 627, INS 631), acidity regulators, colours (INS 160c)"
+8901491000659,Uncle Chipps Spicy Treat,PepsiCo,,"Potato, edible vegetable oil, spices, salt, sugar, flavour enhancers (INS 621), acidity regulators"
+8901512890702,Act II Tortilla Chips,Agro Tech,,"Corn flour, edible vegetable oil, salt, spices, flavour enhancers"
+8906065168599,ITC Aloo Tikki,ITC,,"Potato, edible vegetable oil, spices, salt, sugar, raising agents, colours"
+8901764372032,Minute Maid Nimbu Masala,Coca-Cola,,"Water, sugar, lemon juice concentrate (approx. 3%), salt, acidity regulators (INS 330, INS 331(iii)), spices (cumin, black salt), preservative (INS 211), natural flavour"
+8902080011445,Apple Delight,PepsiCo,,"Water, apple juice concentrate, sugar, acidity regulator (INS 330), antioxidant (INS 300), natural apple flavour"
+8901207019999,Dabur Glucoplus,Dabur,,"Dextrose monohydrate, vitamin C, acidity regulator (INS 330), artificial flavour, colour"
+8906080600586,Paper Boat Lychee Drink,Hector Beverages,,"Water, sugar, lychee pulp (12%), apple juice concentrate, acidity regulators (INS 330, INS 331(iii)), antioxidant (INS 300), natural flavours"
+8901725009885,B Natural Guava Fiber,ITC,,"Water, guava juice concentrate, sugar, acidity regulator (INS 330), antioxidant (INS 300), natural flavours, added fiber"
+8901725009854,B Natural Apple Fiber,ITC,,"Water, apple juice concentrate, sugar, acidity regulator (INS 330), antioxidant (INS 300), natural flavours, added fiber"
+8901542003035,Complan,HUL,,"Milk solids (approx. 52%), sugar, peanut oil, maltodextrin, almonds (0.8%), minerals, vitamins, colours (INS 100(i), INS 160b(ii)), flavouring"
+8901499009043,Kellogg's Chocolate Muesli,Kellogg's,,"Whole wheat flakes, oats, sugar, cocoa solids, glucose syrup, salt, vitamins, minerals, emulsifier"
+8901499008138,Kellogg's Chocos Duet,Kellogg's,,"Wheat flour, sugar, cocoa solids, glucose syrup, salt, vitamins, minerals, emulsifier, artificial chocolate flavour"
+8906112662551,True Elements Pumpkin Seeds,True Elements,,100% pumpkin seeds
+8901725008895,Aashirvaad Shudh Chakki Atta 10kg,ITC,,100% whole wheat flour (chakki-ground)
+8901725006679,Aashirvaad Atta with Multigrains,ITC,,"Whole wheat flour, oats, barley, millet, corn, rice flour"
+8901725100575,Aashirvaad Atta with Multigrains 5kg,ITC,,"Whole wheat flour, oats, barley, millet, corn, rice flour"
+8906007287012,Fortune Everyday Rice Bran Oil,Adani Wilmar,,"Rice bran oil, antioxidant (INS 319), vitamins A & D"
+8901047001611,Kohinoor Exclusive Brown Rice,Kohinoor,,100% brown rice
+8901047039232,Kohinoor Rice,Kohinoor,,100% rice
+8901161105806,Lal Qilla Whole Grain Brown Basmati Rice,Lal Qilla,,100% whole grain brown basmati rice
+8906046142754,Pride Of India White Basmati Rice,Pride Of India,,100% basmati rice
+8906005913715,Makhana Roasted Indori Masala Flavour,Aakash,,"Makhana (fox nuts), edible vegetable oil, spices, salt, sugar, flavour enhancers"
+8908006646128,Mr Makhana Plain,Mr Makhana,,Makhana (fox nuts)
+8906167241541,Whole Farm Plain Makhana,Whole Farm,,Makhana (fox nuts)
+8906096323288,Tasty Nuts,Jabsons,,"Peanuts, edible vegetable oil, salt, spices"
+8904067709529,Banana Chips,Jabsons,,"Banana, edible vegetable oil (coconut), iodized salt"
+8904071700031,Masala Banana Chips,Chheda's,,"Banana, edible vegetable oil, spices, salt, sugar"
+8906084416176,Roasted Cashews,M.O.M,,Cashew nuts
+8906084416183,Roasted California Almonds,M.O.M,,Almonds
+8906120100519,Farmley Black Raisins,Farmley,,Black raisins
+8908017778887,Indian Raisins,Ashapura Agrocomm,,Raisins (kishmish)
+8904424804270,Happilo Dry Fruit Mix,Happilo,,"Almonds, cashews, raisins, pistachios"
+8906095127269,Wonderland Australian Almonds,Wonderland,,Almonds
+8906016010120,Almonds,K.B.B Nuts/Tulsi,,Almond kernels
+8903023002216,Vedaka Whole Cashews,Vedaka,,Whole cashews
+8903023005378,Vedaka Popular Whole Almonds,Vedaka,,Whole almonds
+8902901227482,Good Life Almond 1kg,Reliance,,Almonds
+8902901226645,Good Life Jowar 500g,Reliance,,Jowar (sorghum)
+8902901225228,Good Life Tadka Mix,Reliance,,"Spices, salt, sugar, edible vegetable oil, raising agents"
+8902901224719,Good Life B Gram Roasted Chana,Good Life,,Roasted bengal gram
+8902901062281,Good Life Barley,Reliance,,Barley grains
+8902901001709,Good Life Chakki Atta 5kg,Reliance,,100% whole wheat flour
+8902901224641,Good Life Masoor Whole 500g,Reliance,,Masoor dal (whole)
+8902901033557,Good Life Chana Brown Big 500g,Reliance,,Chana dal (brown)
+8902901225891,Good Life Rice Flour,Reliance,,Rice flour
+8902901028317,Good Life Rice Bran Oil 5L,Reliance,,"Rice bran oil, antioxidant (INS 319), vitamins A & D"
+8904132942349,Good Life Sharbati Wheat 10kg,Reliance,,Sharbati wheat grains
+8904132969995,Good Life HMT Kolam Rice 26kg,Reliance,,HMT Kolam rice
+8904132944343,Good Life Toor Arhar Dal 5kg,Reliance,,Toor dal (arhar)
+8901192109125,Catch Whole Cumin,Catch,,100% whole cumin
+8901440023067,Eastern Chilli Powder,Eastern,,100% red chilli powder
+8901662031055,Suhana Veg Kolhapuri,Suhana,,"Spices, salt, sugar, edible vegetable oil, coconut, garlic, ginger"
+8901662033509,Suhana Super Garam Masala,Suhana,,"Coriander, cumin, black pepper, cloves, cinnamon, cardamom, bay leaf, nutmeg, mace"
+8906002081585,Sakthi Masala Chicken 500g,Sakthi,,"Coriander, cumin, turmeric, red chilli, black pepper, cloves, cinnamon, cardamom, garlic, ginger"
+8904209303387,Aachi Garlic Tomato Thokku,Aachi,,"Tomato, garlic, edible vegetable oil, salt, spices, acidity regulator, preservative"
+8901030850400,Kissan Mixed Fruit Jam 500g,HUL,,"Sugar, mixed fruit pulp blend (approx. 46%), acidity regulator (INS 330), preservative (INS 211), permitted synthetic food colour (INS 122)"
+8901595852345,Ching's Secret Chilli Sauce,Capital Foods,,"Water, red chilli, garlic, vinegar, salt, sugar, acidity regulator (INS 260), preservative (INS 211)"
+8901058009699,Maggi Atta Noodles,Nestlé,,"Whole wheat flour (atta), palm oil, iodized salt, wheat gluten, thickeners (INS 508, INS 412), acidity regulators; Tastemaker: salt, spices, sugar, flavour enhancers (INS 621), antioxidant (INS 319)"
+8901058854108,Maggi Atta Noodles Masala,Nestlé,,"Whole wheat flour, palm oil, iodized salt, wheat gluten, thickeners, acidity regulators; Tastemaker: salt, spices, sugar, flavour enhancers (INS 621), antioxidant (INS 319)"
+8901741000927,Wai Wai Instant Noodles,Wai Wai,,"Refined wheat flour, palm oil, salt, thickeners, acidity regulators; Tastemaker: salt, spices, sugar, flavour enhancers (INS 621), colour"
+8906013032224,Wai Wai X-Press Masala,Wai Wai,,"Refined wheat flour, palm oil, salt, masala (spices, sugar, flavour enhancer INS 621)"
+8906013032651,Wai Wai Ready to Eat,Wai Wai,,"Refined wheat flour, palm oil, salt, spices, flavour enhancers"
+8901030559266,Knorr Mexican Tomato Corn Soup,HUL,,"Tomato powder, corn, sugar, salt, spices, flavour enhancers (INS 621), acidity regulator, colour"
+8901030902352,Knorr Tomato Chatpata Soup,HUL,,"Tomato powder, sugar, salt, spices, flavour enhancers (INS 621), acidity regulator, colour"
+8901030900297,Knorr Hong Kong Manchow Soup,HUL,,"Corn starch, salt, sugar, spices, flavour enhancers (INS 621), acidity regulator, colour"
+8901030900334,Knorr Chicken Delite Soup,HUL,,"Corn starch, salt, sugar, chicken powder, spices, flavour enhancers (INS 621), acidity regulator, colour"
+8901262200868,Amul Misthi Doi,Amul,,"Pasteurized milk, sugar, active lactic culture"
+8901262152235,Amul Kool Rose,Amul,,"Toned milk, sugar, rose flavour, stabilizers, emulsifiers, colour (INS 122)"
+8904383302336,Milky Mist Greek Yogurt,MilkyMist,,"Pasteurized milk, active lactic culture"
+8904083300670,Milky Mist Cooking Butter Unsalted,Milky Mist,,Pasteurized milk cream
+8904083305072,Milky Mist Cooking Butter Salted,MilkyMist,,"Pasteurized milk cream, salt"
+8901777950173,Vadilal Ice Cream Belgian Chocolate,Vadilal,,"Toned milk, sugar, cocoa solids, edible vegetable oil, stabilizers, emulsifiers, artificial chocolate flavour, colour (INS 124)"
+8901777596104,Vadilal Mysore Pak,Vadilal,,"Gram flour (besan), sugar, ghee (milk fat), cardamom"
+8901777136065,Vadilal Aloo Tikki Kathi Roll,Vadilal,,"Refined wheat flour, potato, edible vegetable oil, spices, salt"
+8901030891831,Kwality Wall's Feast,HUL,,"Milk solids, sugar, edible vegetable oil, cocoa solids, emulsifiers (INS 471, INS 322), stabilizers (INS 410, INS 412), colours (INS 150d)"
+8909106048928,Kwality Wall's Chocolate Ice Cream,HUL,,"Toned milk, sugar, cocoa solids, edible vegetable oil, stabilizers, emulsifiers, colours (INS 122)"
+8904089325943,Havmor Zulubar Dark Crunch,Havmor,,"Toned milk, sugar, cocoa solids, edible vegetable oil, stabilizers, emulsifiers, colours (INS 122)"
+8901030624247,Brooke Bond Taj Mahal Tea 500g,HUL,,100% black tea (CTC blend)
+8901030681547,Brooke Bond Taj Mahal Tea Bags,HUL,,100% black tea (CTC blend)
+8901030918810,Brooke Bond Taaza Tea,HUL,,100% black tea (CTC blend)
+8901058896381,Nescafé Sunrise Coffee 200g,Nestlé,,"Instant coffee, chicory"
+8901058865660,Nescafé Gold Cappuccino,Nestlé,,"Instant coffee, sugar, milk solids, glucose syrup, hydrogenated vegetable oil (palm kernel), salt, stabilizers (INS 340(ii), INS 452(i)), emulsifier (INS 471), anticaking agent (INS 551)"
+8901052004393,Tata Tea Gold,Tata Consumer,,100% black tea (CTC blend)
+8901052003389,Tata Kannan Devan Tea,Tata Consumer,,100% black tea (CTC blend)
+8901052034574,Tata Agni Tea 1kg,Tata Consumer,,100% black tea (CTC blend)
+8901052010295,Tata Salt Iodised,Tata Consumer,,"Vacuum evaporated iodised salt, anticaking agent (INS 536)"
+8904043926216,Tata Sampann Unpolished Toor Dal,Tata Consumer,,Unpolished toor dal
+8902433030109,Snickers Bar,Mars,,"Milk chocolate (sugar, cocoa butter, milk solids, cocoa mass, emulsifiers), peanuts, glucose syrup, sugar, palm oil, milk solids, salt, emulsifier, flavouring"
+8901393019964,Center Fresh Soft Chews,Perfetti,,"Sugar, glucose syrup, edible vegetable oil, artificial flavours, colours"
+8901393026146,Chupa Chups Rockats,Perfetti,,"Sugar, glucose syrup, artificial flavours, colours"
+8901042955100,MTR Mango Thokku,MTR,,"Raw mango, salt, red chilli, edible vegetable oil, mustard, fenugreek"
+8901042956732,MTR Jeera Rice,MTR,,"Basmati rice, cumin, edible vegetable oil, salt"
+8901042962542,MTR Vermicelli Seviyan,MTR,,Durum wheat semolina
+8901042957074,MTR Rava Idli Mix,MTR,,"Semolina (rava), salt, spices, raising agents"
+8901042955308,MTR Upma Mix,MTR,,"Semolina (rava), salt, spices, dehydrated vegetables"
+8901155104211,Gits Medu Vada Mix,Gits,,"Urad dal flour, salt, spices, raising agents"
+8901552007689,Ashoka Kantola,Ashoka,,"Refined wheat flour, potato, edible vegetable oil, spices, salt"
+8901552023719,Ashoka Jumbo Punjabi Samosa,Ashoka,,"Refined wheat flour, potato, peas, edible vegetable oil, spices, salt"
+8901552013352,Ashoka Tandoori Roti,Ashoka,,"Whole wheat flour, water, salt"
+8901552013550,Ashoka Paneer Bhurji Kathi Roll,Ashoka,,"Refined wheat flour, paneer, edible vegetable oil, spices, salt"
+8901552001007,Ashoka Date And Tamarind Chutney,Ashoka,,"Dates, tamarind, sugar, salt, spices"
+8901552018920,Ashoka Punjabi Pachranga Pickle,Ashoka,,"Mixed vegetables, edible vegetable oil, salt, spices, acidity regulator"
+8906005503305,Bikaji Paneer Schezwan Kathi Roll,Bikaji,,"Refined wheat flour, paneer, edible vegetable oil, spices, salt, schezwan sauce"
+8906005503596,Bikaji Paneer Tikka Kathi Roll,Bikaji,,"Refined wheat flour, paneer, edible vegetable oil, spices, salt"
+8901414002555,Bikano Boondi,Bikano,,"Gram flour (besan), edible vegetable oil, iodized salt, spices"
+8901414037465,Bikano Kaju Pista Cookies,Bikano,,"Refined wheat flour, sugar, edible vegetable oil, cashew nuts, pistachios, invert syrup, raising agents, emulsifiers"
+8901414043930,Bikano Chole Curry,Bikano,,"Chickpeas, water, tomato, onion, spices, salt, edible vegetable oil"
+8908003115818,Karachi Bakery Osmania Biscuits,Karachi Bakery,,"Refined wheat flour, sugar, edible vegetable oil, milk solids, salt, raising agents, emulsifiers"
+8904043500041,Modern Milk Bread 200g,Modern,,"Refined wheat flour, water, sugar, edible vegetable oil, milk solids, yeast, salt, preservative (INS 282), emulsifiers"
+8904043553733,Modern Kulcha,Modern,,"Refined wheat flour, water, sugar, salt, yeast, edible vegetable oil"
+8906076133111,The Baker's Dozen Milk Bread,The Baker's Dozen,,"Refined wheat flour, water, sugar, milk solids, edible vegetable oil, yeast, salt, preservative, emulsifiers"
+8906020588233,ID Fresh Food Whole Wheat Paratha,ID Fresh Food,,"Whole wheat flour, water, edible vegetable oil, salt"
+8904063211606,Haldiram's Minute Khana Lachha Paratha,Haldiram's,,"Whole wheat flour, water, edible vegetable oil, salt"
+8904063257383,Haldiram's Minute Khana Shami Kebab Wrap,Haldiram's,,"Refined wheat flour, chicken, edible vegetable oil, spices, salt"
+8904004442830,Haldiram's Minute Khana Palak Paneer,Haldiram's,,"Paneer, spinach, edible vegetable oil, spices, salt"
+8906000610084,McCain Chilli Garlic Potato Bites,McCain,,"Potato, edible vegetable oil, spices (chilli, garlic), salt, raising agents"
+8901688122966,Sumeru French Fries,Sumeru,,"Potato, edible vegetable oil"
+8906000791787,Prasuma Chicken Sausage,Prasuma,,"Chicken, spices, salt, sugar, raising agents, preservatives"
+8906107173642,Prasuma Veg Supreme Pizza Minis,Prasuma,,"Refined wheat flour, vegetables, cheese, tomato sauce, edible vegetable oil, spices, salt"
+8906107173697,Prasuma Pizza Mini,Prasuma,,"Refined wheat flour, tomato sauce, cheese, edible vegetable oil, spices, salt"
+8908000791015,Meatigo Chicken Ham,Meatigo,,"Chicken, salt, spices, preservatives, raising agents"
+8901963201195,Billar Chicken Breakfast Sausages,Billar,,"Chicken, spices, salt, sugar, preservatives"
+8907093003739,Tasty Nibbles Sardine Curry,Tasty Nibbles,,"Sardines, coconut, spices, salt, edible vegetable oil, water"
+8906072561017,Meisterwurst Chicken Garlic Krakauer,Meisterwurst,,"Chicken, garlic, spices, salt, sugar, preservatives"
+8901120143733,Sugar Free Gold,Sugar Free,,"Aspartame, acesulfame potassium, anticaking agent"
+8901120143726,Sugar Free Gold No.1,Sugar Free,,"Aspartame, acesulfame potassium, anticaking agent"
+8906149350056,Monkfruit Sweetener,,,"Monkfruit extract"""
+8908010900025,Peanut Butter,,,Roasted peanuts
+8901058897500,Nestlé Nan Pro 2,Nestlé,,"Demineralized whey, vegetable oils, skimmed milk powder, lactose, minerals, vitamins, emulsifier"
+8901262080101,Amul Spray Infant Milk Food,Amul,,"Demineralized whey, vegetable oils, skimmed milk powder, lactose, minerals, vitamins"
+8906040911769,Jalapeno Roasted Makhana,Veer,,"Makhana (fox nuts), edible vegetable oil, jalapeno seasoning, salt"
+8909340000393,Cosmix Plant Protein Indonesian Cacao,Cosmix,,"Plant protein blend, cocoa, natural flavours, sweetener"
+8906082526167,Kapiva Shilajit,Kapiva,,Shilajit extract
+8901207001246,Dabur Shilajit,Dabur,,Shilajit extract
+8901138834838,Himalaya Chyavanaprasha 500g,Himalaya,,"Amla, sugar, honey, ghee, spices, herbs"
+8901138030018,Himalaya Cystone,Himalaya,,Herbal extract formulation
+8901220457778,Triphala Churna,,,Amla
+8904027401203,Baidyanath Bhringarajasava,Baidyanath,,Herbal extract formulation
+8906038782746,Kamadudha Rasa with Mouktika,,,"Herbal formulation"""
+8906010367732,Gulab Jamun 1kg,,,Milk solids
+8906010367336,GRB Soan Cake,GRB,,"Sugar, refined wheat flour, edible vegetable oil, milk solids, cardamom"
+8906010366919,GRB Ghee,GRB,,Milk solids (pure cow ghee)
+8906010360054,GRB Ghee 1L,GRB,,Milk solids (pure cow ghee)
+8906001023456,Gowardhan Swarna Ghee,Gowardhan,,Milk solids (pure cow ghee)
+8904422700963,Patanjali Kacchi Ghani Mustard Oil,Patanjali,,Mustard oil (cold-pressed)
+8904109496844,Patanjali Cow Milk,Patanjali,,Cow milk
+8904422705418,Patanjali Doodh Biscuit,Patanjali,,"Refined wheat flour, sugar, edible vegetable oil, milk solids, invert syrup, raising agents, salt, emulsifiers"
+8906029791764,Priyagold Hunk,Priyagold,,"Refined wheat flour, sugar, edible vegetable oil, invert syrup, salt, raising agents, emulsifiers"
+8906020582002,Fresh iD Protein Rich Chapati,Fresh iD,,"Whole wheat flour, protein isolate, water, salt"
+8906012230119,Vijay Gold Poha Medium,Vijay Gold,,Flattened rice (poha)
+8906012230010,Vijay Idli Rava,Vijay,,Rice rava (semolina)
+8906081382894,Telugu Foods Idli Rava,Telugu Foods,,Rice rava (semolina)
+8906081381729,Telugu Foods Kerala Mixture,Telugu Foods,,"Rice flakes, gram flour, edible vegetable oil, peanuts, sago, salt, spices, colours"
+8906081382429,Telugu Foods Hand Pound Sona Masoori Rice,Telugu Foods,,Sona Masoori rice
+8906142010919,Telugu Foods Chia Seeds,Telugu Foods,,100% chia seeds
+8906142013972,Swetha Telugu Foods Paneer 65 Wrap,Swetha Telugu Foods,,"Refined wheat flour, paneer, edible vegetable oil, spices, salt"
+8906081382672,Swetha Telugu Foods Mango Avakaya,Swetha Telugu Foods,,"Raw mango, salt, red chilli, edible vegetable oil, mustard, fenugreek"
+8906081380142,Mango Avakaya,,,Raw mango
+8903553000409,Ram Bandhu Lime Pickle,Ram Bandhu,,"Lime, salt, spices, edible vegetable oil, acidity regulator"
+8903553601491,Ram Bandhu Mango Pickle,Ram Bandhu,,"Raw mango, salt, spices, edible vegetable oil, acidity regulator"
+8903553646461,Ram Bandhu Mix Pickle,Ram Bandhu,,"Mixed vegetables, salt, spices, edible vegetable oil, acidity regulator"
+8904103033014,Swastiks Tomato Pickle,Swastiks,,"Tomato, salt, spices, edible vegetable oil, acidity regulator"
+8901042955117,Tomato Pickle,,,Tomato
+8901552007733,Ashoka Stuffed Colocasa,Ashoka,,"Colocasia, spices, salt, edible vegetable oil"
+8901552011631,Muli Paratha,,,Whole wheat flour
+8906065030186,Jeera Biscuits,,,Refined wheat flour
+8906009073248,Choco Hazelnut Cookies,,,Refined wheat flour
+8906151420075,Lakshminarayan Cornflakes,Lakshminarayan,,"Corn flakes, sugar, salt, malt extract"
+8904113522423,Agro Fresh Corn Flour,Agro Fresh,,Corn flour
+8904206004317,Spirulina Powder,,,"Spirulina powder"""
+8903386501456,Red Mukhwas,,,"Mixed seeds and spices for mouth freshening"""
+8903179014873,Trofie,,,"Durum wheat semolina pasta"""
+8906060910780,VeroBella Spaghetti,VeroBella,,Durum wheat semolina pasta
+8906002730124,Instant Khaman Mix,,,Gram flour
+8901155144224,Rose Falooda,,,Rose syrup
+8901565001698,Tomato Discs,Peppy,,"Tomato, salt, spices, acidity regulator, preservative"
+8906080600937,Paper Boat,Paper Boat,,"Water, sugar, natural flavours, acidity regulators"
+8904064628304,Haldiram's Pois Rond Grillé Salé,Haldiram's,,"Roasted peas, edible vegetable oil, salt, spices"
+8904064628090,Haldiram's Pois Chiche Décortiqué Cassé Grillé,Haldiram's,,"Roasted split chickpeas, salt"
+8904064663596,Annam Upma Rava,Annam,,Semolina (rava)
+8904064622517,Kalyani Sona Masuri Rice,Kalyani,,Sona Masuri rice
+8904064625891,Nandhi Kodo Millet,Nandhi,,Kodo millet
+8904064678712,Anupama Rice Karnool Sona Masoori,Anupama Rice,,Sona Masoori rice
+8901626364700,Vaahaa White Corn (Cholam),Vaahaa,,White corn grains
+8901626364656,Vaahaa Boiled Little Millet (Saamai),Vaahaa,,Boiled little millet
+8901626364618,Vaahaa Boiled Kodo Millet (Varagu),Vaahaa,,Boiled kodo millet
+8906036846860,Spicelands Motta Karuppan Rice,Spicelands,,Motta Karuppan rice
+8906036840929,Spicelands Red Rice Puttu Flour,Spicelands,,Red rice flour
+8904010630382,Niraa Samba Wheat Puttu Podi,Niraa,,Samba wheat flour
+8904010698887,Nirapara Oats Puttu,Nirapara,,Oats flour
+8906008351392,Manna Kodo Millet,Manna,,Kodo millet
+8906135071408,Native Food Stores Amla Bites,Native Food Stores,,"Amla (Indian gooseberry), sugar"
+8906046936599,Alo Fruit Juice,Alo,,"Water, fruit juice concentrate, sugar, acidity regulator"
+8906000593417,Basmati Rice,,,"Basmati rice"""
+8906002080410,Poudre Curry,,,Curry powder (coriander
+8906002081929,Sakthi Egg Kuruma Masala,Sakthi,,"Coriander, cumin, turmeric, red chilli, black pepper, cloves, cinnamon, cardamom"
+8906002082506,Sakthi Ragi Flour,Sakthi,,Ragi (finger millet) flour
+8906042151590,Anil Rice Flour 500g,Anil,,Rice flour
+8906127700828,TALOD Kantikaka Gota Flour,TALOD,,Gota flour (roasted gram)
+8904082760178,Uttam Sooji,Uttam,,Semolina (sooji/rava)
+8908005116493,Cycle Brand Saykal Chhap Moraayo 500g,Cycle Brand,,Sago (sabudana)
+8908003974255,Tantea Masala Tea Bags,Tantea,,"Black tea, spices"
+8908000339361,Karak Tea Instant Premix,Karak Tea,,"Tea extract, sugar, milk solids, spices, emulsifier"
+8908000339873,Karak Tea Instant Remix,Karak Tea,,"Tea extract, sugar, milk solids, spices, emulsifier"
+8904405857424,Jawhar White Vinegar,Jawhar,,"White vinegar (acetic acid, water)"
+8904355402828,Apollo Apple Cider Vinegar 500ml,Apollo,,Apple cider vinegar
+8906093217047,Zoff Tamarind Whole,Zoff,,Tamarind
+8906090832137,Grace Bay Leaves,Grace,,Bay leaves
+8902434121219,Sujal Gum,Sujal,,"Chewing gum base, sugar, glucose syrup, flavours"
+8904293703414,Tomato Desi Local,,,"Tomato"""
+8909081009396,Sunfeast Marie,Sunfeast,,"Refined wheat flour, sugar, refined palm oil, invert sugar syrup, milk solids, raising agents, salt, emulsifiers"
+8906084415353,Roasted Makhana,MOM,,Makhana (fox nuts)
+8908011305065,Tree Foods Raw Organic Cacao Powder,Tree Foods,,Raw organic cacao powder
+8904445900616,Highland Farms A2 Unsalted Yellow Butter,Highland Farms,,A2 milk cream (unsalted butter)
+8906122501222,GM Foods Chana Sattu,GM Foods,,Roasted gram flour (chana sattu)
+8908000845435,Swissyum Masala Muri,Swissyum,,"Rice flakes, spices, salt, sugar, edible vegetable oil"
+8908003398020,Pro Plant Tofu,Pro Plant,,"Soybean, water, coagulant"
+8906167245709,Whole Farm Bajra Flour,Whole Farm,,Bajra (pearl millet) flour
+8906167243538,Whole Farm Chana Sattu,Whole Farm,,Roasted gram flour (chana sattu)
+8906069404549,Veeba Sauce,Veeba,,"Refined soybean oil, water, sugar, vinegar, salt, thickener, preservative"
+8906033530021,Snapin Chili Flakes,Snapin,,Dried red chilli flakes
+8904104729206,JK Urad Bori,JK,,Urad dal bori (sun-dried)
+8906025370666,Mirgunde,Soham,,Mirgunde (traditional snack)
+8901721000510,Tok Jhal Misti 400g,,,"Traditional Bengali sweet"""
+8901721004266,Prabhuji Dry Gujia,Prabhuji,,"Refined wheat flour, khoya, sugar, dry fruits, edible vegetable oil"
+8901017000408,Pani Puri Masala,,,Spices
+8901882000763,Chillies,,,"Red chillies"""
+8904214502270,Nylon Sev,,,Gram flour
+8908024057128,Eat Better Vanilla Chocolate Laddoos,Eat Better,,"Milk solids, sugar, cocoa, vanilla, ghee"
+8906111441256,Raasa Royal Black Lentils,Raasa,,Black lentils (urad dal)
+8906000210208,Sujata Ragi Flour,Sujata,,Ragi (finger millet) flour
+8908007323264,Fries,,,Potato
+8908002768015,SD Shahi Paneer Masala,SD,,"Coriander, cumin, turmeric, red chilli, black pepper, cloves, cinnamon, cardamom"
+8908009419132,Bauli Moonfils 180g,Bauli,,"Refined wheat flour, sugar, eggs, edible vegetable oil, glucose syrup, raising agents, emulsifiers, preservatives, flavours"
+8906077361094,Makhana Magic Masala,,,Makhana
+8906077360097,Jaimin Mini Bhakarwadi,Jaimin,,"Refined wheat flour, gram flour, edible vegetable oil, spices, salt, sugar"
+8906077362114,Jaimin Soya Stick,Jaimin,,"Soya flour, edible vegetable oil, spices, salt"
+8906010504045,Tangg,,,Sugar
+89007587,Orbit,Wrigley,,"Sorbitol, gum base, mannitol, flavours, sweeteners"
+8906011145247,Medislim,,,"Weight management supplement"""
+8906064231621,Suhana Cuppa Dal Chawal,Suhana,,"Dal, rice, spices, salt, edible vegetable oil"
+8901662004714,Goda Masala,,,Coriander
+8901774002110,Pani Puri Masala,,,Spices
+8906001056706,Poha On The Go,,,Flattened rice
+8904083519829,Organic 7 Grain Atta,,,Whole wheat
+8902901030549,Good Life Poppy Seed,Good Life,,Poppy seeds
+8901063142657,Nutri Choice Digestive,Nitro Choice,,"Whole wheat flour, sugar, edible vegetable oil, raising agents, salt, emulsifiers"
+8908018875042,Awe Sourdough Crackers Parmesan And Thyme,Awe,,"Whole wheat flour, parmesan cheese, thyme, edible vegetable oil, salt, raising agents"
+8906090592161,Chef Urbano Sweet Potato Chips,Chef Urbano,,"Sweet potato, edible vegetable oil, salt"
+8906004563133,Diamond 7 Wonders Lentil Crackers,7 Wonders,,"Lentil flour, edible vegetable oil, spices, salt"
+8906050183552,Homefills Ragi Chana Sattu,Homefills,,"Ragi flour, roasted gram flour"
+8904224300378,Food Gate Rice Powder,Food Gate,,Rice flour
+8908012586074,My Kitchen Urad Dal Whole,My Kitchen,,Urad dal (whole)
+8906005627155,Mayil Idli/Dosa Rice,Mayil,,Idli/Dosa rice
+8907459000594,Kopiko Cappuccino Candy,Kopiko,,"Sugar, glucose syrup, coffee extract, milk solids, flavours"
+8906151440240,Konjac Noodles,,,Konjac flour
+8901030953262,Lifebuoy Handwash 1L,HUL,,"Water, surfactants, fragrance, preservatives"
+8901030050114,Pear's Hand Wash,HUL,,"Water, surfactants, fragrance, preservatives"
+8905110008743,Savlon Handwash,Savlon,,"Water, surfactants, antiseptic, fragrance"
+8901725973124,Savlon,Savlon,,Antiseptic liquid
+8901548147177,Everyuth Peel Off Mask,Everyuth,,Face mask
 8901242107408,Bambino Roasted Vermicelli,Bambino,,"Rice / wheat semolina (roasted), salt"
 8908003249032,Organic Cow Milk,Akshayakalpa Organic,,cow milk
 8906153742656,Zahidi Dates,TMI COLMAN,,dates
@@ -6018,7 +6306,6 @@ and added flavour (nature identical and artificial flavouring substance - vanill
 8904043926582,Masoor Dal,Tata Sampann,,masoor dal
 8906140203870,Sultan Dates,Nature's Choice,,wet dates
 8904293704091,Capsicum Green,Unknown Brand,,capsicum green
-8906093217047,Tamarind Whole,Zoff,,tamarind
 8906161220306,Oppa Rice Hakka Noodles,Vatsa's,,"rice, water"
 8906011771842,cow milk,Mahanand,,cow milk
 8904104705033,Jk poppy seed,Jk,,poppy seed
@@ -6039,9 +6326,7 @@ and added flavour (nature identical and artificial flavouring substance - vanill
 8906059160110,Regency Apricots Dried,Regency,,dried apricots
 8901207034459,Anmol Gold,Dabur,,coconut oil
 8906002080014,Turmeric Powder,Sakthi,,turmeric
-8904132969995,Good Life HMT Kolam Rice 26 Kg Bag,Good Life,,rice
 8908012126829,Prunes,Bazana,,prunes
-8902901062281,Barley,GoodLife,,barley
 8903363004383,Kulith,Unknown Brand,,horsegram
 8906046144437,Bay Leaf Whole Organic Spices,,,bay leaf whole
 8906038500074,Wheat flour,,,wheat
@@ -6066,7 +6351,6 @@ and added flavour (nature identical and artificial flavouring substance - vanill
 8908002783353,Granny's Tamarind,Granny's,,tamarind
 8906129282742,LOW FAT PANEER,FRU BON,,milk solids
 8908015361005,Mustard Oil,Unknown Brand,,mustard oil
-8902901226645,Good Life Jowar 500g,Good Life,,jowar
 8901030795909,Boost,,,calcium
 8906163832415,Farmley Omani Dates Fard,Farmley,,dates
 8906012231918,Corn Flour,Vijay Gold,,corn flour
@@ -6133,7 +6417,6 @@ and added flavour (nature identical and artificial flavouring substance - vanill
 8902689683043,Brinjal Nagpur,Unknown Brand,,brinjal
 8906120100427,Premium Figs (Anjeer),Farmley,,figs (anjeer)
 8901747001546,Wagh Bakri tea,Wagh Bakri,,tea
-8902901001709,Good Life Chakki Atta 5 Kg Bag,good life,,atta
 8906189580857,Freshly Frozen Grated Coconut,Pluckk,,coconut
 8906140204020,Omani Seedless Dates,Nature's Choice,,dates
 8906046144284,"Nutmeg Ground Organic Spices, Nutmeg Ground",,,nutmeg ground
@@ -6164,9 +6447,6 @@ and added flavour (nature identical and artificial flavouring substance - vanill
 8906001210214,Chemba puttu podi,,,rice
 8906053813166,Jaggery Powder,Paawak,,jaggery
 8901047065057,Everyday Basmati Rice,Kohinoor,,basmati rice
-8901192109125,Whole Cumin,Catch,,whole cumin
-8906090832137,Bay leaves,Grace,,bay leaves
-8904293703414,Tomato Desi Local,Unknown Brand,,tomato
 8903071009311,Fresh Frozen Green Peas,MR FREEZE,,green peas
 8903794504490,Groundnut,Safe Harvest,,groundnut
 8904293704978,Coccinnia,Unknown Brand,,coccinnia
@@ -6178,12 +6458,9 @@ and added flavour (nature identical and artificial flavouring substance - vanill
 8908025722056,Bharat Dal Chana Whole,Bharat Dal,,chana
 8903023013281,More Choice Zahidi Dates,More Choice,,dates
 8908011844014,TS Girijan Honey,TS Girijan,,honey
-8903023002216,Vedaka Whole Cashews,Vedaka,,whole cashews
 8904063282286,Haldiram's Nuts Plain Almonds,Haldiram's,,almonds
 8901552005296,Kitchen King Imli,Kitchen King,,tamarind
 8906002663316,Tilnad Gingelly oil,KLF,,sesame oil
-8904224300378,Food gate rice powder,,,rice
-8908012586074,My Kitchen Urad Dal Whole,My Kitchen,,urad dal whole
 8908020062676,Whole Cashew,Open Secret,,cashew kernels
 8904132963597,Good Life Roasted sunflower seeds 100gm,Good Life,,sunflower seed
 8902901171303,Good Life Unpolished Urad Whole 500g,Good Life,,urad dal
@@ -6467,7 +6744,6 @@ and added flavour (nature identical and artificial flavouring substance - vanill
 8901542001611,Glucon d orange 1kg,,,surcrose
 8904132912977,Snactac Atta noodle,,,noodles
 8903363003744,Rava,,,protein
-8903023005378,Popular Whole Almonds,Vedaka,,whole almonds
 8901058008463,Nestlé Munch,Nestlé,,"Sugar, milk solids, hydrogenated veg oil, cocoa solids, wheat flour, emulsifiers"
 8904408000315,Black pepper powder,,,7 pcs
 8904340720005,Pearls,,,elaichi
@@ -6515,7 +6791,6 @@ and added flavour (nature identical and artificial flavouring substance - vanill
 8902901225761,white peas dry,Good Life,,white peas dry
 8902901027310,Pulses moong dal 2kg,Reliance,,moong dal
 8906067025227,Nansj,,,jaje
-8906016010120,almonds,"K.B.B Nuts Pvt. Ltd.,Tulsi",,almond kernels
 8901052000937,Tata Gold Tea,,,tea leaves
 8906044540040,Pure gain,,,pure gain
 8906046144468,Oregano flakes organic spices,,,oregano flakes
@@ -6547,8 +6822,6 @@ and added flavour (nature identical and artificial flavouring substance - vanill
 8903520014866,Premium Jasmine Rice,La Perla,,jasmine rice
 8903662001519,Brown Basmati Rice,Dunar Nutritia,,basmati rice
 8903662010368,Elonga Extra Long Basmati Rice,Dunar,,basmati rice
-8904064622517,Sona Masuri Rice,Kalyani,,rice
-8904064625891,Kodo Millet « Millet Indigène »,Nandhi,,little millet
 8906006720107,Qyno Dates,Lion,,dates
 8906010554118,Best Select Rice,Best,,riz
 8906025201786,Roasted Dalia,Tip Top,,m.p. wheat
@@ -6570,7 +6843,6 @@ and added flavour (nature identical and artificial flavouring substance - vanill
 8906000401002,deer brand psyllium husk,deer brand,,psyllium husk
 8901786411009,Kashmiri Red Chilli Powder Everest,Everest,,chilli powder
 8906021924894,apis Royal Zahidi dates,apis,,dates
-8908017778887,Indian Raisins,Ashapura Agrocomm,,raisins
 8904226700077,N2H GULKAND,N2H,,"sugar, rose"
 8901262071017,Amul Belgian chocolate,Amul,,"e322, e476"
 8904001800268,Idhayam Sesame Oil,Idhayam,,sesame oil
@@ -6581,7 +6853,6 @@ and added flavour (nature identical and artificial flavouring substance - vanill
 8908011491119,Walnuts,Proventus Retail Pvt Ltd.,,whole walnut
 8903000364073,Besan,Lal Gulab,,chana dal
 8908003744261,suji,Akshat group,,whole wheat
-8901440023067,Chilli powder,Eastern,,chilli powder
 8900000002771,"White Seedless Grapes, Table Grapes",Maple,,trauben.
 8904049650894,Superba indian extra long grain 1121 basmati rice,,,rice
 8906001210221,mutter paneer,,,rice
@@ -6672,7 +6943,6 @@ my"
 8906033531264,Snap!n white onion powder,,,38
 8904011311044,Ghee,Aavin,,milk fat
 8906100280293,Shresta Bansi Rawa,Shresta,,wheat
-8904043926216,Unpolished Toor Dal,Tata Sampann,,toor dal
 8902901227161,Good life raisin yellow 500g,Good life,,raisins yellow
 8901491001144,Mirinda,PepsiCo,,"Carbonated water, sugar, acidity regulators, orange juice concentrate, colours (INS 110, 102)"
 8901192108128,Jeera pwdr,Unknown Brand,,ff
@@ -6710,7 +6980,6 @@ vyv"
 8906017810125,Madhusudan Homogenized Toned Milk,Madushudan,,milk
 8901207021206,Real  jamun plus,,,juce
 8906048124888,Dona juice,,,sugar
-8902901225891,Good Life Rice Flour,Good Life,,rice flour
 8906116780145,shatavari,,,asparagus
 8902246003703,Bear,,,a
 8901814003183,Viva,,,sugar
@@ -6741,7 +7010,6 @@ hii"
 8901648031147,Mother Dairy cow ghee 1 ltr,Mother Dairy,,ghee
 8906001727149,Desi ghee,Paras,,ghee
 8908005575023,Basmati Rice,India Crown,,basmati reis
-8906013032224,Wai Wai X-Press Masala,Wai Wai,,"Refined wheat flour, palm oil, salt, masala (spices, sugar, flavour enhancer INS 621)"
 8906036672292,Pasteurised Table Butter Unsalted,Nandini,,milk solids
 8906022620115,rice bran oil,healthy heart,,rice bran oil
 8906091681215,Yuzu jpan citrus imp,SPR/G,,na
@@ -6778,12 +7046,10 @@ hii"
 8906112580183,KIMEA DATES,AMS,,dates
 8906161500682,Nutri Binge California Almonds,Nutri Binge,,almonds
 8904132943704,Water with Minerals,Sure,,water
-8901928112009,Bisk Farm Bourbon,Bisk Farm,,"Refined wheat flour, sugar, edible veg oil, cocoa solids, raising agents, emulsifiers, colours"
 8906009011301,White Label Sugar,Parry's,,sugar
 8906097402180,Black Pepper,Zoff,,black pepper
 8901030985812,3 Roses Tea,Brooke Bond,,tea
 8901138819965,DS Group Pulse,DS Group,,"Sugar, liquid glucose, tamarind, salt, spices, acidity regulators, colours"
-8901058865660,Nescafé Gold Cappuccino,Nestlé,,"Instant coffee, sugar, milk solids, glucose syrup, hydrogenated vegetable oil (palm kernel), salt, stabilizers (INS 340(ii), INS 452(i)), emulsifier (INS 471), anticaking agent (INS 551)"
 8906023641010,Ghee,Thirumala,,milk fat
 8904293705074,Cowpea Beans,Unknown Brand,,beans
 8908003473031,Chekku Groundnut Oil,Ras,,groundnut oil
@@ -6807,7 +7073,6 @@ hii"
 8904293590442,Mango Dasheri,Unknown Brand,,mango
 8908019118100,Elephant Dates,Elephant,,wet dates
 8906022660029,Jalan Chana Sattu,Jawan,,chana (gram)
-8906012230119,Vijay Gold Poha Medium,Vijay Gold,,flattened rice
 8908014100360,Riz basmati - Rosana,India Gate,,riz
 8906001028444,Go Supremo Cow's Milk,Go,,milk
 8906010500481,Crunchm,Balaji,,potato
@@ -6821,7 +7086,6 @@ hii"
 8906105470095,kimia dates,kimia,,dates
 8906021925716,Select Dates,api's,,dates
 8909081001567,Aashirvaad Superior MP Atta,Aashirvaad,,whole wheat
-8901725114022,Aashirvaad Instant Veggie Upma,ITC,,"Semolina (sooji), dehydrated vegetables, salt, spices, sugar, edible oil, flavour enhancer"
 8903363001764,Dmart Premia Sabudana small,Dmart,,sabudana
 8904043904061,Tata Sampann Poha,Tata Sampann,,poha
 8901725001063,Aashirvaad Double Roasted Suji Rava,Aashirvaad,,wheat
@@ -6853,14 +7117,12 @@ hii"
 8901648095163,Nandini Goodlife Skimmed,Nandini,,"Skimmed milk, vitamins A & D"
 8903023289266,More Life Kodo Millet,More,,kodo millet
 8904083505549,Moong dal,24 Mantra Organic,,moong dal
-8901393026146,Perfetti Mentos,Perfetti,,"Sugar, liquid glucose, hydrogenated veg oil, gelatin, flavours, colours"
 8901058011401,Nescafe Ice Roast,Nestlé,,coffee beans
 8906002080038,Sakthi Turmeric Powder,Sakthi,,turmeric
 8906089153489,Premium Basmati Rice,Zaara,,basmati rice
 8901262261425,Amul A2 Gir Cow Fresh Milk,Amul,,milk
 8908000452275,Falcon Uae Dates With Seeds,Falcon,,dates
 8906170520602,Good Gut Daily Fiber,Nutrabay,,maize dextrin
-8901688122966,Sumeru French Fries,Sumeru Foods,,"Potato, edible vegetable oil (palmolein)"
 8903023006009,Vedaka Roasted Chana,Vedaka,,roasted chana
 8906021927079,apis seeded dates,apis,,seeded dates
 8904132965836,rajma sharmili,Simply Smart,,rajma
@@ -6914,7 +7176,6 @@ hii"
 8905507066875,full bloom instant coffee,full bloom,,e coffee beans
 8903023006184,Vedaka Cashews - Broken,Vedaka,,cashews
 8901063162464,BRITANNIA marie GOLD,Britannia,,refin
-8906090571258,Too Yumm Multigrain Chips,ITC/RPSG,,"Multigrain blend (oats, corn, wheat, rice, quinoa), edible vegetable oil, seasoning (spices, salt)"
 8909177002775,Peanut,"Smart One,Kiranakart",,peanut
 8904384814005,Coffee,Blue Tokai,,100% coffee.
 8902901001785,Bansi Rawa,Good Life,,bansi rawa
@@ -6973,11 +7234,9 @@ hii"
 8901262153578,Amul Gold Milk (UHT),GCMMF,,"Standardized milk (4.5% fat, 8.5% SNF), vitamins A & D"
 8901262153579,Amul Kool Elaichi,GCMMF,,"Toned milk, sugar, elaichi flavour, stabilizers"
 8901262153580,Amul Vanilla Ice Cream,GCMMF,,"Milk solids, sugar, edible veg oil, emulsifiers, stabilizers, vanilla flavour"
-8901030891831,Kwality Wall's Feast,HUL,,"Milk solids, sugar, edible veg oil, cocoa solids, emulsifiers, stabilizers, colours"
 8901063151353,Britannia Cheese Slices,Britannia,,"Milk solids, salt, emulsifying salts (INS 331, 452), preservatives (INS 200)"
 8901063151354,Britannia Cheese Cubes,Britannia,,"Milk solids, salt, emulsifying salts, preservatives"
 8901058852167,Nestlé a+ Nourish,Nestlé,,"Toned milk, vitamins A & D"
-8904083305072,Go Cheese Slices,Parag Milk,,"Milk solids, salt, emulsifying salts, preservatives"
 8901030825546,Knorr Thick Tomato,HUL,,"Tomato powder, sugar, salt, corn starch, spices, flavour enhancers (INS 621)"
 8901030825547,Knorr Sweet Corn Veg,HUL,,"Sweet corn, salt, corn starch, sugar, spices, flavour enhancers (INS 621)"
 8901192205262,MDH Kitchen King,MDH,,"Coriander, turmeric, red chilli, cumin, black pepper, cloves, cinnamon"
