@@ -1,0 +1,64 @@
+{
+  "cleaning_timestamp": "2026-08-07 02:46:51",
+  "platform": "foodfactsindia.online",
+  "summary": {
+    "original_rows": 843,
+    "final_rows": 831,
+    "total_removed": 12,
+    "removal_percentage": 1.42
+  },
+  "removals": {
+    "invalid_names": "1",
+    "supplements": "4",
+    "corrupted_entries": "0",
+    "duplicates": 7,
+    "invalid_barcodes": "0"
+  },
+  "fixes_applied": {
+    "name_corrections": "140",
+    "category_fixes": "124",
+    "ingredient_standardizations": 2
+  },
+  "flags": {
+    "needs_verification": 353,
+    "non_standard_barcodes": 205,
+    "empty_brands_filled": 18
+  },
+  "dataset_stats": {
+    "unique_products": 749,
+    "unique_banned_ingredients": 15,
+    "unique_brands": 303,
+    "top_banned_ingredients": {
+      "TBHQ (E319)": 269,
+      "Titanium Dioxide (E171)": 155,
+      "Partially Hydrogenated Oil (PHO)": 150,
+      "Carmoisine / Azorubine (E122)": 120,
+      "Erythrosine (E127)": 57,
+      "Ponceau 4R (E124)": 46,
+      "Quinoline Yellow (E104)": 13,
+      "Potassium Bromate (E924A)": 6,
+      "Fast Green FCF (E143)": 4,
+      "Brominated Vegetable Oil (BVO)": 3
+    },
+    "top_brands": {
+      "Oreo": 51,
+      "Maggi": 40,
+      "Cadbury": 35,
+      "Nestl\u00e9": 34,
+      "Kellogg's": 25,
+      "Snickers": 21,
+      "Doritos": 20,
+      "Britannia": 18,
+      "Unbranded": 18,
+      "Brand's Country Kitchen Supplies  Inc.": 18
+    },
+    "jurisdiction_distribution": {
+      "US": 396,
+      "EU": 169,
+      "JP": 412,
+      "IN": 16,
+      "CA": 150,
+      "UK": 5
+    }
+  }
+}

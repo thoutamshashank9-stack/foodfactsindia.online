@@ -1,0 +1,28 @@
+{
+  "total_audited": 53346,
+  "total_violations": 843,
+  "unique_products": 753,
+  "ban_type_counts": {
+    "Colorant/Color": 404,
+    "Ingredient/Additive": 439
+  },
+  "banned_items_counts": {
+    "Titanium Dioxide (E171)": 157,
+    "TBHQ (Tertiary Butylhydroquinone) (E319)": 271,
+    "Partially Hydrogenated Oil (PHO)": 151,
+    "Ponceau 4R (E124)": 46,
+    "Carmoisine (E122)": 120,
+    "Erythrosine (E127)": 57,
+    "Quinoline Yellow (E104)": 13,
+    "Brilliant Black BN (E151)": 1,
+    "Azodicarbonamide (ADA) (E927A)": 1,
+    "Azodicarbonamide (ADA)": 1,
+    "Brominated Vegetable Oil (BVO)": 3,
+    "Patent Blue V (E131)": 2,
+    "Fast Green FCF (E143)": 4,
+    "Green S (E142)": 3,
+    "Potassium Bromate (E924A)": 6,
+    "Potassium Bromate": 6,
+    "Brown HT (E155)": 1
+  }
+}
