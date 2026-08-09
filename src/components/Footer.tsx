@@ -92,6 +92,9 @@ export const Footer: React.FC<FooterProps> = ({ onOpenGrievance, onOpenManifesto
             <strong className="text-stone-500 dark:text-stone-400">Data Verification Notice:</strong> Product details are compiled from publicly available labels, brand information, and user-contributed data. Formulations may change over time. Always verify the physical package label before relying on ingredient information. If a brand or consumer finds outdated information, it can be reported for immediate correction.
           </p>
           <p>
+            <strong className="text-stone-500 dark:text-stone-400">Open Database License (ODbL) Attribution:</strong> Ingredient and product data sourced in part from Open Food Facts (<a href="https://openfoodfacts.org" target="_blank" rel="noopener noreferrer" className="underline hover:text-stone-600 dark:hover:text-stone-300">openfoodfacts.org</a>), contributed by the global community under the Open Database License (ODbL), as well as official brand publications and physical packaging.
+          </p>
+          <p>
             <strong className="text-stone-500 dark:text-stone-400">Legal & Regulatory Notice:</strong> FoodFactsIndia.online is an independent educational platform. We are not affiliated with any FMCG brand, the FSSAI, or any government body. All trademarks and brand names are the property of their respective owners and are used strictly for product identification under the doctrine of Nominative Fair Use. Simulated warning labels represent foreign policies and are NOT Indian Government mandates.
           </p>
         </div>
