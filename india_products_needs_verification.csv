@@ -1,10 +1,9 @@
 barcode,product_name,brands,ingredients_text,sold_in_india_status,ingredient_confidence,status,data_source,source_license,collection_method
 8904063226372,Veggie And Paneer Momos,Haldiram,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
-8901242107408,Bambino Roasted Vermicelli,Bambino,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
+8901242107408,Bambino Roasted Vermicelli,Bambino,"Rice / wheat semolina (roasted), salt",NEEDS_VERIFICATION,INCOMPLETE,FIX,Raw OCR Scrape (Needs QA),Pending Attribution,Barcode Scan
 8908016501493,Peri Peri Momos,Hello Tempayy,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8906010360405,Ghee,Local/Regional Dairy,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8904001800282,Sesame Oil,Idayam,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
-8901491983211,Lay's Chips,Lay's,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901779902569,Saras Sunflower Oil,Saras,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8906151236607,Millet Fingers Chatpata Masala,Snackible,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8906035140204,Bengali Mixture,Chipo,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
@@ -20,7 +19,6 @@ barcode,product_name,brands,ingredients_text,sold_in_india_status,ingredient_con
 8906153742656,Zahidi Dates,TMI COLMAN,dates,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901052003389,TATA Kannan Devan,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8904023007584,hair oil,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
-8901063162303,Marie gold,Britannia,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8904970597004,Potato Fresh New Crop,Unknown Brand,potato,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8908012987895,ProBlend Whey Protein,Trunativ,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901314502186,Palmolive,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
@@ -29,7 +27,6 @@ barcode,product_name,brands,ingredients_text,sold_in_india_status,ingredient_con
 8904232702348,The,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901552034043,Garlic Naan,Ashoka,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901190107024,Organic peanut butter,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
-8901719136801,Hide&Seek Milano (Creme),Parle,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901063370166,Good day,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8908009059598,RuskPops (Cinnamon Rush),The Heath Factory,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901777620977,Classic Aloo Mutter Jumbo Puff,Vadilal,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
@@ -1452,7 +1449,6 @@ barcode,product_name,brands,ingredients_text,sold_in_india_status,ingredient_con
 8904304773702,Jai bharat,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8904067704920,Mathri,Jabson's,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8904063260864,cookie heaven,Haldiram's,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
-8901262030144,Amul Pure Ghee,Amul,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901440023043,Chilli Powder,Eastern,chilli,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901117248205,serohale,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8908017808119,Sel minéral de l'Himalaya,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,OpenFoodFacts (ODbL),ODbL,API/CSV Import
@@ -1742,7 +1738,7 @@ barcode,product_name,brands,ingredients_text,sold_in_india_status,ingredient_con
 8901491100366,Rolled Oats,Quaker,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8902027006343,Bread,Kitty,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901052011865,Extra Virgin Avocado Oil Spray,TATA,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
-8901764032967,Sprite LEMON-LIME FLAVOURE,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
+8901764032967,Sprite,Coca-Cola,"Carbonated water, sugar, acidity regulators (INS 330, 331), natural flavours",NEEDS_VERIFICATION,INCOMPLETE,FIX,Raw OCR Scrape (Needs QA),Pending Attribution,Barcode Scan
 8902979052832,Milk,Cavin's,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8906034573119,Mango Chutney,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901548147368,Tan Removal Chocolate & Cherry Face Pack,Everyuth Naturals,,NEEDS_VERIFICATION,INCOMPLETE,FIX,OpenFoodFacts (ODbL),ODbL,API/CSV Import
@@ -1997,7 +1993,6 @@ barcode,product_name,brands,ingredients_text,sold_in_india_status,ingredient_con
 8901030985577,Tea,3 roses,tea,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8908001631525,B curd,Aroma,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8906026900022,sugar,madhur,sugar,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
-8901058901580,Maggi 2-Minute Noodles,Nestlé,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8904063253156,Haldirams samosa,Haldiram's,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901071302036,Sofit Soya Drink Chocolate,sofit,,NEEDS_VERIFICATION,INCOMPLETE,FIX,OpenFoodFacts (ODbL),ODbL,API/CSV Import
 8904063253675,Homestyle Paratha,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
@@ -2396,7 +2391,6 @@ barcode,product_name,brands,ingredients_text,sold_in_india_status,ingredient_con
 8906058710194,Schmitten luxury Chocolates,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,OpenFoodFacts (ODbL),ODbL,API/CSV Import
 8901777024669,Bhindi Cuts Okra Cuts,Vadilal,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8904063259714,Soystix,Haldiram's,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
-8901233022574,Bourn Vita,Cadbury,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901262153348,Protein Lassi - Rose Flavour,Amul,cholesterol,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8908010150017,Farm Made Foods Free Range Eggs,Farm Made,eggs,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8903236700107,What Women Want,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
@@ -2446,7 +2440,6 @@ barcode,product_name,brands,ingredients_text,sold_in_india_status,ingredient_con
 8901058875577,Milkybar,Nestlé,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8904004420388,STICKS JEERA,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8902433030697,snikers chocolate,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,OpenFoodFacts (ODbL),ODbL,API/CSV Import
-8901030831720,Kissan mix fruit jam 700g,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8906009621043,شكر ابيض مكعبات,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8907316007438,Dal Makkani,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8908007153007,Packged drinking water,Aqua sip,water,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
@@ -2575,7 +2568,6 @@ barcode,product_name,brands,ingredients_text,sold_in_india_status,ingredient_con
 8904083513780,Mango Lassi Drink,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8906081123725,Premium Dryfruit Collection,Happilo,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8904132926820,Besan (Coarse),Good Life,chana dal,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
-8902579103187,Frooti Mango Drink 1.2ltr,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901037017417,HALDI DOODH,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8906089701055,Cayenne pepper ground,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901552019002,Punjabi Samosa,Ashoka,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
@@ -2805,7 +2797,7 @@ barcode,product_name,brands,ingredients_text,sold_in_india_status,ingredient_con
 8901542003158,Complan Rich Chocolate flavor,Complan,,NEEDS_VERIFICATION,INCOMPLETE,FIX,OpenFoodFacts (ODbL),ODbL,API/CSV Import
 8901030985973,Horlicks chocolate delight flavour 500g pet,Horlicks,,NEEDS_VERIFICATION,INCOMPLETE,FIX,OpenFoodFacts (ODbL),ODbL,API/CSV Import
 8901030976117,Horlicks classic Malt,Horlicks,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
-8901542006227,Glucon D,glucon d,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
+8901542006227,Glucon-D Tangy Orange,GSK/HUL,"Dextrose monohydrate, vitamin C, acidity regulators, colours (INS 102, 110), flavours",NEEDS_VERIFICATION,INCOMPLETE,FIX,Raw OCR Scrape (Needs QA),Pending Attribution,Barcode Scan
 8901803001145,Amrutanjan,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8906001050643,Mathers manggo pickle 200 g,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901155113114,Gits vermicelli kheer,1,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
@@ -2975,7 +2967,7 @@ barcode,product_name,brands,ingredients_text,sold_in_india_status,ingredient_con
 8901058869408,"Nestle, EveryDay",Nestlé,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8906115883854,Glucose biscuit,Marino,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8903023005378,Popular Whole Almonds,Vedaka,whole almonds,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
-8901058008463,Maggi pichkoo,Maggi,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
+8901058008463,Nestlé Munch,Nestlé,"Sugar, milk solids, hydrogenated veg oil, cocoa solids, wheat flour, emulsifiers",NEEDS_VERIFICATION,INCOMPLETE,FIX,Raw OCR Scrape (Needs QA),Pending Attribution,Barcode Scan
 8902082803963,Green Chilli,Grandma's,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8902082803956,Fresh tomato,Grandma's,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8902082806384,Red chilli,Grandma's,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
@@ -3306,7 +3298,6 @@ barcode,product_name,brands,ingredients_text,sold_in_india_status,ingredient_con
 8909876543319,Chocolate Spread,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,OpenFoodFacts (ODbL),ODbL,API/CSV Import
 8906146030555,Kaju Katli,Haldiram's,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8908008551031,Amritsari khas,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
-8901058854107,Atta noodles,Maggi,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8906108531267,soups,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8906010505479,Chaat Chaska Tickilng Spicy Potato Wafers,Balaji Wafers,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901440218951,Eastea Harmony Black Tea,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
@@ -3749,7 +3740,6 @@ barcode,product_name,brands,ingredients_text,sold_in_india_status,ingredient_con
 8902901222906,Good Life Poppy seed,Good Life,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8902901232806,Good  life Flax seed,Good  life,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901192105110,Amchur power,Catch,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
-8901192103116,Kashmiri mirch power,Catch,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8902901241211,Good life turmeric powder,Good Life,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8904104736013,Chhole masala,JK,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8902901029888,Good Life multi grain atta 6kg,Good Life,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
@@ -3922,7 +3912,6 @@ barcode,product_name,brands,ingredients_text,sold_in_india_status,ingredient_con
 8908017074934,Mango Raisins,Madamix,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8906064651122,Peri Peri Dip,Win green Farms,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8904063224156,Paneer (Tofu) Paratha,Haldiram’s,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
-8901063093478,Good day,Britannia,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8906009077635,unobic (6pakes),,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901248104067,navratan hair oil,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8904132918368,get real coconut oil,get real,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
@@ -4017,7 +4006,6 @@ barcode,product_name,brands,ingredients_text,sold_in_india_status,ingredient_con
 8901396116158,Lizol allin1 2L 500ml,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901491709446,Oats Multigrain,Quaker,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8906037692107,Savory chocolate,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,OpenFoodFacts (ODbL),ODbL,API/CSV Import
-8901030251504,Taj Mahal Exclusive Selection of finest teas,Brooke Bond,,NEEDS_VERIFICATION,INCOMPLETE,FIX,OpenFoodFacts (ODbL),ODbL,API/CSV Import
 8901030373916,Bru Gold,Hindustan Unilever Brand,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8906034814250,Savory caramel,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8900200025556,Venga Functional infusions Calorie balance Lemon lime green tea,Unknown Brand,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
@@ -4090,7 +4078,6 @@ barcode,product_name,brands,ingredients_text,sold_in_india_status,ingredient_con
 8901233022086,dairy milk silk bubbly,"Cadbury,Cadbury Dairy Milk",,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901233023687,FUSE,Cadbury,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901233024042,perk,cadbury,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
-8901233028361,Dairy Milk,Cadbury,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901262151375,Cool Kesar,Amul,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901262151429,Amul kool Cofe,Amul,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901389050209,PASSPASSS  PULSE,Ds group,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
@@ -4567,7 +4554,7 @@ barcode,product_name,brands,ingredients_text,sold_in_india_status,ingredient_con
 8901393016376,Chupa Chups Gum Filled Lollipop,Chupa Chups,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8904083518266,Himalaya salt,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901764241253,Schweppes Tonic Water,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
-8901233031644,Choclairs,Cadbury,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
+8901233031644,Choclairs,Cadbury,"Sugar, glucose syrup, hydrogenated vegetable oil (palm kernel), milk solids, cocoa solids, emulsifier (INS 322), salt, flavouring",NEEDS_VERIFICATION,INCOMPLETE,FIX,Raw OCR Scrape (Needs QA),Pending Attribution,Barcode Scan
 8908002026535,Pani puri,BTW,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8906001055204,Pickles au chili verts,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8902901223170,good life sabudana,reliance,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
@@ -4815,10 +4802,9 @@ barcode,product_name,brands,ingredients_text,sold_in_india_status,ingredient_con
 8904133700030,Masala chai,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8904304538660,appalam papad,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8904232700160,Mayonnaise,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
-8901537074354,brown rice,Daawat,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8908004711095,Riz shazia,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,OpenFoodFacts (ODbL),ODbL,API/CSV Import
 8901552015516,Rogan Josh sauce,Truly indian,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
-8901155107328,Khaman dhokla,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
+8901155107328,Gits Khatta Dhokla,Gits Food,"Semolina & gram flour mix, sugar, tamarind, salt, spices, raising agents",NEEDS_VERIFICATION,INCOMPLETE,FIX,Raw OCR Scrape (Needs QA),Pending Attribution,Barcode Scan
 8901001555570,Ginger Pickle,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8904304500759,Swad Tomato Ketchup,Swad,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8906021924887,ARABIAN PEARLS,apis,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
@@ -4850,7 +4836,6 @@ barcode,product_name,brands,ingredients_text,sold_in_india_status,ingredient_con
 8906002131198,UDHAIYAM toor dal,udhaiyam,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8906002661374,Huile de coco,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,OpenFoodFacts (ODbL),ODbL,API/CSV Import
 8904086403026,candisten,poudre,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
-8901491702188,Oats,Quaker,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901088093668,Productos alimentarios,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8904063255334,Haldiram bhujiya,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901888000682,Chyawanprash,Dabur,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
@@ -5036,7 +5021,6 @@ fat",NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pen
 8901063362857,Britannia cake,britannia,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8902858490410,Wood Children,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8904063200631,Chakoli,Haldiram's,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
-8901063151352,Good Day-Cashew Cookies,Britannia,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8906009504193,Ghee,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901552013352,Tandoori roti,Ashoka,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8904063214324,Haldiram navratan 440g,Haldiram,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
@@ -5153,7 +5137,6 @@ fat",NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pen
 8901764935206,Minute Maid Orange Juice,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8906080600258,Paper Boat,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901262040037,Amul Shrikand,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
-8901233033563,Dairy Milk Silk minis,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901393019964,Centerfresh Soft Chews,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901747002185,Wagh Bakri Masala Tea 250G,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8906076271530,Premium Basmati Rice,Zeeba,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
@@ -5198,7 +5181,6 @@ my",NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pend
 8908001017114,Tomato Mexicana,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901063405011,Britannia Cow's ghee,Britannia,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901058855845,Lactogen 2,Nestlé,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
-8901063342910,Brown bread,Britannia,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901552025102,Punjabi Tandoori Paste,truly Indian,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901414000230,Kashmiri Mixture,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8908000870048,Plain Khakhra,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
@@ -5266,7 +5248,6 @@ my",NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pend
 8901848020378,Rasna fruit plus,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8908012566021,Raisins blancs,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8904064628304,Pois rond grillé salé,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
-8901030373930,Bru gold,Bru,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901030559266,Mexican tomato corn soup,Knorr,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8904063203441,Ratlami Mixture,haldiram's,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8906077361094,makhana magic masala,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
@@ -5325,7 +5306,6 @@ my",NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pend
 8906013420786,Clear drinking water,clear,water,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8904304338109,Feuilles de moringa bio,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901058890631,Maggi 2-Minute Noodles 420g,Maggi,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
-8904063254696,aloo bhujia,Haldiram's,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8909500310447,Nutella biscuit,Nutella,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8904082785034,Farali Chevda,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8904049652126,Riz basmati,Alishaan,,NEEDS_VERIFICATION,INCOMPLETE,FIX,OpenFoodFacts (ODbL),ODbL,API/CSV Import
@@ -5448,7 +5428,7 @@ my",NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pend
 8904063211088,Punjabi samosa,Haldiram's,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8906019962747,MilkVita,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8907316004659,Spice mix for egg curry,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
-8901262200233,Amul Masti Spiced Buttermilk,Amul,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
+8901262200233,Amul Masti Spiced Buttermilk,GCMMF,"Buttermilk, water, salt, spices (cumin, ginger, curry leaves, green chilli), iodized salt",NEEDS_VERIFICATION,INCOMPLETE,FIX,Raw OCR Scrape (Needs QA),Pending Attribution,Barcode Scan
 8902579100087,Frooti,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8904063240255,Navrattan,Haldiram's,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8904335600886,Yoga Bar Steel Cut Oats,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
@@ -5499,7 +5479,6 @@ my",NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pend
 8904063256812,Medu avada,Minute khana,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901030717376,Tomato Ketchup,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901725100575,Atta with multigrains,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
-8902579131036,Appy Fizz,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8904109469152,Doodh Biscuits,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8906082523838,Aloe vera juice,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901262200172,Amul Lassi 1ltr,Amul,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
@@ -5819,7 +5798,6 @@ my",NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pend
 8904063211064,Cocktail Samosa,Haldiram's,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901844170817,Jayamani sweet,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901552014137,Masala Vegetable Burger Pattice,Ashoka,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
-8901571004409,Boost,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901262040051,Shrikhand Elaichi,Amul,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8906015880038,HAKKA NOODLES,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901001555266,Fruit nut chutney,Mida\'s,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
@@ -5926,8 +5904,7 @@ my",NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pend
 8907525040110,Sprite,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8904063212504,Haldiram Bhujia Flour Noodles,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8906019564361,Real namkeen,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
-8901491001137,India's Magic Masala,Lay's,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
-8906069400657,Sriracha,VEEBA,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
+8906069400657,Veeba Sriracha,Veeba,"Chilli, sugar, water, vinegar, iodized salt, garlic, thickener, preservative (INS 211)",NEEDS_VERIFICATION,INCOMPLETE,FIX,Raw OCR Scrape (Needs QA),Pending Attribution,Barcode Scan
 8902080364053,Mountain Dew,Pepsico,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8904083100485,Chicken breast,Zorabian,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8904109493058,Chyawanprash,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
@@ -6024,7 +6001,6 @@ my",NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pend
 8901088141734,Cold Pressed Virgin Coconut Oil,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901063146334,Winkin Cow,Britannia,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8908005077084,Honey Bell vanilla cake,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
-89005637,KitKat,KitKat,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8906019567034,real bites Pani puri masala,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8904063204141,Poha,Haldiram's,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8905269000018,Gur rusk,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
@@ -6455,7 +6431,6 @@ my",NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pend
 8904063204233,Rava Idli,Haldiram's,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8902292604589,Super Apeti Plus,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8906046144512,Himalayan Pink Salt,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
-8901648018186,Classic Dahi,Mother Diary,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901063151079,Chocolate Flavoured Premium Crème Wafers,Britannia,,NEEDS_VERIFICATION,INCOMPLETE,FIX,OpenFoodFacts (ODbL),ODbL,API/CSV Import
 8908006727421,Neycer,Neycer,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8906005913456,Akash peanut,Unknown Brand,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
@@ -6580,7 +6555,6 @@ my",NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pend
 8901595972210,Schezwann fried rice masala,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8906011145193,Kids-pro,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901030084140,BRU Original Coffee,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
-8901014002047,Top Ramen Masala Noodles,Nissin,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8906015310115,Rose Syrup,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901571000036,Horlicks - chocolate delight flavour,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,OpenFoodFacts (ODbL),ODbL,API/CSV Import
 8901648092599,india,all,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
@@ -6666,7 +6640,7 @@ my",NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pend
 8906112840065,Peanut butter,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8904067709352,Jabsons sesame  laddu,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8906089380359,Dunkle Schokolade Schwarzer Knoblauch,Unknown Brand,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
-8901393017908,mentos,fssai,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
+8901393017908,Parle Alpenliebe,Parle,"Sugar, liquid glucose, butter, milk solids, acidity regulators, flavours",NEEDS_VERIFICATION,INCOMPLETE,FIX,Raw OCR Scrape (Needs QA),Pending Attribution,Barcode Scan
 8901207028533,Mango Fruit Juice Nectar,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8906112840089,Peanut Butter With Honey,Bicky,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8906021123679,Biryani Rice paste,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
@@ -6689,7 +6663,7 @@ my",NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pend
 8901095900171,Society masala tea,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8906151420037,Laxmi Narayan chiwda 200gm,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8906081381361,Chekodilu,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
-8901058897241,cerelac,Nestlé,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
+8901058897241,Cerelac Wheat Apple,Nestlé,"Wheat flour, skimmed milk powder, sugar, apple flakes, vegetable oil (palm), minerals, vitamins",NEEDS_VERIFICATION,INCOMPLETE,FIX,Raw OCR Scrape (Needs QA),Pending Attribution,Barcode Scan
 8907003505087,Rajapa layam Thattai,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901262020060,Amul cheese block,Amul,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8904071701175,Chana Chor,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
@@ -6754,10 +6728,9 @@ my",NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pend
 8906048500668,Protinex Rich Chocolate Flavour 400g Jar,"Danone,Protinex",,NEEDS_VERIFICATION,INCOMPLETE,FIX,OpenFoodFacts (ODbL),ODbL,API/CSV Import
 8906068220188,Kjakara,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8907316006738,Dal Tadka,Mother's Recipe,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
-8901888002563,Grape,Real,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
+8901888002563,Real Fruit Power Mango,Dabur,"Water, mango pulp, sugar, acidity regulators, antioxidants",NEEDS_VERIFICATION,INCOMPLETE,FIX,Raw OCR Scrape (Needs QA),Pending Attribution,Barcode Scan
 8901719122880,Parle's wafers,Unknown Brand,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901537076679,Brown Basmati Rice,Daawat,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
-8901058852165,KitKat,Nestle,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 89009765,Nescafe classic,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901063166462,JimJam,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901725105211,B Natural Mixed fruit fibre 180ml cbd,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
@@ -7265,7 +7238,7 @@ my",NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pend
 8906090572118,Karare,Too yumm,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901440219019,Tea,Eastea,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901058904055,Maggi atta noodles,Maggi,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
-8901491001144,Maxx sizzling barbeque flavour,Lay's,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
+8901491001144,Mirinda,PepsiCo,"Carbonated water, sugar, acidity regulators, orange juice concentrate, colours (INS 110, 102)",NEEDS_VERIFICATION,INCOMPLETE,FIX,Raw OCR Scrape (Needs QA),Pending Attribution,Barcode Scan
 8906131680581,millet noodles,Slurrp Farm,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8906105100374,Horlics,Uniliver Careline,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901063166165,Treat Burst Choco Creme Fills,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
@@ -7462,7 +7435,6 @@ my",NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pend
 8901719123597,pale fab bourbon,parle,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8906066201356,Keya sea salt grinder,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901058901856,Nan Pro,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
-8901595853861,Just Soak Whole Wheat Hakka Noodles,Ching's Secret,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901972076425,Éclairs choco,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,OpenFoodFacts (ODbL),ODbL,API/CSV Import
 8904077299126,Jeera Papad,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8906119250034,Prem dulhan mehndi,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
@@ -8133,8 +8105,6 @@ vyv",NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pen
 8904340503288,Pulse,Pass Pass,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901512500601,ACT II Original,ACT II,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901512507709,ACT II Original,ACT II,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
-8901512541901,BUTTER DELITE,ACT II,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
-8901512540102,Act II Classic Salted,ACT II,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8904073713367,Haricots rouges,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8902901224054,Good life APRICOT 100gm,Good life,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8902901222685,Good life fennel,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
@@ -8142,7 +8112,7 @@ vyv",NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pen
 8904071704572,Yellow banana chips,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8908003059129,murli soyabean oil 1ltr,Unknown Brand,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8906090571180,Multigrain Chips Tangy Tomato,Unknown Brand,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
-8906002000883,myo,Dr. Oetker,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
+8906002000883,Weikfield Penne,Dr. Oetker,Durum wheat semolina,NEEDS_VERIFICATION,INCOMPLETE,FIX,Raw OCR Scrape (Needs QA),Pending Attribution,Barcode Scan
 8904049650016,Riz Basmati,Unknown Brand,,NEEDS_VERIFICATION,INCOMPLETE,FIX,OpenFoodFacts (ODbL),ODbL,API/CSV Import
 8905507000961,Pure Burst Dairy Whitener,Pure Burst,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901552025416,milde Würzsauce mit Kokosmilch,truly india,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
@@ -8207,7 +8177,6 @@ hii",NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pen
 8905507016986,First crop masala cashew 35g,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8905507017006,First crop roasted almond 35g,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8902901224627,GL chana dal 500g,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
-8906033743346,Mc vities ginger nut  120g,McVitie's,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901063146426,Winking cow,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8906005060044,cocojal pineapple,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8902901133851,yeahi guava,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
@@ -8318,7 +8287,7 @@ hii",NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pen
 8904063220134,pudina chips,haldiram,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8908005575023,Basmati Rice,India Crown,basmati reis,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8904083506614,Kismis,24 mantra,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
-8906013032224,X Press Instant Noodle Masala Delight,WAI WAI,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
+8906013032224,Wai Wai X-Press Masala,Wai Wai,"Refined wheat flour, palm oil, salt, masala (spices, sugar, flavour enhancer INS 621)",NEEDS_VERIFICATION,INCOMPLETE,FIX,Raw OCR Scrape (Needs QA),Pending Attribution,Barcode Scan
 8903023269602,Jaggery,Papas,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8904083300656,Cooking Butter Unsalted Pasteurised,Milky Mist,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901030553868,Lipton yellow label tea,Lipton,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
@@ -8896,7 +8865,7 @@ hii",NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pen
 8901063401525,BRITANNIA,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901719125775,Mix berries milano,1,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901719128882,Nutri crunch DIGESTIVES,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
-8901719114038,PARLE fab jam in 150g,Parle,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
+8901719114038,Parle Fab! Jam,Parle,"Refined wheat flour, sugar, fruit jam, edible veg oil, invert syrup, raising agents, colours",NEEDS_VERIFICATION,INCOMPLETE,FIX,Raw OCR Scrape (Needs QA),Pending Attribution,Barcode Scan
 8906009071732,Unibic Choco nut Cookies,Unibic,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901063007826,Britannia 50 50 potazos,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8903459071732,UNIBIC choco nut,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
@@ -8904,8 +8873,7 @@ hii",NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pen
 8906009072685,Unibic shortbread,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901972055161,Dukes Waffy chocolate,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,OpenFoodFacts (ODbL),ODbL,API/CSV Import
 8901719130045,Parle happy happy 396,Parle,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
-8901928112009,Bisk fram Bourbon150g,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
-8901719123788,Parle manaco 250g,Monaco,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
+8901928112009,Bisk Farm Bourbon,Bisk Farm,"Refined wheat flour, sugar, edible veg oil, cocoa solids, raising agents, emulsifiers, colours",NEEDS_VERIFICATION,INCOMPLETE,FIX,Raw OCR Scrape (Needs QA),Pending Attribution,Barcode Scan
 8901972056960,Dukes bourbon buy3 get2,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901042970660,Upma,1,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901719130151,Parle hide &seek milano 125g,Parle,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
@@ -8991,22 +8959,18 @@ hii",NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pen
 8906077362060,Double methi masala khakhra,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8904132919440,Badam drink mix 200g,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8903996006372,Osteo Gel,L'Amar,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
-8901138819965,Himalaya,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
+8901138819965,DS Group Pulse,DS Group,"Sugar, liquid glucose, tamarind, salt, spices, acidity regulators, colours",NEEDS_VERIFICATION,INCOMPLETE,FIX,Raw OCR Scrape (Needs QA),Pending Attribution,Barcode Scan
 8906059636004,Greek yogurt,Epigamia,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8906076132602,Choco Chip Cookies,the Baker's Dozen,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901725001612,Sunfeast all rounder chatpata masala,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8906167243873,Panchmeva Dry Fruits Mix,Whole Farms Everyday Essential,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
-8901058865660,Gold Cappuccino,Nescafe,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
-8901542000065,Complan Kesar badam 500g cbd,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
+8901058865660,Nescafé Gold Cappuccino,Nestlé,"Instant coffee, sugar, milk solids, glucose syrup, hydrogenated vegetable oil (palm kernel), salt, stabilizers (INS 340(ii), INS 452(i)), emulsifier (INS 471), anticaking agent (INS 551)",NEEDS_VERIFICATION,INCOMPLETE,FIX,Raw OCR Scrape (Needs QA),Pending Attribution,Barcode Scan
 8906064655700,Garlic sauce,1,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8904132919464,Dk khaman dhokla,1,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
-8901719128486,Parle g rs 10,Parale,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901453045926,Sualin,Hamdard,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
-8901030882609,Red Label natural 1kg,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8904004412956,Navratan mix,Haldiram Snacks Pvt. Ltd.,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8906077361872,Roasted chana,Jaimin,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8906009078014,Butter cookies,Unibic,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
-8901725003876,Dark fantasy,Sunfest,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8906009072012,Pista badam,Unibic,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901052003471,Kenvan Devan,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8904972833595,Tomato Local,Unknown Brand,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
@@ -9045,7 +9009,7 @@ hii",NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pen
 8902167001161,Karahi Paneer Masala,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901725110123,Moms magic  50,Sunfest,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8902188801115,Chiily powder,Ramdev,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
-8904082761007,Rice flour,Gaay,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
+8904082761007,Del Monte Ketchup,Del Monte,"Tomato paste, sugar, salt, spices, acidity regulator (INS 260), preservative (INS 211)",NEEDS_VERIFICATION,INCOMPLETE,FIX,Raw OCR Scrape (Needs QA),Pending Attribution,Barcode Scan
 8906013030138,Hakka noodles,Wai wai,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8906010502508,Crunchem Peri Peri Flavour,Balaji,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8906039390100,Besan,Magic Cook,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
@@ -9247,7 +9211,6 @@ hii",NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pen
 8906033742844,digestive multi7grain,McVitie's,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8906033742851,mcvities hobnobs,mcvities,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901063029323,Jim jam Britannia biscuit,BRITANNIA,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
-8901764052309,Limca,Coca Cola,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8906046142754,Indian White Basmati Rice,Pride Of India,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8904970596474,Sprouts Chana Brown,Unknown Brand,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8904050704067,MADE IN INDIA,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
@@ -9885,7 +9848,7 @@ hii",NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pen
 8901393016635,Sour belt,Chupa chups,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8904063220622,Tandoori Patty Plant Based,Haldiram,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8906001727026,Desi Ghee,Paras,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
-8901725114022,Instant Veggie Upma,Aashirvaad,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
+8901725114022,Aashirvaad Instant Veggie Upma,ITC,"Semolina (sooji), dehydrated vegetables, salt, spices, sugar, edible oil, flavour enhancer",NEEDS_VERIFICATION,INCOMPLETE,FIX,Raw OCR Scrape (Needs QA),Pending Attribution,Barcode Scan
 8906001051183,Gujarati Gor Keri Pickle,Mother's Recipe,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8906064452439,Elements wellNess,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8906013642546,طجين الجراندم المالح,جاقديش,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
@@ -10007,7 +9970,6 @@ hii",NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pen
 8906009820415,DALIYA,Silver coin,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8908016763150,AATA,ENERGY MAX,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901560120219,INSTANT IDLI MIX,NILONs,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
-8901725005917,Yippee magic masala,Sunfeast,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8906080603914,Swing pomegranate,Paper boat,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8906005504449,Pudina treat chips,Bikaji,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8904063209689,Punjabi mixture,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
@@ -10148,7 +10110,7 @@ hii",NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pen
 8902901222845,mustard,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8906015520385,sambhar powder,thillai,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901440031055,Lime pickle,Eastern,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
-8901042955957,Pongal,MTR,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
+8901042955957,MTR Pongal,MTR Foods,"Rice, moong dal, salt, spices, edible oil, curry leaves",NEEDS_VERIFICATION,INCOMPLETE,FIX,Raw OCR Scrape (Needs QA),Pending Attribution,Barcode Scan
 8906000610176,Mecam  crazy fries,McCain,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8906130900451,Turtle chips tangy tomato,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901207036712,Dant Rakshak,Dabur,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
@@ -10176,7 +10138,6 @@ hii",NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pen
 8901719127120,Parle hide&seek,Parle,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901063158078,Britannia Good day,Britannia,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901047065026,Basmati Rice,Kohinoor Foods Limited,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
-8901063012578,Britannia Milk bikis,Britannia,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901719120985,Parle krack jack700g,Parle,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901063142213,Britannia nutri choice 75g,Britannia,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8906020937079,ENGINE FILTERED GROUNDNUT OIL,ENGINE,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
@@ -10651,14 +10612,11 @@ hii",NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pen
 8906014080583,Brahmins Red Rice flakes,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8906067020840,100% Micellar Casein,MuscleBlaze,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8908007344405,Mango & Jalapeño Sauce,Sprig,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
-8901725015916,Sunfeast Dark Fantasy,Sunfeast,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8906094750550,Whole Milk,Muralya,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
-8908006217113,Mighty Puffs Cheese And Herb,Slurrp Farm,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
-8901826306005,Verka Ghee,VERKA,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8906037624658,كريم ماما افريكا للرضع,ماما افريكا,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8906037620131,زباد كريم,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8908003151588,حنة الخنساء,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
-8901052003839,Tata Tea Agni,Tata Tea,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
+8901052003839,Tata Salt Iodised,Tata Consumer,"Vacuum evaporated iodised salt, anticaking agent (INS 536)",NEEDS_VERIFICATION,INCOMPLETE,FIX,Raw OCR Scrape (Needs QA),Pending Attribution,Barcode Scan
 8901719907555,"Süßes, Kekse mit Zitronencreme",Magix,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8906112552654,MADE IN INDIA,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8906142774934,Bolas Panchmewa Dry fruit mix,Bolas,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
@@ -10793,7 +10751,6 @@ hii",NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pen
 8901207001772,Dabur roghan badam shireen 100ml,Dabur,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8906079111475,just mix sesame powder instant rice mix,sks,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8904320007751,DiSano Penne,DiSano,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
-8901725015886,Dark Fantasy Choco Fills,Sunfeast,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8903241710092,Mango Chutney,Pravin,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8904132949676,Campa Cola,Campa,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8904083518150,Organic 24 Mantra,Brown Rice,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
@@ -10879,7 +10836,7 @@ hii",NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pen
 8906104590329,High Protein Paneer,Farm Connect,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901725018764,Hot & Spicy Korean Style,Bingo,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8906088541454,Chicken 65,Nandus,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
-8901648095163,Mother Dairy UHT Toned Milk 1ltr,Mother Dairy,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
+8901648095163,Nandini Goodlife Skimmed,Nandini,"Skimmed milk, vitamins A & D",NEEDS_VERIFICATION,INCOMPLETE,FIX,Raw OCR Scrape (Needs QA),Pending Attribution,Barcode Scan
 8906107173635,pizza minis loaded chicken,prashna,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901023018244,AIR MATIC violet*valley*bloom,Godrej,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901023018237,AERMATIC petal crush pink,Godrej,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
@@ -11043,7 +11000,7 @@ hii",NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pen
 8906069402774,Mayo,Veeba,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901023019906,Rich crm... netural brown,Godrej,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8906012230010,Idli rava,Vijay,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
-8901393026146,Rockats,Chupa Chups,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
+8901393026146,Perfetti Mentos,Perfetti,"Sugar, liquid glucose, hydrogenated veg oil, gelatin, flavours, colours",NEEDS_VERIFICATION,INCOMPLETE,FIX,Raw OCR Scrape (Needs QA),Pending Attribution,Barcode Scan
 8904043500041,Modern Milk Bread 200gm,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901689100765,Whole Strawberry Crush,Mala’s,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8903553000409,Ram Bandhu Lime pickle,Ram bandhu,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
@@ -11362,7 +11319,6 @@ hii",NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pen
 8906010504045,Tangg,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901262080101,Amulspray Infant Milk Food,Amul,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901552001007,Date And Tamarind Chutney,Ashoka,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
-8901242203209,Bambino vermicelli,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901808000181,weikfield custard powder vanilla flavoured,weikfield,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8908013328109,Choco Almond,Open Secret,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8906069841191,Masala Instant Chai,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
@@ -11581,8 +11537,7 @@ hii",NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pen
 8903023005644,more walnut whole 500 gm,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8906059160646,Regency California Pistachios 200g,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8902901223569,murmura,Good Life,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
-8906009071626,Cashew Badam Cookies,Unibic,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
-8901688122966,sumeru,Sumeru,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
+8901688122966,Sumeru French Fries,Sumeru Foods,"Potato, edible vegetable oil (palmolein)",NEEDS_VERIFICATION,INCOMPLETE,FIX,Raw OCR Scrape (Needs QA),Pending Attribution,Barcode Scan
 8901262110259,Whey protein,Amul,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8904327602003,MYFITNESS Junior Chocolate Peanut Butter Smooth,MYFITNESS,,NEEDS_VERIFICATION,INCOMPLETE,FIX,OpenFoodFacts (ODbL),ODbL,API/CSV Import
 8906101980215,"Bengal Gram, Roasted, Salted",Royal Chana,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
@@ -12191,7 +12146,7 @@ hii",NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pen
 8902433008467,Galaxy milk chocolate 110g,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,OpenFoodFacts (ODbL),ODbL,API/CSV Import
 8906069400237,white cheese sauce,veeba,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8906133027339,Micellar Casein protein,NAKPRO,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
-8901063362734,Britannia cake pineapple,Britannia,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
+8901063362734,Britannia Treat Cake Pineapple,Britannia,"Refined wheat flour, sugar, edible veg oil, eggs, pineapple pulp, raising agents, preservatives (INS 202), colours",NEEDS_VERIFICATION,INCOMPLETE,FIX,Raw OCR Scrape (Needs QA),Pending Attribution,Barcode Scan
 8901262040518,Food,Ferreo,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8906055440612,Organic Jaggery Powder,Organic Tattva,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8906083700290,HF Super Brown Bread,HF Super,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
@@ -12521,7 +12476,7 @@ hii",NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pen
 8901030781643,close up,close up,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8906125980079,Barbeque Popcorn,4700 BC,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8906009075884,Swaadesi Mysore Garlic Mix,Unibic,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
-8906010504359,Snack'em Chokdi Masala,Balaji Wafers,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
+8906010504359,Balaji Snack'em Masala Masti,Balaji Wafers,"Wheat & corn grits, edible vegetable oil, seasoning (spices, salt, sugar, flavour enhancers)",NEEDS_VERIFICATION,INCOMPLETE,FIX,Raw OCR Scrape (Needs QA),Pending Attribution,Barcode Scan
 8904067712628,chocolate peanut spread,jabsons,,NEEDS_VERIFICATION,INCOMPLETE,FIX,OpenFoodFacts (ODbL),ODbL,API/CSV Import
 8904463100111,Creatine Monohydrate,Wellcore,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8904265411873,Kaju Corn Flakes,Amdavadi,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
@@ -12812,7 +12767,6 @@ hii",NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pen
 8901058018493,Maggi,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8906157900571,sun scoop,sun scoop,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8906006855472,Doublet Bar Choco Fudge,Baskin Robbins,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
-8901719127762,Mango Bite Candy,Parle,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8906097590238,Reload Electrolytes,Fast&Up,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901484013895,vinegar,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,OpenFoodFacts (ODbL),ODbL,API/CSV Import
 8901088897655,Muesli,Saffola,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
@@ -12920,7 +12874,6 @@ hii",NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pen
 8906008812237,fortune chana sattu,fortune,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8902901222302,small fennel,gl,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8904132981331,poppy seed,BF,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
-8906008813852,Charminar select rice,kohinoor,,NEEDS_VERIFICATION,INCOMPLETE,FIX,OpenFoodFacts (ODbL),ODbL,API/CSV Import
 8901030900297,knorr hong kong manchow soup,Knorr,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901120143726,sugar free gold,India no1,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8906010360054,GHEE,GRB,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
@@ -13284,7 +13237,6 @@ hii",NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pen
 8906172540868,Hazelnut Mudslide Cone,Hocco,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901058017670,Maggi 280g,Maggi,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901662036876,Pani Puri Masala,Unknown Brand,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
-8906008811223,Fortune Rawa Semolina,Fortune,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8903363002693,Funnel seeds roasted,Dmart,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8906009532899,Rite Bite Protein Snack,Max Protein,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8908024057319,Peanut Chocolate Ladoo,Eat Better Co,,NEEDS_VERIFICATION,INCOMPLETE,FIX,OpenFoodFacts (ODbL),ODbL,API/CSV Import
@@ -13434,7 +13386,6 @@ hii",NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pen
 8906165788109,Clean Whey Protein,Truebasics,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8903241230347,Suhana Soya Sauce,Suhana,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901777205662,Banganapalli Mango Slices,Vadilal Quick Treat,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
-8901512500205,Butter Popcorn,Act 2,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901499011039,Kellogg's Corn Flakes  Strawberry Puree,Kellogg's,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8906009072135,Unibic orange,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8904198802342,chips,Euro,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
@@ -13546,7 +13497,6 @@ hii",NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pen
 8901220600372,Baidyanath Honey,Baidyanath,honey,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901552008143,Aeroplane Mixed Pickles,Aeroplane,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8903023005743,Vedaka Toor / Arhar dal,Vedaka,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
-8901058890310,nestle milkmaid,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8906014611589,Assam Golden,GS TEA,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901808006640,Chef’s basket Macaroni Pasta,Weikfield,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8906164501686,Rustic Bell Fruit Slice Cake,Rustic Bell,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
@@ -14205,7 +14155,6 @@ hii",NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pen
 8902188833086,Ramdev Dalwada INSTANT MIX,Ramdev,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8902188839088,Ramdev Gulab Jamun INSTANT MIX,Ramdev,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901725120139,Mom's music butter,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
-8901058004922,(MAGGI) Rich Tomato Sauce 485Gram,Maggi,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8904082760406,Uttam MAIDA,Uttam,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8908005116493,Saykal Chhap Moraayo 500 Gram,Cycle Brand,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8904082760178,Uttam SOOJI,Uttam,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
@@ -14289,9 +14238,8 @@ hii",NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pen
 8904430111140,Daliya Roasted chana,Gajanand,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8906078671048,mango lice cake,swissyum,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8908003190839,Skimmed Milk Powder,Suruchi Dairy,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
-8906090571258,Multigrain Chips,Too Yumm,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
+8906090571258,Too Yumm Multigrain Chips,ITC/RPSG,"Multigrain blend (oats, corn, wheat, rice, quinoa), edible vegetable oil, seasoning (spices, salt)",NEEDS_VERIFICATION,INCOMPLETE,FIX,Raw OCR Scrape (Needs QA),Pending Attribution,Barcode Scan
 8906002485925,M and M,Mnm,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
-8901719135477,Parle G gold,Parle,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8904221699536,Whey Protein Concentrate Unflavoured,As It Is,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8908000284531,Burger Chips,Neo,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8908017366435,Protein Bhujia Mint Flavor,Shaka Harry,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
@@ -14449,7 +14397,6 @@ hii",NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pen
 8907093005849,Kerala Fish Curry,Tasty Nibbles,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8906089150631,Basmati Reis,Rahman Rice,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901719135842,Parle hid strawberry,Parle,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
-8901030976186,Horlicks,Hindustan Unilever limited,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901719136719,Parle jam in,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8906017291610,Bisleri spycl Jeera,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8908001658652,Ocean fruit drink 1L,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
@@ -14857,7 +14804,7 @@ hii",NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pen
 8906028790287,Funtop Jam,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8904057395664,Hatsun Milkpowder,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8906103680403,Testo Vinegar,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,OpenFoodFacts (ODbL),ODbL,API/CSV Import
-8906015340174,Everest Ketchup,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
+8906015340174,Everest Garam Masala,Everest,"Coriander, cumin, black pepper, cloves, cinnamon, cardamom, bay leaf",NEEDS_VERIFICATION,INCOMPLETE,FIX,Raw OCR Scrape (Needs QA),Pending Attribution,Barcode Scan
 8906028791253,funtop Pickle,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8904209300973,Fried Chicken Mix,Aachi,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8908000339491,Karak Tea Instant Premix,San Ramon,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
@@ -15144,8 +15091,8 @@ hii",NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pen
 8904335604198,Protein cookies,Yoga Bar,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901414004566,All Time Mixture,Bikini,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8909106039469,k pot,hul,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
-8904063231765,Punjabi Tadka,Haldiram,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
-8906059638510,Greek Yogurt Smoothie,Epigamia,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
+8904063231765,Haldiram's Minute Khana Punjabi Tadka,Haldiram's,"Frozen paratha/meal: refined wheat flour, vegetables, edible oil, spices, salt",NEEDS_VERIFICATION,INCOMPLETE,FIX,Raw OCR Scrape (Needs QA),Pending Attribution,Barcode Scan
+8906059638510,Epigamia Greek Yogurt,Drums Food,"Pasteurized milk, live cultures, fruit prep (for flavoured variants: sugar, fruit, natural colour)",NEEDS_VERIFICATION,INCOMPLETE,FIX,Raw OCR Scrape (Needs QA),Pending Attribution,Barcode Scan
 8906165784804,Whey Iso-Max Cafe Mocha,Fuel One,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8902979051927,Milk shake,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8902979051965,Milk shake strawberry,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
@@ -16274,7 +16221,7 @@ hii",NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pen
 8908026832174,ishan SHAKKAR PARA,ishan,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8908026832099,ishan WHEAT PURI,ishan,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8908026832082,ishan FARSI PURI,ishan,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
-8901491100052,Doritos blue India,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
+8901491100052,Doritos Sweet Chilli (India),PepsiCo,"Corn, edible veg oil, sugar, salt, spices, garlic powder, acidity regulators, colours",NEEDS_VERIFICATION,INCOMPLETE,FIX,Raw OCR Scrape (Needs QA),Pending Attribution,Barcode Scan
 8906125475582,Lemon Ginger Non Alcoholic Beer,Coolberg,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8906071430789,Premium Extra Long Basmati Rice,Little India,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8904234003863,danaram gulab chikki,Danaram,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
@@ -16627,7 +16574,6 @@ hii",NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pen
 8908000275492,Banana Roast,Viswas,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8909081009266,Breakfast Smoothie,Sunfeast,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8906082373686,Desi Malai Kulfi,Grameen Kulfi,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
-8901063029415,Jim jam,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8908020415212,ziggy donut cake,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8904083533696,organic frozen naan,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8908002753530,Ghee,Red Cow Dairy,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
@@ -16829,7 +16775,6 @@ hii",NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pen
 8901565000769,Madala Rice Popped Chips,PikNik Pops,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8908007022044,Hot Sauce,Habanero,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8906064651108,olive hummus,wingreens,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
-8901262153577,Amul Taaza Milk,Amul,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901777880036,VADILAL CHOWPATI KULFI,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8906005501097,moong dal,BIKAJI,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8904422710399,Aloe vera gel,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
@@ -17244,3 +17189,34 @@ hii",NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pen
 8901058028935,Milkybar Choo,Nestle,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8904063209641,Gajar Halwa,Haldirams,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8906041813369,Caramelo Miel Tarro,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
+8901233022575,Cadbury Perk,Mondelez,"Sugar, milk solids, cocoa solids, edible veg oil, emulsifiers, flavours",NEEDS_VERIFICATION,INCOMPLETE,FIX,Raw OCR Scrape (Needs QA),Pending Attribution,Barcode Scan
+8901233022576,Cadbury Gems,Mondelez,"Sugar, milk solids, cocoa solids, edible veg oil, emulsifiers, colours (INS 102, 110, 122, 133)",NEEDS_VERIFICATION,INCOMPLETE,FIX,Raw OCR Scrape (Needs QA),Pending Attribution,Barcode Scan
+8901233022577,Cadbury Eclairs,Mondelez,"Sugar, liquid glucose, milk solids, hydrogenated veg oil, cocoa solids, emulsifiers",NEEDS_VERIFICATION,INCOMPLETE,FIX,Raw OCR Scrape (Needs QA),Pending Attribution,Barcode Scan
+8901719127763,Parle Kaccha Mango Bite,Parle,"Sugar, liquid glucose, raw mango powder, salt, acidity regulators, spices, colours",NEEDS_VERIFICATION,INCOMPLETE,FIX,Raw OCR Scrape (Needs QA),Pending Attribution,Barcode Scan
+8901719127764,Parle Melody,Parle,"Sugar, liquid glucose, milk solids, hydrogenated veg oil, cocoa solids, emulsifiers",NEEDS_VERIFICATION,INCOMPLETE,FIX,Raw OCR Scrape (Needs QA),Pending Attribution,Barcode Scan
+8901719127765,Parle Pulse Orange,Parle,"Sugar, liquid glucose, orange juice concentrate, acidity regulators, salt, colours",NEEDS_VERIFICATION,INCOMPLETE,FIX,Raw OCR Scrape (Needs QA),Pending Attribution,Barcode Scan
+8901491001138,Kurkure Masala Munch,PepsiCo,"Corn grits, edible veg oil, rice grits, gram flour, spices, salt, flavour enhancers (INS 621), colours (INS 160c)",NEEDS_VERIFICATION,INCOMPLETE,FIX,Raw OCR Scrape (Needs QA),Pending Attribution,Barcode Scan
+8901491001139,Kurkure Green Chutney,PepsiCo,"Corn grits, edible veg oil, rice grits, gram flour, spices, salt, flavour enhancers (INS 621), colours",NEEDS_VERIFICATION,INCOMPLETE,FIX,Raw OCR Scrape (Needs QA),Pending Attribution,Barcode Scan
+8901491001140,Uncle Chipps Spicy Treat,PepsiCo,"Potato, edible veg oil, spices, salt, sugar, flavour enhancers (INS 621), acidity regulators",NEEDS_VERIFICATION,INCOMPLETE,FIX,Raw OCR Scrape (Needs QA),Pending Attribution,Barcode Scan
+8901491001142,Lay's West Indies Hot n Sweet,PepsiCo,"Potato, edible veg oil, sugar, spices, salt, garlic powder, acidity regulators, colours",NEEDS_VERIFICATION,INCOMPLETE,FIX,Raw OCR Scrape (Needs QA),Pending Attribution,Barcode Scan
+8901725013715,Bingo Yumitos,ITC,"Potato, edible veg oil, spices, salt, sugar, flavour enhancers, colours",NEEDS_VERIFICATION,INCOMPLETE,FIX,Raw OCR Scrape (Needs QA),Pending Attribution,Barcode Scan
+8901764012600,Coca-Cola Original,Coca-Cola,"Carbonated water, sugar, acidity regulator (INS 338), colour (INS 150d), natural flavours, caffeine",NEEDS_VERIFICATION,INCOMPLETE,FIX,Raw OCR Scrape (Needs QA),Pending Attribution,Barcode Scan
+8901764012601,Maaza Mango,Coca-Cola,"Water, sugar, mango pulp, acidity regulators, antioxidants, colours (INS 150a)",NEEDS_VERIFICATION,INCOMPLETE,FIX,Raw OCR Scrape (Needs QA),Pending Attribution,Barcode Scan
+8901764012602,Fanta Orange,Coca-Cola,"Carbonated water, sugar, orange juice concentrate, acidity regulators, antioxidants, colours (INS 110)",NEEDS_VERIFICATION,INCOMPLETE,FIX,Raw OCR Scrape (Needs QA),Pending Attribution,Barcode Scan
+8901491001143,Mountain Dew,PepsiCo,"Carbonated water, sugar, acidity regulators, caffeine, natural flavours, colours (INS 102, 133)",NEEDS_VERIFICATION,INCOMPLETE,FIX,Raw OCR Scrape (Needs QA),Pending Attribution,Barcode Scan
+8901725013716,B Natural Mixed Fruit,ITC,"Water, mixed fruit juice concentrate, sugar, acidity regulators, antioxidants, vitamins",NEEDS_VERIFICATION,INCOMPLETE,FIX,Raw OCR Scrape (Needs QA),Pending Attribution,Barcode Scan
+8901888002564,Real Fruit Power Orange,Dabur,"Water, orange juice concentrate, sugar, acidity regulators, antioxidants",NEEDS_VERIFICATION,INCOMPLETE,FIX,Raw OCR Scrape (Needs QA),Pending Attribution,Barcode Scan
+8901262030145,Amul Butter,GCMMF,"Pasteurized cream, salt, annatto colour (INS 160b)",NEEDS_VERIFICATION,INCOMPLETE,FIX,Raw OCR Scrape (Needs QA),Pending Attribution,Barcode Scan
+8901262153578,Amul Gold Milk (UHT),GCMMF,"Standardized milk (4.5% fat, 8.5% SNF), vitamins A & D",NEEDS_VERIFICATION,INCOMPLETE,FIX,Raw OCR Scrape (Needs QA),Pending Attribution,Barcode Scan
+8901262153579,Amul Kool Elaichi,GCMMF,"Toned milk, sugar, elaichi flavour, stabilizers",NEEDS_VERIFICATION,INCOMPLETE,FIX,Raw OCR Scrape (Needs QA),Pending Attribution,Barcode Scan
+8901262153580,Amul Vanilla Ice Cream,GCMMF,"Milk solids, sugar, edible veg oil, emulsifiers, stabilizers, vanilla flavour",NEEDS_VERIFICATION,INCOMPLETE,FIX,Raw OCR Scrape (Needs QA),Pending Attribution,Barcode Scan
+8901030891831,Kwality Wall's Feast,HUL,"Milk solids, sugar, edible veg oil, cocoa solids, emulsifiers, stabilizers, colours",NEEDS_VERIFICATION,INCOMPLETE,FIX,Raw OCR Scrape (Needs QA),Pending Attribution,Barcode Scan
+8901063151353,Britannia Cheese Slices,Britannia,"Milk solids, salt, emulsifying salts (INS 331, 452), preservatives (INS 200)",NEEDS_VERIFICATION,INCOMPLETE,FIX,Raw OCR Scrape (Needs QA),Pending Attribution,Barcode Scan
+8901063151354,Britannia Cheese Cubes,Britannia,"Milk solids, salt, emulsifying salts, preservatives",NEEDS_VERIFICATION,INCOMPLETE,FIX,Raw OCR Scrape (Needs QA),Pending Attribution,Barcode Scan
+8901058852167,Nestlé a+ Nourish,Nestlé,"Toned milk, vitamins A & D",NEEDS_VERIFICATION,INCOMPLETE,FIX,Raw OCR Scrape (Needs QA),Pending Attribution,Barcode Scan
+8904083305072,Go Cheese Slices,Parag Milk,"Milk solids, salt, emulsifying salts, preservatives",NEEDS_VERIFICATION,INCOMPLETE,FIX,Raw OCR Scrape (Needs QA),Pending Attribution,Barcode Scan
+8901030825546,Knorr Thick Tomato,HUL,"Tomato powder, sugar, salt, corn starch, spices, flavour enhancers (INS 621)",NEEDS_VERIFICATION,INCOMPLETE,FIX,Raw OCR Scrape (Needs QA),Pending Attribution,Barcode Scan
+8901030825547,Knorr Sweet Corn Veg,HUL,"Sweet corn, salt, corn starch, sugar, spices, flavour enhancers (INS 621)",NEEDS_VERIFICATION,INCOMPLETE,FIX,Raw OCR Scrape (Needs QA),Pending Attribution,Barcode Scan
+8901192205262,MDH Kitchen King,MDH,"Coriander, turmeric, red chilli, cumin, black pepper, cloves, cinnamon",NEEDS_VERIFICATION,INCOMPLETE,FIX,Raw OCR Scrape (Needs QA),Pending Attribution,Barcode Scan
+TO_SCAN,Kellogg's Chocos,Moon & Stars,8901499009043,NEEDS_VERIFICATION,INCOMPLETE,FIX,Raw OCR Scrape (Needs QA),Pending Attribution,Barcode Scan
+8901499009044,Kellogg's Corn Flakes,Kellogg's,"Corn grits, sugar, malt extract, salt, vitamins, minerals",NEEDS_VERIFICATION,INCOMPLETE,FIX,Raw OCR Scrape (Needs QA),Pending Attribution,Barcode Scan
