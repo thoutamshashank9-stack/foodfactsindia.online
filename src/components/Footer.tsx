@@ -87,9 +87,12 @@ export const Footer: React.FC<FooterProps> = ({ onOpenGrievance, onOpenManifesto
         </div>
 
         {/* Legal & Regulatory Disclaimer */}
-        <div className="pt-6 border-t border-stone-200 dark:border-stone-800 text-[10px] text-stone-400 dark:text-stone-500 leading-relaxed">
+        <div className="pt-6 border-t border-stone-200 dark:border-stone-800 text-[10px] text-stone-400 dark:text-stone-500 leading-relaxed space-y-2">
           <p>
-            <strong className="text-stone-500 dark:text-stone-400">Legal & Regulatory Notice:</strong> FoodFactsIndia.online is an independent educational platform. We are not affiliated with any FMCG brand, the FSSAI, or any government body. All trademarks and brand names are the property of their respective owners and are used strictly for product identification under the doctrine of Nominative Fair Use. Simulated warning labels represent foreign policies and are NOT Indian Government mandates. Data is aggregated from open-source global databases; formulations change periodically.
+            <strong className="text-stone-500 dark:text-stone-400">Data Verification Notice:</strong> Product details are compiled from publicly available labels, brand information, and user-contributed data. Formulations may change over time. Always verify the physical package label before relying on ingredient information. If a brand or consumer finds outdated information, it can be reported for immediate correction.
+          </p>
+          <p>
+            <strong className="text-stone-500 dark:text-stone-400">Legal & Regulatory Notice:</strong> FoodFactsIndia.online is an independent educational platform. We are not affiliated with any FMCG brand, the FSSAI, or any government body. All trademarks and brand names are the property of their respective owners and are used strictly for product identification under the doctrine of Nominative Fair Use. Simulated warning labels represent foreign policies and are NOT Indian Government mandates.
           </p>
         </div>
 
