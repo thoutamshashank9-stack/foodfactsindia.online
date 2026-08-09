@@ -2704,7 +2704,6 @@ barcode,product_name,brands,ingredients_text,sold_in_india_status,ingredient_con
 8901262153270,Amul tru orange juice 150ml tpk,Amul,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901542003158,Complan Rich Chocolate flavor,Complan,,NEEDS_VERIFICATION,INCOMPLETE,FIX,OpenFoodFacts (ODbL),ODbL,API/CSV Import
 8901030976117,Horlicks classic Malt,Horlicks,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
-8901542006227,Glucon-D Tangy Orange,GSK/HUL,"Dextrose monohydrate, vitamin C, acidity regulators, colours (INS 102, 110), flavours",NEEDS_VERIFICATION,INCOMPLETE,FIX,Raw OCR Scrape (Needs QA),Pending Attribution,Barcode Scan
 8901803001145,Amrutanjan,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8906001050643,Mathers manggo pickle 200 g,,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8901155113114,Gits vermicelli kheer,1,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
@@ -14217,7 +14216,6 @@ hii",NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pen
 8906002770229,Cold coffee bon bon,Cothas,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8909106065468,Protein Boost,Unilever,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8908020733095,Protein Wafer Bar - Chocolate Ganache,Avolt,,NEEDS_VERIFICATION,INCOMPLETE,FIX,OpenFoodFacts (ODbL),ODbL,API/CSV Import
-8901058019339,2 Minutes Noodles,Maggie,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8904043906393,Dry Fruit & Nut Mix,Tata Sampann,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8908018729659,Rosemary Olive Sourdough,Suchali,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
 8906099980044,Pesto Sauce,Saucery,,NEEDS_VERIFICATION,INCOMPLETE,FIX,Barcode Registry (No Ingredient Text),Pending Attribution,Barcode Scan
