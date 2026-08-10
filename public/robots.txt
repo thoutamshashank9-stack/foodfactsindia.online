@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Allow: /assets/
+Allow: /api/product?barcode=*
+Disallow: /api/
+Disallow: /admin/
+Disallow: /temp/
+
+Sitemap: https://www.foodfactsindia.online/sitemap.xml
