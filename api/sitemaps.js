@@ -78,6 +78,12 @@ export default async function handler(req, res) {
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
+  <url>
+    <loc>https://www.foodfactsindia.online/research/most-common-food-additives-in-india</loc>
+    <lastmod>${nowStr}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
 </urlset>`;
       res.statusCode = 200;
       res.end(xml);

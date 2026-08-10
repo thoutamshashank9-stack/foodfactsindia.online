@@ -6,6 +6,8 @@
     { "source": "/sitemap.xml", "destination": "/api/sitemap.js" },
     { "source": "/sitemaps/:name", "destination": "/api/sitemaps.js?name=:name" },
     { "source": "/food", "destination": "/api/food-database.js" },
+    { "source": "/admin/seo", "destination": "/api/admin-seo.js" },
+    { "source": "/research/most-common-food-additives-in-india", "destination": "/api/research/most-common-additives.js" },
     { "source": "/tools/food-label-checker", "destination": "/api/tools/food-label-checker.js" },
     { "source": "/tools/ingredient-checker", "destination": "/api/tools/ingredient-checker.js" },
     { "source": "/tools/food-label-scanner", "destination": "/api/tools/food-label-scanner.js" },
