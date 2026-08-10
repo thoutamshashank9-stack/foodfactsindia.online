@@ -55,18 +55,12 @@ export function App() {
   const catalogRef = useRef(catalogProducts);
   catalogRef.current = catalogProducts;
 
-  // Replace the initial history entry with our current state on mount
-  useEffect(() => {
-    const initialState: HistoryState = { tab: 'home', productId: null };
-    window.history.replaceState(initialState, '');
-  }, []);
-
+  // ─── Browser History & Deep Linking Integration ─────────────────────────────
   // Listen for browser back/forward button presses
   useEffect(() => {
     const onPopState = (event: PopStateEvent) => {
       const state = event.state as HistoryState | null;
       if (!state) {
-        // Fell off the bottom of our history stack — go to home
         isRestoringFromHistory.current = true;
         setCurrentTab('home');
         setSelectedProduct(null);
@@ -90,12 +84,103 @@ export function App() {
     return () => window.removeEventListener('popstate', onPopState);
   }, []);
 
-  /** Push a new history entry (skipped when we're restoring from popstate). */
+  /** Push a new history entry with clean URL query parameters */
   const pushHistoryState = useCallback((tab: string, productId: string | null) => {
     if (isRestoringFromHistory.current) return;
     const histState: HistoryState = { tab: tab as HistoryState['tab'], productId };
-    window.history.pushState(histState, '');
+    
+    const params = new URLSearchParams();
+    params.set('tab', tab);
+    if (productId) {
+      params.set('product', productId);
+    }
+    const newSearch = params.toString();
+    window.history.pushState(histState, '', `?${newSearch}`);
   }, []);
+
+  // ─── Deep Linking & Dynamic Routing on Mount / Catalog Load ────────────────
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const tabParam = params.get('tab') as TabId | null;
+    const productParam = params.get('product') || params.get('barcode');
+
+    if (tabParam && !productParam) {
+      setCurrentTab(tabParam);
+    }
+
+    if (productParam) {
+      const found = catalogProducts.find(p => p.productId === productParam || p.barcode === productParam);
+      if (found) {
+        setSelectedProduct(found);
+        setCurrentTab('products');
+      }
+    }
+  }, [catalogProducts]);
+
+  // ─── Dynamic Meta Headers & JSON-LD Structured Data Injection ───────────────
+  useEffect(() => {
+    // 1. Remove existing script and canonical link elements
+    const existingScript = document.getElementById('jsonld-structured-data');
+    if (existingScript) existingScript.remove();
+    
+    const existingCanonical = document.querySelector('link[rel="canonical"]');
+    if (existingCanonical) existingCanonical.remove();
+
+    let titleText = 'FoodFacts India | Packaged Food Labels, Ingredients & Nutrition';
+    let descText = "India's leading evidence-based food transparency platform. Analyze packaged foods, additives, INS codes, global regulatory bans (EU, FDA, FSSAI), and scientific consensus.";
+    let canonicalUrl = 'https://www.foodfactsindia.online/';
+    let jsonLdData: any = null;
+
+    if (selectedProduct) {
+      const issues = selectedProduct.scoreBreakdown ? selectedProduct.scoreBreakdown.filter(b => b.type === 'DEDUCTION').length : 0;
+      const issuesText = issues > 0 ? `${issues} regulatory concern markers flagged.` : 'Clean label verified.';
+      
+      titleText = `${selectedProduct.productName} Ingredients, Additives & Nutrition Facts | FoodFacts India`;
+      descText = `Read the detailed ingredient label audit of ${selectedProduct.productName} by ${selectedProduct.brand}. ${issuesText} View health score, sugar/sodium observations, and INS bans.`;
+      canonicalUrl = `https://www.foodfactsindia.online/?product=${selectedProduct.productId}`;
+
+      jsonLdData = {
+        '@context': 'https://schema.org',
+        '@type': 'Product',
+        'name': selectedProduct.productName,
+        'image': selectedProduct.imageUrl,
+        'description': descText,
+        'brand': {
+          '@type': 'Brand',
+          'name': selectedProduct.brand
+        },
+        'category': selectedProduct.category,
+        'identifier': selectedProduct.barcode
+      };
+    } else if (currentTab !== 'home') {
+      titleText = `${currentTab.charAt(0).toUpperCase() + currentTab.slice(1)} | FoodFacts India`;
+      canonicalUrl = `https://www.foodfactsindia.online/?tab=${currentTab}`;
+    }
+
+    // Set document title
+    document.title = titleText;
+
+    // Set description meta tag
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) {
+      metaDesc.setAttribute('content', descText);
+    }
+
+    // Inject Canonical Link
+    const canonicalLink = document.createElement('link');
+    canonicalLink.setAttribute('rel', 'canonical');
+    canonicalLink.setAttribute('href', canonicalUrl);
+    document.head.appendChild(canonicalLink);
+
+    // Inject JSON-LD Script
+    if (jsonLdData) {
+      const script = document.createElement('script');
+      script.id = 'jsonld-structured-data';
+      script.type = 'application/ld+json';
+      script.text = JSON.stringify(jsonLdData);
+      document.head.appendChild(script);
+    }
+  }, [selectedProduct, currentTab]);
 
   useEffect(() => {
     if (darkMode) {
