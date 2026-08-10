@@ -19,28 +19,28 @@ export default async function handler(req, res) {
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://www.foodfactsindia.online/food</loc>
+    <lastmod>${nowStr}</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://www.foodfactsindia.online/tools/food-label-checker</loc>
     <lastmod>${nowStr}</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.foodfactsindia.online/tools/ingredient-checker</loc>
+    <loc>https://www.foodfactsindia.online/guides/how-to-read-food-labels</loc>
     <lastmod>${nowStr}</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.foodfactsindia.online/tools/food-label-scanner</loc>
+    <loc>https://www.foodfactsindia.online/guides/what-are-ins-numbers</loc>
     <lastmod>${nowStr}</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.foodfactsindia.online/tools/barcode-scanner</loc>
-    <lastmod>${nowStr}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
   </url>
 </urlset>`;
       res.statusCode = 200;
