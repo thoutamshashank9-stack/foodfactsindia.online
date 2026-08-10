@@ -42,6 +42,42 @@ export default async function handler(req, res) {
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
+  <url>
+    <loc>https://www.foodfactsindia.online/tools/ingredient-checker</loc>
+    <lastmod>${nowStr}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.foodfactsindia.online/guides/how-to-read-ingredients</loc>
+    <lastmod>${nowStr}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.foodfactsindia.online/guides/food-additives</loc>
+    <lastmod>${nowStr}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.foodfactsindia.online/tools/food-label-scanner</loc>
+    <lastmod>${nowStr}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.foodfactsindia.online/guides/how-to-read-nutrition-labels</loc>
+    <lastmod>${nowStr}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.foodfactsindia.online/fssai/food-labelling</loc>
+    <lastmod>${nowStr}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
 </urlset>`;
       res.statusCode = 200;
       res.end(xml);
