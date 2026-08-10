@@ -144,6 +144,7 @@ export type PageState =
 
 export interface TransparencyReport {
   productId: string;
+  slug?: string;
   productName: string;
   brand: string;
   manufacturer: string;

@@ -1,9 +1,15 @@
 User-agent: *
 Allow: /
-Allow: /assets/
-Allow: /api/product?barcode=*
+Allow: /food/
+Allow: /ingredient/
+Allow: /additive/
+Allow: /brand/
+Allow: /category/
+Allow: /guides/
+Allow: /research/
+Allow: /tools/
+Allow: /fssai/
 Disallow: /api/
-Disallow: /admin/
-Disallow: /temp/
+Disallow: /?*
 
 Sitemap: https://www.foodfactsindia.online/sitemap.xml

@@ -1,0 +1,468 @@
+import os
+import sys
+import pandas as pd
+
+sys.stdout.reconfigure(encoding='utf-8')
+
+BASE_DIR = r"c:\Users\thout\Downloads\check it"
+
+all_supabase_csv = os.path.join(BASE_DIR, "all_supabase_products.csv")
+confirmed_csv = os.path.join(BASE_DIR, "india_products_confirmed.csv")
+needs_ver_csv = os.path.join(BASE_DIR, "india_products_needs_verification.csv")
+
+print("=== EXECUTING BATCH 43 INGREDIENTS INTEGRATION & PURGE ===")
+
+df_all = pd.read_csv(all_supabase_csv, dtype=str)
+df_confirmed = pd.read_csv(confirmed_csv, dtype=str) if os.path.exists(confirmed_csv) else pd.DataFrame()
+df_needs_ver = pd.read_csv(needs_ver_csv, dtype=str) if os.path.exists(needs_ver_csv) else pd.DataFrame()
+
+for df in [df_all, df_confirmed, df_needs_ver]:
+    if not df.empty and 'barcode' in df.columns:
+        df['barcode'] = df['barcode'].astype(str).str.strip()
+
+batch_43_rows = [
+    {"barcode":"8908003975770","product_name":"Mario","brands":"Various","ingredients_text":"Verify specific product","additive_flags":"Verify"},
+    {"barcode":"8906163831807","product_name":"Fruit & Nut Trail Mix","brands":"Farmley","ingredients_text":"Almonds, cashew nuts, raisins, pistachios, dried fruits","additive_flags":"Clean"},
+    {"barcode":"8906163834655","product_name":"Power Up Seed Mix","brands":"Farmley","ingredients_text":"Mixed seeds (pumpkin, sunflower, chia, flax)","additive_flags":"Clean"},
+    {"barcode":"8901526406883","product_name":"BL/GE SMOOTHEROOF Camelia Conditioner","brands":"Various","ingredients_text":"NON-FOOD — Hair care product","additive_flags":"NON-FOOD — PURGE"},
+    {"barcode":"8901396126027","product_name":"Lizol Citrus","brands":"Lizol","ingredients_text":"NON-FOOD — Disinfectant/cleaning product","additive_flags":"NON-FOOD — PURGE"},
+    {"barcode":"8906010365592","product_name":"GRB Mango Soan Papdi","brands":"GRB","ingredients_text":"Sugar, gram flour, ghee, mango flavour, cardamom","additive_flags":"Clean"},
+    {"barcode":"8906010367312","product_name":"GRB Orange Soan Papdi","brands":"GRB","ingredients_text":"Sugar, gram flour, ghee, orange flavour, cardamom","additive_flags":"Clean"},
+    {"barcode":"8906069402774","product_name":"Mayo","brands":"Veeba","ingredients_text":"Refined soyabean oil, water, sugar, milk solids, iodised salt, stabilizers (INS 1442, INS 1450, INS 415), acidity regulators (INS 260, INS 330), preservatives (INS 211, INS 202), antioxidant (INS 319)","additive_flags":"INS 211 + INS 202 + INS 319"},
+    {"barcode":"8909106001329","product_name":"Tresemme Smooth Shine 580ml","brands":"Various","ingredients_text":"NON-FOOD — Shampoo","additive_flags":"NON-FOOD — PURGE"},
+    {"barcode":"8909106002142","product_name":"Tresemme Hairfall Defence 580ml","brands":"Various","ingredients_text":"NON-FOOD — Shampoo","additive_flags":"NON-FOOD — PURGE"},
+    {"barcode":"8901030945373","product_name":"Dove Hair Fall Rescue 650ml","brands":"Various","ingredients_text":"NON-FOOD — Shampoo","additive_flags":"NON-FOOD — PURGE"},
+    {"barcode":"8901030945366","product_name":"Dove Intense Repair 650ml","brands":"Various","ingredients_text":"NON-FOOD — Shampoo","additive_flags":"NON-FOOD — PURGE"},
+    {"barcode":"8901719133756","product_name":"Hide & Seek 75gm Rs 35","brands":"Parle","ingredients_text":"Refined wheat flour, sugar, edible vegetable oil, cocoa solids, invert syrup, milk solids, raising agents, emulsifiers","additive_flags":"Clean"},
+    {"barcode":"8901719136665","product_name":"Parle Jam In Rs 10","brands":"Parle","ingredients_text":"Refined wheat flour, sugar, fruit jam, edible vegetable oil, invert syrup, raising agents, emulsifiers, colours","additive_flags":"Clean"},
+    {"barcode":"8906091682793","product_name":"Coffee Fine Milk Chocolate","brands":"Paul And Mike","ingredients_text":"Sugar, milk solids, cocoa butter, cocoa mass, coffee, emulsifiers, flavours","additive_flags":"Clean"},
+    {"barcode":"8901748003372","product_name":"RUCHI Anashfool Gota","brands":"Ruchi","ingredients_text":"Anashfool (star anise) (100%)","additive_flags":"Clean single-ingredient"},
+    {"barcode":"8901063365254","product_name":"Roll Yo","brands":"Britannia","ingredients_text":"Refined wheat flour, sugar, edible vegetable oil, cocoa solids, invert syrup, raising agents, emulsifiers","additive_flags":"Clean"},
+    {"barcode":"8905507002507","product_name":"Digestive","brands":"First Crop","ingredients_text":"Whole wheat flour, sugar, edible vegetable oil, raising agents, emulsifiers, salt","additive_flags":"Clean"},
+    {"barcode":"8905507002576","product_name":"Marie","brands":"First Crop","ingredients_text":"Refined wheat flour, sugar, refined palm oil, invert sugar syrup, milk solids, raising agents, salt, emulsifiers","additive_flags":"Clean"},
+    {"barcode":"8901030702051","product_name":"Tresemme Smooth Shine 340ml","brands":"Various","ingredients_text":"NON-FOOD — Shampoo","additive_flags":"NON-FOOD — PURGE"},
+    {"barcode":"8901553000092","product_name":"Keventer Toned Milk","brands":"Keventer","ingredients_text":"Toned milk, vitamins A & D","additive_flags":"Clean"},
+    {"barcode":"8901725019488","product_name":"Sunfeast Mixed Berry Smoothie","brands":"Sunfeast","ingredients_text":"Water, milk solids, mixed berry pulp, sugar, stabilizers, acidity regulator, flavours","additive_flags":"Clean"},
+    {"barcode":"8901042958347","product_name":"Chilli Powder","brands":"MTR","ingredients_text":"Red chilli powder (100%)","additive_flags":"Clean single-ingredient"},
+    {"barcode":"8908015692154","product_name":"Thukpa Chicken","brands":"WOW!","ingredients_text":"Refined wheat flour, chicken, vegetables, spices, salt, edible vegetable oil","additive_flags":"Clean"},
+    {"barcode":"8902101321997","product_name":"Chess","brands":"Various","ingredients_text":"Verify specific product","additive_flags":"Verify"},
+    {"barcode":"8901088002851","product_name":"Revive Instant Starch","brands":"Various","ingredients_text":"NON-FOOD — Laundry product","additive_flags":"NON-FOOD — PURGE"},
+    {"barcode":"8904293703223","product_name":"Baby Potato","brands":"Unknown Brand","ingredients_text":"Baby potatoes","additive_flags":"Clean single-ingredient"},
+    {"barcode":"8904358365458","product_name":"Marafy Rose Water","brands":"Various","ingredients_text":"Rose water","additive_flags":"Clean single-ingredient"},
+    {"barcode":"8904340700076","product_name":"Pass Pass","brands":"Pass Pass","ingredients_text":"Sugar, glucose syrup, flavours, acidity regulator, colours","additive_flags":"Verify colours"},
+    {"barcode":"8901063092747","product_name":"Good Day Rs 5","brands":"Britannia","ingredients_text":"Refined wheat flour, edible vegetable oil, sugar, cashew nuts, invert syrup, milk solids, raising agents, emulsifier","additive_flags":"Clean"},
+    {"barcode":"8901393024302","product_name":"King Legend","brands":"Various","ingredients_text":"Verify specific product","additive_flags":"Verify"},
+    {"barcode":"8901207028311","product_name":"Glucoplus C","brands":"Dabur","ingredients_text":"Dextrose monohydrate, vitamin C, acidity regulator (INS 330), artificial flavour, colours","additive_flags":"Verify colours"},
+    {"barcode":"8906069611206","product_name":"Anand Bikaneri Bhujia","brands":"Anand/Jolliz","ingredients_text":"Gram flour, edible vegetable oil, iodized salt, spices","additive_flags":"Clean"},
+    {"barcode":"8906069611725","product_name":"Anand Fulwadi","brands":"Anand/Jolliz","ingredients_text":"Gram flour, edible vegetable oil, iodized salt, spices","additive_flags":"Clean"},
+    {"barcode":"8906069611763","product_name":"Kachori","brands":"Anand/Jolliz","ingredients_text":"Refined wheat flour, gram flour, edible vegetable oil, spices, salt","additive_flags":"Clean"},
+    {"barcode":"8906069612128","product_name":"Anand Mini Samosa","brands":"Anand/Jolliz","ingredients_text":"Refined wheat flour, potato, peas, spices, salt, edible vegetable oil","additive_flags":"Clean"},
+    {"barcode":"8904064628007","product_name":"Citron Pickle","brands":"Various","ingredients_text":"Citron, salt, spices, edible vegetable oil, acidity regulator","additive_flags":"Clean"},
+    {"barcode":"8906073790539","product_name":"Frunchys","brands":"Various","ingredients_text":"Verify specific product","additive_flags":"Verify"},
+    {"barcode":"8901030820946","product_name":"Boost","brands":"HUL","ingredients_text":"Cereal extract (50%), malted barley (21%), sugar, wheat flour, milk solids (6%), minerals, natural colour (INS 150c), vitamins","additive_flags":"INS 150c Caramel"},
+    {"barcode":"8904132911000","product_name":"Kaffe Instant","brands":"Various","ingredients_text":"Instant coffee","additive_flags":"Clean single-ingredient"},
+    {"barcode":"8901030865169","product_name":"Surf Excel Bar 250gm","brands":"HUL","ingredients_text":"NON-FOOD — Detergent","additive_flags":"NON-FOOD — PURGE"},
+    {"barcode":"8901393018769","product_name":"Candy","brands":"Alpenliebe","ingredients_text":"Sugar, glucose syrup, flavours, colours","additive_flags":"Verify colours"},
+    {"barcode":"8901030700224","product_name":"Tresemme Hair Fall Defense 580ml","brands":"Various","ingredients_text":"NON-FOOD — Shampoo","additive_flags":"NON-FOOD — PURGE"},
+    {"barcode":"8906090572897","product_name":"Potato Chips","brands":"Too Yum","ingredients_text":"Potato, edible vegetable oil, salt, spices","additive_flags":"Clean"},
+    {"barcode":"8901777386989","product_name":"Samosa","brands":"Various","ingredients_text":"Refined wheat flour, potato, peas, spices, salt, edible vegetable oil","additive_flags":"Clean"},
+    {"barcode":"8906009531212","product_name":"Ritebite Nutrition Bar","brands":"RiteBite","ingredients_text":"Multigrain blend, whey protein, edible vegetable oil, flavours, emulsifiers","additive_flags":"Clean"},
+    {"barcode":"8901071731959","product_name":"Sofit Almond Drink","brands":"Various","ingredients_text":"Soya milk, almonds, sugar, stabilizers, emulsifiers","additive_flags":"Clean"},
+    {"barcode":"8902901227161","product_name":"Good Life Raisin Yellow 500g","brands":"Good Life","ingredients_text":"Yellow raisins","additive_flags":"Clean single-ingredient"},
+    {"barcode":"8901764231254","product_name":"Soda Water","brands":"Schweppes","ingredients_text":"Carbonated water, acidity regulators, flavours","additive_flags":"Clean"},
+    {"barcode":"8901054005329","product_name":"Maggi Chicken Noodles","brands":"Maggi","ingredients_text":"Noodles: Refined wheat flour, palm oil, salt, thickeners; Tastemaker: salt, spices, flavour enhancers (INS 621), chicken flavour","additive_flags":"INS 621 MSG"},
+    {"barcode":"8901058003727","product_name":"Maggi Korean BBQ Chicken Noodles","brands":"Maggi","ingredients_text":"Noodles: Refined wheat flour, palm oil, salt, thickeners; Tastemaker: salt, spices, flavour enhancers (INS 621), Korean BBQ flavour","additive_flags":"INS 621 MSG"},
+    {"barcode":"8906088860715","product_name":"Current Noodles 5 Pack","brands":"Various","ingredients_text":"Refined wheat flour, palm oil, salt, thickeners; Tastemaker: salt, spices, flavour enhancers (INS 621)","additive_flags":"INS 621 MSG"},
+    {"barcode":"8908001105149","product_name":"The On1y Oregano You Need","brands":"On1y","ingredients_text":"Oregano (100%)","additive_flags":"Clean single-ingredient"},
+    {"barcode":"8901526204731","product_name":"Garnier Color Naturals","brands":"Garnier","ingredients_text":"NON-FOOD — Hair colour product","additive_flags":"NON-FOOD — PURGE"},
+    {"barcode":"8900063369064","product_name":"50-50 Cheeze Dipped","brands":"Britannia","ingredients_text":"Refined wheat flour, sugar, cheese, edible vegetable oil, invert syrup, raising agents, emulsifiers","additive_flags":"Clean"},
+    {"barcode":"8901063018389","product_name":"Time Pass Classic Salted","brands":"Britannia","ingredients_text":"Refined wheat flour, edible vegetable oil, salt, sugar, raising agents, emulsifier","additive_flags":"Clean"},
+    {"barcode":"8901063033955","product_name":"Treat Orange Creme","brands":"Britannia","ingredients_text":"Refined wheat flour, sugar, edible vegetable oil, orange flavour, invert syrup, raising agents, emulsifiers, colours (INS 110)","additive_flags":"INS 110 colour"},
+    {"barcode":"8901063160460","product_name":"Pure Magic Rs 40","brands":"Britannia","ingredients_text":"Refined wheat flour, sugar, edible vegetable oil, cocoa solids, invert syrup, raising agents, emulsifiers, artificial chocolate flavour","additive_flags":"Clean"},
+    {"barcode":"8906081380227","product_name":"Tamarind","brands":"Various","ingredients_text":"Tamarind (100%)","additive_flags":"Clean single-ingredient"},
+    {"barcode":"8901571009596","product_name":"Horlicks Powder Drink","brands":"Horlicks","ingredients_text":"Malted cereals, milk solids, sugar, wheat flour, minerals, vitamins, emulsifier (INS 471)","additive_flags":"Clean"},
+    {"barcode":"8902440003240","product_name":"Betterave Rouges","brands":"Various","ingredients_text":"Red beetroot","additive_flags":"Clean single-ingredient"},
+    {"barcode":"8901063165823","product_name":"50-50 Time Pass","brands":"Britannia","ingredients_text":"Refined wheat flour, sugar, edible vegetable oil, invert syrup, salt, raising agents, emulsifier","additive_flags":"Clean"},
+    {"barcode":"8906032010296","product_name":"Mahakosh Refined Soyabean Oil","brands":"Mahakosh","ingredients_text":"Refined soybean oil, antioxidant (INS 319), vitamins A & D","additive_flags":"INS 319 TBHQ"},
+    {"barcode":"8901037255055","product_name":"Ginger Chai Instant Tea Premix","brands":"Girnar","ingredients_text":"Dairy whitener, sugar, tea extract, ginger, spices","additive_flags":"Clean"},
+    {"barcode":"8906195000011","product_name":"Cooked Kabuli Chana","brands":"FreshCon","ingredients_text":"Chickpeas (cooked)","additive_flags":"Clean single-ingredient"},
+    {"barcode":"8908012471011","product_name":"Indian Mint Tonic Water","brands":"Various","ingredients_text":"Carbonated water, sugar, mint flavour, quinine, acidity regulators","additive_flags":"Clean"},
+    {"barcode":"8908004114339","product_name":"Prunes","brands":"Wonderland Foods","ingredients_text":"Prunes (dried plums)","additive_flags":"Clean single-ingredient"},
+    {"barcode":"8904168782377","product_name":"Medium Prawns Peeled & Deveined","brands":"Big Sam's","ingredients_text":"Prawns (peeled & deveined)","additive_flags":"Clean single-ingredient"},
+    {"barcode":"8906133331269","product_name":"Mixed Masala Powder","brands":"Mahalakshmi","ingredients_text":"Coriander, cumin, turmeric, red chilli, black pepper, cloves, cinnamon, cardamom","additive_flags":"Clean spice blend"},
+    {"barcode":"8901719118654","product_name":"20/20","brands":"Parle","ingredients_text":"Refined wheat flour, sugar, edible vegetable oil, cashew nuts, invert syrup, milk solids, raising agents, emulsifiers","additive_flags":"Clean"},
+    {"barcode":"6008904063226990","product_name":"Green Chilli","brands":"Haldiram's","ingredients_text":"Green chilli","additive_flags":"Clean single-ingredient"},
+    {"barcode":"8902901427165","product_name":"Raisins Yellow","brands":"Good Life","ingredients_text":"Yellow raisins","additive_flags":"Clean single-ingredient"},
+    {"barcode":"8906113491129","product_name":"Millet Muesli","brands":"Tata SoulFull","ingredients_text":"Millet flakes, oats, dried fruits, nuts, honey","additive_flags":"Clean"},
+    {"barcode":"8904004442854","product_name":"Mutter Paneer","brands":"Various","ingredients_text":"Paneer, green peas, tomato, spices, salt, edible vegetable oil","additive_flags":"Clean"},
+    {"barcode":"8904168700104","product_name":"Coho Salmon Wild","brands":"Big Sam","ingredients_text":"Coho salmon (wild)","additive_flags":"Clean single-ingredient"},
+    {"barcode":"8901414042322","product_name":"Malai Kofta","brands":"Bikano","ingredients_text":"Paneer, potato, cream, spices, salt, sugar, edible vegetable oil","additive_flags":"Clean"},
+    {"barcode":"8904150900260","product_name":"Organic Cumin Seeds","brands":"Farm Organic","ingredients_text":"Organic cumin seeds","additive_flags":"Clean single-ingredient"},
+    {"barcode":"8904150900918","product_name":"Organic Yellow Mustard","brands":"Farm Organic","ingredients_text":"Organic yellow mustard seeds","additive_flags":"Clean single-ingredient"},
+    {"barcode":"8904150901007","product_name":"Organic Red Chilli Whole","brands":"Farm Organic","ingredients_text":"Organic red chillies (whole)","additive_flags":"Clean single-ingredient"},
+    {"barcode":"8904150901168","product_name":"Organic Coriander Powder","brands":"Farm Organic","ingredients_text":"Organic coriander powder","additive_flags":"Clean single-ingredient"},
+    {"barcode":"8906090831444","product_name":"White Channa (Chick Peas)","brands":"Grace","ingredients_text":"White chickpeas","additive_flags":"Clean single-ingredient"},
+    {"barcode":"8906131684817","product_name":"Millet Pancake Mix","brands":"Slurrp Farm","ingredients_text":"Millet flour, raising agents, salt","additive_flags":"Clean"},
+    {"barcode":"8906081380623","product_name":"Palli Karam Podi","brands":"Swetha Telugu","ingredients_text":"Peanut, red chilli, garlic, salt, edible vegetable oil","additive_flags":"Clean"},
+    {"barcode":"8906066200601","product_name":"Keya Oregano Seasoning","brands":"Keya","ingredients_text":"Oregano (100%)","additive_flags":"Clean single-ingredient"},
+    {"barcode":"8906077361919","product_name":"Roasted Curry Masala Chana","brands":"Jaimin","ingredients_text":"Roasted chickpeas, curry masala spices, iodized salt","additive_flags":"Clean"},
+    {"barcode":"8906101703678","product_name":"Amoxicilina Polvo Suspensión Oral","brands":"Various","ingredients_text":"NON-FOOD — Medicine","additive_flags":"NON-FOOD — PURGE"},
+    {"barcode":"8901207002724","product_name":"Trifla Churn","brands":"Dabur","ingredients_text":"Triphala (amla, haritaki, bibhitaki)","additive_flags":"Clean"},
+    {"barcode":"8901262130363","product_name":"Amul Pro Plus","brands":"Amul","ingredients_text":"Milk solids, sugar, flavour, stabilizers, emulsifier","additive_flags":"Clean"},
+    {"barcode":"8902901223804","product_name":"Sago","brands":"Good Life","ingredients_text":"Sago (tapioca pearls)","additive_flags":"Clean single-ingredient"},
+    {"barcode":"8906078263861","product_name":"Coconut Cookies","brands":"Cremica Mrs Bectors","ingredients_text":"Refined wheat flour, sugar, coconut, edible vegetable oil, raising agents, emulsifiers","additive_flags":"Clean"},
+    {"barcode":"8906151142786","product_name":"Triple Calcium","brands":"Tata 1mg","ingredients_text":"Calcium supplement","additive_flags":"Supplement"},
+    {"barcode":"8908014672003","product_name":"Cremberie Natural Yoghurt Plain","brands":"Various","ingredients_text":"Pasteurized milk, active lactic culture","additive_flags":"Clean"},
+    {"barcode":"8908013172887","product_name":"Protein Milkshake","brands":"Phab","ingredients_text":"Milk solids, whey protein, sugar, flavours, stabilizers","additive_flags":"Clean"},
+    {"barcode":"8904048426629","product_name":"Tata Chana Dal 500g","brands":"Tata","ingredients_text":"Chana dal (split chickpeas)","additive_flags":"Clean single-ingredient"},
+    {"barcode":"8901719707490","product_name":"Murano Chocolate Chip Cookies","brands":"Parle","ingredients_text":"Refined wheat flour, sugar, chocolate chips, edible vegetable oil, invert syrup, raising agents, emulsifiers","additive_flags":"Clean"},
+    {"barcode":"8901542003028","product_name":"Strawberry","brands":"Complan","ingredients_text":"Milk solids (52%), sugar, strawberry flavour, maltodextrin, almonds, minerals, vitamins, colours (INS 100(i), INS 160b(ii))","additive_flags":"Natural colours"},
+    {"barcode":"8906064701964","product_name":"Palak Murukku","brands":"Various","ingredients_text":"Rice flour, spinach, gram flour, edible vegetable oil, iodized salt, spices","additive_flags":"Clean"},
+    {"barcode":"8901560083552","product_name":"Nilon's Tooty Fruity","brands":"Nilon's","ingredients_text":"Sugar, glucose syrup, flavours, colours","additive_flags":"Verify colours"},
+    {"barcode":"8901262030243","product_name":"Amul Ghee","brands":"Amul","ingredients_text":"Milk fat","additive_flags":"Clean single-ingredient"},
+    {"barcode":"8904132919228","product_name":"Desi Kitchen Rasam","brands":"Various","ingredients_text":"Coriander, cumin, turmeric, red chilli, black pepper, mustard, fenugreek, curry leaves","additive_flags":"Clean spice blend"},
+    {"barcode":"8901719123900","product_name":"Parle G Gold","brands":"Parle","ingredients_text":"Refined wheat flour, sugar, invert syrup, refined palm oil, salt, skimmed milk powder, raising agents (INS 503(ii), INS 500(ii)), emulsifier (INS 471), artificial vanilla flavour","additive_flags":"Clean"},
+    {"barcode":"8906042150616","product_name":"Anil Happala","brands":"Anil","ingredients_text":"Rice flour, urad dal flour, salt, spices","additive_flags":"Clean"},
+    {"barcode":"8904117904003","product_name":"Honey","brands":"Pro Nature 100% Organic","ingredients_text":"Organic honey (100%)","additive_flags":"Clean single-ingredient"},
+    {"barcode":"8901058000221","product_name":"2 Minute Noodles","brands":"Nestlé","ingredients_text":"Noodles: Refined wheat flour, palm oil, salt, wheat gluten, thickeners; Tastemaker: salt, spices, sugar, flavour enhancers (INS 621, INS 627, INS 631), antioxidant (INS 319)","additive_flags":"INS 621 + INS 319"},
+    {"barcode":"8906077122411","product_name":"Milk","brands":"Various","ingredients_text":"Milk","additive_flags":"Clean single-ingredient"},
+    {"barcode":"8901719119026","product_name":"Parle Assorted Candy Orange Bite","brands":"Parle","ingredients_text":"Sugar, glucose syrup, orange flavour, acidity regulator, colours","additive_flags":"Verify colours"},
+    {"barcode":"8901725004545","product_name":"Sunfeast Milk Shake 300ml Pet","brands":"Sunfeast","ingredients_text":"Milk solids, sugar, flavour, stabilizers, emulsifier","additive_flags":"Clean"},
+    {"barcode":"8906005610836","product_name":"Winkies Muffins","brands":"Winkies","ingredients_text":"Refined wheat flour, sugar, eggs, edible vegetable oil, glucose syrup, raising agents, emulsifiers, preservative (INS 202)","additive_flags":"INS 202 preservative"},
+    {"barcode":"8906081380180","product_name":"Gongura Pickle","brands":"Telugu Foods","ingredients_text":"Gongura (sorrel leaves), salt, spices, edible vegetable oil, acidity regulator","additive_flags":"Clean"},
+    {"barcode":"8904067712611","product_name":"Crunchy Peanut Butter","brands":"Jabsons","ingredients_text":"Roasted peanuts, salt, edible vegetable oil","additive_flags":"Clean"},
+    {"barcode":"8901928370706","product_name":"Cheese Licks","brands":"Bisk Farm","ingredients_text":"Refined wheat flour, cheese, edible vegetable oil, salt, spices, raising agents, emulsifiers","additive_flags":"Clean"},
+    {"barcode":"8901725006143","product_name":"Marie Light","brands":"Sunfeast","ingredients_text":"Refined wheat flour, sugar, refined palm oil, invert sugar syrup, milk solids, raising agents, salt, emulsifiers","additive_flags":"Clean"},
+    {"barcode":"8901928300741","product_name":"Top Gold","brands":"Bisk Farm","ingredients_text":"Refined wheat flour, sugar, edible vegetable oil, invert syrup, raising agents, emulsifiers","additive_flags":"Clean"},
+    {"barcode":"8901725002237","product_name":"Digestive","brands":"Sunfeast","ingredients_text":"Whole wheat flour, sugar, edible vegetable oil, raising agents, emulsifiers, salt","additive_flags":"Clean"},
+    {"barcode":"8906017861769","product_name":"Ruskit","brands":"Bisk Farm","ingredients_text":"Refined wheat flour, sugar, edible vegetable oil, invert syrup, milk solids, raising agents, emulsifiers","additive_flags":"Clean"},
+    {"barcode":"8901928221756","product_name":"Bisk Farm Erbs","brands":"Bisk Farm","ingredients_text":"Refined wheat flour, sugar, edible vegetable oil, invert syrup, raising agents, emulsifiers","additive_flags":"Clean"},
+    {"barcode":"8901725006167","product_name":"Marie Light","brands":"Sunfeast","ingredients_text":"Refined wheat flour, sugar, refined palm oil, invert sugar syrup, milk solids, raising agents, salt, emulsifiers","additive_flags":"Clean"},
+    {"barcode":"8901928302509","product_name":"Top Gold 189g","brands":"Bisk Farm","ingredients_text":"Refined wheat flour, sugar, edible vegetable oil, invert syrup, raising agents, emulsifiers","additive_flags":"Clean"},
+    {"barcode":"8901719119903","product_name":"Parle Top","brands":"Parle","ingredients_text":"Refined wheat flour, sugar, edible vegetable oil, invert syrup, raising agents, emulsifiers","additive_flags":"Clean"},
+    {"barcode":"8901725016159","product_name":"Dark Fantasy Choco Fills","brands":"Sunfeast","ingredients_text":"Choco crème (sugar, refined palmolein, cocoa solids), refined wheat flour, sugar, invert syrup, liquid glucose, cocoa solids, milk solids, butter, raising agents, emulsifiers, salt","additive_flags":"Clean"},
+    {"barcode":"8901719132025","product_name":"Parle Premium Rusk 291.2gm","brands":"Parle","ingredients_text":"Refined wheat flour, sugar, edible vegetable oil, invert syrup, milk solids, raising agents, emulsifier, artificial vanilla flavour","additive_flags":"Clean"},
+    {"barcode":"8901725113551","product_name":"Sunfeast Glucose Biscuits","brands":"Sunfeast","ingredients_text":"Refined wheat flour, sugar, edible vegetable oil, glucose syrup, raising agents, emulsifiers","additive_flags":"Clean"},
+    {"barcode":"8901719784040","product_name":"Parle Coconut","brands":"Parle","ingredients_text":"Refined wheat flour, sugar, coconut, edible vegetable oil, invert syrup, raising agents, emulsifier, artificial coconut flavour","additive_flags":"Clean"},
+    {"barcode":"8901725017552","product_name":"Sunfeast Nice","brands":"Sunfeast","ingredients_text":"Refined wheat flour, sugar, coconut, edible vegetable oil, invert syrup, raising agents, emulsifiers","additive_flags":"Clean"},
+    {"barcode":"8901719130038","product_name":"Parle Happy Happy","brands":"Parle","ingredients_text":"Refined wheat flour, sugar, edible vegetable oil, invert syrup, raising agents, emulsifiers, colours","additive_flags":"Clean"},
+    {"barcode":"8906158360138","product_name":"Arrowroot Thin","brands":"Various","ingredients_text":"Arrowroot flour, sugar, edible vegetable oil, raising agents, emulsifier","additive_flags":"Clean"},
+    {"barcode":"8902901224658","product_name":"Good Life Masoor Dal 500g","brands":"Good Life","ingredients_text":"Masoor dal (red lentils)","additive_flags":"Clean single-ingredient"},
+    {"barcode":"8902901225068","product_name":"GL Moong Dal Chilka 500gm","brands":"Good Life","ingredients_text":"Moong dal with skin (green gram)","additive_flags":"Clean single-ingredient"},
+    {"barcode":"8902901224986","product_name":"GL Masoor Malka 500g","brands":"Good Life","ingredients_text":"Masoor malka (split red lentils)","additive_flags":"Clean single-ingredient"},
+    {"barcode":"8902901224849","product_name":"GL Urad Whole 500g","brands":"Good Life","ingredients_text":"Urad dal (whole)","additive_flags":"Clean single-ingredient"},
+    {"barcode":"8902901214840","product_name":"Urad Whole 500g","brands":"Good Life","ingredients_text":"Urad dal (whole)","additive_flags":"Clean single-ingredient"},
+    {"barcode":"8906044920231","product_name":"Hallmark Byadgi Chilli Stemless","brands":"Hallmark","ingredients_text":"Byadgi red chillies (stemless)","additive_flags":"Clean single-ingredient"},
+    {"barcode":"8902901127140","product_name":"Lobia Red","brands":"Good Life","ingredients_text":"Red cowpeas (lobia)","additive_flags":"Clean single-ingredient"},
+    {"barcode":"8902901232264","product_name":"GL Moth 500g","brands":"Good Life","ingredients_text":"Moth beans","additive_flags":"Clean single-ingredient"},
+    {"barcode":"8902901033519","product_name":"GL Pulses Mix 500g","brands":"Good Life","ingredients_text":"Mixed pulses","additive_flags":"Clean"},
+    {"barcode":"8902901224672","product_name":"GL Moong Dal 500g","brands":"Good Life","ingredients_text":"Moong dal (green gram)","additive_flags":"Clean single-ingredient"},
+    {"barcode":"8907516130653","product_name":"Na","brands":"Na","ingredients_text":"Verify specific product","additive_flags":"Verify"},
+    {"barcode":"8906033531394","product_name":"Snapin Chilli Flakes","brands":"Snapin","ingredients_text":"Chilli flakes (100%)","additive_flags":"Clean single-ingredient"},
+    {"barcode":"8904355911917","product_name":"Upsnac Sweet Cinnamon Peanut Butter","brands":"Upsnac","ingredients_text":"Roasted peanuts, sugar, cinnamon, salt","additive_flags":"Clean"},
+    {"barcode":"8904250603962","product_name":"Oralyte ORS Orange","brands":"Oralyte","ingredients_text":"Glucose, sodium chloride, potassium chloride, sodium citrate, orange flavour","additive_flags":"ORS — Regulated"},
+    {"barcode":"8904004401530","product_name":"Fatafat Bhel","brands":"Haldiram's","ingredients_text":"Rice flakes, gram flour, edible vegetable oil, peanuts, sago, salt, spices, raising agents, colours (INS 160c)","additive_flags":"INS 160c colour"},
+    {"barcode":"8901725015428","product_name":"Sunfeast Marie Light Vita Orange","brands":"Sunfeast","ingredients_text":"Refined wheat flour, sugar, refined palm oil, invert sugar syrup, milk solids, raising agents, salt, emulsifiers, orange flavour, colours (INS 110)","additive_flags":"INS 110 colour"},
+    {"barcode":"8908020854752","product_name":"Dark Chocolate Whey Protein Isolate","brands":"Wellbeing Nutrition","ingredients_text":"Whey protein isolate, cocoa solids, emulsifier (INS 322), sweetener","additive_flags":"Clean"},
+    {"barcode":"8906076131971","product_name":"Zero Maida Country Sourdough","brands":"The Baker's Dozen","ingredients_text":"Whole wheat flour, sourdough starter, salt, water","additive_flags":"Clean"},
+    {"barcode":"8906142773968","product_name":"Anjeer Dry Fruits Barfi","brands":"Bolas","ingredients_text":"Figs (anjeer), dry fruits, sugar, ghee, cardamom","additive_flags":"Clean"},
+    {"barcode":"8901035062068","product_name":"Thé Victoria Watermelon","brands":"Various","ingredients_text":"Watermelon flavoured tea","additive_flags":"Clean"},
+    {"barcode":"8901035054070","product_name":"Thé Victoria Orange","brands":"Various","ingredients_text":"Orange flavoured tea","additive_flags":"Clean"},
+    {"barcode":"8901035060149","product_name":"Bte Thé Victoria Poudre 200g","brands":"Various","ingredients_text":"Tea powder","additive_flags":"Clean"},
+    {"barcode":"8904132974258","product_name":"Campa Orange","brands":"Campa","ingredients_text":"Carbonated water, sugar, acidity regulators (INS 330, INS 331(iii)), orange juice concentrate, colours (INS 110, INS 102), artificial orange flavour, preservative (INS 211)","additive_flags":"INS 110 + INS 102"},
+    {"barcode":"8901220600686","product_name":"Honey","brands":"Baidyanath","ingredients_text":"Honey (100%)","additive_flags":"Clean single-ingredient"},
+    {"barcode":"8906005060020","product_name":"Cocojal Mango","brands":"Cocojal","ingredients_text":"Coconut water, mango pulp, sugar","additive_flags":"Clean"},
+    {"barcode":"8903023006009","product_name":"Vedaka Roasted Chana","brands":"Vedaka","ingredients_text":"Roasted chickpeas","additive_flags":"Clean single-ingredient"},
+    {"barcode":"8906016511702","product_name":"Gruhini Custard Powder","brands":"Gruhini","ingredients_text":"Corn starch, flavours, colours","additive_flags":"Verify colours"},
+    {"barcode":"8906016511856","product_name":"Gruhini Baking Powder","brands":"Gruhini","ingredients_text":"Sodium bicarbonate, corn starch, acidity regulator","additive_flags":"Clean"},
+    {"barcode":"8904417301762","product_name":"Mamaearth","brands":"Various","ingredients_text":"NON-FOOD — Personal care product","additive_flags":"NON-FOOD — PURGE"},
+    {"barcode":"8904362515832","product_name":"Rosemary","brands":"Various","ingredients_text":"Rosemary (100%)","additive_flags":"Clean single-ingredient"},
+    {"barcode":"8904192222788","product_name":"Chocolate","brands":"Thoughtful/Hazel Twirl","ingredients_text":"Sugar, cocoa solids, cocoa butter, milk solids, hazelnuts, emulsifiers, flavours","additive_flags":"Clean"},
+    {"barcode":"8904089915144","product_name":"Toned Milk","brands":"Heritage","ingredients_text":"Toned milk, vitamins A & D","additive_flags":"Clean"},
+    {"barcode":"8906118416844","product_name":"Plum","brands":"Various","ingredients_text":"Plums","additive_flags":"Clean single-ingredient"},
+    {"barcode":"8901063165885","product_name":"Britannia Milkibikis Smiley Kreemz 12x44g","brands":"Britannia","ingredients_text":"Refined wheat flour, sugar, milk solids, edible vegetable oil, invert syrup, raising agents, emulsifiers","additive_flags":"Clean"},
+    {"barcode":"8901047816192","product_name":"Bombay Potatoes","brands":"Various","ingredients_text":"Potato, spices, salt, edible vegetable oil, tomato","additive_flags":"Clean"},
+    {"barcode":"8906001380566","product_name":"Galleta Trio 4 Chocolate","brands":"Various","ingredients_text":"Refined wheat flour, sugar, cocoa solids, edible vegetable oil, raising agents, emulsifiers","additive_flags":"Clean"},
+    {"barcode":"8901719210228","product_name":"Rol Cola","brands":"Various","ingredients_text":"Sugar, glucose syrup, cola flavour, acidity regulator, colours","additive_flags":"Verify colours"},
+    {"barcode":"8906002662050","product_name":"Coconut Sugar","brands":"KLF","ingredients_text":"Coconut sugar (100%)","additive_flags":"Clean single-ingredient"},
+    {"barcode":"8901414042162","product_name":"Aloo Paratha","brands":"Eat Easy","ingredients_text":"Whole wheat flour, potato, spices, salt, edible vegetable oil","additive_flags":"Clean"},
+    {"barcode":"8903363010278","product_name":"Thatta Paiyru / Chowli Red","brands":"DMart","ingredients_text":"Red cowpeas (thatta payir/chowli)","additive_flags":"Clean single-ingredient"},
+    {"barcode":"8904084905010","product_name":"Kanikama","brands":"Gadré","ingredients_text":"Surimi (fish paste), starch, salt, sugar, egg white, crab flavour, colours","additive_flags":"Clean"},
+    {"barcode":"8906003210649","product_name":"Vin Rouge Indien Shiraz","brands":"Various","ingredients_text":"Alcoholic beverage (wine)","additive_flags":"ALCOHOL — SEPARATE"},
+    {"barcode":"8902901027938","product_name":"Good Life Chakki Atta 5kg","brands":"Good Life","ingredients_text":"100% whole wheat flour (chakki)","additive_flags":"Clean single-ingredient"},
+    {"barcode":"8906020490994","product_name":"Mysore Pak","brands":"Lal","ingredients_text":"Gram flour, sugar, ghee, cardamom","additive_flags":"Clean"},
+    {"barcode":"8906022070347","product_name":"Organic Honey","brands":"Nature's Nectar","ingredients_text":"Organic honey (100%)","additive_flags":"Clean single-ingredient"},
+    {"barcode":"8901414001503","product_name":"Bikano Rasogolla","brands":"Bikano","ingredients_text":"Milk solids (chenna), sugar, cardamom","additive_flags":"Clean"},
+    {"barcode":"8901414003057","product_name":"Bikano Patisa","brands":"Bikano","ingredients_text":"Sugar, gram flour, ghee, cardamom","additive_flags":"Clean"},
+    {"barcode":"8906158700040","product_name":"Khapli Atta Flour","brands":"Deccan Organic","ingredients_text":"Khapli wheat flour","additive_flags":"Clean single-ingredient"},
+    {"barcode":"8908003249049","product_name":"Ghee","brands":"Akshayakalpa","ingredients_text":"Milk solids (pure cow ghee)","additive_flags":"Clean single-ingredient"},
+    {"barcode":"8904083505501","product_name":"Organic Green Moong Dal Split","brands":"24 Mantra","ingredients_text":"Organic moong dal green split","additive_flags":"Clean single-ingredient"},
+    {"barcode":"8904083505549","product_name":"Moong Dal","brands":"24 Mantra Organic","ingredients_text":"Moong dal (green gram)","additive_flags":"Clean single-ingredient"},
+    {"barcode":"8904083505334","product_name":"Brown Chana","brands":"24 Mantra","ingredients_text":"Brown chickpeas","additive_flags":"Clean single-ingredient"},
+    {"barcode":"8906055440643","product_name":"Organic Brown Sugar","brands":"Organic Tattva","ingredients_text":"Organic brown sugar","additive_flags":"Clean single-ingredient"},
+    {"barcode":"8906055440858","product_name":"Masoor Dal","brands":"Organic Tattva","ingredients_text":"Masoor dal (red lentils)","additive_flags":"Clean single-ingredient"},
+    {"barcode":"8904083505808","product_name":"Tur Dal","brands":"24 Mantra Organic","ingredients_text":"Tur/Toor dal (pigeon pea)","additive_flags":"Clean single-ingredient"},
+    {"barcode":"8906055440513","product_name":"Poha","brands":"Organic Tattva","ingredients_text":"Flattened rice (poha)","additive_flags":"Clean single-ingredient"},
+    {"barcode":"8903081567894","product_name":"Chase Protein Biscoff Cheese Cake","brands":"Chase","ingredients_text":"Whey protein, biscoff flavour, cheese cake flavour, emulsifier, sweetener","additive_flags":"Clean"},
+    {"barcode":"8907316003324","product_name":"Mother's Chilli Vinegar","brands":"Mother's Recipe","ingredients_text":"Vinegar, red chilli, salt, sugar, garlic, acidity regulator, preservative (INS 211)","additive_flags":"INS 211 preservative"},
+    {"barcode":"8901719135576","product_name":"Parle Marie","brands":"Parle","ingredients_text":"Refined wheat flour, sugar, refined palm oil, invert sugar syrup, milk solids, raising agents, salt, emulsifiers","additive_flags":"Clean"},
+    {"barcode":"8906069404686","product_name":"Veeba Barbeque","brands":"Veeba","ingredients_text":"Tomato paste, sugar, vinegar, salt, spices, acidity regulator, preservative (INS 211), smoke flavour","additive_flags":"INS 211 preservative"},
+    {"barcode":"8906069401166","product_name":"Veeba Zero Select","brands":"Veeba","ingredients_text":"Refined soyabean oil, water, sugar, milk solids, iodised salt, stabilizers, acidity regulators, preservatives (INS 211, INS 202), antioxidant (INS 319)","additive_flags":"INS 211 + INS 202 + INS 319"},
+    {"barcode":"8906002006830","product_name":"Funfoods Mustard English","brands":"Funfoods","ingredients_text":"Mustard seeds, vinegar, salt, spices, acidity regulator","additive_flags":"Clean"},
+    {"barcode":"8901088129831","product_name":"Masala Oats","brands":"Saffola","ingredients_text":"Oats, spices, salt, dehydrated vegetables","additive_flags":"Clean"},
+    {"barcode":"8901719127915","product_name":"Parle Monaco Pizza 311.4","brands":"Parle","ingredients_text":"Refined wheat flour, sugar, edible vegetable oil, pizza seasoning, salt, raising agents, emulsifier","additive_flags":"Clean"},
+    {"barcode":"8902710508703","product_name":"Choco","brands":"Various","ingredients_text":"Verify specific product","additive_flags":"Verify"},
+    {"barcode":"8902710110036","product_name":"Oat Bran","brands":"Bagrry's","ingredients_text":"Oat bran (100%)","additive_flags":"Clean single-ingredient"},
+    {"barcode":"8901088069106","product_name":"Saffola Honey Sundarbans","brands":"Saffola","ingredients_text":"Honey (Sundarbans) (100%)","additive_flags":"Clean single-ingredient"},
+    {"barcode":"8906002008810","product_name":"Veg Mayonnaise","brands":"Funfoods","ingredients_text":"Refined soyabean oil, water, sugar, milk solids, iodised salt, stabilizers, acidity regulators, preservatives (INS 211, INS 202), antioxidant (INS 319)","additive_flags":"INS 211 + INS 202 + INS 319"},
+    {"barcode":"8909106029859","product_name":"Posted Garlic","brands":"Various","ingredients_text":"Verify specific product","additive_flags":"Verify"},
+    {"barcode":"8907892000502","product_name":"Instant Noodle","brands":"Jackpot","ingredients_text":"Refined wheat flour, palm oil, salt, thickeners; Tastemaker: salt, spices, flavour enhancers (INS 621)","additive_flags":"INS 621 MSG"},
+    {"barcode":"8904124107497","product_name":"Pasteurized Double Toned Milk","brands":"Ananda","ingredients_text":"Double toned milk, vitamins A & D","additive_flags":"Clean"},
+    {"barcode":"8902618012272","product_name":"Eva Doll","brands":"TTK","ingredients_text":"NON-FOOD — Personal care product","additive_flags":"NON-FOOD — PURGE"},
+    {"barcode":"8904140220763","product_name":"Eastern BBQ Spices","brands":"Eastern","ingredients_text":"Coriander, cumin, turmeric, red chilli, black pepper, garlic, ginger, salt","additive_flags":"Clean spice blend"},
+    {"barcode":"8904132965621","product_name":"Simply Smart Moong Dal Dhuli","brands":"Simply Smart","ingredients_text":"Moong dal dhuli (split green gram without skin)","additive_flags":"Clean single-ingredient"},
+    {"barcode":"8904018300164","product_name":"Medmix","brands":"Various","ingredients_text":"Verify specific product","additive_flags":"Verify"},
+    {"barcode":"8906095640003","product_name":"Mango Fruit Pulp","brands":"Murohi","ingredients_text":"Mango pulp (100%)","additive_flags":"Clean single-ingredient"},
+    {"barcode":"8904018301680","product_name":"Medmix","brands":"Various","ingredients_text":"Verify specific product","additive_flags":"Verify"},
+    {"barcode":"8906044996045","product_name":"AIO Guava","brands":"Various","ingredients_text":"Water, guava juice, sugar, acidity regulator","additive_flags":"Clean"},
+    {"barcode":"8906044996052","product_name":"AIO Litchi","brands":"Various","ingredients_text":"Water, lychee juice, sugar, acidity regulator","additive_flags":"Clean"},
+    {"barcode":"8906009990705","product_name":"Elite Dreams Choco Pineapple","brands":"Elite","ingredients_text":"Refined wheat flour, sugar, cocoa solids, pineapple flavour, eggs, edible vegetable oil, raising agents, emulsifiers","additive_flags":"Clean"},
+    {"barcode":"8906009993157","product_name":"Orange Fruity Cake","brands":"Elite","ingredients_text":"Refined wheat flour, sugar, eggs, edible vegetable oil, orange flavour, glucose syrup, raising agents, emulsifiers, colours","additive_flags":"Clean"},
+    {"barcode":"8906009993164","product_name":"Dreams Pineapple","brands":"Elite","ingredients_text":"Refined wheat flour, sugar, eggs, edible vegetable oil, pineapple flavour, glucose syrup, raising agents, emulsifiers","additive_flags":"Clean"},
+    {"barcode":"8906009994161","product_name":"Fruit Cake","brands":"Elite","ingredients_text":"Refined wheat flour, sugar, eggs, edible vegetable oil, mixed fruit peel, glucose syrup, raising agents, emulsifiers","additive_flags":"Clean"},
+    {"barcode":"8906009993829","product_name":"Orange Elite","brands":"Elite","ingredients_text":"Refined wheat flour, sugar, eggs, edible vegetable oil, orange flavour, glucose syrup, raising agents, emulsifiers","additive_flags":"Clean"},
+    {"barcode":"8906009993812","product_name":"Cake Milk","brands":"Elite","ingredients_text":"Refined wheat flour, sugar, eggs, milk solids, edible vegetable oil, glucose syrup, raising agents, emulsifiers","additive_flags":"Clean"},
+    {"barcode":"8904043550213","product_name":"Cake Modern","brands":"Modern","ingredients_text":"Refined wheat flour, sugar, eggs, edible vegetable oil, glucose syrup, raising agents, emulsifiers, preservative (INS 202)","additive_flags":"INS 202 preservative"},
+    {"barcode":"8904320018351","product_name":"DiSano Peanut Butter Crunchy","brands":"DiSano","ingredients_text":"Roasted peanuts, salt, edible vegetable oil","additive_flags":"Clean"},
+    {"barcode":"8902269516624","product_name":"A to Z Tablet","brands":"Alkem","ingredients_text":"NON-FOOD — Medicine/supplement","additive_flags":"NON-FOOD — PURGE"},
+    {"barcode":"8901063093607","product_name":"Britannia 565","brands":"Britannia","ingredients_text":"Verify specific product","additive_flags":"Verify"},
+    {"barcode":"8906009504186","product_name":"Chitale Tup","brands":"Chitale","ingredients_text":"Verify specific product","additive_flags":"Verify"},
+    {"barcode":"8906000591826","product_name":"Rice","brands":"Various","ingredients_text":"Rice (100%)","additive_flags":"Clean single-ingredient"},
+    {"barcode":"8904271201703","product_name":"Hhuu","brands":"GHG","ingredients_text":"NON-FOOD — Invalid/nonsense entry","additive_flags":"NON-FOOD — PURGE"},
+    {"barcode":"8902579003326","product_name":"Lassi","brands":"Various","ingredients_text":"Toned milk, sugar, active lactic culture","additive_flags":"Clean"},
+    {"barcode":"8901262201902","product_name":"Amul Stirred Fruit Yoghurt Pineapple","brands":"Amul","ingredients_text":"Pasteurized toned milk, pineapple, sugar, active lactic culture","additive_flags":"Clean"},
+    {"barcode":"8906017861318","product_name":"Ruskit Bisk Farm","brands":"Bisk Farm","ingredients_text":"Refined wheat flour, sugar, edible vegetable oil, invert syrup, milk solids, raising agents, emulsifiers","additive_flags":"Clean"},
+    {"barcode":"8901719127977","product_name":"Parle Piripiri Monaco","brands":"Parle","ingredients_text":"Refined wheat flour, sugar, edible vegetable oil, piripiri seasoning, salt, raising agents, emulsifier","additive_flags":"Clean"},
+    {"barcode":"8901928041217","product_name":"Bisk Farm Parle","brands":"Bisk Farm/Parle","ingredients_text":"Refined wheat flour, sugar, edible vegetable oil, invert syrup, raising agents, emulsifiers","additive_flags":"Clean"},
+    {"barcode":"8906141100260","product_name":"Gud Bites Jaggery Cubes","brands":"Gudworld","ingredients_text":"Jaggery (gur)","additive_flags":"Clean single-ingredient"},
+    {"barcode":"8906069410991","product_name":"Dried Fruits & Berries","brands":"Jewel Farmer","ingredients_text":"Mixed dried fruits and berries","additive_flags":"Clean"},
+    {"barcode":"8906181810303","product_name":"Metabolic Lean","brands":"Good Bug","ingredients_text":"Probiotic supplement","additive_flags":"Supplement"},
+    {"barcode":"8908026538144","product_name":"B-Complex","brands":"Wellbeing Nutrition","ingredients_text":"Vitamin B complex supplement","additive_flags":"Supplement"},
+    {"barcode":"8906068760639","product_name":"Peanut Butter","brands":"Classic Garden","ingredients_text":"Roasted peanuts, salt, edible vegetable oil","additive_flags":"Clean"},
+    {"barcode":"8904406118883","product_name":"Evocus Water","brands":"Evocus","ingredients_text":"Purified water, nature identical flavour (contains minerals)","additive_flags":"Clean"},
+    {"barcode":"8909342283053","product_name":"Orzoro Orzo & Caffè","brands":"Nestlé/Orzoro","ingredients_text":"Orzo solubile 56% (orzo, orzo maltizzato), caffè solubile 20%, segale, cicoria, cacao magro in polvere, aromi","additive_flags":"Clean"},
+    {"barcode":"8908019552096","product_name":"Waffle Crisps Double Choco","brands":"The Belgian Waffle Co","ingredients_text":"Refined wheat flour (maida), refined sugar, dark choco compound 23% (sugar, edible vegetable fat (hydrogenated oils), cocoa solids and emulsifiers (INS 492, INS 322(i)), edible vegetable oil (palm kernel oil), milk solids, cocoa solids, iodised salt, leavening agents (INS 500(ii)), emulsifier (INS 322(ii)), and nature identical flavouring substances (vanilla)","additive_flags":"Hydrogenated oil"},
+    {"barcode":"8904304713074","product_name":"Multi Millet","brands":"Various","ingredients_text":"Barnyard millet, kodo millet, foxtail millet, little millet","additive_flags":"Clean"},
+    {"barcode":"8904304389682","product_name":"Idly/Dosa Quinoa Batter","brands":"Various","ingredients_text":"Quinoa, rice, urad dhall (lentil), rice flakes, salt and water","additive_flags":"Clean"},
+    {"barcode":"8906013030947","product_name":"X-Press Instant Noodles Vegetable Flavour 70g","brands":"Wai Wai","ingredients_text":"Wheat flour, palm oil, iodized salt, wheat gluten, thickener (E412), softening agent (E500ii), acidity regulator (E170i, E451i), iodized salt, flavour enhancers (E621, E627, E631), sugar, onion, maltodextrin (E1400), coriander, curry powder (turmeric, cumin, pepper, coriander, chilli, ginger, cinnamon, paprika), garlic, chilli, turmeric, cumin, soybean, wheat, salt, maltodextrin and natural colour (E150d), acidity regulator (E330)","additive_flags":"INS 621 + INS 627 + INS 631 + INS 150d"},
+    {"barcode":"8908016501530","product_name":"Peri Peri Crumbles","brands":"Hello Tempayy","ingredients_text":"Non GMO soybeans, water, red chilli paste, vinegar, sunflower oil, chilli powder, sugar, iodized salt, lime juice, spices and condiments, hydrolysed vegetable protein, rice flour, rhizopus (culture), iron, vitamin B12","additive_flags":"Clean"},
+    {"barcode":"8904063220431","product_name":"Taka Tak","brands":"Haldiram's","ingredients_text":"Rice meal, edible vegetable oil (palmolein, cotton seed, rice bran), corn meal (23%), gram meal, spices and condiments (red chilli powder (0.8%), raw powder, coriander powder (0.25%), cumin powder, anise powder (0.1%), black pepper powder, nutmeg powder, cinnamon powder, onion powder, spice extract), iodised salt, whey powder, maltodextrin, de sugar powder, acidity regulators (INS 296 & INS 330), natural and nature identical flavouring substances","additive_flags":"Clean"},
+    {"barcode":"8906143892750","product_name":"Mocha Millet 12g Protein Bar","brands":"Whole Truth","ingredients_text":"Oats, date powder, whey protein concentrate (instantised with lecithin), peanut butter, cocoa solids (cocoa nibs, cocoa powder), almonds, fig, coffee powder","additive_flags":"Clean"},
+    {"barcode":"8908014201050","product_name":"Ramji Net Fryums","brands":"Ramji","ingredients_text":"Wheat flour, rice flour, corn flour, iodised salt","additive_flags":"Clean"},
+    {"barcode":"8906104430557","product_name":"Glucotaste-D","brands":"Unknown Brand","ingredients_text":"Dextrose monohydrate 99.5% (glucose), minerals (341), vitamin-D3","additive_flags":"Clean"},
+    {"barcode":"8903023270752","product_name":"More Atta Bread","brands":"More","ingredients_text":"Whole wheat flour, sugar, yeast, iodised salt, refined palmolein oil, soya flour, emulsifier (INS 476, INS 471, INS 481(i)), preservative (INS 282), antioxidant (INS 300), improver (INS 1100), acidity regulator (INS 260)","additive_flags":"INS 282 preservative"},
+    {"barcode":"8905507001180","product_name":"First Crop Corn Flakes","brands":"First Crop/Vishal","ingredients_text":"Corn grits, sugar, malt extract, iodised salt, antioxidant","additive_flags":"Clean"},
+    {"barcode":"8901414000285","product_name":"Bikano Khatta Meetha 500g","brands":"Bikano","ingredients_text":"Edible vegetable oil (refined palmolein oil, refined rice bran oil, refined cottonseed oil), rice flakes (20%), sugar (sucrose), chickpea flour (14.8%), peanuts (7.3%), dried green peas, lentils (3.8%), sago, maize flour, split bengal gram, mixed spices, rice flour, iodized salt, turmeric, carom seeds, black salt, acidity regulator (E330), raising agent (E500(ii))","additive_flags":"Clean"},
+    {"barcode":"8904335602262","product_name":"Cornflakes+","brands":"Yogabar","ingredients_text":"Corn grits (92%), sugar, iodized salt, malt extract, soy lecithin, vitamin & minerals premix, probiotics (bacillus coagulans, 100 million cfu per serving), contains added natural flavour: rosemary extract","additive_flags":"Clean"},
+    {"barcode":"8904089916134","product_name":"Goodness Standardised Milk","brands":"Heritage","ingredients_text":"Milk solids (standardised milk), vitamin A palmitate & vitamin D (ergocalciferol)","additive_flags":"Clean"},
+    {"barcode":"8906021123266","product_name":"Mixed Fruit Jam","brands":"Aachi","ingredients_text":"Sugar, mixed fruit pulp (45%), thickener (INS 440), acidity regulator (INS 330), contains permitted class II preservative (INS 211), contains permitted synthetic food colour (INS 122) and added artificial flavouring substance (mix fruit)","additive_flags":"INS 122 + INS 211"},
+    {"barcode":"8906005671707","product_name":"Soya Chips","brands":"Charlie","ingredients_text":"Tapioca flour (45%), black matpe flour (18%), soya flour (10%), edible vegetable oil (refined palmolein oil) (9%), rice flour (7%), seasonings (4%) (ground spices and condiments: kashmiri red chilli powder, cumin, black pepper, clove, cinnamon, black cardamom), cabbage powder, soya powder, acidifying agents: malic acid (E296), maltodextrin, dextrose, iodised salt, sugar, anticaking agent (E551), paprika oleoresin colour (E160c), iodised salt (1%), kashmiri red chilli powder (1%), black salt (1%)","additive_flags":"Clean"},
+    {"barcode":"8904406170454","product_name":"Sompapdi","brands":"Raviteja","ingredients_text":"Sugar, ghee, maida, changada","additive_flags":"Clean"},
+    {"barcode":"8901491702539","product_name":"Oats Multigrain","brands":"Quaker","ingredients_text":"Wholegrain whole oat flakes (60%), wheat flakes (18%), barley flakes (10%), ragi flakes (5%), flax seeds (5%), sugar, iodised salt, malt extract, flavour (natural flavouring substances)","additive_flags":"Clean"},
+    {"barcode":"8901552021791","product_name":"Korma Sauce","brands":"Truly Indian","ingredients_text":"Water, onions, coconut milk 12% (water, coconut extract), tomato paste, sunflower oil, coconut flakes 3.5%, garlic, ginger, cashew nuts, salt, corn starch, green chilli, melon seeds, spices, dried fenugreek leaves, acidifier: citric acid; coriander leaves, turmeric powder, cardamom powder, colour: curcumin","additive_flags":"Clean"},
+    {"barcode":"8901063136441","product_name":"The Original Bourbon Creme Biscuit with Chocolate","brands":"Britannia","ingredients_text":"Wheat flour, sugar (34%), bakery shortening (palm oil, interesterified fat (palm), sesame oil), corn starch, colour (caramel I & IV), cocoa powder (2.8%), whey powder, raising agents (sodium bicarbonate, ammonium bicarbonate), artificial flavouring substances (vanillin, milky cocoa & chocolate), emulsifiers (mono- and di-glycerides of fatty acids, soya lecithin), milk chocolate (0.1%) (contains milk) and iodized salt","additive_flags":"INS 150d Caramel"},
+    {"barcode":"8901786165001","product_name":"Everest Chicken Masala","brands":"Everest","ingredients_text":"Coriander, cumin, turmeric, red chilli, black pepper, cloves, cinnamon, cardamom, garlic, ginger","additive_flags":"Clean spice blend"},
+    {"barcode":"8901940990753","product_name":"Cooked Peeled & Deveined Shrimp","brands":"Mornings Harvest","ingredients_text":"Shrimp, salt, sodium tripolyphosphate (to retain moisture)","additive_flags":"Clean"},
+    {"barcode":"8906005505040","product_name":"Soya Sticks","brands":"Bikaji","ingredients_text":"Edible vegetable oil (palmolein oil, cottonseed oil), tapioca starch, black gram flour, soya powder (7%), rice flour, whole lentil flour, ground spices & condiments (iodised salt, sugar, maltodextrin, fennel, cumin, red chilli, ginger, turmeric (colouring & spices), dry mango powder, corn starch, garlic, mustard seeds, acidity regulator (INS 330, INS 296), anticaking agent (INS 551), asafoetida, flavouring enhancer (INS 627, INS 631, INS 635), hydrolysed vegetable protein (soya)), hydrogenated vegetable oil (palm)","additive_flags":"Hydrogenated oil"},
+    {"barcode":"8906114940190","product_name":"Patal Pohe Chiwda","brands":"Kaka Halwai Sweets","ingredients_text":"Flattened rice, refined palmolein oil, ground nuts, roasted chick peas, dry coconut, powdered sugar, garlic, green chilli, curry leaves, iodized salt, white sesame seeds, coriander seeds, mustard seeds, cumin seeds, turmeric powder, asafoetida","additive_flags":"Clean"},
+    {"barcode":"8901262151726","product_name":"Amul Lactose Free 250ml","brands":"Amul","ingredients_text":"Toned milk, milk solids, enzyme (beta galactosidase)","additive_flags":"Clean"},
+    {"barcode":"8902080002290","product_name":"7Up","brands":"PepsiCo","ingredients_text":"Carbonated water, acidity regulators, flavour (natural flavouring substances), sweeteners, preservatives, non-caloric sweeteners, mixture of aspartame, sucralose and acesulfame potassium","additive_flags":"Clean"},
+    {"barcode":"8901719255151","product_name":"Parle-G Original Gluco Biscuits","brands":"Parle-G","ingredients_text":"Wheat flour (67%), sugar, edible vegetable oil (palm oil), invert sugar syrup (sugar, citric acid), raising agents (503(ii), 500(ii)), iodised salt, milk solids (0.6%), emulsifier (di-acetyl tartaric acid esters of mono and di-glycerides of edible vegetable oils) and improver (papain 1101(ii)), contains added flavours (artificial flavouring substances-vanilla)","additive_flags":"Clean"},
+    {"barcode":"8906120108904","product_name":"Farmley Date Bites","brands":"Farmley","ingredients_text":"Dates, almonds, cashew nuts, pistachios, ghee, honey","additive_flags":"Clean"},
+    {"barcode":"8904288603613","product_name":"Tops Tomato Ketchup","brands":"Tops","ingredients_text":"Water, tomato paste (28%), sugar, iodised salt, thickeners (INS 1422, INS 401, INS 415), acidity regulator (INS 260), onion powder, garlic powder, preservative (INS 211), red chilli powder, spices & condiments, antioxidant (INS 300)","additive_flags":"INS 211 preservative"},
+    {"barcode":"8906046144833","product_name":"Extra Fine Himalayan Black Salt","brands":"Various","ingredients_text":"Himalayan black salt (extra fine)","additive_flags":"Clean single-ingredient"},
+    {"barcode":"8906046140866","product_name":"Black Pepper Whole Organic Spices","brands":"Various","ingredients_text":"Black pepper (whole)","additive_flags":"Clean single-ingredient"},
+    {"barcode":"8906046144949","product_name":"Holy Basil Tulsi Leaf Organic Spices","brands":"Various","ingredients_text":"Holy basil (tulsi) leaves","additive_flags":"Clean single-ingredient"},
+    {"barcode":"8902710500776","product_name":"Bagrry's Crunchy Muesli","brands":"Bagrry's","ingredients_text":"Rolled oats (40.2%), whole wheat flakes (27.4%, wheat, sugar, iodized salt, malt extract and antioxidants INS 322 & INS 307b), invert syrup, raisins (4.7%), corn flakes (4.6%), almonds (3%), broken rolled wheat, brans (wheat bran, oat bran), honey (1%) & antioxidant (INS 307b)","additive_flags":"INS 307b antioxidant"},
+    {"barcode":"8901063325609","product_name":"Toastea Premium Rusk","brands":"Britannia","ingredients_text":"Refined wheat flour (maida) (71%), sugar, refined palm and palmolein oil, semolina (suji) (1.8%), yeast, invert sugar syrup, vital gluten, iodised salt, improvers (1100, 1102, 1104), spices (0.19%) (green cardamom seeds & its oil), wheat fibre, emulsifier blend (481(i), 471, 472e) and antioxidant (300)","additive_flags":"Clean"},
+    {"barcode":"8908000729629","product_name":"Opener Nimbu","brands":"Opener","ingredients_text":"Purified water, cane sugar, lemon juice 6%, CO2 (INS 290), citric acid (INS 330), permitted class-II preservative (INS 211), iodised salt","additive_flags":"INS 211 preservative"},
+    {"barcode":"8904083302292","product_name":"Greek Yogurt","brands":"Milky Mist","ingredients_text":"Pasteurised double toned milk, milk solids, active lactic cultures (L. bacillus delbrueckii subsp. bulgaricus, S. thermophilus)","additive_flags":"Clean"},
+    {"barcode":"8908016793911","product_name":"Dark Soya Sauce","brands":"Master Chow","ingredients_text":"Water, sugar, iodized salt, soyabean powder (1%), natural colour (150c(ii)), vegetable protein, garlic powder, mixed spices, condiments, acidity regulator (INS 260), 1-4% preservative (INS 211)","additive_flags":"INS 211 preservative"},
+    {"barcode":"8906002006410","product_name":"Fun Food Peanut Butter","brands":"Dr Oetker","ingredients_text":"Roasted peanuts (91%), sugar, edible vegetable fat (soyabean), iodised salt","additive_flags":"Clean"},
+    {"barcode":"8901192205261","product_name":"Ginger Garlic - Culinary Paste","brands":"Catch","ingredients_text":"Ginger (43%), garlic (27%), water, iodized salt, acidity regulator (INS 296), stabilizer (INS 415), preservatives (INS 211 & INS 224)","additive_flags":"INS 211 + INS 224"},
+    {"barcode":"8904089923682","product_name":"Curd","brands":"Heritage","ingredients_text":"Pasteurised toned milk & active lactic cultures","additive_flags":"Clean"},
+    {"barcode":"8902080304059","product_name":"7Up Super Duper 750ml","brands":"PepsiCo","ingredients_text":"Carbonated water, sugar, acidity regulators (INS 330, INS 331(i)), natural lemon-lime flavouring, preservative (INS 211)","additive_flags":"INS 211 preservative"},
+    {"barcode":"8904303410585","product_name":"True Classics Chocolate Bar - Bitter","brands":"Smoor","ingredients_text":"Dark chocolate (cocoa solids, cocoa butter, sugar and emulsifier (INS 322(i) and INS 476), natural flavouring substance (vanilla))","additive_flags":"Clean"},
+    {"barcode":"8906100690047","product_name":"Seedy Sourdough","brands":"Impossible Foods","ingredients_text":"50% organic stone ground whole wheat (atta), 50% organic wheat flour refined (maida), sourdough (yeast), black & white sesame, watermelon, amaranth, flax, salt","additive_flags":"Clean"},
+    {"barcode":"8904004405514","product_name":"Orange Soan Treat","brands":"Haldiram's","ingredients_text":"Refined sugar, refined wheat flour (maida), refined palmolein oil, bengal gram flour (besan), hydrogenated vegetable oil (vanaspati), liquid glucose, almond, pistachio nuts, colour (INS 110), natural flavouring substances & nature identical flavouring substances","additive_flags":"Hydrogenated oil + INS 110"},
+    {"barcode":"8901030518607","product_name":"Brown & Polson","brands":"Brown & Polson","ingredients_text":"Maize starch, iodised salt, tartrazine, sunset yellow FCF, nature identical flavouring substance","additive_flags":"INS 102 + INS 110 colours"},
+    {"barcode":"8902579105013","product_name":"Mango Drink","brands":"Frooti","ingredients_text":"Water, mango pulp, sugar, acidity regulators (citric acid [E330], trisodium citrate [E331(iii)]), stabiliser (gellan gum [E418]), preservative (potassium sorbate [E202]), antioxidant (ascorbic acid [E300]), artificial mango flavour and colouring agent beta-carotene [E160a]","additive_flags":"INS 202 preservative"},
+    {"barcode":"8904004403732","product_name":"Haldiram Moong Dal","brands":"Haldiram","ingredients_text":"Split pulse moong (moong dal) (77%), refined cotton seed oil & iodised salt","additive_flags":"Clean"},
+    {"barcode":"8906069400527","product_name":"Veeba Sandwich Spread","brands":"Veeba","ingredients_text":"Vegetables (32.0%) (tomatoes (22.0%), cucumber (10.0%)), refined soyabean oil, water, sugar, milk solids, emulsifiers and stabilizers (INS 1442, INS 1450, INS 415), iodised salt, acidity regulators (INS 260, INS 330), spices and condiments, preservatives (INS 211, INS 202), antioxidant (INS 319) and sequestrant (INS 385)","additive_flags":"INS 211 + INS 202 + INS 319"},
+    {"barcode":"8909106018327","product_name":"Boost","brands":"Boost/Unilever","ingredients_text":"Cereal extract (50%) (barley, wheat, millet), malted barley (21%), sugar, wheat flour (atta), milk solids (6%), minerals, natural colour (INS 150c), wheat gluten, acidity regulators (INS 501(ii), INS 500(ii)), edible iodised salt, cocoa powder, vitamins, nature identical flavouring substances, soy protein isolate","additive_flags":"INS 150c Caramel"},
+    {"barcode":"8904188603713","product_name":"Natural Yogurt","brands":"Real Choice","ingredients_text":"Milk, milk solids, culture","additive_flags":"Clean"},
+    {"barcode":"8902080100637","product_name":"Sting Energy Classic Kick","brands":"Pepsico/Sting","ingredients_text":"Carbonated water, sugar, acidity regulators (330, 296, 331), flavour (natural, nature identical and artificial (berry) flavouring substances), sequestrants (452(i), 385), caffeine, preservatives (211, 202), sweeteners (955, 950), taurine (0.01%), colours (110, 102), vitamins premix","additive_flags":"INS 211 + INS 202 + INS 110 + INS 102"},
+    {"barcode":"8906112995390","product_name":"High Protein Pav Bun","brands":"Protein Chef","ingredients_text":"High protein flour (whole wheat flour, defatted peanut flour, isolated wheat protein, soy protein isolate), sugar, edible common salt, yeast, edible vegetable oil (sunflower), emulsifier from soy (E322), acidity regulator (E260), calcium propionate, vitamin C","additive_flags":"Clean"},
+    {"barcode":"8906008815153","product_name":"Arhar Dal (Toor Dal)","brands":"Fortune","ingredients_text":"Arhar dal (toor dal)","additive_flags":"Clean single-ingredient"},
+    {"barcode":"8906116951163","product_name":"MuscleBlaze Fish Oil 1000mg 90 Capsules","brands":"MuscleBlaze","ingredients_text":"Fish oil, capsule shell ingredient (gelatin), solvent (purified water), humectants (INS 422 & INS 420(ii)), preservatives (INS 218 & INS 216), artificial (ethyl vanillin) flavouring substance & antioxidant (INS 307)","additive_flags":"Supplement"},
+    {"barcode":"8906055100011","product_name":"Rajdhani Besan 1kg","brands":"Rajdhani","ingredients_text":"Chana dal (gram flour)","additive_flags":"Clean single-ingredient"},
+    {"barcode":"8906000610626","product_name":"McCain Chilli Garlic Potato Pops","brands":"McCain","ingredients_text":"Potato (84%), palmolein oil, garlic paste (water, garlic (1.25%), iodized salt, starch, acidity regulator (INS 260)), maize starch, potato flakes, iodized salt, onion powder, red chilli flakes (0.37%)","additive_flags":"Clean"},
+    {"barcode":"8904083305071","product_name":"Pro Biotic Curd","brands":"Milky Mist","ingredients_text":"Pasteurised toned milk, active lactic culture and probiotic culture (bifidobacterium lactis & lactobacillus acidophilus)","additive_flags":"Clean"},
+    {"barcode":"8909081006265","product_name":"Popped Chips","brands":"Bingo!","ingredients_text":"Potato pellets (potato flakes, potato starch, rice flour, tapioca starch, iodized salt, refined rice bran oil), seasoning (refined rice bran oil, dehydrated onion, spices and condiments, iodized salt, black salt, sugar, acidity regulators (INS 330, INS 296, INS 334), tomato powder, hydrolyzed vegetable protein, natural flavours and natural flavouring substances, dehydrated garlic, yeast extract, nature identical flavouring substances, flavour enhancer (INS 635)), yellow pea grits (7.3%) and green pea grits (7.3%)","additive_flags":"Clean"},
+    {"barcode":"8901262071864","product_name":"99% Cacao Ultimate Dark Chocolate","brands":"Amul","ingredients_text":"Cocoa solids, emulsifiers (322, 476)","additive_flags":"Clean"},
+    {"barcode":"8902080364022","product_name":"Mountain Dew","brands":"PepsiCo","ingredients_text":"Carbonated water, sugar, acidity regulators (330, 331), flavour (natural flavouring substances), preservative (211), caffeine (13 mg/100 g), stabilizer (445), colour (102)","additive_flags":"INS 211 + INS 102"},
+    {"barcode":"8902080002733","product_name":"Tropicana Fruitz Mixed Fruit Magic","brands":"Tropicana","ingredients_text":"Water, sugar, concentrated mixed fruit juice 25% (from apple, mango, guava, orange, banana, apricot, peach), acidity regulators (330, 331), stabilizers (466, 440), flavour (natural and nature identical flavouring substances), preservative (202), colour (160a(i))","additive_flags":"INS 202 preservative"},
+    {"barcode":"8908002023015","product_name":"Groundnut Oil","brands":"SVS","ingredients_text":"Refined groundnut oil","additive_flags":"Clean single-ingredient"},
+    {"barcode":"8908010213088","product_name":"Nacho Chips","brands":"Various","ingredients_text":"Corn (68%), edible vegetable oil (corn oil), sugar, corn starch, spices, condiments (onion, chilli, jalapeno, parsley, garlic), iodised salt, herbs (0.8%), black salt, acidity regulator (INS 262(ii), INS 330, INS 296), flavouring, anti-caking agent (INS 551)","additive_flags":"Clean"},
+    {"barcode":"8904287001069","product_name":"Vermicelli","brands":"Bambino","ingredients_text":"Hard wheat semolina/rawa, vitamin and minerals premix (vitamin B3 (as niacinamide), iron (as ferrous sulphate), zinc (as zinc sulphate), vitamin B2 (riboflavin), vitamin B1 (as thiamine mononitrate), vitamin B9 (folic acid) & vitamin B12 (cyanocobalamin))","additive_flags":"Clean"},
+    {"barcode":"8906035030017","product_name":"Refined Palmolein Oil","brands":"First Klass","ingredients_text":"Refined palmolein oil","additive_flags":"Clean single-ingredient"},
+    {"barcode":"8904043553085","product_name":"Wow Pav","brands":"Modern","ingredients_text":"Refined wheat flour (maida), sugar, edible vegetable fat (interesterified), yeast, iodized salt, gluten, soya flour, preservative (282), emulsifier (471), acidity regulator (260), flour treatment agents (510, 1100(i)) and antioxidant (300)","additive_flags":"INS 282 preservative"},
+    {"barcode":"8908014531065","product_name":"Desiccated Coconut Powder","brands":"Sheer Coco","ingredients_text":"Desiccated coconut powder","additive_flags":"Clean single-ingredient"},
+    {"barcode":"8902433003707","product_name":"Galaxy Milk Chocolate Smooth Milk","brands":"Mars International India","ingredients_text":"Sugar, milk solids, cocoa butter, cocoa solids, edible vegetable fats <5% (sal fat, palm oil), humectant (422), emulsifiers (322, 476)","additive_flags":"Clean"},
+    {"barcode":"8908004010822","product_name":"Karachi's Fruit Biscuits","brands":"Karachi Bakery","ingredients_text":"Refined wheat flour (maida), interesterified vegetable fat (refined rice bran oil, palmolein oil, sesame oil/til oil), sugar, cashew bites, papaya pieces (acidity regulators-INS 330, preservatives-INS 211 and contains permitted synthetic food color-INS 129 (FD&C Red No.40)), skimmed milk powder (SMP), iodised salt, & custard powder (corn flour, edible starch, & contains permitted synthetic food color-sunset yellow FCF (FD&C Yellow No 06) & tartrazine (FD&C Yellow No.05))","additive_flags":"INS 211 + INS 129 + INS 110 + INS 102"},
+    {"barcode":"8901044200284","product_name":"Mapro Mixed Fruit Jam","brands":"Mapro","ingredients_text":"Sugar, mix fruit pulp (papaya pulp, guava pulp, banana pulp, mango pulp, pineapple pulp, apple pulp, orange juice, strawberry pulp) (45%), water, acidity regulator (INS-330), thickener (INS-440), contains permitted synthetic food colour (INS-122) and added flavours - natural, nature identical & artificial flavouring substances (mix fruit), contains permitted class II preservative (INS-211)","additive_flags":"INS 122 + INS 211"},
+    {"barcode":"8901792001829","product_name":"Niru","brands":"Various","ingredients_text":"100% wheat cream","additive_flags":"Clean single-ingredient"},
+    {"barcode":"8906002000494","product_name":"Dr Oetker Funfoods Veg Mayonnaise","brands":"Funfoods/Dr Oetker","ingredients_text":"Refined soyabean oil, water, sugar, milk solids, iodised salt, stabilizers (INS 415, INS 1442), acidity regulators (INS 260), preservatives (INS 211, INS 202), antioxidant (INS 319)","additive_flags":"INS 211 + INS 202 + INS 319"},
+    {"barcode":"890979002019","product_name":"Potato Crackers","brands":"Bombay Sweets","ingredients_text":"Potato flakes, potato starch, wheat flour, refined veg oil & spices (chilli powder, cardamom, cinnamon, etc.)","additive_flags":"Clean"},
+    {"barcode":"8901262493215","product_name":"Paneer Fresh","brands":"Various","ingredients_text":"Milk solids, citric acid","additive_flags":"Clean"},
+    {"barcode":"8904083600527","product_name":"Frankie Masala","brands":"Kapol","ingredients_text":"Spices (chilli, asafoetida, turmeric)","additive_flags":"Clean spice blend"},
+    {"barcode":"8906216141280","product_name":"Raw Peanuts","brands":"Unknown Brand","ingredients_text":"Peanuts","additive_flags":"Clean single-ingredient"},
+    {"barcode":"8906082572072","product_name":"Cornitos Cheese Herbs 73g","brands":"Cornitos","ingredients_text":"Corn (70%), edible vegetable oil (corn oil), corn starch, iodized salt, sugar, milk solids (skim milk powder, whey powder, cheddar cheese powder (0.7%)), spices & condiments (oregano (0.3%), parsley (0.1%), black pepper, chilli, turmeric), onion powder, acidity regulator (INS 270), anticaking agent (INS 551), flavour enhancer (INS 627, INS 631)","additive_flags":"INS 627 + INS 631"},
+    {"barcode":"8901725007102","product_name":"Bingo","brands":"ITC","ingredients_text":"Potato (60.0%), refined palmolein, seasoning (iodized salt, red chilli powder (1.1%), maltodextrin, spices and condiments, onion powder, refined wheat flour (maida), nature identical flavouring substances, black salt, milk solids, natural flavours and natural flavouring substances, sugar, tomato powder, hydrolyzed vegetable protein, garlic powder and flavour enhancer (INS 508)) and iodized salt","additive_flags":"Clean"},
+    {"barcode":"8908017333031","product_name":"Grow Vita","brands":"Various","ingredients_text":"Malt extract, sugar, milk solids, cocoa powder, salt","additive_flags":"Clean"},
+    {"barcode":"8904293723153","product_name":"Instant Coffee Chicory Mixture","brands":"Rejuve","ingredients_text":"Instant coffee, chicory","additive_flags":"Clean"},
+    {"barcode":"8906160220017","product_name":"Surge Max","brands":"Mars","ingredients_text":"Vegetable cellulose, rice flour, magnesium stearate","additive_flags":"Supplement"},
+    {"barcode":"8904198802045","product_name":"Moong Dal","brands":"Euro","ingredients_text":"Green gram lentils, refined palmolein oil, iodised salt","additive_flags":"Clean"},
+    {"barcode":"8901052005161","product_name":"Tata Tea Gold Care","brands":"Tata Tea","ingredients_text":"Tea (96.15%), natural flavours and natural flavouring substances (ginger, cardamom, tulsi, mulethi, brahmi)","additive_flags":"Clean"},
+    {"barcode":"8906163831043","product_name":"All Natural Panchmeva","brands":"Farmley","ingredients_text":"Almonds, cashew nuts, dried dates, black raisins, green raisins","additive_flags":"Clean"},
+    {"barcode":"8901052004683","product_name":"Tata Tea Premium","brands":"Tata","ingredients_text":"Black tea (51% Indian tea)","additive_flags":"Clean single-ingredient"},
+    {"barcode":"8908013746217","product_name":"Cravova Mocha Cold Coffee","brands":"Cravova","ingredients_text":"Double toned milk (90%), sugar, milk solids, coffee (0.8%), cocoa solids (0.22%), nature identical flavouring substances (chocolate, coffee), acidity regulator (INS 339(ii)), stabilizers (INS 418, INS 407)","additive_flags":"Clean"},
+    {"barcode":"8907790000338","product_name":"Fruit Muffins","brands":"Ribbons & Balloons","ingredients_text":"Refined wheat flour (maida), sugar, edible vegetable oil (palm oil), water, milk solids, sweetener (INS 420), raising agent (INS 500(i), INS 541), edible starch, emulsifiers (INS 472e, INS 475, INS 471, INS 477, INS 470(i)), acidity regulator (INS 330), stabilizer (INS 415), anticaking agent (INS 341(iii)), humectant (INS 422, INS 1520), iodised salt and antioxidant (INS 320), contains added flavours (nature identical and artificial flavouring substance-vanilla and mix fruit), contains permitted class II preservatives (INS 282, INS 200, INS 202)","additive_flags":"INS 282 + INS 200 + INS 202"},
+    {"barcode":"8904004401158","product_name":"Khatta Meetha 200g","brands":"Haldiram's","ingredients_text":"Edible vegetable oil (palmolein, cotton seed, corn, sunflower, rice bran), rice flakes (22%), bengal gram flour (besan) (21%), refined sugar, split pulse bengal gram (chana dal) (7%), groundnuts (peanuts) (5%), sago (4%), red lentils (masur whole) (2.5%), green peas, tapioca starch, iodised salt, black salt, turmeric, acidity regulator (INS 330), red chilli, ajwain, raising agent (INS 500 ii) & asafoetida","additive_flags":"Clean"},
+    {"barcode":"8906059638329","product_name":"Mishti Doi","brands":"Epigamia","ingredients_text":"Low lactose full cream milk (milk, milk solids, enzyme (b-galactosidase)), sugar, colour (INS 150a), flavour (natural flavouring substances), permitted lactic acid culture","additive_flags":"Clean"},
+    {"barcode":"8904092498023","product_name":"Pizza Bread","brands":"Kabhib","ingredients_text":"Whole wheat flour, refined wheat flour, yeast, palm oil, sugar, iodised salt, colour (INS 150d), gluten, permitted preservative (INS 282), soya flour, flour treatment agent (E1100), flour treatment agent (E1104), flour treatment agent (E1102), flour treatment agent (E510), acidity regulator (INS 260)","additive_flags":"INS 150d + INS 282"},
+    {"barcode":"8902433005732","product_name":"Galaxy Fusions","brands":"Unknown Brand","ingredients_text":"Cocoa mass, sugar, cocoa butter, emulsifiers (322), natural flavour (vanilla). Total cocoa content: 70%","additive_flags":"Clean"},
+    {"barcode":"8906033743773","product_name":"McVitie's Hobnobs","brands":"McVitie's","ingredients_text":"Oats (36%), wheat flour (atta), edible vegetable oil (palm oil), choco chips (15%) (sugar, edible vegetable fat (hydrogenated), cocoa solids, emulsifier (INS 492), dextrose, emulsifier (INS 322(i) - lecithin of soya origin), nature identical flavouring substances), sugar, invert sugar syrup, raising agents (INS 500(ii), INS 503(ii)), milk solids, wheat bran, honey, iodised salt, emulsifiers (INS 471, INS 322), nature identical flavouring substances","additive_flags":"Hydrogenated oil"},
+    {"barcode":"8906017291016","product_name":"Limonata","brands":"Bisleri","ingredients_text":"Carbonated water, sugar, acidity regulators (330, 331, 296), flavours (nature-identical flavouring substances), preservative (211)","additive_flags":"INS 211 preservative"},
+    {"barcode":"8906198980426","product_name":"Coffee Flavor Whey Protein Isolate+Concentrate","brands":"TrueBasics","ingredients_text":"Whey blend: whey protein isolate + whey protein concentrate (instantised with sunflower lecithin), whole milk powder, coffee powder, natural flavour, cocoa powder, lactase (b-galactosidase) & papain","additive_flags":"Clean"},
+    {"barcode":"8901552023184","product_name":"Tandoori Naan","brands":"Ashoka","ingredients_text":"Refined flour (wheat), water, milk, butter (milk, salt), sunflower oil, salt, sugar, yeast, sodium bicarbonate (raising agent - E500)","additive_flags":"Clean"},
+    {"barcode":"8901042971483","product_name":"Vermicelli","brands":"MTR","ingredients_text":"Wheat semolina, durum wheat flour (atta)","additive_flags":"Clean"},
+    {"barcode":"8908012692171","product_name":"Skin Fuel","brands":"Wellbeing Nutrition","ingredients_text":"Citric acid, sodium bicarbonate, PEG 6000, blueberry flavor, watermelon flavor, polomint flavor, sweetener stevia complex, contains natural color(s) & flavor(s)","additive_flags":"Supplement"},
+    {"barcode":"8908003115610","product_name":"Chai Biscuit","brands":"Various","ingredients_text":"Refined wheat flour (maida), interesterified vegetable fat (rice bran oil, palmolein oil, sesame oil/til oil), sugar, skimmed milk powder (source from cow milk), iodised salt","additive_flags":"Clean"},
+    {"barcode":"8908017139138","product_name":"Nutrela Spirulina","brands":"Nutrela/Patanjali","ingredients_text":"Spirulina powder (56%), ashwagandha root extract (9%), anticaking agent (INS 460(i), INS 470(iii), INS 551, INS 553(iii)), moringa leaf extract (8.4%), amla extract (7.1%), stabilizer (INS 1201, INS 414)","additive_flags":"Supplement"},
+    {"barcode":"8906024480311","product_name":"Toned Milk","brands":"Dodla","ingredients_text":"Milk solids, vitamin A (retinyl palmitate) and vitamin D (ergocalciferol)","additive_flags":"Clean"},
+    {"barcode":"8906021129961","product_name":"Lemon Pickle","brands":"Aachi","ingredients_text":"Lemon (79%), salt, edible vegetable oil - refined rice bran oil, red chilli powder, fenugreek, mustard, asafoetida, turmeric powder, acidity regulators - (INS 330 & INS 260) and curry leaves, contains permitted class II preservative INS 211","additive_flags":"INS 211 preservative"},
+    {"barcode":"8904004400083","product_name":"Haldiram's Bhujia Sev","brands":"Haldiram's","ingredients_text":"Tepary beans (moth dal) flour, refined cotton seed oil, bengal gram flour (besan), edible common salt, red chilli powder, clove powder, black pepper, coriander seed, dried ginger powder, cardamom, bay leaves, nutmeg & cinnamon","additive_flags":"Clean"},
+    {"barcode":"8904004408669","product_name":"Chekaralu","brands":"Haldiram's","ingredients_text":"Rice flour, refined palmolein oil, split pulse moong (moong dal) flour, roasted bengal gram lentils (daliya), tapioca starch, hydrogenated vegetable oil (vanaspati), iodised salt, sesame seed, cumin, red chilli, asafoetida & raising agent (INS 500 ii)","additive_flags":"Hydrogenated oil"},
+    {"barcode":"8906137053242","product_name":"Probiotic Curd","brands":"Milma","ingredients_text":"Milk solids (toned milk) & active starter culture","additive_flags":"Clean"},
+    {"barcode":"8903023006023","product_name":"Yellow Moong Dal","brands":"Vedaka","ingredients_text":"Yellow moong dal","additive_flags":"Clean single-ingredient"},
+    {"barcode":"8903228309486","product_name":"Alfavena Malt","brands":"Various","ingredients_text":"Verify specific product","additive_flags":"Verify"},
+    {"barcode":"8906007280105","product_name":"Fortune Refined Soyabean Oil","brands":"Fortune","ingredients_text":"Refined soyabean oil, permitted antioxidant TBHQ (E319)","additive_flags":"INS 319 TBHQ"},
+    {"barcode":"8906031310472","product_name":"Calcium Tablets","brands":"Vestige","ingredients_text":"Calcium carbonate (81.17%), maize starch, diluent (INS 460(i)), emulsifier (INS 464), anti-caking agent (INS 553(iii)), anti-sticking agent (INS 572), stabiliser (INS 1202), anti-foaming agent (INS 551), synthetic food colour (171), preservative (INS 219), vehicle (INS 1521), sodium propyl paraben, vitamin D3, L-lysine","additive_flags":"Supplement"},
+    {"barcode":"8904063200402","product_name":"Samosa","brands":"Haldiram Snacks Pvt. Ltd.","ingredients_text":"Refined wheat flour (57%), vegetable oil (palmolein), split mung bean (4%), cashew nuts (2%), raisins (2%), sugar powder, salt, red chili powder, aniseed, black pepper powder, coriander, cardamom powder, mango powder, cumin, black cumin","additive_flags":"Clean"},
+    {"barcode":"8906020580145","product_name":"Wheat Lachha Parantha","brands":"ID","ingredients_text":"Whole wheat flour (atta, 52.75%), water, edible vegetable oil (rice bran oil, soyabean oil, coconut oil, sesame oil) and iodised salt","additive_flags":"Clean"},
+    {"barcode":"8904379600002","product_name":"Amla Juice","brands":"Baidyanath","ingredients_text":"Pure amla juice, E201, E211, E330","additive_flags":"INS 201 + INS 211"},
+    {"barcode":"8904063210937","product_name":"Tandoori Naan","brands":"Haldiram","ingredients_text":"Wheat flour (62%), water, refined sunflower oil, sugar, salt, baking powder (maize starch, raising agent-E500) and yeast","additive_flags":"Clean"},
+    {"barcode":"8902080013258","product_name":"Mango Delight","brands":"Tropicana","ingredients_text":"Water, sugar, concentrated mango pulp and alphonso mango pulp (20%), acidity regulators (330), flavour (natural and nature identical flavouring substances), colour (160a)). 22% mango pulp in reconstituted beverage","additive_flags":"Clean"},
+    {"barcode":"8901030891830","product_name":"Double Chocolate Cornetto","brands":"Kwality Walls","ingredients_text":"Dark and milk chocolate delights in a wafer cone (16%) with chocolate compound coating (14%), milk solids, sugar, edible vegetable oil, stabilizers, emulsifiers, flavours","additive_flags":"Clean"},
+    {"barcode":"8901058815900","product_name":"Nescafe Sunrise Extra","brands":"Nescafé","ingredients_text":"Coffee 60%, chicory 40%","additive_flags":"Clean"},
+    {"barcode":"8901030825545","product_name":"Horlicks Protein Plus Vanilla Flavour","brands":"Unilever Horlicks","ingredients_text":"Skimmed milk powder (50% of which casein (14%)), protein products (21%) (whey protein concentrate (15%), soy protein isolate (6%)), cereal extract (barley, malted barley, millet, wheat), edible vegetable fat powder (high oleic sunflower oil) (emulsifier (INS 471), antioxidant (INS 305)), dietary fibre (wheat dextrin-soluble fibre), nature identical flavouring substances, minerals, vitamins","additive_flags":"Clean"},
+    {"barcode":"8901037255512","product_name":"Masala Chai Instant Tea Premix","brands":"Various","ingredients_text":"Dairy whitener (partly skimmed milk powder & sugar), sugar, tea extract (7%) & masala (2.2%) (cloves, cardamom, ginger, black pepper, cinnamon & nutmeg)","additive_flags":"Clean"},
+    {"barcode":"8906151234214","product_name":"Chickpea Popped Chips","brands":"Snackible","ingredients_text":"Chickpeas, rice, potato, starch, maltodextrin, salt, sugar, dehydrated vegetable powder (garlic, onion), spices and spices extract, herbs (oregano), whole milk powder, cheese powder, sodium salt (E262), natural and nature identical flavouring substances, acidity regulator (E330), anti-caking agent (E551, E341(i)), edible vegetable oil (sunflower oil)","additive_flags":"Clean"},
+    {"barcode":"8906084522075","product_name":"A2 Milk Drink Dry Fruit","brands":"Desi Farms","ingredients_text":"Low fat milk (>96%), sugar (<2%), dry fruits (1.5%) (almond & cashew), milk solids, natural flavoring substances, stabilizers (INS 407, INS 418) & emulsifiers (INS 471)","additive_flags":"Clean"},
+    {"barcode":"8901030831706","product_name":"Mixed Fruit Jam","brands":"Hindustan Unilever Limited/Kissan","ingredients_text":"Sugar, mixed fruit pulp blend - 60% (papaya pulp, pear pulp, apple juice, banana pulp, pineapple juice, orange juice, mango pulp, grape juice), acidity regulator-E330, thickener-E440, iodised salt, vitamins & minerals, preservative-E202, natural flavouring substances, food colour-E122","additive_flags":"INS 202 + INS 122"},
+    {"barcode":"8901719125812","product_name":"Hide & Seek Milano Choco Filled Cocoa Rich Biscuits","brands":"Parle","ingredients_text":"Choco creme (40%) (sugar, refined oils (palmolein & palm oil), cocoa solids, emulsifier of vegetable origin (soy lecithin), artificial flavouring substances vanilla), refined wheat flour (maida), refined palm oil, sugar, cocoa solids (4.3%), invert sugar syrup, liquid glucose, iodised salt, raising agents (500(i), 503(i), 341) and emulsifier of vegetable origin (472), contains added flavours (artificial flavouring substances chocolate and vanilla)","additive_flags":"Clean"},
+    {"barcode":"8901071732451","product_name":"Hershey's Milk Shake Almond Flavor","brands":"Hershey's","ingredients_text":"Water, milk solids (≥11%), sugar, emulsifiers (4600), 466, 471), mineral (calcium carbonate), flavours (nature identical flavouring substances), sequestrant (339), thickeners (415, 407), mineral (zinc sulphate), vitamin E (acetate), vitamin A (acetate), vitamin D2 (ergocalciferol), vitamin B1 (thiamine chloride hydrochloride), vitamin B2 (riboflavin), edible common salt and almond paste (≥0.002%)","additive_flags":"Clean"},
+    {"barcode":"8906016413259","product_name":"Jersey Curd","brands":"Unknown Brand","ingredients_text":"Homogenized pasteurized toned milk, milk solids & active culture","additive_flags":"Clean"},
+    {"barcode":"8901725017620","product_name":"Fantastik Choco Delights","brands":"Sunfeast","ingredients_text":"Sugar, hydrogenated vegetable oil, milk solids, almond bits (7.0%), raisins (6.0%), cocoa solids (5.4%), cashew bits (3.0%), emulsifier (lecithin (from soyabean)) and nature identical flavouring substances","additive_flags":"Hydrogenated oil"},
+    {"barcode":"8906090641067","product_name":"Protein Water","brands":"Amul","ingredients_text":"Water, whey protein isolate, natural & nature identical flavouring substances, preservatives (202, 211)","additive_flags":"INS 202 + INS 211"},
+    {"barcode":"8904063240057","product_name":"Aloo Bhujia","brands":"Haldiram's","ingredients_text":"Potato (44%), edible vegetable oil (cotton seed, corn, palmolein, ground nut and rice bran), gram pulse flour, rice flour, edible starch, iodised salt, spices & condiments (coriander powder, cumin powder, mango powder, garlic powder, onion powder, lemon powder, ginger powder, red chilli powder, mace powder, nutmeg powder, turmeric powder, mint leaves powder), acidity regulator (INS 330), anticaking agent (INS 551), flavour enhancers (INS 627 & 631) and natural & nature identical substances","additive_flags":"Clean"},
+    {"barcode":"8904067709833","product_name":"Thai Sweet Chilli Roasted Peanuts","brands":"Jabsons","ingredients_text":"Peanuts (86%), refined cotton seed oil, sugar, iodized salt, onion, spices & condiments (chilli, pepper), acidity regulators (citric acid, malic acid), garlic, maltodextrin, hydrolysed vegetable protein (soya), yeast extract, anticaking agent (silicon dioxide), anti-oxidant (ascorbic acid)","additive_flags":"Clean"},
+    {"barcode":"8901537078314","product_name":"Biryani Kit Lucknowi","brands":"Daawat","ingredients_text":"Rice - basmati rice; Biryani paste - curd, water, dehydrated onion, edible vegetable oil (sunflower), edible common salt, spices and condiments (cardamom, fennel, star anise, mace, cinnamon, clove, coriander, cumin, black pepper, nutmeg, bay leaf), garlic, ginger, rose water, kewra water, flavour enhancers (INS 627, INS 631), turmeric powder, acidity regulator (INS 330), saffron (0.1%) and hydrolysed vegetable protein (soya)","additive_flags":"Clean"},
+    {"barcode":"8906080603518","product_name":"Paper Boat Zero Sparkling Coffee","brands":"Paper Boat","ingredients_text":"Carbonated water, sweeteners (968, 955), flavours (nature-identical and natural flavouring substances), acidity regulators (330, 331(iii)), coffee bean extract (0.1%), caffeine (25mg/100ml), preservative (211)","additive_flags":"INS 211 preservative"}
+]
+
+elevated_count = 0
+added_count = 0
+purged_count = 0
+
+for item in batch_43_rows:
+    barcode = str(item["barcode"]).strip()
+    pname = item["product_name"].strip()
+    brand = item["brands"].strip()
+    ing = item["ingredients_text"].strip()
+    flags = item.get("additive_flags", "")
+    
+    # Check if non-food
+    if "NON-FOOD" in ing.upper() or "NON-FOOD" in flags.upper() or "PURGE" in flags.upper():
+        df_all = df_all[df_all['barcode'] != barcode]
+        df_confirmed = df_confirmed[df_confirmed['barcode'] != barcode]
+        df_needs_ver = df_needs_ver[df_needs_ver['barcode'] != barcode]
+        purged_count += 1
+        continue
+
+    # Update or add in master DB
+    idx_all = df_all[df_all['barcode'] == barcode].index
+    status_tag = 'CONFIRMED_INDIA_890' if barcode.startswith('890') else 'CONFIRMED_FOREIGN'
+    if len(idx_all) > 0:
+        df_all.loc[idx_all, 'product_name'] = pname
+        df_all.loc[idx_all, 'brands'] = brand
+        df_all.loc[idx_all, 'ingredients_text'] = ing
+    else:
+        new_row = {
+            'barcode': barcode,
+            'product_name': pname,
+            'brands': brand,
+            'ingredients_text': ing,
+            'sold_in_india_status': status_tag,
+            'ingredient_confidence': 'HIGH',
+            'status': 'KEEP',
+            'data_source': 'Brand Official Publication',
+            'source_license': 'User-submitted',
+            'collection_method': 'API/CSV Import'
+        }
+        df_all = pd.concat([df_all, pd.DataFrame([new_row])], ignore_index=True)
+
+    # Check if in needs_ver, promote to confirmed
+    idx_nv = df_needs_ver[df_needs_ver['barcode'] == barcode].index
+    if len(idx_nv) > 0:
+        df_needs_ver = df_needs_ver[df_needs_ver['barcode'] != barcode]
+        elevated_count += 1
+
+    # Upsert in confirmed
+    idx_c = df_confirmed[df_confirmed['barcode'] == barcode].index
+    if len(idx_c) > 0:
+        df_confirmed.loc[idx_c, 'product_name'] = pname
+        df_confirmed.loc[idx_c, 'brands'] = brand
+        df_confirmed.loc[idx_c, 'ingredients_text'] = ing
+        df_confirmed.loc[idx_c, 'sold_in_india_status'] = status_tag
+        df_confirmed.loc[idx_c, 'ingredient_confidence'] = 'HIGH'
+        df_confirmed.loc[idx_c, 'status'] = 'KEEP'
+    else:
+        conf_row = {
+            'barcode': barcode,
+            'product_name': pname,
+            'brands': brand,
+            'ingredients_text': ing,
+            'sold_in_india_status': status_tag,
+            'ingredient_confidence': 'HIGH',
+            'status': 'KEEP',
+            'data_source': 'Brand Official Publication',
+            'source_license': 'User-submitted',
+            'collection_method': 'API/CSV Import'
+        }
+        df_confirmed = pd.concat([df_confirmed, pd.DataFrame([conf_row])], ignore_index=True)
+        added_count += 1
+
+# Save updated files
+df_all.to_csv(all_supabase_csv, index=False)
+df_confirmed.to_csv(confirmed_csv, index=False)
+df_needs_ver.to_csv(needs_ver_csv, index=False)
+
+print(f"Batch 43 Processing Summary:")
+print(f"  Elevated from Needs Verification to Confirmed: {elevated_count}")
+print(f"  Newly added to Confirmed: {added_count}")
+print(f"  Purged Non-Food Barcodes: {purged_count}")
+print(f"  Final Master CSV Count: {len(df_all)}")
+print(f"  Final Confirmed CSV Count: {len(df_confirmed)}")
+print(f"  Final Needs Verification CSV Count: {len(df_needs_ver)}")

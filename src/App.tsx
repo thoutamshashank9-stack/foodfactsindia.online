@@ -11,7 +11,7 @@ import { Footer } from './components/Footer';
 import { PRESEEDED_PRODUCTS } from './data/productsDatabase';
 import { TransparencyReport } from './types';
 import { Grid, ShieldAlert, CheckCircle2, Database, Search, ArrowRight, HelpCircle, ChevronLeft, ChevronRight } from 'lucide-react';
-import { fetchLiveCatalog } from './services/supabaseService';
+import { fetchLiveCatalog, resolveBarcode } from './services/supabaseService';
 import { fetchRawIngredientsTaxonomyAsync } from './services/decoupledAdditiveService';
 import { searchTransparencyReports } from './services/searchService';
 
@@ -73,7 +73,18 @@ export function App() {
 
       if (state.productId) {
         const product = catalogRef.current.find(p => p.productId === state.productId) ?? null;
-        setSelectedProduct(product);
+        if (product) {
+          setSelectedProduct(product);
+        } else {
+          const barcode = state.productId.replace('prod_live_', '').replace('prod_off_', '');
+          if (/^[0-9]{8,14}$/.test(barcode)) {
+            resolveBarcode(barcode).then(res => {
+              if (res.kind === 'food') {
+                setSelectedProduct(res.product);
+              }
+            });
+          }
+        }
       } else {
         setSelectedProduct(null);
       }
@@ -84,22 +95,49 @@ export function App() {
     return () => window.removeEventListener('popstate', onPopState);
   }, []);
 
-  /** Push a new history entry with clean URL query parameters */
-  const pushHistoryState = useCallback((tab: string, productId: string | null) => {
+  /** Push a new history entry with clean URL paths */
+  const pushHistoryState = useCallback((tab: string, product: TransparencyReport | null) => {
     if (isRestoringFromHistory.current) return;
-    const histState: HistoryState = { tab: tab as HistoryState['tab'], productId };
+    const histState: HistoryState = { tab: tab as HistoryState['tab'], productId: product ? product.productId : null };
     
-    const params = new URLSearchParams();
-    params.set('tab', tab);
-    if (productId) {
-      params.set('product', productId);
+    let path = '/';
+    if (product) {
+      const slug = product.slug || `product-${product.barcode}`;
+      path = `/food/${slug}`;
+    } else if (tab !== 'home') {
+      path = `/?tab=${tab}`;
     }
-    const newSearch = params.toString();
-    window.history.pushState(histState, '', `?${newSearch}`);
+    window.history.pushState(histState, '', path);
   }, []);
 
   // ─── Deep Linking & Dynamic Routing on Mount / Catalog Load ────────────────
   useEffect(() => {
+    // 1. Path-based routing (e.g. /food/[slug])
+    const path = window.location.pathname;
+    if (path.startsWith('/food/')) {
+      const slug = path.substring(6); // remove "/food/"
+      if (slug) {
+        const parts = slug.split('-');
+        const barcode = parts[parts.length - 1];
+        if (/^[0-9]{8,14}$/.test(barcode)) {
+          const found = catalogProducts.find(p => p.barcode === barcode);
+          if (found) {
+            setSelectedProduct(found);
+            setCurrentTab('products');
+          } else {
+            resolveBarcode(barcode).then(res => {
+              if (res.kind === 'food') {
+                setSelectedProduct(res.product);
+                setCurrentTab('products');
+              }
+            });
+          }
+        }
+      }
+      return;
+    }
+
+    // 2. Query parameter fallback
     const params = new URLSearchParams(window.location.search);
     const tabParam = params.get('tab') as TabId | null;
     const productParam = params.get('product') || params.get('barcode');
@@ -113,6 +151,13 @@ export function App() {
       if (found) {
         setSelectedProduct(found);
         setCurrentTab('products');
+      } else if (/^[0-9]{8,14}$/.test(productParam)) {
+        resolveBarcode(productParam).then(res => {
+          if (res.kind === 'food') {
+            setSelectedProduct(res.product);
+            setCurrentTab('products');
+          }
+        });
       }
     }
   }, [catalogProducts]);
@@ -216,7 +261,7 @@ export function App() {
 
   const handleSelectProduct = useCallback((product: TransparencyReport) => {
     setSelectedProduct(product);
-    pushHistoryState(currentTab, product.productId);
+    pushHistoryState(currentTab, product);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [currentTab, pushHistoryState]);
 

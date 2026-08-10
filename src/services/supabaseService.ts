@@ -1296,6 +1296,7 @@ const nutrition: NutritionFacts = {
 
   const report: TransparencyReport = {
     productId: `prod_live_${barcode}`,
+    slug: p.slug || undefined,
     productName: toEnglishOnly(p.product_name || ''),
     brand: toEnglishOnly(p.brands || ''),
     manufacturer: toEnglishOnly(p.manufacturer || p.brands || ''),
