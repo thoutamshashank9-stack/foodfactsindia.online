@@ -1,0 +1,7 @@
+Metric,Count,Percentage
+Total Products in Database,53346,100.00%
+Products WITH Declared Ingredients,34518,64.71%
+Products WITHOUT Declared Ingredients,18828,35.29%
+Verified Indexable Products (SEO Quality Score >= 80),5644,10.58%
+Noindex Shielded Products (SEO Quality Score < 80),47702,89.42%
+Products Containing Banned or Restricted Additives,3678,6.89%
