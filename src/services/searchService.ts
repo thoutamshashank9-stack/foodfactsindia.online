@@ -1,5 +1,5 @@
 import { TransparencyReport } from '../types';
-import { isNonFoodProduct } from './supabaseService';
+import { isNonFoodProduct, isProductDataComplete } from './supabaseService';
 
 export interface SearchMatch {
   product: TransparencyReport;
@@ -30,6 +30,7 @@ export function searchTransparencyReports(
   for (const p of products) {
     if (!p || seenIds.has(p.productId)) continue;
     if (isNonFoodProduct(p)) continue;
+    if (!isProductDataComplete(p)) continue;
 
     let score = 0;
     let matchedField: SearchMatch['matchedField'] = 'productName';

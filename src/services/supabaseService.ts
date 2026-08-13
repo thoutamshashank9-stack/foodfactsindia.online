@@ -417,6 +417,45 @@ export function isNonFoodProduct(p: any): boolean {
   return hasKeyword || hasCosmeticIng;
 }
 
+/**
+ * Validates if a product has complete data and complete ingredients.
+ */
+export function isProductDataComplete(p: TransparencyReport): boolean {
+  if (!p) return false;
+
+  // If score is withheld or pageState is insufficient_data, it is not complete
+  if (p.isScoreWithheld || p.pageState === 'insufficient_data') {
+    return false;
+  }
+
+  // Ensure it has a non-empty ingredients list
+  if (!p.ingredientsList || p.ingredientsList.length === 0) {
+    return false;
+  }
+
+  // Ensure it doesn't contain placeholder or standard ingredients
+  const hasPlaceholderIngredients = p.ingredientsList.some(i =>
+    (i.rawName || '').toLowerCase().includes('declared ingredients list') ||
+    (i.ingredient?.canonicalName || '').toLowerCase().includes('standard ingredients')
+  );
+  if (hasPlaceholderIngredients) {
+    return false;
+  }
+
+  // Ensure nutrition is present
+  if (p.nutrition) {
+    const isNutritionAbsent =
+      p.nutrition.calories == null &&
+      p.nutrition.totalFatG == null &&
+      p.nutrition.totalSugarG == null;
+    if (isNutritionAbsent) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
 export async function resolveBarcode(barcode: string): Promise<ResolvedItem> {
   const clean = barcode.trim();
   if (!/^[0-9]{8,14}$/.test(clean)) {
@@ -707,8 +746,10 @@ export async function searchLiveProducts(query: string): Promise<TransparencyRep
     return bHasImg - aHasImg;
   });
 
-  searchCache.set(q, reports);
-  return reports;
+  const completeReports = reports.filter(isProductDataComplete);
+
+  searchCache.set(q, completeReports);
+  return completeReports;
 }
 
 export async function fetchLiveCatalog(): Promise<TransparencyReport[]> {
