@@ -185,6 +185,8 @@ export interface TransparencyReport {
     isControversial: boolean;
   }[];
 
+  rawIngredientsText?: string;
+
   nutrition: NutritionFacts;
 
   whoNutritionFlags?: WhoNutritionFlag[];

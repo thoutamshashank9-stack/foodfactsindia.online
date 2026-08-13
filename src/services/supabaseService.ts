@@ -683,16 +683,29 @@ export async function searchLiveProducts(query: string): Promise<TransparencyRep
       .limit(10);
     products = data || [];
   } else {
+    // 🌟 Order by seo_quality_score DESC so verified full-detail products rank FIRST
     const { data } = await supabase
       .from('products')
       .select('*')
-      .or(`product_name.ilike.%${q}%,brands.ilike.%${q}%,categories.ilike.%${q}%`)
-      .limit(20);
+      .or(`product_name.ilike.%${q}%,brands.ilike.%${q}%,categories.ilike.%${q}%,ingredients_text.ilike.%${q}%`)
+      .order('seo_quality_score', { ascending: false, nullsFirst: false })
+      .limit(30);
     products = data || [];
   }
 
   const validFoodProducts = products.filter(p => !isNonFoodProduct(p));
   const reports = await batchMapProductsToReports(validFoodProducts);
+
+  // Sort mapped reports so products with complete ingredients lists & images appear at top
+  reports.sort((a, b) => {
+    const aHasIng = (a.ingredientsList && a.ingredientsList.length > 0) ? 1 : 0;
+    const bHasIng = (b.ingredientsList && b.ingredientsList.length > 0) ? 1 : 0;
+    if (aHasIng !== bHasIng) return bHasIng - aHasIng;
+
+    const aHasImg = (a.imageUrl || a.imageFrontUrl) ? 1 : 0;
+    const bHasImg = (b.imageUrl || b.imageFrontUrl) ? 1 : 0;
+    return bHasImg - aHasImg;
+  });
 
   searchCache.set(q, reports);
   return reports;

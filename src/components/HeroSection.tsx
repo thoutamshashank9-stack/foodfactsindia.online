@@ -26,7 +26,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
     return searchTransparencyReports(products, searchQuery);
   }, [products, searchQuery]);
 
-  // Combine local & live results seamlessly (local results take priority)
+  // Combine local & live results seamlessly and enforce completeness ranking (full details first)
   const combinedResults = useMemo(() => {
     if (!searchQuery.trim()) return [];
     const list = [...localSearchResults];
@@ -35,7 +35,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         list.push(liveP);
       }
     }
-    return list;
+    // Re-rank combined items so full detail products always appear FIRST
+    return searchTransparencyReports(list, searchQuery);
   }, [searchQuery, localSearchResults, liveSearchResults]);
 
   // 2. Background network enrichment (200ms debounce)

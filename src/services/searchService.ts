@@ -5,11 +5,13 @@ export interface SearchMatch {
   product: TransparencyReport;
   score: number;
   matchedField: 'barcode' | 'productName' | 'brand' | 'category' | 'ingredient';
+  isCompleteDetails: boolean;
 }
 
 /**
- * High-performance, highly accurate search utility for TransparencyReport items.
- * Performs multi-field relevance scoring with 0ms local execution.
+ * Fast, highly accurate multi-field search engine for TransparencyReport items.
+ * Ranks products with complete ingredient declarations, verified quality scores,
+ * and high data completeness FIRST in search results.
  */
 export function searchTransparencyReports(
   products: TransparencyReport[],
@@ -36,52 +38,71 @@ export function searchTransparencyReports(
     const pName = (p.productName || '').toLowerCase();
     const pBrand = (p.brand || '').toLowerCase();
     const pCat = (p.category || '').toLowerCase();
+    const hasIngredients = Boolean(
+      (p.ingredientsList && p.ingredientsList.length > 0) || 
+      (p.rawIngredientsText && p.rawIngredientsText.trim().length > 5)
+    );
+    const hasImage = Boolean(p.imageUrl || p.imageFrontUrl);
+    const isVerified = (p as any).seoStatus === 'INDEX' || (p as any).seoQualityScore >= 80 || (p as any).verificationStatus === 'VERIFIED';
+    const isComplete = hasIngredients && hasImage;
 
-    // 1. Barcode Matching (Highest Priority)
+    // 1. Barcode Matching (Highest Priority for barcode searches)
     if (isBarcodeQuery && cleanDigits) {
       if (pBarcode === cleanDigits) {
-        score += 1000;
+        score += 2000;
         matchedField = 'barcode';
       } else if (pBarcode.replace(/^0+/, '') === cleanDigits.replace(/^0+/, '')) {
-        score += 900;
+        score += 1800;
         matchedField = 'barcode';
       } else if (pBarcode.includes(cleanDigits)) {
-        score += 500;
+        score += 1000;
         matchedField = 'barcode';
       }
     }
 
     // 2. Product Name Matching
     if (pName === q) {
-      score += 850;
-      if (score < 850) matchedField = 'productName';
+      score += 1200;
+      if (score < 1200) matchedField = 'productName';
     } else if (pName.startsWith(q)) {
-      score += 450;
-      if (score < 450) matchedField = 'productName';
+      score += 800;
+      if (score < 800) matchedField = 'productName';
     } else if (pName.includes(q)) {
-      score += 250;
-      if (score < 250) matchedField = 'productName';
+      score += 400;
+      if (score < 400) matchedField = 'productName';
+    } else {
+      // Word-level matching for multi-word queries (e.g. "maggi noodles", "amul milk")
+      const words = q.split(/\s+/).filter(w => w.length > 1);
+      if (words.length > 1) {
+        let matchedWordsCount = 0;
+        for (const word of words) {
+          if (pName.includes(word)) matchedWordsCount++;
+        }
+        if (matchedWordsCount > 0) {
+          score += matchedWordsCount * 250;
+        }
+      }
     }
 
     // 3. Brand Matching
     if (pBrand === q) {
+      score += 500;
+      if (score < 500) matchedField = 'brand';
+    } else if (pBrand.startsWith(q)) {
       score += 350;
       if (score < 350) matchedField = 'brand';
-    } else if (pBrand.startsWith(q)) {
+    } else if (pBrand.includes(q)) {
       score += 200;
       if (score < 200) matchedField = 'brand';
-    } else if (pBrand.includes(q)) {
-      score += 120;
-      if (score < 120) matchedField = 'brand';
     }
 
     // 4. Category Matching
     if (pCat === q) {
+      score += 300;
+      if (score < 300) matchedField = 'category';
+    } else if (pCat.includes(q)) {
       score += 150;
       if (score < 150) matchedField = 'category';
-    } else if (pCat.includes(q)) {
-      score += 60;
-      if (score < 60) matchedField = 'category';
     }
 
     // 5. Ingredient & Additive Matching (INS / E-Codes / Raw Names)
@@ -93,35 +114,50 @@ export function searchTransparencyReports(
         const eNum = (item.ingredient?.eNumber || '').toLowerCase();
 
         if (cName === q || raw === q) {
-          score += 180;
+          score += 300;
           matchedField = 'ingredient';
           break;
         }
         if (cName.includes(q) || raw.includes(q)) {
-          score += 90;
+          score += 150;
           matchedField = 'ingredient';
           break;
         }
         if (ins && (ins === q || `ins ${ins}` === q || `ins${ins}` === q || ins.includes(q))) {
-          score += 220;
+          score += 350;
           matchedField = 'ingredient';
           break;
         }
         if (eNum && (eNum === q || `e ${eNum}` === q || `e${eNum}` === q || eNum.includes(q))) {
-          score += 220;
+          score += 350;
           matchedField = 'ingredient';
           break;
         }
       }
     }
 
+    // 🌟 6. DATA COMPLETENESS BOOST (Developer Requirement: Full Details First)
+    // Products with complete ingredient declarations, images, and verified quality scores GET A MAJOR BOOST
     if (score > 0) {
+      if (hasIngredients) {
+        score += 600; // Strongest boost for full ingredient lists
+      }
+      if (isVerified) {
+        score += 400; // Quality score >= 80 boost
+      }
+      if (hasImage) {
+        score += 200; // Image present boost
+      }
+      if (pBrand && pBrand !== 'unknown' && pBrand !== 'unspecified') {
+        score += 100; // Brand present boost
+      }
+
       seenIds.add(p.productId);
-      results.push({ product: p, score, matchedField });
+      results.push({ product: p, score, matchedField, isCompleteDetails: isComplete });
     }
   }
 
-  // Sort descending by relevance score
+  // Sort descending by relevance score (so products with full details rank FIRST)
   results.sort((a, b) => b.score - a.score);
   return results.map(r => r.product);
 }

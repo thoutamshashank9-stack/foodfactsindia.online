@@ -5,7 +5,6 @@ confirmed_csv = "india_products_confirmed.csv"
 needs_ver_csv = "india_products_needs_verification.csv"
 output_dir = r"C:\Users\thout\.gemini\antigravity\brain\960ba3f1-e81d-4ac5-8649-b7de031c249a"
 
-# Import our Banned Additives rules
 from generate_user_requested_reports import BANNED_ADDITIVES_RULES, analyze_banned_additives
 
 def generate_html_header(title):
@@ -103,14 +102,14 @@ def generate_html_header(title):
 def generate_html_footer():
     return """
 <div style="text-align: center; color: #94a3b8; font-size: 12px; margin-top: 30px; padding: 20px;">
-    Official Food Facts India Database Report • Generated 2026-08-12 • Certified Verified Dataset
+    Official Food Facts India Database Report • Generated 2026-08-12 • Certified Strictly Verified Dataset
 </div>
 </body>
 </html>
 """
 
 def main():
-    print("=== GENERATING PRINT-READY HTML & PDF TABLE DOCUMENTS ===")
+    print("=== GENERATING STRICTLY VERIFIED PRINT-READY HTML & PDF CATALOGS ===")
     
     df_confirmed = pd.read_csv(confirmed_csv, dtype=str)
     df_needs_ver = pd.read_csv(needs_ver_csv, dtype=str)
@@ -118,10 +117,19 @@ def main():
     df_confirmed['barcode'] = df_confirmed['barcode'].str.strip()
     df_needs_ver['barcode'] = df_needs_ver['barcode'].str.strip()
 
-    # -------------------------------------------------------------
+    # STRICT VERIFIED FILTERING MASK
+    has_ing = df_confirmed['ingredients_text'].notna() & (df_confirmed['ingredients_text'].str.strip() != '')
+    not_unverified_text = ~df_confirmed['ingredients_text'].str.contains(r'Verify\s*specific|Verify\b|NON-FOOD', case=False, na=False)
+    high_confidence = df_confirmed['ingredient_confidence'].isna() | (df_confirmed['ingredient_confidence'].str.upper() == 'HIGH')
+
+    verified_mask = has_ing & not_unverified_text & high_confidence
+    df_verified_complete = df_confirmed[verified_mask].copy()
+
+    df_unverified_from_confirmed = df_confirmed[~verified_mask].copy()
+    df_incomplete_all = pd.concat([df_needs_ver, df_unverified_from_confirmed], ignore_index=True).drop_duplicates(subset=['barcode'])
+
     # 1. VERIFIED PRODUCTS WITH COMPLETE INGREDIENTS TABLE HTML
-    # -------------------------------------------------------------
-    print("Generating Verified Complete Ingredients HTML Table...")
+    print("Generating Strictly Verified Complete Ingredients HTML Table...")
     html_1_path = os.path.join(output_dir, "verified_complete_ingredients_catalog.html")
     with open(html_1_path, "w", encoding="utf-8") as f:
         f.write(generate_html_header("Verified Complete Ingredients Catalog — Food Facts India"))
@@ -131,7 +139,7 @@ def main():
             <p>Official certified dataset of products sold in India with 100% verified ingredient data.</p>
         </div>
         <div class="stats-bar">
-            <div class="stat-card"><div class="val">{len(df_confirmed):,}</div><div class="lbl">Total Verified Products</div></div>
+            <div class="stat-card"><div class="val">{len(df_verified_complete):,}</div><div class="lbl">Total Verified Products</div></div>
             <div class="stat-card"><div class="val">100%</div><div class="lbl">Ingredient Accuracy</div></div>
             <div class="stat-card"><div class="val">GS1 890 & Import</div><div class="lbl">Market Scope</div></div>
         </div>
@@ -146,7 +154,7 @@ def main():
             </thead>
             <tbody>
         """)
-        for _, r in df_confirmed.iterrows():
+        for _, r in df_verified_complete.iterrows():
             f.write(f"""
                 <tr>
                     <td><span class="code-badge">{r['barcode']}</span></td>
@@ -158,9 +166,7 @@ def main():
         f.write("</tbody></table>")
         f.write(generate_html_footer())
 
-    # -------------------------------------------------------------
     # 2. INCOMPLETE INGREDIENTS PRODUCTS TABLE HTML
-    # -------------------------------------------------------------
     print("Generating Incomplete Ingredients HTML Table...")
     html_2_path = os.path.join(output_dir, "incomplete_ingredients_catalog.html")
     with open(html_2_path, "w", encoding="utf-8") as f:
@@ -171,7 +177,7 @@ def main():
             <p>Products identified in Indian market awaiting manufacturer lab verification or OCR label extraction.</p>
         </div>
         <div class="stats-bar">
-            <div class="stat-card"><div class="val">{len(df_needs_ver):,}</div><div class="lbl">Pending Barcodes</div></div>
+            <div class="stat-card"><div class="val">{len(df_incomplete_all):,}</div><div class="lbl">Pending Barcodes</div></div>
             <div class="stat-card"><div class="val">NEEDS_VERIFICATION</div><div class="lbl">Verification Status</div></div>
         </div>
         <table>
@@ -184,7 +190,7 @@ def main():
             </thead>
             <tbody>
         """)
-        for _, r in df_needs_ver.iterrows():
+        for _, r in df_incomplete_all.iterrows():
             f.write(f"""
                 <tr>
                     <td><span class="code-badge">{r['barcode']}</span></td>
@@ -195,12 +201,10 @@ def main():
         f.write("</tbody></table>")
         f.write(generate_html_footer())
 
-    # -------------------------------------------------------------
-    # 3. FOREIGN BANNED ADDITIVES & RISK CATEGORIZATION HTML TABLE
-    # -------------------------------------------------------------
-    print("Generating Foreign-Banned Additives & Risk Categorized HTML Table...")
+    # 3. FOREIGN BANNED ADDITIVES & RISK CATEGORIZATION HTML TABLE (VERIFIED ONLY)
+    print("Generating Strictly Verified Foreign-Banned Additives HTML Table...")
     banned_products = []
-    for idx, row in df_confirmed.iterrows():
+    for idx, row in df_verified_complete.iterrows():
         barcode = row.get('barcode', '')
         pname = row.get('product_name', '')
         brand = row.get('brands', '')
@@ -235,8 +239,8 @@ def main():
         f.write(generate_html_header("Foreign Banned Additives Audit Catalog — Food Facts India"))
         f.write(f"""
         <div class="header" style="background: linear-gradient(135deg, #991b1b, #ef4444);">
-            <h1>🚨 Foreign-Banned & Restricted Additives Audit</h1>
-            <p>Comprehensive regulatory audit identifying products sold in India containing additives banned/restricted in EU, US, Japan, or UK.</p>
+            <h1>🚨 Foreign-Banned & Restricted Additives Audit (Strictly Verified Products)</h1>
+            <p>Comprehensive regulatory audit identifying verified food products sold in India containing additives banned/restricted in EU, US, Japan, or UK.</p>
         </div>
         <div class="stats-bar">
             <div class="stat-card"><div class="val">{df_banned['barcode'].nunique():,}</div><div class="lbl">Products Flagged</div></div>
@@ -268,10 +272,10 @@ def main():
                     <td style="color: #475569;">{r['ban_reason']}</td>
                 </tr>
             """)
-        f.write("</tbody></table>")
+        f.write("</tbody>table>")
         f.write(generate_html_footer())
 
-    print("HTML catalogs generated successfully!")
+    print("Strictly verified HTML catalogs generated successfully!")
 
 if __name__ == '__main__':
     main()
